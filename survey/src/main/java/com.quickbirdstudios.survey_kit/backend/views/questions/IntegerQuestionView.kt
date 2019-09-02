@@ -6,7 +6,7 @@ import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.afterTextChanged
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.IntegerTextField
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
-import com.quickbirdstudios.survey_kit.public_api.IntegerAnswerFormat
+import com.quickbirdstudios.survey_kit.public_api.AnswerFormat
 import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
 import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
 import com.quickbirdstudios.survey_kit.public_api.result.question_results.IntegerQuestionResult
@@ -19,7 +19,7 @@ internal class IntegerQuestionView(
     @StringRes text: Int?,
     @StringRes nextButtonText: Int,
     @StringRes private val hintText: Int = R.string.empty,
-    private val answerFormat: IntegerAnswerFormat,
+    private val answerFormat: AnswerFormat.IntegerAnswerFormat,
     private val preselected: Int? = answerFormat.defaultValue
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
 

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.MultipleChoicePart
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
-import com.quickbirdstudios.survey_kit.public_api.MultipleChoiceAnswerFormat
+import com.quickbirdstudios.survey_kit.public_api.AnswerFormat
 import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
 import com.quickbirdstudios.survey_kit.public_api.TextChoice
 import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
@@ -17,7 +17,7 @@ internal class MultipleChoiceQuestionView(
     @StringRes title: Int?,
     @StringRes text: Int?,
     @StringRes nextButtonText: Int,
-    private val answerFormat: MultipleChoiceAnswerFormat,
+    private val answerFormat: AnswerFormat.MultipleChoiceAnswerFormat,
     private val preselected: List<TextChoice>?
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
 

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.ScalePart
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
-import com.quickbirdstudios.survey_kit.public_api.ScaleAnswerFormat
+import com.quickbirdstudios.survey_kit.public_api.AnswerFormat
 import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
 import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
 import com.quickbirdstudios.survey_kit.public_api.result.question_results.ScaleQuestionResult
@@ -16,7 +16,7 @@ internal class ScaleQuestionView(
     @StringRes title: Int?,
     @StringRes text: Int?,
     @StringRes nextButtonText: Int,
-    private val answerFormat: ScaleAnswerFormat,
+    private val answerFormat: AnswerFormat.ScaleAnswerFormat,
     private val preselected: Float? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
 

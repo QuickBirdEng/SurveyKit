@@ -103,8 +103,8 @@ abstract class QuestionView(
         header.onCancel = {
             Dialogs.cancel(
                 context,
-                "Cancel",
-                "Your current answers are lost.",
+                "Leave?",
+                "If you leave now, your current answers are lost.",
                 "Back to the survey",
                 "Cancel Survey"
             ) {

@@ -5,7 +5,7 @@ import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.SingleChoicePart
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
-import com.quickbirdstudios.survey_kit.public_api.SingleChoiceAnswerFormat
+import com.quickbirdstudios.survey_kit.public_api.AnswerFormat
 import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
 import com.quickbirdstudios.survey_kit.public_api.TextChoice
 import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
@@ -18,7 +18,7 @@ internal class SingleChoiceQuestion(
     @StringRes title: Int?,
     @StringRes text: Int?,
     @StringRes nextButtonText: Int,
-    private val answerFormat: SingleChoiceAnswerFormat,
+    private val answerFormat: AnswerFormat.SingleChoiceAnswerFormat,
     private val preselected: TextChoice? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
 

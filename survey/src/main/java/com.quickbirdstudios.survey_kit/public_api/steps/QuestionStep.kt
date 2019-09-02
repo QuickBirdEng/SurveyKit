@@ -5,7 +5,8 @@ import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.views.questions.*
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
-import com.quickbirdstudios.survey_kit.public_api.*
+import com.quickbirdstudios.survey_kit.public_api.AnswerFormat
+import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
 import com.quickbirdstudios.survey_kit.public_api.result.StepResult
 import com.quickbirdstudios.survey_kit.public_api.result.question_results.*
 
@@ -23,11 +24,17 @@ class QuestionStep(
 
     override fun createView(context: Context, stepResult: StepResult?): QuestionView =
         when (answerFormat) {
-            is TextAnswerFormat -> createTextQuestion(context, stepResult)
-            is SingleChoiceAnswerFormat -> createSingleChoiceQuestion(context, stepResult)
-            is MultipleChoiceAnswerFormat -> createMultipleChoiceQuestion(context, stepResult)
-            is ScaleAnswerFormat -> createScaleQuestion(context, stepResult)
-            is IntegerAnswerFormat -> createIntegerQuestion(context, stepResult)
+            is AnswerFormat.TextAnswerFormat -> createTextQuestion(context, stepResult)
+            is AnswerFormat.SingleChoiceAnswerFormat -> createSingleChoiceQuestion(
+                context,
+                stepResult
+            )
+            is AnswerFormat.MultipleChoiceAnswerFormat -> createMultipleChoiceQuestion(
+                context,
+                stepResult
+            )
+            is AnswerFormat.ScaleAnswerFormat -> createScaleQuestion(context, stepResult)
+            is AnswerFormat.IntegerAnswerFormat -> createIntegerQuestion(context, stepResult)
         }
 
     //endregion
@@ -54,7 +61,7 @@ class QuestionStep(
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            answerFormat = this.answerFormat as SingleChoiceAnswerFormat,
+            answerFormat = this.answerFormat as AnswerFormat.SingleChoiceAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? SingleChoiceQuestionResult)?.answer
         )
 
@@ -66,7 +73,7 @@ class QuestionStep(
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            answerFormat = this.answerFormat as MultipleChoiceAnswerFormat,
+            answerFormat = this.answerFormat as AnswerFormat.MultipleChoiceAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? MultipleChoiceQuestionResult)?.answer
         )
 
@@ -78,7 +85,7 @@ class QuestionStep(
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            answerFormat = this.answerFormat as ScaleAnswerFormat,
+            answerFormat = this.answerFormat as AnswerFormat.ScaleAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? ScaleQuestionResult)?.answer
         )
 
@@ -90,7 +97,7 @@ class QuestionStep(
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            answerFormat = this.answerFormat as IntegerAnswerFormat,
+            answerFormat = this.answerFormat as AnswerFormat.IntegerAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? IntegerQuestionResult)?.answer
         )
 
