@@ -1,10 +1,10 @@
 package com.quickbirdstudios.survey_kit.public_api
 
-import android.graphics.Color
+import androidx.annotation.ColorInt
 
 //TODO remove default values and call it Theme or SurveyTheme
 data class SurveyTheme(
-    val themeColorDark: Int = Color.GREEN,
-    val themeColor: Int = Color.GREEN,
-    val textColor: Int = Color.GREEN
+    @ColorInt val themeColorDark: Int,
+    @ColorInt val themeColor: Int,
+    @ColorInt val textColor: Int
 )

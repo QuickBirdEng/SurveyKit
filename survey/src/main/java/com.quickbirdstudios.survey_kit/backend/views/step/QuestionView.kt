@@ -63,7 +63,6 @@ abstract class QuestionView(
     var header: Header = root.findViewById(R.id.questionHeader)
     var content: Content = root.findViewById(R.id.questionContent)
     var footer: Footer = content.findViewById(R.id.questionFooter)
-    var surveyTheme: SurveyTheme = SurveyTheme()
 
     val startDate: Date = Date()
 
@@ -123,8 +122,6 @@ abstract class QuestionView(
         footer.setContinueButtonText(nextButtonText)
 
         setState()
-
-        style(surveyTheme)
     }
 
     //endregion
