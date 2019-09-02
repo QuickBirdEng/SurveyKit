@@ -1,0 +1,17 @@
+#QBS-HOOK-START
+#!/usr/bin/env bash
+# Automatically adds branch name every commit message.
+NAME=$(git branch | grep '*' | sed 's/* //')
+MESSAGE="$(cat "$1")"
+FIRST_MESSAGE_CHAR=${MESSAGE:0:1}
+
+if [[ ${MESSAGE} != *${NAME}* ]]
+then
+   if [[ ${FIRST_MESSAGE_CHAR} == "-" ]]
+   then
+       echo "$NAME:\n $(cat "$1")" > "$1"
+   else
+       echo "$NAME: $(cat "$1")" > "$1"
+   fi
+fi
+#QBS-HOOK-END

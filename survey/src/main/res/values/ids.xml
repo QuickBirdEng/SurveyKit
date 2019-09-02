@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="questionHeader" type="id" />
+    <item name="questionContent" type="id" />
+    <item name="questionFooter" type="id" />
+</resources>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="question_info_title_padding">0dp</dimen>
+    <dimen name="question_text_padding">8dp</dimen>
+    <dimen name="question_vertical_padding">16dp</dimen>
+    <dimen name="question_horizontal_padding">20dp</dimen>
+
+    <dimen name="question_info_title_text_size">28sp</dimen>
+    <dimen name="question_info_text_text_size">16sp</dimen>
+    <dimen name="question_text_size">28sp</dimen>
+
+    <dimen name="content_vertical_margin">20dp</dimen>
+
+    <dimen name="footer_vertical_margin">20dp</dimen>
+
+    <dimen name="button_padding_horizontal">40dp</dimen>
+    <dimen name="button_padding_vertical">12dp</dimen>
+    <dimen name="button_margin">4dp</dimen>
+
+    <dimen name="text_field_horizontal_padding_left">12dp</dimen>
+    <dimen name="text_field_horizontal_padding_right">24dp</dimen>
+    <dimen name="text_field_vertical_padding">6dp</dimen>
+
+    <dimen name="scale_part_description_text_size">20sp</dimen>
+    <dimen name="scale_part_selected_text_size">32sp</dimen>
+    <dimen name="scale_part_text_padding">4dp</dimen>
+</resources>

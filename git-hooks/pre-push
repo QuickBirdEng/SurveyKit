@@ -1,0 +1,174 @@
+#!/bin/bash
+
+#VARIABLES
+NAME_PREFIX="$(git config --local project.qbs.prefix)"
+USERNAME=$(git config user.qbs.name)
+BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
+REMOTE=$1
+
+#REGEX-CONSTANTS
+BRANCH_NAME_REGEX="^(((feature|bugfix|hotfix)\/$NAME_PREFIX-([0-9]+|X)-([a-z0-9-]{5,}))|(release/.*)|(develop.*)|(personal/$USERNAME.*))$"
+TICKET_NUMBER_REGEX="^(\d+)$|^([X])$"
+BRANCH_DESCRIPTION_REGEX="^[a-z0-9-]{5,}$"
+USERNAME_REGEX="^[a-z]+$"
+
+#QBS-HOOK-START
+hook() {
+  echo "username: $USERNAME"
+  echo "branch name: $BRANCH_NAME"
+  echo ""
+
+  CONTAINS_PERSONAL_BRANCH_RESULT=$(echo ${BRANCH_NAME} | grep -E "^(personal/.*)$")
+
+  if [[ -n ${CONTAINS_PERSONAL_BRANCH_RESULT} && -z ${USERNAME} ]] ; then
+    echo "Make sure to configure your user.qbs.name when using personal branches."
+    exit 1
+  fi
+
+  PERSONAL_BRANCH_NAME_RESULT=$(echo ${BRANCH_NAME} | grep -E "^(personal/$USERNAME.*)$")
+
+  if [[ -n ${CONTAINS_PERSONAL_BRANCH_RESULT} && -z ${PERSONAL_BRANCH_NAME_RESULT} ]] ; then
+    echo "Personal branch name incorrect!"
+    echo "Your configured username is '$USERNAME' but your branch name is '$BRANCH_NAME'."
+    exit 1
+  fi
+
+  REGEX_RESULT=$(echo ${BRANCH_NAME} | grep -E $BRANCH_NAME_REGEX)
+
+  exec < /dev/tty
+
+  if [[ -z ${REGEX_RESULT} ]] ; then
+    echo -e "\033[0;31m"
+    echo -e "Invalid branch name. Branch names should start with 'feature', 'bugfix', 'hotfix', 'release' or 'develop' followed by '$NAME_PREFIX-{number}'!"
+    echo -e "For more information checkout our Confluence documentation at confluence.quickbirdstudios.com\033[0m"
+    echo -e "\n"
+
+    read -p "Do you want to change your branch name? (y/n) " yn
+    case $yn in
+      [Yy]*)
+        changeBranchName
+        ;;
+      [Nn]*) ;;
+      *) 
+        echo "Please answer yes or no next time."
+        echo "If you pushed through SourceTree try to push using this command in the terminal:"
+        echo "        git push --set-upstream $REMOTE $BRANCH_NAME"
+        ;;
+    esac
+    exit 1
+  fi
+}
+
+changeBranchName () {
+
+  clear
+
+  NEW_BRANCH_NAME=""
+
+  while [[ -z $(echo $USERNAME | grep -E "$USERNAME_REGEX") ]]; do
+    echo "You haven't configured your qbs.name git-variable. Please enter your name (only a-z and no spaces)."
+    read USERNAME
+    echo ""
+  done
+  
+  git config --global user.qbs.name $USERNAME
+
+  echo "What kind of branch do you want to create?"
+  echo "1) feature"
+  echo "2) bugfix"
+  echo "3) hotfix"
+  echo "4) release"
+  echo "5) personal"
+
+  while [[ -z $NEW_BRANCH_NAME ]]; do
+    read BRANCH_TYPE
+    case $BRANCH_TYPE in
+      1) 
+        NEW_BRANCH_NAME="feature/"
+        ;;
+      2) 
+        NEW_BRANCH_NAME="bugfix/"
+        ;;
+      3) 
+        NEW_BRANCH_NAME="hotfix/"
+        ;;
+      4) 
+        NEW_BRANCH_NAME="release/"
+        ;;
+      5) 
+        NEW_BRANCH_NAME="personal/$USERNAME/"
+        ;;
+      *)
+        echo "Please answer with a number between 1 and 5."
+        ;;
+    esac
+  done
+  echo ""
+
+  NEW_BRANCH_NAME="$NEW_BRANCH_NAME$NAME_PREFIX-"
+
+  TICKET_NUMBER="-"
+  while [[  -z $(echo $TICKET_NUMBER | grep -E "$TICKET_NUMBER_REGEX") ]]; do
+    echo "What is the ticket number you are working on? Enter X if there is no ticket."
+    read TICKET_NUMBER
+    echo ""
+  done
+  NEW_BRANCH_NAME="$NEW_BRANCH_NAME$TICKET_NUMBER-"
+
+  BRANCH_DESCRIPTION="-"
+  while [[ -z $(echo $BRANCH_DESCRIPTION | grep -E "$BRANCH_DESCRIPTION_REGEX") ]]; do
+    echo "Enter the description of your branch (only lower case letters, numbers and '-' is allowed, at least 5 char)"
+    read BRANCH_DESCRIPTION
+    echo ""
+  done
+
+  NEW_BRANCH_NAME="$NEW_BRANCH_NAME$BRANCH_DESCRIPTION"
+
+  while true; do
+    echo -e "Should your branch be changed to the name: \033[0;32m$NEW_BRANCH_NAME\033[0m (y/n)"
+    read yn
+    case $yn in
+      [Yy]*)
+
+        echo -e "\n\033[0;32mRenaming Branch\033[0m"
+        echo "Executing: git branch -m $NEW_BRANCH_NAME"
+        git branch -m "$NEW_BRANCH_NAME"
+
+        while [[ -n $(git ls-files -m) ]]; do
+          STASHED_CHANGES=true
+          echo -e "\n\033[0;32mStashing unstaged changes to be able to change the pre-fix of commit messages.\033[0m"
+          echo -e "Executing: git stash push\n"
+          git stash push
+        done
+
+        echo -e "\n\033[0;32mChanging pre-fix of commit messages\033[0m"
+        ESCAPED_BRANCH_NAME=$(echo $BRANCH_NAME | perl -pe s/\\//\\\\\\\\\\//g)
+        ESCAPED_NEW_BRANCH_NAME=$(echo $NEW_BRANCH_NAME | perl -pe s/\\//\\\\\\\\\\//g)
+        echo "Executing: git filter-branch -f --msg-filter 'sed s/$ESCAPED_BRANCH_NAME/$ESCAPED_NEW_BRANCH_NAME/' -- $NEW_BRANCH_NAME ^$REMOTE"
+        echo ""
+        git filter-branch -f --msg-filter "sed s/$ESCAPED_BRANCH_NAME/$ESCAPED_NEW_BRANCH_NAME/" -- $NEW_BRANCH_NAME \^$REMOTE
+
+        if [[ "$STASHED_CHANGES" == true ]]; then
+          echo -e "\n\033[0;32mReapplying Stash\033[0m"
+          echo -e "Executing: git stash pop"
+          git stash pop
+        fi
+
+        echo -e "\n\n\033[0;32mBranch name changed successfully!"
+        echo -e "Please execute the following command:\033[0m"
+        echo "          git push --set-upstream $REMOTE $NEW_BRANCH_NAME"
+        echo -e "\n\n"
+        exit 1
+        ;;
+      [Nn]* )
+        exit 1
+        ;;
+      *)
+        echo "Please answer yes or no."
+        ;;
+    esac
+  done
+}
+
+hook
+#QBS-HOOK-END

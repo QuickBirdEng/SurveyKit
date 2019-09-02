@@ -1,0 +1,17 @@
+variables:
+  GIT_CLEAN_FLAGS: none
+
+stages:
+  - test
+  - deploy
+
+appTests:
+  stage: test
+  script:
+    - ./gradlew app:test app:cAT
+
+deploy:
+  stage: deploy
+  script:
+    - ./gradlew assemble
+    - ./gradlew quickDeploy

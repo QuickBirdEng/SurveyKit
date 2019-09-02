@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/button_continue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/button_margin"
+        android:background="@drawable/main_button_background"
+        android:paddingStart="@dimen/button_padding_horizontal"
+        android:paddingTop="@dimen/button_padding_vertical"
+        android:paddingEnd="@dimen/button_padding_horizontal"
+        android:paddingBottom="@dimen/button_padding_vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button_skip_question"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Weiter" />
+
+    <Button
+        android:id="@+id/button_skip_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/button_margin"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/skip_button_background"
+        android:paddingStart="@dimen/button_padding_horizontal"
+        android:paddingTop="@dimen/button_padding_vertical"
+        android:paddingEnd="@dimen/button_padding_horizontal"
+        android:paddingBottom="@dimen/button_padding_vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        tools:text="Frage überspringen" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

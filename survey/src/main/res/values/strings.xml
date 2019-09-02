@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="empty" translatable="false"></string>
+
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <string name="start">Start</string>
+    <string name="finish">Finish</string>
+    <string name="cancel">Cancel</string>
+    <string name="next">Next</string>
+
+
+    <!-- Example app strings -->
+    <string name="intro_title">Welcome to the QB Health Survey</string>
+    <string name="intro_text">Get ready for a bunch of super random questions!</string>
+    <string name="intro_start">Let\'s go!</string>
+
+    <string name="about_you_question_title">Tell us about you</string>
+    <string name="about_you_question_text">Tell us about yourself and why you want to improve your health.</string>
+
+    <string name="how_old_title">How old are you?</string>
+    <string name="how_old_text"></string>
+
+    <string name="how_fat_question_title">Select your body type</string>
+    <string name="how_fat_question_text"></string>
+    <string name="how_fat_min">Underweight</string>
+    <string name="how_fat_max">Overweight</string>
+
+    <string name="physical_disabilities_question_title">Physical disabilities</string>
+    <string name="physical_disabilities_question_text">Do you have any physical disabilities that we should know?</string>
+    <string name="physical_disabilities_back_pain">Back pain</string>
+    <string name="physical_disabilities_heart_problems">Heart problems</string>
+    <string name="physical_disabilities_joint_pain">Joint pain</string>
+    <string name="physical_disabilities_joint_asthma">Asthma</string>
+
+    <string name="quit_or_continue_question_title">Done?</string>
+    <string name="quit_or_continue_question_text">We are done, do you mind to tell us more about yourself?</string>
+
+    <string name="finish_question_title">Done!</string>
+    <string name="finish_question_text">Thanks for taking the survey, we will contact you soon!</string>
+    <string name="finish_question_submit">Submit survey</string>
+
+</resources>

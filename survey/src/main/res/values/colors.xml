@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="header_background">#F3F3F3</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black_50_alpha">#80000000</color>
+    <color name="separator_grey">#807A7A7A</color>
+    <color name="disabled_grey">#807A7A7A</color>
+    <color name="pressed_grey">#337A7A7A</color>
+    <color name="hint_grey">#807A7A7A</color>
+    <color name="chevron_color">#3D3D3D</color>
+
+    <color name="cyan_text">#33C5D4</color>
+    <color name="cyan_normal">#3CD0DF</color>
+    <color name="cyan_normal_disabled">#853CD0DF</color>
+</resources>
