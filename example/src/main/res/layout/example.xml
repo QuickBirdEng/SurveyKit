@@ -18,13 +18,13 @@
 
 
     <Button
-        android:id="@+id/weiter"
+        android:id="@+id/continue_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="continue" />
 
     <Button
-        android:id="@+id/zuruck"
+        android:id="@+id/back_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="back" />

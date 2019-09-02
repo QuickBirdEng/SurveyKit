@@ -35,7 +35,7 @@ MainActivity : AppCompatActivity(), CoroutineScope {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_empty)
+        setContentView(R.layout.main_activity)
 
         val survey = findViewById<SurveyView>(R.id.survey_view)
         setupSurvey(survey)
@@ -176,17 +176,16 @@ class CustomStep : Step {
             }
 
             init {
-                root.findViewById<Button>(R.id.weiter)
+                root.findViewById<Button>(R.id.continue_button)
                     .setOnClickListener { onNextListener(createResults()) }
-                root.findViewById<Button>(R.id.zuruck)
+                root.findViewById<Button>(R.id.back_button)
                     .setOnClickListener { onBackListener(createResults()) }
                 root.findViewById<Button>(R.id.close)
                     .setOnClickListener { onCloseListener(createResults(), FinishReason.Completed) }
                 root.findViewById<Button>(R.id.skip)
                     .setOnClickListener { onSkipListener() }
                 root.findViewById<EditText>(R.id.input).setText(
-                    (stepResult?.results?.firstOrNull() as? CustomResult)?.yes
-                        ?: ""
+                    (stepResult?.results?.firstOrNull() as? CustomResult)?.customData ?: ""
                 )
             }
         }
@@ -196,7 +195,7 @@ class CustomStep : Step {
 
 @Parcelize
 data class CustomResult(
-    val yes: String,
+    val customData: String,
     override val stringIdentifier: String,
     override val id: Identifier,
     override val startDate: Date,
