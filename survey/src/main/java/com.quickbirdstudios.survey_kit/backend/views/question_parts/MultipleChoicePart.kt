@@ -11,13 +11,13 @@ import android.widget.CheckBox
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
+import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.px
 import com.quickbirdstudios.survey_kit.backend.views.main_parts.StyleablePart
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.helper.BackgroundDrawable
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.helper.createSelectableThemedBackground
 import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
 import com.quickbirdstudios.survey_kit.public_api.TextChoice
-import com.quickbirdstudios.triangle.survey.R
 
 internal class MultipleChoicePart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null

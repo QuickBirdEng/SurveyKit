@@ -1,4 +1,4 @@
 rootProject.name = 'triangle'
 
 include ':survey'
-include ':test-app'
+include ':example'

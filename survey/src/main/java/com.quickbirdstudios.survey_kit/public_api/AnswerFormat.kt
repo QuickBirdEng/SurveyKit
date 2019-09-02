@@ -2,7 +2,7 @@ package com.quickbirdstudios.survey_kit.public_api
 
 import android.os.Parcelable
 import androidx.annotation.StringRes
-import com.quickbirdstudios.triangle.survey.R
+import com.quickbirdstudios.survey.R
 import kotlinx.android.parcel.Parcelize
 
 sealed class AnswerFormat

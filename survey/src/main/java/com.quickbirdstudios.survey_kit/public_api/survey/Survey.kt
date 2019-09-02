@@ -9,8 +9,8 @@ import com.quickbirdstudios.survey_kit.public_api.steps.Step
 
 
 internal interface Survey {
-    var onStepResult: suspend (Step?, StepResult?) -> Unit
-    var onSurveyFinish: suspend (TaskResult, FinishReason) -> Unit
+    var onStepResult: (Step?, StepResult?) -> Unit
+    var onSurveyFinish: (TaskResult, FinishReason) -> Unit
 
     fun start(task: Task, surveyTheme: SurveyTheme)
     fun backPressed()

@@ -9,8 +9,8 @@ import android.view.Gravity
 import android.widget.Checkable
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
+import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.px
-import com.quickbirdstudios.triangle.survey.R
 
 @Suppress("unused")
 internal fun Checkable.createSelectableThemedBackground(

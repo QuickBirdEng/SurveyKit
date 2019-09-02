@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
-import com.quickbirdstudios.triangle.survey.R
+import com.quickbirdstudios.survey.R
 import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
 

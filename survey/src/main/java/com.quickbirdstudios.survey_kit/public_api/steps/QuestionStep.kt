@@ -2,12 +2,12 @@ package com.quickbirdstudios.survey_kit.public_api.steps
 
 import android.content.Context
 import androidx.annotation.StringRes
+import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.views.questions.*
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
 import com.quickbirdstudios.survey_kit.public_api.*
 import com.quickbirdstudios.survey_kit.public_api.result.StepResult
 import com.quickbirdstudios.survey_kit.public_api.result.question_results.*
-import com.quickbirdstudios.triangle.survey.R
 
 class QuestionStep(
     @StringRes val title: Int,

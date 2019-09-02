@@ -6,10 +6,10 @@ import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import com.airbnb.lottie.LottieAnimationView
+import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.px
 import com.quickbirdstudios.survey_kit.backend.views.main_parts.StyleablePart
 import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
-import com.quickbirdstudios.triangle.survey.R
 
 internal class AnimatedCheckmark @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0

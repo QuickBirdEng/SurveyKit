@@ -94,9 +94,9 @@ class SurveyView @JvmOverloads constructor(
 
     //region Overrides
 
-    override var onStepResult: suspend (Step?, StepResult?) -> Unit = { _, _ -> }
+    override var onStepResult: (Step?, StepResult?) -> Unit = { _, _ -> }
 
-    override var onSurveyFinish: suspend (TaskResult, FinishReason) -> Unit = { _, _ -> }
+    override var onSurveyFinish: (TaskResult, FinishReason) -> Unit = { _, _ -> }
 
     //endregion
 

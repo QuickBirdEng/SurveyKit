@@ -11,13 +11,13 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
+import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.px
 import com.quickbirdstudios.survey_kit.backend.views.main_parts.StyleablePart
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.helper.BackgroundDrawable
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.helper.createSelectableThemedBackground
-import com.quickbirdstudios.survey_kit.public_api.SingleChoiceAnswerFormat
 import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
-import com.quickbirdstudios.triangle.survey.R
+import com.quickbirdstudios.survey_kit.public_api.TextChoice
 
 internal class SingleChoicePart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -34,13 +34,13 @@ internal class SingleChoicePart @JvmOverloads constructor(
     @ColorInt
     var defaultColor: Int = Color.BLACK
 
-    var options: List<SingleChoiceAnswerFormat.TextChoice> = emptyList()
+    var options: List<TextChoice> = emptyList()
         set(value) {
             update(value)
             field = value
         }
 
-    var selected: SingleChoiceAnswerFormat.TextChoice?
+    var selected: TextChoice?
         get() = selectedChoice()
         set(choice) {
             if (choice != null)
@@ -70,7 +70,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
     private val fields: List<View>
         get() = (0 until this.childCount).map { this.getChildAt(it) }
 
-    private fun update(list: List<SingleChoiceAnswerFormat.TextChoice>) {
+    private fun update(list: List<TextChoice>) {
         val selectedChoice = selected
         this.removeAllViews()
         list.forEachIndexed { index, textChoice ->
@@ -84,7 +84,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
         }
     }
 
-    private fun selectedChoice(): SingleChoiceAnswerFormat.TextChoice? {
+    private fun selectedChoice(): TextChoice? {
         val radioButtonIndex: Int = this
             .findViewById<RadioButton>(this.checkedRadioButtonId)?.tag as? Int
             ?: return null

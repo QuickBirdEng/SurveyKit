@@ -5,14 +5,13 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.annotation.CallSuper
 import androidx.annotation.StringRes
+import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.views.main_parts.*
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.InfoText
 import com.quickbirdstudios.survey_kit.public_api.FinishReason
 import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
 import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
 import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
-import com.quickbirdstudios.triangle.survey.R
-import com.quickbirdstudios.triangle.survey.backend.views.main_parts.*
 import java.util.*
 
 // TODO rename and move to own file
@@ -104,10 +103,10 @@ abstract class QuestionView(
         header.onCancel = {
             Dialogs.cancel(
                 context,
-                "Abbrechen",
-                "Deine bisherigen Antworten gehen verloren.",
-                "Zurück zum Fragebogen",
-                "Fragebogen abbrechen"
+                "Cancel",
+                "Your current answers are lost.",
+                "Back to the survey",
+                "Cancel Survey"
             ) {
                 onCloseListener(createResults(), FinishReason.Discarded)
             }

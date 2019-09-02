@@ -11,8 +11,8 @@ import android.widget.ImageView
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
+import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
-import com.quickbirdstudios.triangle.survey.R
 
 //TODO should take [Configuration] in constructor and remove public color setters and getters
 class Header @JvmOverloads constructor(

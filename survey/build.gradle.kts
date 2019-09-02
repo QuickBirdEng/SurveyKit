@@ -22,6 +22,7 @@ dependencies {
     implementation(Deps.Kotlin.stdlib)
     implementation(Deps.Kotlin.reflect)
     implementation(Deps.Kotlin.coroutines)
+    implementation(Deps.Kotlin.androidCoroutines)
     implementation(Deps.AndroidSupport.annotations)
     implementation(Deps.AndroidSupport.appCompat)
     implementation(Deps.AndroidSupport.constraint)

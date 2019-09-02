@@ -12,9 +12,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintSet.*
 import androidx.core.content.ContextCompat
+import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.views.main_parts.StyleablePart
 import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
-import com.quickbirdstudios.triangle.survey.R
 
 internal class ScalePart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null

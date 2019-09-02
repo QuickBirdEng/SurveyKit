@@ -2,13 +2,13 @@ package com.quickbirdstudios.survey_kit.backend.views.questions
 
 import android.content.Context
 import androidx.annotation.StringRes
+import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.afterTextChanged
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.TextField
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
 import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
 import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
 import com.quickbirdstudios.survey_kit.public_api.result.question_results.TextQuestionResult
-import com.quickbirdstudios.triangle.survey.R
 
 internal class TextQuestionView(
     context: Context,
