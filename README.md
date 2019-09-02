@@ -7,7 +7,7 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 
 ## Overview
 -   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
--   [What Survey-Kit does not (yet) for you](#what-survey-kit-does-not-(yet)-for-you)
+-   [What Survey-Kit does not (yet) for you](#what-survey-kit-does-not-yet-for-you)
 -   [Setup](#setup)
     -   [Add the repository](#add-the-repository)
     -   [Add the dependency](#add-the-dependency)
