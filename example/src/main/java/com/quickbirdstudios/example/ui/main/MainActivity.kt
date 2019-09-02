@@ -52,7 +52,7 @@ MainActivity : AppCompatActivity(), CoroutineScope {
             QuestionStep(
                 title = R.string.about_you_question_title,
                 text = R.string.about_you_question_text,
-                answerFormat = TextAnswerFormat(
+                answerFormat = AnswerFormat.TextAnswerFormat(
                     multipleLines = true,
                     maximumLength = 100
                 )
@@ -60,12 +60,12 @@ MainActivity : AppCompatActivity(), CoroutineScope {
             QuestionStep(
                 title = R.string.how_old_title,
                 text = R.string.how_old_text,
-                answerFormat = IntegerAnswerFormat(defaultValue = 25)
+                answerFormat = AnswerFormat.IntegerAnswerFormat(defaultValue = 25)
             ),
             QuestionStep(
                 title = R.string.how_fat_question_title,
                 text = R.string.how_fat_question_text,
-                answerFormat = ScaleAnswerFormat(
+                answerFormat = AnswerFormat.ScaleAnswerFormat(
                     minimumValue = 1,
                     maximumValue = 5,
                     minimumValueDescription = R.string.how_fat_min,
@@ -77,7 +77,7 @@ MainActivity : AppCompatActivity(), CoroutineScope {
             QuestionStep(
                 title = R.string.physical_disabilities_question_title,
                 text = R.string.physical_disabilities_question_text,
-                answerFormat = MultipleChoiceAnswerFormat(
+                answerFormat = AnswerFormat.MultipleChoiceAnswerFormat(
                     textChoices = listOf(
                         TextChoice(R.string.physical_disabilities_back_pain),
                         TextChoice(R.string.physical_disabilities_heart_problems),
@@ -89,7 +89,7 @@ MainActivity : AppCompatActivity(), CoroutineScope {
             QuestionStep(
                 title = R.string.quit_or_continue_question_title,
                 text = R.string.quit_or_continue_question_text,
-                answerFormat = SingleChoiceAnswerFormat(
+                answerFormat = AnswerFormat.SingleChoiceAnswerFormat(
                     textChoices = listOf(
                         TextChoice(R.string.yes),
                         TextChoice(R.string.no)

@@ -5,46 +5,46 @@ import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import kotlinx.android.parcel.Parcelize
 
-sealed class AnswerFormat
+sealed class AnswerFormat {
+    data class IntegerAnswerFormat(
+        val defaultValue: Int? = null,
+        @StringRes val hint: Int = R.string.empty
+    ) : AnswerFormat()
 
 
-data class IntegerAnswerFormat(
-    val defaultValue: Int? = null,
-    @StringRes val hint: Int = R.string.empty
-) : AnswerFormat()
+    data class SingleChoiceAnswerFormat(
+        val textChoices: List<TextChoice>
+    ) : AnswerFormat()
+
+    data class MultipleChoiceAnswerFormat(
+        val textChoices: List<TextChoice>
+    ) : AnswerFormat()
+
+    data class ScaleAnswerFormat(
+        val maximumValue: Int,
+        val minimumValue: Int,
+        val defaultValue: Int = minimumValue,
+        val step: Float,
+        val orientation: Orientation = Orientation.Horizontal,
+        @StringRes val maximumValueDescription: Int,
+        @StringRes val minimumValueDescription: Int
+    ) : AnswerFormat() {
+        enum class Orientation { Horizontal, Vertical; }
+    }
 
 
-data class SingleChoiceAnswerFormat(
-    val textChoices: List<TextChoice>
-) : AnswerFormat()
+    data class TextAnswerFormat(
+        val maximumLength: Int,
+        val multipleLines: Boolean
+    ) : AnswerFormat()
+}
 
-data class MultipleChoiceAnswerFormat(
-    val textChoices: List<TextChoice>
-) : AnswerFormat()
 
 @Parcelize
 data class TextChoice(
     @StringRes val text: Int,
     @StringRes val value: Int = text
 ) : Parcelable
-
-data class ScaleAnswerFormat(
-    val maximumValue: Int,
-    val minimumValue: Int,
-    val defaultValue: Int = minimumValue,
-    val step: Float,
-    val orientation: Orientation = Orientation.Horizontal,
-    @StringRes val maximumValueDescription: Int,
-    @StringRes val minimumValueDescription: Int
-) : AnswerFormat() {
-    enum class Orientation { Horizontal, Vertical; }
-}
-
-
-data class TextAnswerFormat(
-    val maximumLength: Int,
-    val multipleLines: Boolean
-) : AnswerFormat()
 
 /*
 
