@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
+import android.view.KeyEvent
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -31,13 +32,15 @@ import kotlin.coroutines.CoroutineContext
 class
 MainActivity : AppCompatActivity(), CoroutineScope {
 
+    private lateinit var survey: SurveyView
+
     override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
-        val survey = findViewById<SurveyView>(R.id.survey_view)
+        survey = findViewById(R.id.survey_view)
         setupSurvey(survey)
     }
 
@@ -143,6 +146,12 @@ MainActivity : AppCompatActivity(), CoroutineScope {
         surveyView.start(task, configuration)
     }
 
+    override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
+        return if (keyCode == KeyEvent.KEYCODE_BACK) {
+            survey.backPressed()
+            true
+        } else false
+    }
 }
 
 class CustomStep : Step {
