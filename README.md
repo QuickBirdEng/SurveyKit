@@ -3,10 +3,11 @@
 This library aims to provide the functionality of the [IOs ORK Survey](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
 
-This is an early version and work in progress.
+This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
 
 ## Overview
 -   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
+-   [What Survey-Kit does not (yet) for you](#what-survey-kit-does-not-(yet)-for-you)
 -   [Setup](#setup)
     -   [Add the repository](#add-the-repository)
     -   [Add the dependency](#add-the-dependency)
@@ -19,8 +20,16 @@ This is an early version and work in progress.
     -   [Start the survey](#start-the-survey)
 -   [Custom steps](#custom-steps)
 
-# What Survey-Kit does for you
+## What Survey-Kit does for you
+Survey-kit aims to allow the developer to:
+-    create a series of questions (ordered or a custom navigation)
+-    display them in a nice consistent style
+-    gather the results and give them back to the developer
 
+## What Survey-Kit does not (yet)
+As said before, this is an early version and work in progress. Many things might change: we try
+to keep the public API as it is now.
+We are going to add other question types ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)).
 
 # Setup
 ## 1. Add the repository
@@ -123,7 +132,7 @@ At the moment, 3 types of steps are available. The `InstructionStep` and the `Co
 for the beginning/instructions and the end of the survey. With the `QuestionStep` a single page
 can be configured. Which type of question is asked, is defined by the `AnswerFormat`.
 
-The `AnswerFormat` is going to be extended with further types ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html) and beyond).
+The `AnswerFormat` contains all the possible answerformats available for now.
 
 
 ### Create a Task
