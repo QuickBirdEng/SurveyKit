@@ -26,7 +26,7 @@ Survey-kit aims to allow the developer to:
 -    display them in a nice consistent style
 -    gather the results and give them back to the developer
 
-## What Survey-Kit does not (yet)
+## What Survey-Kit does not (yet) for you
 As said before, this is an early version and work in progress. Many things might change: we try
 to keep the public API as it is now.
 We are going to add other question types ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)).
