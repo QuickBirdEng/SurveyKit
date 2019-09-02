@@ -1,50 +1,74 @@
-# Triangle Android
+# Survey-kit
+
+This library aims to provide the functionality of the [IOs ORK Survey](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
+
+
+This is an early version and work in progress.
+
+## Overview
+-   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
+-   [Setup](#setup)
+    -   [Add the repository](#add-the-repository)
+    -   [Add the dependency](#add-the-dependency)
+-   [Usage](#usage)
+    -   [Add and find the survey in the xml](#add-and-find-the-survey-in-the-xml)
+    -   [Create steps](#create-steps)
+    -   [Create a Task](#create-a-task)
+    -   [Evaluate the results](#evaluate-the-results)
+    -   [Configure](#configure)
+    -   [Start the survey](#start-the-survey)
+-   [Custom steps](#custom-steps)
+
+# What Survey-Kit does for you
 
 
 # Setup
-
-## 1.Add the repository
+## 1. Add the repository
 `build.gradle`
 ```groovy
-      allprojects {
-         repositories {
-            jcenter()
-         }
-      }
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
 ```
 
 ## 2. Add the dependency
 `build.gradle.kts`
 ````kotlin
 dependencies {
-    implementation(project(":survey"))
+    implementation(project(":XXXXX"))
 }
 ````
-
-## Parcelize necessary? (check survey)
+TODO: replace XXXXX with: group:name:version
 
 
 # Usage
-
 ## Example
-
-### Find the Survey in the xml
+A working example can be found [TODO](https://google.com)
+### Add and Find the Survey in the xml
+````xml
+<com.quickbirdstudios.survey_kit.public_api.survey.SurveyView
+    android:id="@+id/survey_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+````
 ```kotlin
 var surveyView: SurveyView = view.findViewById(R.id.survey_view)
 ```
 
-### Creating steps
+### Create steps
 ````kotlin
 val steps = listOf(
     InstructionStep(
         title = R.string.intro_title,
         text = R.string.intro_text,
-        startButtonText = R.string.intro_start
+        buttonText = R.string.intro_start
     ),
     QuestionStep(
         title = R.string.about_you_question_title,
         text = R.string.about_you_question_text,
-        answerFormat = TextAnswerFormat(
+        answerFormat = AnswerFormat.TextAnswerFormat(
             multipleLines = true,
             maximumLength = 100
         )
@@ -52,12 +76,12 @@ val steps = listOf(
     QuestionStep(
         title = R.string.how_old_title,
         text = R.string.how_old_text,
-        answerFormat = IntegerAnswerFormat(defaultValue = 25)
+        answerFormat = AnswerFormat.IntegerAnswerFormat(defaultValue = 25)
     ),
     QuestionStep(
         title = R.string.how_fat_question_title,
         text = R.string.how_fat_question_text,
-        answerFormat = ScaleAnswerFormat(
+        answerFormat = AnswerFormat.ScaleAnswerFormat(
             minimumValue = 1,
             maximumValue = 5,
             minimumValueDescription = R.string.how_fat_min,
@@ -69,43 +93,49 @@ val steps = listOf(
     QuestionStep(
         title = R.string.physical_disabilities_question_title,
         text = R.string.physical_disabilities_question_text,
-        answerFormat = MultipleChoiceAnswerFormat(
+        answerFormat = AnswerFormat.MultipleChoiceAnswerFormat(
             textChoices = listOf(
-                MultipleChoiceAnswerFormat.TextChoice(R.string.physical_disabilities_back_pain),
-                MultipleChoiceAnswerFormat.TextChoice(R.string.physical_disabilities_heart_problems),
-                MultipleChoiceAnswerFormat.TextChoice(R.string.physical_disabilities_joint_pain),
-                MultipleChoiceAnswerFormat.TextChoice(R.string.physical_disabilities_joint_asthma)
+                TextChoice(R.string.physical_disabilities_back_pain),
+                TextChoice(R.string.physical_disabilities_heart_problems),
+                TextChoice(R.string.physical_disabilities_joint_pain),
+                TextChoice(R.string.physical_disabilities_joint_asthma)
             )
         )
     ),
     QuestionStep(
         title = R.string.quit_or_continue_question_title,
         text = R.string.quit_or_continue_question_text,
-        answerFormat = SingleChoiceAnswerFormat(
+        answerFormat = AnswerFormat.SingleChoiceAnswerFormat(
             textChoices = listOf(
-                SingleChoiceAnswerFormat.TextChoice(R.string.yes),
-                SingleChoiceAnswerFormat.TextChoice(R.string.no)
+                TextChoice(R.string.yes),
+                TextChoice(R.string.no)
             )
         )
     ),
-    FinishStep(
+    CompletionStep(
         title = R.string.finish_question_title,
         text = R.string.finish_question_text,
-        finishButtonText = R.string.finish_question_submit
+        buttonText = R.string.finish_question_submit
     )
 )
 ````
-The settings for each 
+At the moment, 3 types of steps are available. The `InstructionStep` and the `CompletionStep` are
+for the beginning/instructions and the end of the survey. With the `QuestionStep` a single page
+can be configured. Which type of question is asked, is defined by the `AnswerFormat`.
+
+The `AnswerFormat` is going to be extended with further types ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html) and beyond).
+
 
 ### Create a Task
 ```kotlin
 val task = OrderedTask(steps = steps)
 ```
+The `OrderedTask` just presents the questions in order, as they are given.
 
 ````kotlin
 val task = NavigableOrderedTask(steps = steps)
 ````
-This one allows you to specify navigation rules:
+The `NavigableOrderedTask` allows you to specify navigation rules:
 ```kotlin
 task.setNavigationRule(
     steps[4].id,
@@ -128,7 +158,7 @@ task.setNavigationRule(
 )
 ```
 
-### Do something with the results
+### Evaluate the results
 ```kotlin
 surveyView.onSurveyFinish = { taskResult: TaskResult, reason: FinishReason ->
     if (reason == FinishReason.Completed) {
@@ -152,6 +182,71 @@ val configuration = SurveyTheme(
 ```
 
 ### Start the survey
+Start the survey.
 ```kotlin
 surveyView.start(task, configuration)
 ```
+
+
+# Custom steps
+You need a `CustomResult` and a `CustomStep`.
+```kotlin
+@Parcelize
+data class CustomResult(
+    val customData: String,
+    override val stringIdentifier: String,
+    override val id: Identifier,
+    override val startDate: Date,
+    override var endDate: Date
+) : QuestionResult, Parcelable
+```
+
+```kotlin
+class CustomStep : Step {
+    override val isOptional: Boolean = true
+    override val id: StepIdentifier = StepIdentifier()
+    val tmp = id
+
+    override fun createView(context: Context, stepResult: StepResult?): StepView {
+        return object : StepView(context, id, isOptional) {
+
+            override fun setupViews() = Unit
+
+            val root = View.inflate(context, R.layout.example, this)
+
+            override fun createResults(): QuestionResult =
+                CustomResult(
+                    root.findViewById<EditText>(R.id.input).text.toString(),
+                    "stringIdentifier",
+                    id,
+                    Date(),
+                    Date()
+                )
+
+            override fun isValidInput(): Boolean = this@CustomStep.isOptional
+
+            override var isOptional: Boolean = this@CustomStep.isOptional
+            override val id: StepIdentifier = tmp
+
+            override fun style(surveyTheme: SurveyTheme) {
+                // do styling here
+            }
+
+            init {
+                root.findViewById<Button>(R.id.continue)
+                    .setOnClickListener { onNextListener(createResults()) }
+                root.findViewById<Button>(R.id.back)
+                    .setOnClickListener { onBackListener(createResults()) }
+                root.findViewById<Button>(R.id.close)
+                    .setOnClickListener { onCloseListener(createResults(), FinishReason.Completed) }
+                root.findViewById<Button>(R.id.skip)
+                    .setOnClickListener { onSkipListener() }
+                root.findViewById<EditText>(R.id.input).setText(
+                    (stepResult?.results?.firstOrNull() as? CustomResult)?.customData ?: ""
+                )
+            }
+        }
+    }
+}
+```
+Then just add your `CustomStep` to the list of steps you pass to the `Task`.
