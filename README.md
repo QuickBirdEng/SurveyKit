@@ -129,10 +129,16 @@ val steps = listOf(
 )
 ````
 At the moment, 3 types of steps are available. The `InstructionStep` and the `CompletionStep` are
-for the beginning/instructions and the end of the survey. With the `QuestionStep` a single page
-can be configured. Which type of question is asked, is defined by the `AnswerFormat`.
+for the beginning/instructions and the end of the survey.
+The `QuestionStep` configures a single page. Which type of question is asked, is defined by the
+`AnswerFormat`.
 
-The `AnswerFormat` contains all the possible answerformats available for now.
+The `AnswerFormat` contains all the possible answer formats available for now:
+-   IntegerAnswerFormat
+-   TextAnswerFormat
+-   SingleChoiceAnswerFormat
+-   MultipleChoiceAnswerFormat
+-   ScaleAnswerFormat
 
 
 ### Create a Task
