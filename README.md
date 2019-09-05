@@ -284,7 +284,7 @@ First we aim to implement the functionality of iOS ResearchKit. Then we want to 
 | Text answer (validated)   | ✅                     | 𐄂              |
 | Scale answer              | ✅                     | ✅             |
 | Email answer              | ✅                     | 𐄂              |
-| Location answer           | ✅                     | ✅             |
+| Location answer           | ✅                     | 𐄂              |
 
 # 👤 Author
 This framework is created with ❤️ by [QuickBird Studios](https://quickbirdstudios.com/).
