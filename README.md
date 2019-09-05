@@ -10,7 +10,7 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 <img src="assets/integer_question_disabled.png?raw=true" width="350">
 <img src="assets/multiple_choice_question_multiple_selected.png?raw=true" width="350">
 
-## ∑Overview
+## ∑ Overview
 -   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
 -   [What Survey-Kit does not (yet) for you](#what-survey-kit-does-not-yet-for-you)
 -   [Setup](#setup)
@@ -25,7 +25,7 @@ This is an early version and work in progress. Do not hesitate to give feedback,
     -   [Start the survey](#start-the-survey)
 -   [Custom steps](#custom-steps)
 
-## What Survey-Kit does for you
+## ➕ What Survey-Kit does for you
 Survey-kit aims to allow the developer to:
 -   Simplifies the creation of survey
 -   Rich animations and transitions out of the box (custom animations planned)
@@ -37,12 +37,12 @@ Survey-kit aims to allow the developer to:
 -   Structure kept close to the one of iOS ResearchKit
 -   Used in production by QBS
 
-## What Survey-Kit does not (yet) for you
+## ➖ What Survey-Kit does not (yet) for you
 As said before, this is an early version and work in progress. We aim to for the level iOS ResearchKit is on and then are going to add new features and improvements.
 We are also going to add these question types ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)).
 
-# 🏃‍Setup
-## 1. Add the repository
+# 🏃 ‍Setup
+## 🧱 1. Add the repository
 `build.gradle`
 ```groovy
 allprojects {
@@ -52,7 +52,7 @@ allprojects {
 }
 ```
 
-## 🔗2. Add the dependency
+## 🔗 2. Add the dependency
 `build.gradle.kts`
 ````kotlin
 dependencies {
@@ -62,10 +62,10 @@ dependencies {
 TODO: replace XXXXX with: group:name:version
 
 
-# 🧩Usage
-## 👨🏼‍💻Example
+# 🧩 Usage
+## ✎ Example
 A working example can be found [TODO](https://google.com)
-### Add and Find the Survey in the XML
+### 🔎 Add and Find the Survey in the XML
 Add the SurveyView into your `xml` (it looks best if it fills the screen).
 ````xml
 <com.quickbirdstudios.survey_kit.public_api.survey.SurveyView
@@ -78,9 +78,9 @@ Find the view in the `xml` and save it for further use.
 var surveyView: SurveyView = view.findViewById(R.id.survey_view)
 ```
 
-### 👣Create steps
+### 👣 Create steps
 To create a step, create an instance of one of these 3 classes:
-#### 🎼`InstructionStep`
+#### 🎼 `InstructionStep`
 ```kotlin
 InstructionStep(
     title = R.string.intro_title,
@@ -131,16 +131,16 @@ All that's left is to collect your steps in a list.
 val steps = listOf(step1, step2, step3, ...)
 ```
 
-### 👣Create a Task
+### 👣 Create a Task
 Next you need a task. Each survey has exactly one task. Task is used to set the `steps` and how the navigation through them works.<br><br>
 
-#### 🏬OrderedTask
+#### 🏬 OrderedTask
 ```kotlin
 val task = OrderedTask(steps = steps)
 ```
 The `OrderedTask` just presents the questions in order, as they are given.
 
-#### 🏭NavigableOrderedTask
+#### 🏭 NavigableOrderedTask
 ````kotlin
 val task = NavigableOrderedTask(steps = steps)
 ````
@@ -172,7 +172,7 @@ task.setNavigationRule(
 ```
 With the `MultipleDirectionStepNavigationRule` you can specify the next step, depending on the answer of the step. With this you can navigate to any step.
 
-### 🥇🥈🥉Evaluate the results
+### 🥇🥈🥉 Evaluate the results
 Set this callback, for when the survey is done. No matter which `FinishReason` you always get the results gathered up until now. <br/>
 The `TaskResult` contains a list of `StepResult`s. The `StepResult` contains a list of `QuestionResult`s.
 ```kotlin
@@ -185,7 +185,7 @@ surveyView.onSurveyFinish = { taskResult: TaskResult, reason: FinishReason ->
 }
 ```
 
-### 🛠Configure
+### 🛠 Configure
 These is how you configure the survey. We plan to expand the configuration
 ```kotlin
 val configuration = SurveyTheme(
@@ -195,15 +195,16 @@ val configuration = SurveyTheme(
 )
 ```
 
-### 🎬Start the survey
+### 🎬 Start the survey
 All that's left is to start the survey and enjoy.🎉🎊
 ```kotlin
 surveyView.start(task, configuration)
 ```
 
 
-# 📇Custom steps
-You need a `CustomResult` and a `CustomStep`.
+# 📇 Custom steps
+You need a `CustomResult` and a `CustomStep`. The `CustomStep` can then just be added as another step to the list of steps. `NavigationRule`s work the same as with other steps.
+Here you see a really simple examples of how you can do it.
 ```kotlin
 @Parcelize
 data class CustomResult(
@@ -263,10 +264,8 @@ class CustomStep : Step {
     }
 }
 ```
-Then just add your `CustomStep` to the list of steps you pass to the `Task`.
 
-
-# iOS ResearchKit comparison
+# 🍏vs🤖 iOS ResearchKit comparison
 First we aim to implement the functionality of iOS ResearchKit. Then we want to add our own features.
 |   Steps    |   iOS ResearchKit 🍏	|   SurveyKit 🤖	|
 |---	|---	|---	|
