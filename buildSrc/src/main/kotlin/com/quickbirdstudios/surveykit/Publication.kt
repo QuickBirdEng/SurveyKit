@@ -79,13 +79,13 @@ internal fun Project.configurePublishTask() = afterEvaluate {
 }
 
 private fun Project.bintrayUser(): String {
-    return environmentPropertyOrStub(bintrayUserKey)
+    return environmentVariableOrPropertyOrStub(bintrayUserKey)
 }
 
 private fun Project.bintrayKey(): String {
-    return environmentPropertyOrStub(bintrayApiKeyKey)
+    return environmentVariableOrPropertyOrStub(bintrayApiKeyKey)
 }
 
-private fun Project.environmentPropertyOrStub(key: String): String {
+private fun Project.environmentVariableOrPropertyOrStub(key: String): String {
     return System.getenv(key) ?: project.properties.getOrDefault(key, "stub").toString()
 }
