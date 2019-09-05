@@ -36,7 +36,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
         }
 
     @ColorInt
-    var textColor: Int = ContextCompat.getColor(context, R.color.cyan_text)
+    var checkBoxTextColor: Int = ContextCompat.getColor(context, R.color.cyan_text)
         set(color) {
             update(options)
             field = color
@@ -70,8 +70,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
 
     override fun style(surveyTheme: SurveyTheme) {
         themeColor = surveyTheme.themeColor
-        textColor = surveyTheme.textColor
-        update(options)
+        checkBoxTextColor = surveyTheme.textColor
     }
 
     //endregion
@@ -90,7 +89,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
             else createCheckBox(textChoice.text, index)
             if (selectedChoices.contains(textChoice)) {
                 item.isChecked = true
-                item.setTextColor(textColor)
+                item.setTextColor(checkBoxTextColor)
             }
             this.addView(item)
         }
@@ -111,7 +110,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
 
     private val internalCheckedChangeListener: (View, Boolean) -> Unit = { checkBox, checked ->
         fields.forEach { it.setTextColor(defaultColor) }
-        selectedCheckBoxes().forEach { it.setTextColor(textColor) }
+        selectedCheckBoxes().forEach { it.setTextColor(checkBoxTextColor) }
         onCheckedChangeListener(checkBox, checked)
     }
 
