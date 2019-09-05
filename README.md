@@ -64,7 +64,7 @@ TODO: replace XXXXX with: group:name:version
 
 # 🧩 Usage
 ## ✎ Example
-A working example can be found [TODO](https://google.com)
+A working example can be found [HERE](example/)
 ### 🔎 Add and Find the Survey in the XML
 Add the SurveyView into your `xml` (it looks best if it fills the screen).
 ````xml
