@@ -286,6 +286,11 @@ First we aim to implement the functionality of iOS ResearchKit. Then we want to 
 | Email answer | ✅ | 𐄂 |
 | Location answer | ✅ | ✅ |
 
+| Left Aligned | Centered | Right Aligned | Left Aligned | Centered | Right Aligned |
+| :---         | :---:    | ---:          | :----------- | :------: | ------------: |
+| Cell 1       | Cell 2   | Cell 3        | Cell 4       | Cell 5   | Cell 6        |
+| Cell 7       | Cell 8   | Cell 9        | Cell 10      | Cell 11  | Cell 12       |
+
 # 👤 Author
 This framework is created with ❤️ by [QuickBird Studios](https://quickbirdstudios.com/).
 
