@@ -32,9 +32,3 @@ dependencies {
 }
 
 
-tasks.withType<KotlinCompile>().all {
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs += "-Xuse-experimental=kotlin.ExperimentalStdlibApi"
-    }
-}

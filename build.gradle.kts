@@ -28,7 +28,8 @@ allprojects {
             freeCompilerArgs = listOf(
                 "-Xuse-experimental=kotlin.Experimental",
                 "-Xuse-experimental=kotlinx.coroutines.ObsoleteCoroutinesApi",
-                "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi"
+                "-Xuse-experimental=kotlinx.coroutines.ExperimentalCoroutinesApi",
+                "-Xuse-experimental=kotlin.ExperimentalStdlibApi"
             )
         }
     }
