@@ -29,8 +29,7 @@ import java.util.*
 import kotlin.coroutines.CoroutineContext
 
 
-class
-MainActivity : AppCompatActivity(), CoroutineScope {
+class MainActivity : AppCompatActivity(), CoroutineScope {
 
     private lateinit var survey: SurveyView
 
