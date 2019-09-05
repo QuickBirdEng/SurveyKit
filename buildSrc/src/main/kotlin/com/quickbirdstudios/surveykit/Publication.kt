@@ -25,7 +25,6 @@ fun Project.configureLibraryPublication() {
 
 
 internal fun Project.configurePublishTask() = afterEvaluate {
-    val preBuild = tasks["preBuild"]
     val publish = tasks["publish"]
     val bintrayUpload = tasks["bintrayUpload"]
     val assembleRelease = tasks["assembleRelease"]
