@@ -268,8 +268,8 @@ class CustomStep : Step {
 # 🍏vs🤖 iOS ResearchKit comparison
 First we aim to implement the functionality of iOS ResearchKit. Then we want to add our own features.
 <br />
-|   Steps    |   iOS ResearchKit 🍏	|   SurveyKit 🤖	|
-|------	|------	|------	|
+|   Steps |   iOS ResearchKit 🍏 |   SurveyKit 🤖 |
+|------	| :---:	| :---:	|
 |   Instruction	|   ✅	|   ✅	|
 |   Single selection	|   ✅	|   ✅	|
 |   Multi selection	|   ✅	|   ✅	|
