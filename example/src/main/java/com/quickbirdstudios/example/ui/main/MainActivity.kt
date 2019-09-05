@@ -110,14 +110,14 @@ MainActivity : AppCompatActivity(), CoroutineScope {
         val task = NavigableOrderedTask(steps = steps)
 
         task.setNavigationRule(
-            steps[4].id,
+            steps[5].id,
             NavigationRule.DirectStepNavigationRule(
                 destinationStepStepIdentifier = steps[6].id
             )
         )
 
         task.setNavigationRule(
-            steps[6].id,
+            steps[7].id,
             NavigationRule.ConditionalDirectionStepNavigationRule(
                 resultToStepIdentifierMapper = { input ->
                     when (input) {

@@ -11,6 +11,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.px
 import com.quickbirdstudios.survey_kit.backend.views.main_parts.StyleablePart
@@ -26,10 +27,18 @@ internal class SingleChoicePart @JvmOverloads constructor(
     //region Public API
 
     @ColorInt
-    var themeColor: Int = Color.RED
+    var themeColor: Int = ContextCompat.getColor(context, R.color.cyan_normal)
+        set(color) {
+            update(options)
+            field = color
+        }
 
     @ColorInt
-    var textColor: Int = Color.RED
+    var textColor: Int = ContextCompat.getColor(context, R.color.cyan_normal)
+        set(color) {
+            update(options)
+            field = color
+        }
 
     @ColorInt
     var defaultColor: Int = Color.BLACK

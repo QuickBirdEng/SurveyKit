@@ -7,4 +7,12 @@
     <color name="cyan_text">#33C5D4</color>
     <color name="cyan_normal">#3CD0DF</color>
     <color name="cyan_dark">#33B8C5</color>
+
+    <color name="green_text">#48E924</color>
+    <color name="green_normal">#40D31F</color>
+    <color name="green_dark">#38B41C</color>
+
+    <color name="orange_text">#E75B30</color>
+    <color name="orange_normal">#DF552B</color>
+    <color name="orange_dark">#AA4020</color>
 </resources>

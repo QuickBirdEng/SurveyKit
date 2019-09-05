@@ -12,7 +12,7 @@
 
 
     <!-- Example app strings -->
-    <string name="intro_title">Welcome to the QB Health Survey</string>
+    <string name="intro_title">Welcome to the QuickBirdStudios Health Survey</string>
     <string name="intro_text">Get ready for a bunch of super random questions!</string>
     <string name="intro_start">Let\'s go!</string>
 
@@ -24,8 +24,8 @@
 
     <string name="how_fat_question_title">Select your body type</string>
     <string name="how_fat_question_text"></string>
-    <string name="how_fat_min">Underweight</string>
-    <string name="how_fat_max">Overweight</string>
+    <string name="how_fat_min">1</string>
+    <string name="how_fat_max">5</string>
 
     <string name="physical_disabilities_question_title">Physical disabilities</string>
     <string name="physical_disabilities_question_text">Do you have any physical disabilities that we should know?</string>
