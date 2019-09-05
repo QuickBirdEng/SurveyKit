@@ -14,7 +14,6 @@ import org.gradle.kotlin.dsl.register
 private const val bintrayUserKey = "bintray_user"
 private const val bintrayApiKeyKey = "bintray_apikey"
 
-
 fun Project.configureLibraryPublication() {
     configureSourcesJarTaskIfNecessary()
     configureCheckCiTagTaskIfNecessary()
@@ -22,7 +21,6 @@ fun Project.configureLibraryPublication() {
     configureBintrayForLibraryPublication()
     configurePublishTask()
 }
-
 
 internal fun Project.configurePublishTask() = afterEvaluate {
     val publish = tasks["publish"]
@@ -35,7 +33,6 @@ internal fun Project.configurePublishTask() = afterEvaluate {
     publishAarPublicationToMavenLocal.dependsOn(assembleRelease)
     publish.dependsOn(bintrayUpload)
 }
-
 
 internal fun Project.configureLibraryAarPublication() {
     val projectName = name
@@ -80,7 +77,6 @@ internal fun Project.configureBintrayForLibraryPublication() =
             version.gpg.sign = false
         }
     }
-
 
 private fun Project.bintrayUser(): String {
     return environmentPropertyOrStub(bintrayUserKey)
