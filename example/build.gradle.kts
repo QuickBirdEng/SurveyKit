@@ -10,8 +10,8 @@ android {
     compileSdkVersion(Project.Android.compileSdkVersion)
 
     defaultConfig {
-        versionName = Project.Version.name
-        versionCode = Project.Version.code
+        versionName = Library.version
+        versionCode = 1
         minSdkVersion(Project.Android.minSdkVersion)
         targetSdkVersion(Project.Android.targetSdkVersion)
         testInstrumentationRunner = Project.Android.testInstrumentationRunner

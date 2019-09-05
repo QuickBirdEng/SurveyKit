@@ -1,4 +1,5 @@
 import org.jetbrains.kotlin.gradle.dsl.KotlinCompile
+import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 
 buildscript {
     repositories {
@@ -10,8 +11,6 @@ buildscript {
 
     dependencies {
         classpath(Deps.Plugins.kotlin)
-        classpath(Deps.Plugins.android)
-        classpath(Deps.Plugins.bintray)
     }
 }
 
@@ -20,11 +19,11 @@ allprojects {
         mavenCentral()
         jcenter()
         google()
-        maven { url = uri("https://jitpack.io") }
     }
 
-    tasks.withType(KotlinCompile::class.java).all {
+    tasks.withType(KotlinJvmCompile::class.java).all {
         kotlinOptions {
+            jvmTarget = "1.8"
             freeCompilerArgs = listOf(
                 "-Xuse-experimental=kotlin.Experimental",
                 "-Xuse-experimental=kotlinx.coroutines.ObsoleteCoroutinesApi",

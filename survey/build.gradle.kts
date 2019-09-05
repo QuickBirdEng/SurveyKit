@@ -1,6 +1,6 @@
 @file:Suppress("SuspiciousCollectionReassignment")
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import com.quickbirdstudios.surveykit.configureLibraryPublication
 
 plugins {
     id("com.android.library")
@@ -24,11 +24,14 @@ android {
 
 dependencies {
     implementation(Deps.Kotlin.stdlib)
-    implementation(Deps.Kotlin.coroutines)
-    implementation(Deps.Kotlin.androidCoroutines)
-    implementation(Deps.AndroidSupport.appCompat)
-    implementation(Deps.AndroidSupport.constraint)
-    implementation(Deps.lottie)
+    api(Deps.Kotlin.coroutines)
+    api(Deps.Kotlin.androidCoroutines)
+    api(Deps.AndroidSupport.appCompat)
+    api(Deps.AndroidSupport.constraint)
+    api(Deps.lottie)
 }
+
+project.configureLibraryPublication()
+
 
 

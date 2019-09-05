@@ -1,8 +1,6 @@
 object Versions {
     const val kotlin = "1.3.50"
     const val coroutines = "1.3.0"
-    const val androidGradlePlugin = "3.5.0"
-    const val bintrayGradlePlugin = "1.8.4"
     const val junit = "4.12"
     const val lottie = "3.0.7"
 
@@ -17,8 +15,6 @@ object Deps {
 
     object Plugins {
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-        const val android = "com.android.tools.build:gradle:${Versions.androidGradlePlugin}"
-        const val bintray = "com.jfrog.bintray.gradle:gradle-bintray-plugin:${Versions.bintrayGradlePlugin}"
     }
 
     object Kotlin {
