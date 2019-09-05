@@ -35,7 +35,7 @@ internal class PresenterImpl(
     override suspend fun present(
         transition: Presenter.Transition, step: Step, stepResult: StepResult?
     ): NextAction {
-        val viewToPresent = step.createView(context, stepResult).apply(surveyTheme)
+        val viewToPresent = step.createView(context, stepResult)
         return showAndWaitForResult(step.id, viewToPresent, transition)
     }
 
@@ -99,6 +99,7 @@ internal class PresenterImpl(
         }
         questionView.setupViews()
         questionView.onViewCreated()
+        questionView.style(surveyTheme)
 
         when (transition) {
             Presenter.Transition.SlideFromRight -> viewAnimator.rightToLeft(
@@ -110,8 +111,6 @@ internal class PresenterImpl(
             Presenter.Transition.None -> Unit
         }
     }
-
-    private fun StepView.apply(surveyTheme: SurveyTheme) = this.apply { this.style(surveyTheme) }
 
     //endregion
 

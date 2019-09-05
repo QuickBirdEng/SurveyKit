@@ -35,7 +35,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
         }
 
     @ColorInt
-    var textColor: Int = ContextCompat.getColor(context, R.color.cyan_normal)
+    var radioButtonTextColor: Int = ContextCompat.getColor(context, R.color.cyan_normal)
         set(color) {
             update(options)
             field = color
@@ -68,7 +68,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
 
     override fun style(surveyTheme: SurveyTheme) {
         themeColor = surveyTheme.themeColor
-        textColor = surveyTheme.textColor
+        radioButtonTextColor = surveyTheme.textColor
         update(options)
     }
 
@@ -77,8 +77,8 @@ internal class SingleChoicePart @JvmOverloads constructor(
 
     //region Private API
 
-    private val fields: List<View>
-        get() = (0 until this.childCount).map { this.getChildAt(it) }
+    private val fields: List<RadioButton>
+        get() = (0 until this.childCount).mapNotNull { this.getChildAt(it) as? RadioButton }
 
     private fun update(list: List<TextChoice>) {
         val selectedChoice = selected
@@ -88,7 +88,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
             else createRadioButton(textChoice.text, index)
             if (textChoice == selectedChoice) {
                 item.isChecked = true
-                item.setTextColor(textColor)
+                item.setTextColor(radioButtonTextColor)
             }
             this.addView(item)
         }
@@ -110,8 +110,8 @@ internal class SingleChoicePart @JvmOverloads constructor(
     //region Internal listeners
 
     private val internalCheckedChangeListener: (RadioGroup, Int) -> Unit = { group, checkedId ->
-        fields.forEach { (it as RadioButton).setTextColor(defaultColor) }
-        selectedRadioButton()?.setTextColor(textColor)
+        fields.forEach { it.setTextColor(defaultColor) }
+        selectedRadioButton()?.setTextColor(radioButtonTextColor)
         onCheckedChangeListener(group, checkedId)
     }
 
