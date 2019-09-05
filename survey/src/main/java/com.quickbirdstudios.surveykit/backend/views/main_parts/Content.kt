@@ -10,8 +10,7 @@ import com.quickbirdstudios.surveykit.SurveyTheme
 
 class Content @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
-) : ScrollView(context, attrs, defStyleRes),
-    StyleablePart {
+) : ScrollView(context, attrs, defStyleRes), StyleablePart {
 
 
     //region Member
@@ -19,9 +18,7 @@ class Content @JvmOverloads constructor(
     private val root: View = View.inflate(context, R.layout.layout_content, this)
     private val container: ViewGroup = root.findViewById(R.id.content_container)
     private val footerContainer: ViewGroup = root.findViewById(R.id.footer_container)
-    private val footer: Footer = Footer(
-        context
-    ).apply { id = R.id.questionFooter }
+    private val footer: Footer = Footer(context).apply { id = R.id.questionFooter }
 
     //endregion
 

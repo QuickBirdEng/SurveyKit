@@ -22,8 +22,8 @@ import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.create
 
 internal class SingleChoicePart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : RadioGroup(context, attrs),
-    StyleablePart {
+) : RadioGroup(context, attrs), StyleablePart {
+
 
     //region Public API
 

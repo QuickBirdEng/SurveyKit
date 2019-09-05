@@ -6,7 +6,6 @@ import android.widget.FrameLayout
 import androidx.annotation.CallSuper
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
-import com.quickbirdstudios.survey_kit.backend.views.main_parts.*
 import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme

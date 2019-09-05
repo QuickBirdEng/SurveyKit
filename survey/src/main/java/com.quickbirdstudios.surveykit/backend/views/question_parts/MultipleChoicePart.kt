@@ -22,8 +22,7 @@ import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.create
 
 internal class MultipleChoicePart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
-) : LinearLayout(context, attrs),
-    StyleablePart {
+) : LinearLayout(context, attrs), StyleablePart {
 
 
     //region Public API
