@@ -1,7 +1,7 @@
-package com.quickbirdstudios.survey_kit.public_api.result
+package com.quickbirdstudios.survey_kit.result
 
 import android.os.Parcelable
-import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
+import com.quickbirdstudios.survey_kit.StepIdentifier
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 

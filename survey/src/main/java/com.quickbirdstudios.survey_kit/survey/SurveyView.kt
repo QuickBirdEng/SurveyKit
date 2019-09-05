@@ -1,20 +1,20 @@
-package com.quickbirdstudios.survey_kit.public_api.survey
+package com.quickbirdstudios.survey_kit.survey
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.FrameLayout
+import com.quickbirdstudios.survey_kit.FinishReason
+import com.quickbirdstudios.survey_kit.SurveyTheme
+import com.quickbirdstudios.survey_kit.Task
 import com.quickbirdstudios.survey_kit.backend.navigator.TaskNavigator
 import com.quickbirdstudios.survey_kit.backend.presenter.NextAction
 import com.quickbirdstudios.survey_kit.backend.presenter.Presenter
 import com.quickbirdstudios.survey_kit.backend.presenter.PresenterImpl
 import com.quickbirdstudios.survey_kit.backend.result_gatherer.ResultGatherer
 import com.quickbirdstudios.survey_kit.backend.result_gatherer.ResultGathererImpl
-import com.quickbirdstudios.survey_kit.public_api.FinishReason
-import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
-import com.quickbirdstudios.survey_kit.public_api.Task
-import com.quickbirdstudios.survey_kit.public_api.result.StepResult
-import com.quickbirdstudios.survey_kit.public_api.result.TaskResult
-import com.quickbirdstudios.survey_kit.public_api.steps.Step
+import com.quickbirdstudios.survey_kit.result.StepResult
+import com.quickbirdstudios.survey_kit.result.TaskResult
+import com.quickbirdstudios.survey_kit.steps.Step
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -36,7 +36,7 @@ class SurveyView @JvmOverloads constructor(
 
     //region Public API
 
-    //TODO theme should be not set here but when creating the survey.
+    //TODO theme should be not set here but when creating the survey
     override fun start(task: Task, surveyTheme: SurveyTheme) {
         taskNavigator = TaskNavigator(task = task)
         resultGatherer = ResultGathererImpl(task = task)
@@ -116,7 +116,10 @@ class SurveyView @JvmOverloads constructor(
         val stepResult = resultGatherer.retrieve(firstStep.id)
         val result = presenter.present(Presenter.Transition.None, firstStep, stepResult)
             .storeResult()
-        return StepData(step = firstStep, action = result)
+        return StepData(
+            step = firstStep,
+            action = result
+        )
     }
 
     private suspend fun StepData.Next.step(): StepData {
@@ -126,26 +129,39 @@ class SurveyView @JvmOverloads constructor(
         val newResult = presenter.present(
             Presenter.Transition.SlideFromRight, newStep, resultGatherer.retrieve(newStep.id)
         ).storeResult()
-        return StepData(step = newStep, action = newResult)
+        return StepData(
+            step = newStep,
+            action = newResult
+        )
     }
 
     private suspend fun StepData.Previous.step(): StepData {
         val previousStep =
-            taskNavigator.previousStep(step) ?: return StepData(FinishReason.Failed)
+            taskNavigator.previousStep(step) ?: return StepData(
+                FinishReason.Failed
+            )
         val newResult = presenter.present(
             Presenter.Transition.SlideFromLeft,
             previousStep,
             resultGatherer.retrieve(previousStep.id)
         ).storeResult()
-        return StepData(step = previousStep, action = newResult)
+        return StepData(
+            step = previousStep,
+            action = newResult
+        )
     }
 
     private suspend fun StepData.Skip.step(): StepData {
-        val newStep = taskNavigator.nextStep(step) ?: return StepData(FinishReason.Completed)
+        val newStep = taskNavigator.nextStep(step) ?: return StepData(
+            FinishReason.Completed
+        )
         val newResult = presenter.present(
             Presenter.Transition.SlideFromRight, newStep, resultGatherer.retrieve(newStep.id)
         ).storeResult()
-        return StepData(step = newStep, action = newResult)
+        return StepData(
+            step = newStep,
+            action = newResult
+        )
     }
 
     private fun NextAction.storeResult() = this.apply {
@@ -176,13 +192,29 @@ class SurveyView @JvmOverloads constructor(
 
         companion object {
             operator fun invoke(step: Step, action: NextAction): StepData = when (action) {
-                is NextAction.Next -> Next(step, action.result)
-                is NextAction.Back -> Previous(step, action.result)
-                NextAction.Skip -> Skip(step)
-                is NextAction.Close -> Finish(step, action.result, action.finishReason)
+                is NextAction.Next -> Next(
+                    step,
+                    action.result
+                )
+                is NextAction.Back -> Previous(
+                    step,
+                    action.result
+                )
+                NextAction.Skip -> Skip(
+                    step
+                )
+                is NextAction.Close -> Finish(
+                    step,
+                    action.result,
+                    action.finishReason
+                )
             }
 
-            operator fun invoke(finishReason: FinishReason) = ClosePreemptively(null, finishReason)
+            operator fun invoke(finishReason: FinishReason) =
+                ClosePreemptively(
+                    null,
+                    finishReason
+                )
         }
     }
 

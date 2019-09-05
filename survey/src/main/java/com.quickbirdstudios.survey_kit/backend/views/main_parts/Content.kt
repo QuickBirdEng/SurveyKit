@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ScrollView
 import com.quickbirdstudios.survey.R
-import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
+import com.quickbirdstudios.survey_kit.SurveyTheme
 
 class Content @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0

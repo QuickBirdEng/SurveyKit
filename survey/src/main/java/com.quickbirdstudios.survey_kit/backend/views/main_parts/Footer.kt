@@ -13,9 +13,9 @@ import androidx.annotation.StringRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.survey_kit.SurveyTheme
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.colorStroke
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.px
-import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
 
 class Footer @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0

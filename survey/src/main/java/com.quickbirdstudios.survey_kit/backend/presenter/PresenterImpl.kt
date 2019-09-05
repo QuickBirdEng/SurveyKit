@@ -3,12 +3,12 @@ package com.quickbirdstudios.survey_kit.backend.presenter
 import android.content.Context
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import com.quickbirdstudios.survey_kit.StepIdentifier
+import com.quickbirdstudios.survey_kit.SurveyTheme
 import com.quickbirdstudios.survey_kit.backend.presenter.animations.ViewAnimator
 import com.quickbirdstudios.survey_kit.backend.views.step.StepView
-import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
-import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
-import com.quickbirdstudios.survey_kit.public_api.result.StepResult
-import com.quickbirdstudios.survey_kit.public_api.steps.Step
+import com.quickbirdstudios.survey_kit.result.StepResult
+import com.quickbirdstudios.survey_kit.steps.Step
 import java.util.*
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -52,7 +52,8 @@ internal class PresenterImpl(
     private suspend fun showAndWaitForResult(
         id: StepIdentifier, questionView: StepView, transition: Presenter.Transition
     ): NextAction {
-        val stepResult = StepResult(id = id, startDate = Date())
+        val stepResult =
+            StepResult(id = id, startDate = Date())
         showView(questionView, transition)
         return suspendCoroutine { routine ->
             questionView.onNext { result ->

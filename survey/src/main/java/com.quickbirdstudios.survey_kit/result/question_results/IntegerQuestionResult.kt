@@ -1,7 +1,7 @@
-package com.quickbirdstudios.survey_kit.public_api.result.question_results
+package com.quickbirdstudios.survey_kit.result.question_results
 
-import com.quickbirdstudios.survey_kit.public_api.Identifier
-import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
+import com.quickbirdstudios.survey_kit.Identifier
+import com.quickbirdstudios.survey_kit.result.QuestionResult
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 

@@ -1,7 +1,7 @@
 package com.quickbirdstudios.survey_kit.backend.presenter
 
-import com.quickbirdstudios.survey_kit.public_api.FinishReason
-import com.quickbirdstudios.survey_kit.public_api.result.StepResult
+import com.quickbirdstudios.survey_kit.FinishReason
+import com.quickbirdstudios.survey_kit.result.StepResult
 
 sealed class NextAction {
     data class Next(val result: StepResult) : NextAction()

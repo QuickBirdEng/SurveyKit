@@ -2,9 +2,9 @@ package com.quickbirdstudios.survey_kit.backend.presenter
 
 import android.content.Context
 import android.widget.FrameLayout
-import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
-import com.quickbirdstudios.survey_kit.public_api.result.StepResult
-import com.quickbirdstudios.survey_kit.public_api.steps.Step
+import com.quickbirdstudios.survey_kit.SurveyTheme
+import com.quickbirdstudios.survey_kit.result.StepResult
+import com.quickbirdstudios.survey_kit.steps.Step
 
 
 interface Presenter {

@@ -2,11 +2,11 @@ package com.quickbirdstudios.survey_kit.backend.views.questions
 
 import android.content.Context
 import androidx.annotation.StringRes
+import com.quickbirdstudios.survey_kit.FinishReason
+import com.quickbirdstudios.survey_kit.StepIdentifier
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.AnimatedCheckmark
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
-import com.quickbirdstudios.survey_kit.public_api.FinishReason
-import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
-import com.quickbirdstudios.survey_kit.public_api.result.question_results.FinishQuestionResult
+import com.quickbirdstudios.survey_kit.result.question_results.FinishQuestionResult
 
 //TODO pass title and text into constructor since it can not be changed afterwards.
 class FinishQuestionView(
@@ -19,7 +19,8 @@ class FinishQuestionView(
 
     //region Overrides
 
-    override fun createResults() = FinishQuestionResult(id, startDate)
+    override fun createResults() =
+        FinishQuestionResult(id, startDate)
 
     override fun setState() {}
 

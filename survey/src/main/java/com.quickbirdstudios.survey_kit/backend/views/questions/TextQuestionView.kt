@@ -3,12 +3,12 @@ package com.quickbirdstudios.survey_kit.backend.views.questions
 import android.content.Context
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.survey_kit.StepIdentifier
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.afterTextChanged
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.TextField
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
-import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
-import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
-import com.quickbirdstudios.survey_kit.public_api.result.question_results.TextQuestionResult
+import com.quickbirdstudios.survey_kit.result.QuestionResult
+import com.quickbirdstudios.survey_kit.result.question_results.TextQuestionResult
 
 internal class TextQuestionView(
     context: Context,
@@ -31,12 +31,13 @@ internal class TextQuestionView(
 
     //region Overrides
 
-    override fun createResults(): QuestionResult = TextQuestionResult(
-        id = id,
-        startDate = startDate,
-        answer = questionAnswerView?.field?.text?.toString(),
-        stringIdentifier = questionAnswerView?.field?.text?.toString() ?: ""
-    )
+    override fun createResults(): QuestionResult =
+        TextQuestionResult(
+            id = id,
+            startDate = startDate,
+            answer = questionAnswerView?.field?.text?.toString(),
+            stringIdentifier = questionAnswerView?.field?.text?.toString() ?: ""
+        )
 
     override fun setState() {
         val textState = (state as? TextQuestionResult)?.answer ?: return

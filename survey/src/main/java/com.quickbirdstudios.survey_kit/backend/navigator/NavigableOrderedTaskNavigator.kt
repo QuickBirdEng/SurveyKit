@@ -1,9 +1,9 @@
 package com.quickbirdstudios.survey_kit.backend.navigator
 
-import com.quickbirdstudios.survey_kit.public_api.NavigableOrderedTask
-import com.quickbirdstudios.survey_kit.public_api.NavigationRule
-import com.quickbirdstudios.survey_kit.public_api.result.StepResult
-import com.quickbirdstudios.survey_kit.public_api.steps.Step
+import com.quickbirdstudios.survey_kit.NavigableOrderedTask
+import com.quickbirdstudios.survey_kit.NavigationRule
+import com.quickbirdstudios.survey_kit.result.StepResult
+import com.quickbirdstudios.survey_kit.steps.Step
 import java.util.*
 
 internal class NavigableOrderedTaskNavigator(

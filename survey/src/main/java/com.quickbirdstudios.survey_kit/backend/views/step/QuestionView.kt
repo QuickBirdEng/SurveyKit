@@ -6,12 +6,12 @@ import android.widget.FrameLayout
 import androidx.annotation.CallSuper
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.survey_kit.FinishReason
+import com.quickbirdstudios.survey_kit.StepIdentifier
+import com.quickbirdstudios.survey_kit.SurveyTheme
 import com.quickbirdstudios.survey_kit.backend.views.main_parts.*
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.InfoText
-import com.quickbirdstudios.survey_kit.public_api.FinishReason
-import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
-import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
-import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
+import com.quickbirdstudios.survey_kit.result.QuestionResult
 import java.util.*
 
 // TODO rename and move to own file

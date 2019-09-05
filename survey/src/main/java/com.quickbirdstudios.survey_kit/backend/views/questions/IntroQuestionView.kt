@@ -2,9 +2,9 @@ package com.quickbirdstudios.survey_kit.backend.views.questions
 
 import android.content.Context
 import androidx.annotation.StringRes
+import com.quickbirdstudios.survey_kit.StepIdentifier
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
-import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
-import com.quickbirdstudios.survey_kit.public_api.result.question_results.IntroQuestionResult
+import com.quickbirdstudios.survey_kit.result.question_results.IntroQuestionResult
 
 class IntroQuestionView(
     context: Context,
@@ -17,7 +17,8 @@ class IntroQuestionView(
 
     //region Overrides
 
-    override fun createResults() = IntroQuestionResult(id, startDate)
+    override fun createResults() =
+        IntroQuestionResult(id, startDate)
 
     override fun isValidInput() = true
 

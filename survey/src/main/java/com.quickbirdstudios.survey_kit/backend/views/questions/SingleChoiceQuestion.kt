@@ -3,13 +3,13 @@ package com.quickbirdstudios.survey_kit.backend.views.questions
 import android.content.Context
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.survey_kit.AnswerFormat
+import com.quickbirdstudios.survey_kit.StepIdentifier
+import com.quickbirdstudios.survey_kit.TextChoice
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.SingleChoicePart
 import com.quickbirdstudios.survey_kit.backend.views.step.QuestionView
-import com.quickbirdstudios.survey_kit.public_api.AnswerFormat
-import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
-import com.quickbirdstudios.survey_kit.public_api.TextChoice
-import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
-import com.quickbirdstudios.survey_kit.public_api.result.question_results.SingleChoiceQuestionResult
+import com.quickbirdstudios.survey_kit.result.QuestionResult
+import com.quickbirdstudios.survey_kit.result.question_results.SingleChoiceQuestionResult
 
 internal class SingleChoiceQuestion(
     context: Context,

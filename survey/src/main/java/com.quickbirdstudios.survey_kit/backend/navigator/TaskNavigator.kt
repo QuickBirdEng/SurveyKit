@@ -1,10 +1,10 @@
 package com.quickbirdstudios.survey_kit.backend.navigator
 
-import com.quickbirdstudios.survey_kit.public_api.NavigableOrderedTask
-import com.quickbirdstudios.survey_kit.public_api.OrderedTask
-import com.quickbirdstudios.survey_kit.public_api.Task
-import com.quickbirdstudios.survey_kit.public_api.result.StepResult
-import com.quickbirdstudios.survey_kit.public_api.steps.Step
+import com.quickbirdstudios.survey_kit.NavigableOrderedTask
+import com.quickbirdstudios.survey_kit.OrderedTask
+import com.quickbirdstudios.survey_kit.Task
+import com.quickbirdstudios.survey_kit.result.StepResult
+import com.quickbirdstudios.survey_kit.steps.Step
 import java.util.*
 
 interface TaskNavigator {

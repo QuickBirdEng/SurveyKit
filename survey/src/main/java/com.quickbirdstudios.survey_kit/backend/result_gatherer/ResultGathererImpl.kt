@@ -1,9 +1,9 @@
 package com.quickbirdstudios.survey_kit.backend.result_gatherer
 
-import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
-import com.quickbirdstudios.survey_kit.public_api.Task
-import com.quickbirdstudios.survey_kit.public_api.result.StepResult
-import com.quickbirdstudios.survey_kit.public_api.result.TaskResult
+import com.quickbirdstudios.survey_kit.StepIdentifier
+import com.quickbirdstudios.survey_kit.Task
+import com.quickbirdstudios.survey_kit.result.StepResult
+import com.quickbirdstudios.survey_kit.result.TaskResult
 import java.util.*
 
 internal class ResultGathererImpl(private val task: Task) : ResultGatherer {
@@ -11,7 +11,11 @@ internal class ResultGathererImpl(private val task: Task) : ResultGatherer {
     override var results: MutableList<StepResult> = mutableListOf()
 
     override val taskResult: TaskResult
-        get() = TaskResult(id = task.id, results = results, startDate = Date()).apply {
+        get() = TaskResult(
+            id = task.id,
+            results = results,
+            startDate = Date()
+        ).apply {
             endDate = Date()
         }
 

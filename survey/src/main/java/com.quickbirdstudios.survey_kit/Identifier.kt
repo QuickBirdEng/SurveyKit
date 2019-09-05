@@ -1,4 +1,4 @@
-package com.quickbirdstudios.survey_kit.public_api
+package com.quickbirdstudios.survey_kit
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

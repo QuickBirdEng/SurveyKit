@@ -1,4 +1,4 @@
-package com.quickbirdstudios.survey_kit.public_api.result
+package com.quickbirdstudios.survey_kit.result
 
 import android.os.Parcelable
 

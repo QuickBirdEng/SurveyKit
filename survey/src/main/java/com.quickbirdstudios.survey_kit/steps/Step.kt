@@ -1,9 +1,9 @@
-package com.quickbirdstudios.survey_kit.public_api.steps
+package com.quickbirdstudios.survey_kit.steps
 
 import android.content.Context
+import com.quickbirdstudios.survey_kit.StepIdentifier
 import com.quickbirdstudios.survey_kit.backend.views.step.StepView
-import com.quickbirdstudios.survey_kit.public_api.StepIdentifier
-import com.quickbirdstudios.survey_kit.public_api.result.StepResult
+import com.quickbirdstudios.survey_kit.result.StepResult
 
 interface Step {
     val isOptional: Boolean

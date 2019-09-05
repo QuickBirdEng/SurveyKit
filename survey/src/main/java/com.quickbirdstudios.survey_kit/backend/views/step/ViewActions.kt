@@ -1,7 +1,7 @@
 package com.quickbirdstudios.survey_kit.backend.views.step
 
-import com.quickbirdstudios.survey_kit.public_api.FinishReason
-import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
+import com.quickbirdstudios.survey_kit.FinishReason
+import com.quickbirdstudios.survey_kit.result.QuestionResult
 
 interface ViewActions : Skipable, Identifiable {
     fun onNext(block: (QuestionResult) -> Unit)

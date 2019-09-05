@@ -1,6 +1,6 @@
-package com.quickbirdstudios.survey_kit.public_api
+package com.quickbirdstudios.survey_kit
 
-import com.quickbirdstudios.survey_kit.public_api.steps.Step
+import com.quickbirdstudios.survey_kit.steps.Step
 
 interface Task {
     val id: TaskIdentifier

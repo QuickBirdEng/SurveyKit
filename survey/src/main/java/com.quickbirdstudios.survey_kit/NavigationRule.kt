@@ -1,4 +1,4 @@
-package com.quickbirdstudios.survey_kit.public_api
+package com.quickbirdstudios.survey_kit
 
 sealed class NavigationRule {
     data class DirectStepNavigationRule(

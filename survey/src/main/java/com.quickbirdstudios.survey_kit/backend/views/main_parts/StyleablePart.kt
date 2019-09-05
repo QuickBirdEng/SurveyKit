@@ -1,6 +1,6 @@
 package com.quickbirdstudios.survey_kit.backend.views.main_parts
 
-import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
+import com.quickbirdstudios.survey_kit.SurveyTheme
 
 //TODO not needed since styling info should be passed into the views in the constructor
 internal interface StyleablePart {

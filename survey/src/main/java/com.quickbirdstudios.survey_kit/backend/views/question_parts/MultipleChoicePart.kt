@@ -13,12 +13,12 @@ import androidx.annotation.ColorInt
 import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.survey_kit.SurveyTheme
+import com.quickbirdstudios.survey_kit.TextChoice
 import com.quickbirdstudios.survey_kit.backend.helpers.extensions.px
 import com.quickbirdstudios.survey_kit.backend.views.main_parts.StyleablePart
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.helper.BackgroundDrawable
 import com.quickbirdstudios.survey_kit.backend.views.question_parts.helper.createSelectableThemedBackground
-import com.quickbirdstudios.survey_kit.public_api.SurveyTheme
-import com.quickbirdstudios.survey_kit.public_api.TextChoice
 
 internal class MultipleChoicePart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
