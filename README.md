@@ -6,6 +6,10 @@ We aim to keep the functionality close to [iOS ResearchKit Surveys](http://resea
 
 This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
 
+<img src="assets/instruction_start_cyan.png?raw=true" width="350">
+<img src="assets/integer_question_disabled.png?raw=true" width="350">
+<img src="assets/multiple_choice_question_multiple_selected.png?raw=true" width="350">
+
 ## ∑Overview
 -   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
 -   [What Survey-Kit does not (yet) for you](#what-survey-kit-does-not-yet-for-you)
@@ -32,9 +36,6 @@ Survey-kit aims to allow the developer to:
 -   Customizable style
 -   Structure kept close to the one of iOS ResearchKit
 -   Used in production by QBS
-
-### Viable Sceneries
--   You want to ask the user a series of questions
 
 ## What Survey-Kit does not (yet) for you
 As said before, this is an early version and work in progress. We aim to for the level iOS ResearchKit is on and then are going to add new features and improvements.
@@ -294,4 +295,4 @@ Open an issue if you need help, if you found a bug, or if you want to discuss a 
 Open a PR if you want to make changes to SurveyKit.
 
 # 📃 License
-SurveyKit is released under an MIT license. See TODO[License.md](www.google.de) for more information.
+SurveyKit is released under an MIT license. See TODO[License.md](LICENSE.md) for more information.
