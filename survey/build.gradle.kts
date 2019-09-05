@@ -1,9 +1,13 @@
+@file:Suppress("SuspiciousCollectionReassignment")
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("com.android.library")
     kotlin("android")
     id("org.jetbrains.kotlin.android.extensions")
+    id("com.jfrog.bintray")
+    `maven-publish`
 }
 
 androidExtensions { isExperimental = true }
@@ -20,13 +24,10 @@ android {
 
 dependencies {
     implementation(Deps.Kotlin.stdlib)
-    implementation(Deps.Kotlin.reflect)
     implementation(Deps.Kotlin.coroutines)
     implementation(Deps.Kotlin.androidCoroutines)
-    implementation(Deps.AndroidSupport.annotations)
     implementation(Deps.AndroidSupport.appCompat)
     implementation(Deps.AndroidSupport.constraint)
-
     implementation(Deps.lottie)
 }
 

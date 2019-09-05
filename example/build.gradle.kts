@@ -2,17 +2,6 @@ plugins {
     id("com.android.application")
     kotlin("android")
     id("org.jetbrains.kotlin.android.extensions")
-    id("quickbird")
-}
-
-
-quickbird {
-    deploy {
-        app {
-            useOutputWithName("debug")
-            googleDrive()
-        }
-    }
 }
 
 androidExtensions { isExperimental = true }

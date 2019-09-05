@@ -11,8 +11,7 @@ buildscript {
     dependencies {
         classpath(Deps.Plugins.kotlin)
         classpath(Deps.Plugins.android)
-        classpath(Deps.Plugins.realm)
-        classpath(Deps.Plugins.quickbird)
+        classpath(Deps.Plugins.bintray)
     }
 }
 
