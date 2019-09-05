@@ -3,8 +3,6 @@ package com.quickbirdstudios.surveykit.steps
 import android.content.Context
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
-import com.quickbirdstudios.survey_kit.backend.views.questions.*
-import com.quickbirdstudios.survey_kit.result.question_results.*
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.questions.*
@@ -28,12 +26,10 @@ class QuestionStep(
         when (answerFormat) {
             is AnswerFormat.TextAnswerFormat -> createTextQuestion(context, stepResult)
             is AnswerFormat.SingleChoiceAnswerFormat -> createSingleChoiceQuestion(
-                context,
-                stepResult
+                context, stepResult
             )
             is AnswerFormat.MultipleChoiceAnswerFormat -> createMultipleChoiceQuestion(
-                context,
-                stepResult
+                context, stepResult
             )
             is AnswerFormat.ScaleAnswerFormat -> createScaleQuestion(context, stepResult)
             is AnswerFormat.IntegerAnswerFormat -> createIntegerQuestion(context, stepResult)
