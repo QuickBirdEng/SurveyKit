@@ -1,4 +1,4 @@
-rootProject.name = 'triangle'
+rootProject.name = 'SurveyKit'
 
 include ':survey'
 include ':example'
