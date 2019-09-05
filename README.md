@@ -295,4 +295,4 @@ Open an issue if you need help, if you found a bug, or if you want to discuss a 
 Open a PR if you want to make changes to SurveyKit.
 
 # 📃 License
-SurveyKit is released under an MIT license. See TODO[License.md](LICENSE.md) for more information.
+SurveyKit is released under an MIT license. See [License](LICENSE) for more information.
