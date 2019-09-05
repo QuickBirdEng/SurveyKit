@@ -268,10 +268,23 @@ class CustomStep : Step {
 # 🍏vs🤖 iOS ResearchKit comparison
 First we aim to implement the functionality of iOS ResearchKit. Then we want to add our own features.
 <br />
-|   Steps |   iOS ResearchKit 🍏 |   SurveyKit 🤖 |
+| Steps	| iOS ResearchKit 🍏 | SurveyKit 🤖 |
 | :---	| :---:	| :---:	|
-|   Instruction	|   ✅	|   ✅	|
-
+| Instruction | ✅ | ✅ |
+| Single selection | ✅ | ✅ |
+| Multi selection | ✅ | ✅ |
+| Boolean answer | ✅ | 𐄂 |
+| Value picker | ✅ | 𐄂 |
+| Image choice | ✅ | 𐄂 |
+| Numeric answer | ✅ | ✅ |
+| Time of day | ✅ | 𐄂 |
+| Date selection | ✅ | 𐄂 |
+| Text answer (unlimited) | ✅ | ✅ |
+| Text answer (limited) | ✅ | ✅ |
+| Text answer (validated) | ✅ | 𐄂 |
+| Scale answer | ✅ | ✅ |
+| Email answer | ✅ | 𐄂 |
+| Location answer | ✅ | ✅ |
 
 # 👤 Author
 This framework is created with ❤️ by [QuickBird Studios](https://quickbirdstudios.com/).
