@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.quickbirdstudios.survey_kit.backend.views.main_parts.Content
+    <com.quickbirdstudios.surveykit.backend.views.main_parts.Content
         android:id="@+id/questionContent"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -15,7 +15,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/questionHeader" />
 
-    <com.quickbirdstudios.survey_kit.backend.views.main_parts.Header
+    <com.quickbirdstudios.surveykit.backend.views.main_parts.Header
         android:id="@+id/questionHeader"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

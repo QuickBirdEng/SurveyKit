@@ -11,16 +11,16 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.example.R
-import com.quickbirdstudios.survey_kit.backend.views.step.StepView
-import com.quickbirdstudios.survey_kit.public_api.*
-import com.quickbirdstudios.survey_kit.public_api.result.QuestionResult
-import com.quickbirdstudios.survey_kit.public_api.result.StepResult
-import com.quickbirdstudios.survey_kit.public_api.result.TaskResult
-import com.quickbirdstudios.survey_kit.public_api.steps.CompletionStep
-import com.quickbirdstudios.survey_kit.public_api.steps.InstructionStep
-import com.quickbirdstudios.survey_kit.public_api.steps.QuestionStep
-import com.quickbirdstudios.survey_kit.public_api.steps.Step
-import com.quickbirdstudios.survey_kit.public_api.survey.SurveyView
+import com.quickbirdstudios.surveykit.*
+import com.quickbirdstudios.surveykit.backend.views.step.StepView
+import com.quickbirdstudios.surveykit.result.QuestionResult
+import com.quickbirdstudios.surveykit.result.StepResult
+import com.quickbirdstudios.surveykit.result.TaskResult
+import com.quickbirdstudios.surveykit.steps.CompletionStep
+import com.quickbirdstudios.surveykit.steps.InstructionStep
+import com.quickbirdstudios.surveykit.steps.QuestionStep
+import com.quickbirdstudios.surveykit.steps.Step
+import com.quickbirdstudios.surveykit.survey.SurveyView
 import kotlinx.android.parcel.Parcelize
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -63,7 +63,9 @@ MainActivity : AppCompatActivity(), CoroutineScope {
             QuestionStep(
                 title = R.string.how_old_title,
                 text = R.string.how_old_text,
-                answerFormat = AnswerFormat.IntegerAnswerFormat(defaultValue = 25)
+                answerFormat = AnswerFormat.IntegerAnswerFormat(
+                    defaultValue = 25
+                )
             ),
             QuestionStep(
                 title = R.string.how_fat_question_title,
@@ -156,7 +158,8 @@ MainActivity : AppCompatActivity(), CoroutineScope {
 
 class CustomStep : Step {
     override val isOptional: Boolean = true
-    override val id: StepIdentifier = StepIdentifier()
+    override val id: StepIdentifier =
+        StepIdentifier()
     val tmp = id
 
     override fun createView(context: Context, stepResult: StepResult?): StepView {
