@@ -22,18 +22,6 @@ fun Project.configureLibraryPublication() {
     configurePublishTask()
 }
 
-internal fun Project.configurePublishTask() = afterEvaluate {
-    val publish = tasks["publish"]
-    val bintrayUpload = tasks["bintrayUpload"]
-    val assembleRelease = tasks["assembleRelease"]
-    val publishAarPublicationToMavenLocal = tasks["publishAarPublicationToMavenLocal"]
-    val checkCiTagTask = getCheckCiTagTask()
-
-    publishAarPublicationToMavenLocal.dependsOn(checkCiTagTask)
-    publishAarPublicationToMavenLocal.dependsOn(assembleRelease)
-    publish.dependsOn(bintrayUpload)
-}
-
 internal fun Project.configureLibraryAarPublication() {
     val projectName = name
     extensions.getByType<PublishingExtension>().publications {
@@ -77,6 +65,18 @@ internal fun Project.configureBintrayForLibraryPublication() =
             version.gpg.sign = false
         }
     }
+
+internal fun Project.configurePublishTask() = afterEvaluate {
+    val publish = tasks["publish"]
+    val bintrayUpload = tasks["bintrayUpload"]
+    val assembleRelease = tasks["assembleRelease"]
+    val publishAarPublicationToMavenLocal = tasks["publishAarPublicationToMavenLocal"]
+    val checkCiTagTask = getCheckCiTagTask()
+
+    publishAarPublicationToMavenLocal.dependsOn(checkCiTagTask)
+    publishAarPublicationToMavenLocal.dependsOn(assembleRelease)
+    publish.dependsOn(bintrayUpload)
+}
 
 private fun Project.bintrayUser(): String {
     return environmentPropertyOrStub(bintrayUserKey)
