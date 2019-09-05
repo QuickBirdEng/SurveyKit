@@ -32,7 +32,6 @@ internal fun Project.configurePublishTask() = afterEvaluate {
     val publishAarPublicationToMavenLocal = tasks["publishAarPublicationToMavenLocal"]
     val checkCiTagTask = getCheckCiTagTask()
 
-    preBuild.dependsOn(checkCiTagTask)
     publishAarPublicationToMavenLocal.dependsOn(checkCiTagTask)
     publishAarPublicationToMavenLocal.dependsOn(assembleRelease)
     publish.dependsOn(bintrayUpload)
