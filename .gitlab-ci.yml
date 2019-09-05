@@ -10,8 +10,10 @@ appTests:
   script:
     - ./gradlew app:test app:cAT
 
-deploy:
+deployRelease:
   stage: deploy
+  only:
+    - tags
   script:
-    - ./gradlew assemble
-    - ./gradlew quickDeploy
+    - ./gradlew publish
+

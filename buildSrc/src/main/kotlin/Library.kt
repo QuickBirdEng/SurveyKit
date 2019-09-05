@@ -1,7 +1,7 @@
 object Library {
     const val groupId = "com.quickbirdstudios"
     const val artifactId = "surveykit"
-    const val version = "0.1.0-exp.0"
+    const val version = "0.1.0-exp.1"
 
 
     object Meta {
@@ -15,6 +15,7 @@ object Library {
     object Bintray {
         const val organization = "quickbirdstudios"
         const val repository = "android"
+        const val packageName = "SurveyKit"
         val allLicenses = arrayOf("MIT")
     }
 }
