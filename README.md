@@ -1,11 +1,12 @@
-# Survey-kit
+# SurveyKit
 
-This library aims to provide the functionality of the [IOs ORK Survey](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
-
+With this library you can create a series of questions, in the style of a questionnaire.
+Thematically it is made to give you a feeling of a research survey. Visually we aim to be clean, lean and easily configurable.
+We aim to keep the functionality close to [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
 This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
 
-## Overview
+## ∑Overview
 -   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
 -   [What Survey-Kit does not (yet) for you](#what-survey-kit-does-not-yet-for-you)
 -   [Setup](#setup)
@@ -22,16 +23,24 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 
 ## What Survey-Kit does for you
 Survey-kit aims to allow the developer to:
--    create a series of questions (ordered or a custom navigation)
--    display them in a nice consistent style
--    gather the results and give them back to the developer
+-   Simplifies the creation of survey
+-   Rich animations and transitions out of the box (custom animations planned)
+-   Consistent, lean, simple style, to fit research purposes
+-   Navigation can be linear or in the structure of a directed graph (everything is possible)
+-   Result gathering and handing back to the developer for further use
+-   Complete freedom to creating your own questions
+-   Customizable style
+-   Structure kept close to the one of iOS ResearchKit
+-   Used in production by QBS
+
+### Viable Sceneries
+-   You want to ask the user a series of questions
 
 ## What Survey-Kit does not (yet) for you
-As said before, this is an early version and work in progress. Many things might change: we try
-to keep the public API as it is now.
-We are going to add other question types ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)).
+As said before, this is an early version and work in progress. We aim to for the level iOS ResearchKit is on and then are going to add new features and improvements.
+We are also going to add these question types ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)).
 
-# Setup
+# 🏃‍Setup
 ## 1. Add the repository
 `build.gradle`
 ```groovy
@@ -42,7 +51,7 @@ allprojects {
 }
 ```
 
-## 2. Add the dependency
+## 🔗2. Add the dependency
 `build.gradle.kts`
 ````kotlin
 dependencies {
@@ -52,105 +61,90 @@ dependencies {
 TODO: replace XXXXX with: group:name:version
 
 
-# Usage
-## Example
+# 🧩Usage
+## 👨🏼‍💻Example
 A working example can be found [TODO](https://google.com)
-### Add and Find the Survey in the xml
+### Add and Find the Survey in the XML
+Add the SurveyView into your `xml` (it looks best if it fills the screen).
 ````xml
 <com.quickbirdstudios.survey_kit.public_api.survey.SurveyView
     android:id="@+id/survey_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
 ````
+Find the view in the `xml` and save it for further use.
 ```kotlin
 var surveyView: SurveyView = view.findViewById(R.id.survey_view)
 ```
 
-### Create steps
-````kotlin
-val steps = listOf(
-    InstructionStep(
-        title = R.string.intro_title,
-        text = R.string.intro_text,
-        buttonText = R.string.intro_start
-    ),
-    QuestionStep(
-        title = R.string.about_you_question_title,
-        text = R.string.about_you_question_text,
-        answerFormat = AnswerFormat.TextAnswerFormat(
-            multipleLines = true,
-            maximumLength = 100
-        )
-    ),
-    QuestionStep(
-        title = R.string.how_old_title,
-        text = R.string.how_old_text,
-        answerFormat = AnswerFormat.IntegerAnswerFormat(defaultValue = 25)
-    ),
-    QuestionStep(
-        title = R.string.how_fat_question_title,
-        text = R.string.how_fat_question_text,
-        answerFormat = AnswerFormat.ScaleAnswerFormat(
-            minimumValue = 1,
-            maximumValue = 5,
-            minimumValueDescription = R.string.how_fat_min,
-            maximumValueDescription = R.string.how_fat_max,
-            step = 1f,
-            defaultValue = 3
-        )
-    ),
-    QuestionStep(
-        title = R.string.physical_disabilities_question_title,
-        text = R.string.physical_disabilities_question_text,
-        answerFormat = AnswerFormat.MultipleChoiceAnswerFormat(
-            textChoices = listOf(
-                TextChoice(R.string.physical_disabilities_back_pain),
-                TextChoice(R.string.physical_disabilities_heart_problems),
-                TextChoice(R.string.physical_disabilities_joint_pain),
-                TextChoice(R.string.physical_disabilities_joint_asthma)
-            )
-        )
-    ),
-    QuestionStep(
-        title = R.string.quit_or_continue_question_title,
-        text = R.string.quit_or_continue_question_text,
-        answerFormat = AnswerFormat.SingleChoiceAnswerFormat(
-            textChoices = listOf(
-                TextChoice(R.string.yes),
-                TextChoice(R.string.no)
-            )
-        )
-    ),
-    CompletionStep(
-        title = R.string.finish_question_title,
-        text = R.string.finish_question_text,
-        buttonText = R.string.finish_question_submit
+### 👣Create steps
+To create a step, create an instance of one of these 3 classes:
+#### 🎼`InstructionStep`
+```kotlin
+InstructionStep(
+    title = R.string.intro_title,
+    text = R.string.intro_text,
+    buttonText = R.string.intro_start
+)
+```
+The `title` is the general title of the Survey you want to conduct. <br/>
+The `text` is, in this case, the introduction text which should give an introduction, about what the survey is about.<br/>
+The `buttonText` specifies the text of the button, which will start the survey.
+All of these properties have to be resource Ids.
+
+#### 🏁`CompletionStep`
+```kotlin
+CompletionStep(
+    title = R.string.finish_question_title,
+    text = R.string.finish_question_text,
+    buttonText = R.string.finish_question_submit
+)
+```
+The `title` is the general title of the Survey you want to conduct, same as for the `InstructionStep`. <br/>
+The `text` is here should be something motivational: that the survey has been completed successfully. <br/>
+The `buttonText` specifies the text of the button, which will end the survey.
+All of these properties have to be resource Ids.
+
+#### ？`QuestionStep`
+```kotlin
+QuestionStep(
+    title = R.string.about_you_question_title,
+    text = R.string.about_you_question_text,
+    answerFormat = AnswerFormat.TextAnswerFormat(
+        multipleLines = true,
+        maximumLength = 100
     )
 )
-````
-At the moment, 3 types of steps are available. The `InstructionStep` and the `CompletionStep` are
-for the beginning/instructions and the end of the survey.
-The `QuestionStep` configures a single page. Which type of question is asked, is defined by the
-`AnswerFormat`.
+```
+The `title` same as for the `InstructionStep` and `CompletionStep`. <br/>
+The `text` the actual question you want to ask. Depending on the answer type of this, you should set the next property.<br/>
+The `answerFormat` specifies the type of question (the type of answer to the question) you want to ask. Currently there these types supported:
+-   `TextAnswerFormat`
+-   `IntegerAnswerFormat`
+-   `ScaleAnswerFormat`
+-   `SingleChoiceAnswerFormat`
+-   `MultipleChoiceAnswerFormat`
 
-The `AnswerFormat` contains all the possible answer formats available for now:
--   IntegerAnswerFormat
--   TextAnswerFormat
--   SingleChoiceAnswerFormat
--   MultipleChoiceAnswerFormat
--   ScaleAnswerFormat
+All that's left is to collect your steps in a list.
+```kotlin
+val steps = listOf(step1, step2, step3, ...)
+```
 
+### 👣Create a Task
+Next you need a task. Each survey has exactly one task. Task is used to set the `steps` and how the navigation through them works.<br><br>
 
-### Create a Task
+#### 🏬OrderedTask
 ```kotlin
 val task = OrderedTask(steps = steps)
 ```
 The `OrderedTask` just presents the questions in order, as they are given.
 
+#### 🏭NavigableOrderedTask
 ````kotlin
 val task = NavigableOrderedTask(steps = steps)
 ````
-The `NavigableOrderedTask` allows you to specify navigation rules:
+The `NavigableOrderedTask` allows you to specify navigation rules.<br>
+There are two types of navigation rules:
 ```kotlin
 task.setNavigationRule(
     steps[4].id,
@@ -158,7 +152,10 @@ task.setNavigationRule(
         destinationStepStepIdentifier = steps[6].id
     )
 )
+```
+With the `DirectStepNavigationRule` you say that after this step, another specified step should follow.<br><br
 
+```kotlin
 task.setNavigationRule(
     steps[6].id,
     NavigationRule.MultipleDirectionStepNavigationRule(
@@ -172,8 +169,11 @@ task.setNavigationRule(
     )
 )
 ```
+With the `MultipleDirectionStepNavigationRule` you can specify the next step, depending on the answer of the step. With this you can navigate to any step.
 
-### Evaluate the results
+### 🥇🥈🥉Evaluate the results
+Set this callback, for when the survey is done. No matter which `FinishReason` you always get the results gathered up until now. <br/>
+The `TaskResult` contains a list of `StepResult`s. The `StepResult` contains a list of `QuestionResult`s.
 ```kotlin
 surveyView.onSurveyFinish = { taskResult: TaskResult, reason: FinishReason ->
     if (reason == FinishReason.Completed) {
@@ -181,13 +181,11 @@ surveyView.onSurveyFinish = { taskResult: TaskResult, reason: FinishReason ->
             Log.e("logTag", "answer ${stepResult.results.firstOrNull()}")
         }
     }
-    withContext(Dispatchers.Main) {
-        requireActivity().onBackPressed()
-    }
 }
 ```
 
-### Configure
+### 🛠Configure
+These is how you configure the survey. We plan to expand the configuration
 ```kotlin
 val configuration = SurveyTheme(
     themeColorDark = ContextCompat.getColor(requireContext(), R.color.cyan_dark),
@@ -196,14 +194,14 @@ val configuration = SurveyTheme(
 )
 ```
 
-### Start the survey
-Start the survey.
+### 🎬Start the survey
+All that's left is to start the survey and enjoy.🎉🎊
 ```kotlin
 surveyView.start(task, configuration)
 ```
 
 
-# Custom steps
+# 📇Custom steps
 You need a `CustomResult` and a `CustomStep`.
 ```kotlin
 @Parcelize
@@ -265,3 +263,35 @@ class CustomStep : Step {
 }
 ```
 Then just add your `CustomStep` to the list of steps you pass to the `Task`.
+
+
+# iOS ResearchKit comparison
+First we aim to implement the functionality of iOS ResearchKit. Then we want to add our own features.
+|   Steps    |   iOS ResearchKit 🍏	|   SurveyKit 🤖	|
+|---	|---	|---	|
+|   Instruction	|   ✅	|   ✅	|
+|   Single selection	|   ✅	|   ✅	|
+|   Multi selection	|   ✅	|   ✅	|
+|   Boolean answer	|   ✅	|   𐄂	|
+|   Value picker	|   ✅	|   𐄂	|
+|   Image choice	|   ✅	|   𐄂	|
+|   Numeric answer	|   ✅	|   ✅	|
+|   Time of day	|   ✅	|   𐄂	|
+|   Date selection	|   ✅	|   𐄂	|
+|   Text answer (unlimited)	|   ✅	|   ✅	|
+|   Text answer (limited)	|   ✅	|   ✅	|
+|   Text answer (validated)	|   ✅	|   𐄂 	|
+|   Scale answer	|   ✅	|   ✅	|
+|   Email answer	|   ✅	|   𐄂	|
+|   Location answer	|   ✅	|   ✅	|
+
+# 👤 Author
+This framework is created with ❤️ by [QuickBird Studios](https://quickbirdstudios.com/).
+
+# ❤️ Contributing
+Open an issue if you need help, if you found a bug, or if you want to discuss a feature request.
+
+Open a PR if you want to make changes to SurveyKit.
+
+# 📃 License
+SurveyKit is released under an MIT license. See TODO[License.md](www.google.de) for more information.
