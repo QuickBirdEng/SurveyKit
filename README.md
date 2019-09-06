@@ -30,6 +30,7 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 -   [Author](#-Author)
 -   [Contributing](#-Contributing)
 -   [License](#-license)
+-   [More Examples](#more-examples)
 
 ## What Survey-Kit does for you
 Survey-kit aims to allow the developer to:
