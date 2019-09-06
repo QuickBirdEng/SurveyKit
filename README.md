@@ -294,6 +294,8 @@ The goal is to make both match in terms of their functionality.
 | Email answer              | ✅                     | 𐄂              |
 | Location answer           | ✅                     | 𐄂              |
 
+❌ TODO  
+
 # 👤 Author
 This framework is created with ❤️ by [QuickBird Studios](https://quickbirdstudios.com/).
 
