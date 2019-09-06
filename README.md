@@ -1,9 +1,9 @@
-# SurveyKit
+# SurveyKit: Create beautiful surveys on Android (inspired by ResearchKit Surveys on iOS)
 
-Do you want to display a questionnaire to get the opinion of your users? A survey for a medical trial? A series of instructions in a manual-like style?
-This library allows you to create exactly thas for your <b>Android</b> app and to configure it however you'd like it.
+Do you want to display a questionnaire to get the opinion of your users? A survey for a medical trial? A series of instructions in a manual-like style? <br/>
+SurveyKit is an Android library that allows you to create exactly that.
 
-Thematically it is built to provide a feeling of a professional research survey. It aims to be visually clean, lean and easily configurable.
+Thematically it is built to provide a feeling of a professional research survey. The library aims to be visually clean, lean and easily configurable.
 We aim to keep the functionality close to [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
 This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
@@ -12,27 +12,27 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 <img src="assets/top/how_old_are_you_with_hint.png?raw=true" width="350">
 <img src="assets/top/known_allergies_with_2_selected.png?raw=true" width="350">
 
-## 📚 Overview
--   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
--   [What Survey-Kit does not (yet) do for you](#what-survey-kit-does-not-yet-for-you)
--   [Setup](#-setup)
+## 📚 Overview: Creating Research Surveys
+-   [What SurveyKit does for you](#what-survey-kit-does-for-you)
+-   [What SurveyKit does not (yet) do for you](#what-survey-kit-does-not-yet-for-you)
+-   [Library Setup](#-setup)
     -   [Add the repository](#1-add-the-repository)
     -   [Add the dependency](#2-add-the-dependency)
 -   [Usage](#-usage)
     -   [Add and find the survey in the xml](#add-and-find-the-survey-in-the-xml)
-    -   [Create steps](#create-steps)
+    -   [Create survey steps](#create-steps)
     -   [Create a Task](#create-a-task)
     -   [Evaluate the results](#evaluate-the-results)
     -   [Configure](#configure)
     -   [Start the survey](#start-the-survey)
 -   [Custom steps](#-custom-steps)
--   [iOS ResearchKit comparison](#vs-ios-researchkit-comparison)
+-   [Comparison to ResearchKit on iOS](#vs-ios-researchkit-comparison)
 -   [Author](#-Author)
 -   [Contributing](#-Contributing)
 -   [License](#-license)
 -   [More Examples](#more-examples)
 
-## What Survey-Kit does for you
+## What SurveyKit does for you
 -   Simplifies the creation of surveys
 -   Provides rich animations and transitions out of the box (custom animations planned)
 -   Build with a consistent, lean, simple style, to fit research purposes
@@ -43,11 +43,11 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 -   Provides an API and structure that is very similar to [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)
 -   Is used in production by Quickbird Studios
 
-## What Survey-Kit does not (yet) do for you
+## What SurveyKit does not (yet) do for you
 As stated before, this is an early version and a work in progress. We aim to extend this library until it matches the functionality of the [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html). 
 Currently, these questions types are planned next: ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)).
 
-# 🏃 ‍Setup
+# 🏃 Library Setup
 ## 1. Add the repository
 `build.gradle`
 ```groovy
@@ -84,7 +84,7 @@ Find the view in the `xml` and save it for further use.
 var surveyView: SurveyView = view.findViewById(R.id.survey_view)
 ```
 
-### Create steps
+### Create survey steps
 To create a step, create an instance of one of these 3 classes:
 #### `InstructionStep`
 ```kotlin
@@ -210,8 +210,13 @@ surveyView.start(task, configuration)
 
 
 # 📇 Custom steps
-You need a `CustomResult` and a `CustomStep`. The `CustomStep` can then just be added as another step to the list of steps. `NavigationRule`s work the same as with other steps.
-Here you see a really simple examples of how you can do it.
+At some point, you might wanna define your own custom question steps. 
+That could, for example, be a question which promts the user to pick color values or even sound samples. 
+These are not implemented yet but you can easily create them yourself.
+For this, you need a `CustomResult` and a `CustomStep`. The `CustomStep` can then just be added as another step to the list of steps. 
+`NavigationRule`s work the same way as they do with other steps.
+Here you see a really simple example of how you can do it:
+
 ```kotlin
 @Parcelize
 data class CustomResult(
@@ -272,12 +277,12 @@ class CustomStep : Step {
 }
 ```
 
-# 🍏vs🤖 iOS ResearchKit comparison
-This is an overview of which features [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html) provides and which ones are already supported by SurveyKit.
-The goal is to make both match in terms of their functionality.
+# 🍏vs🤖 : Comparison of SurveyKit on Android to ResearchKit on iOS
+This is an overview of which features [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html) provides and which ones are already supported by SurveyKit on Android.
+The goal is to make both libraries match in terms of their functionality.
 
-| Steps	                    | iOS ResearchKit        | SurveyKit      |
-| :------------------------ | :---:                  | :---:	      |
+| Steps	                    | iOS ResearchKit        | Android SurveyKit|
+| :------------------------ | :---:                  | :---:	       |
 | Instruction               | ✅                     | ✅             |
 | Single selection          | ✅                     | ✅             |
 | Multi selection           | ✅                     | ✅             |
@@ -297,7 +302,7 @@ The goal is to make both match in terms of their functionality.
 ❌ TODO  
 
 # 👤 Author
-This framework is created with ❤️ by [QuickBird Studios](https://quickbirdstudios.com/).
+This Android library is created with ❤️ by [QuickBird Studios](https://quickbirdstudios.com/).
 
 # ❤️ Contributing
 Open an issue if you need help, if you found a bug, or if you want to discuss a feature request.
