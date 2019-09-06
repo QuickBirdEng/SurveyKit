@@ -12,7 +12,7 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 <img src="assets/top/how_old_are_you_with_hint.png?raw=true" width="350">
 <img src="assets/top/known_allergies_with_2_selected.png?raw=true" width="350">
 
-## ∑ Overview
+## 📚 Overview
 -   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
 -   [What Survey-Kit does not (yet) for you](#what-survey-kit-does-not-yet-for-you)
 -   [Setup](#-setup)
@@ -63,10 +63,10 @@ allprojects {
 `build.gradle.kts`
 ````kotlin
 dependencies {
-    implementation(project(":XXXXX"))
+    implementation(project("com.quickbirdstudios:surveykit:VERSION"))
 }
 ````
-TODO: replace XXXXX with: group:name:version
+Find the latest version [HERE](https://bintray.com/quickbirdstudios/android/SurveyKit)
 
 
 # 🧩 Usage
