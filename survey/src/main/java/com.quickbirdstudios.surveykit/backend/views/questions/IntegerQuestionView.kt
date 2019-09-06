@@ -1,6 +1,7 @@
 package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
+import android.view.Gravity
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
@@ -57,6 +58,8 @@ internal class IntegerQuestionView(
         super.setupViews()
 
         questionAnswerView = content.add(IntegerTextField.withHint(context, hintText))
+        questionAnswerView.field.gravity = Gravity.CENTER
+        questionAnswerView.field.setHint(answerFormat.hint)
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }
         questionAnswerView.field.setText(preselected?.toString() ?: "")
     }

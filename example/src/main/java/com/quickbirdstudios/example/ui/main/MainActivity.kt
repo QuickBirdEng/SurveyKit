@@ -63,7 +63,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 title = R.string.how_old_title,
                 text = R.string.how_old_text,
                 answerFormat = AnswerFormat.IntegerAnswerFormat(
-                    defaultValue = 25
+                    defaultValue = 25,
+                    hint = R.string.how_old_hint
                 )
             ),
             QuestionStep(
@@ -79,14 +80,14 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 )
             ),
             QuestionStep(
-                title = R.string.physical_disabilities_question_title,
-                text = R.string.physical_disabilities_question_text,
+                title = R.string.allergies_question_title,
+                text = R.string.allergies_question_text,
                 answerFormat = AnswerFormat.MultipleChoiceAnswerFormat(
                     textChoices = listOf(
-                        TextChoice(R.string.physical_disabilities_back_pain),
-                        TextChoice(R.string.physical_disabilities_heart_problems),
-                        TextChoice(R.string.physical_disabilities_joint_pain),
-                        TextChoice(R.string.physical_disabilities_joint_asthma)
+                        TextChoice(R.string.allergies_back_penicillin),
+                        TextChoice(R.string.allergies_latex),
+                        TextChoice(R.string.allergies_pet),
+                        TextChoice(R.string.allergies_pollen)
                     )
                 )
             ),

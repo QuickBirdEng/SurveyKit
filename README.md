@@ -6,9 +6,9 @@ We aim to keep the functionality close to [iOS ResearchKit Surveys](http://resea
 
 This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
 
-<img src="assets/instruction_start_cyan.png?raw=true" width="350">
-<img src="assets/integer_question_disabled.png?raw=true" width="350">
-<img src="assets/multiple_choice_question_multiple_selected.png?raw=true" width="350">
+<img src="assets/top/instruction_start_cyan.png?raw=true" width="350">
+<img src="assets/top/how_old_are_you_with_hint.png?raw=true" width="350">
+<img src="assets/top/known_allergies_with_2_selected.png?raw=true" width="350">
 
 ## ∑ Overview
 -   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
@@ -301,3 +301,14 @@ Open a PR if you want to make changes to SurveyKit.
 
 # 📃 License
 SurveyKit is released under an MIT license. See [License](LICENSE) for more information.
+
+<br/><br/><br/><br/>
+# More examples
+<img src="assets/bottom/instruction_green.png?raw=true" width="350">
+<img src="assets/bottom/instruction_orange.png?raw=true" width="350">
+<img src="assets/bottom/multiple_choice_question_1_selected.png?raw=true" width="350">
+<img src="assets/bottom/single_choice_selection_1_selection.png?raw=true" width="350">
+<img src="assets/bottom/multiple_choice_question_multiple_selected.png?raw=true" width="350">
+<img src="assets/bottom/multiple_choice_question_no_selected.png?raw=true" width="350">
+<img src="assets/bottom/text_question_cyan_enabled.png?raw=true" width="350">
+<img src="assets/bottom/text_question_disabled_cyan.png?raw=true" width="350">
