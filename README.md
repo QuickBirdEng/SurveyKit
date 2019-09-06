@@ -1,9 +1,9 @@
 # SurveyKit
 
-Do you want to display a questionnaire to get the opinion of your users? A survey for a medical trial? A series of instructions in a manual like style?
-This library allows you to create exactly this for your <b>Android</b> app and configure it however you'd like it.
+Do you want to display a questionnaire to get the opinion of your users? A survey for a medical trial? A series of instructions in a manual-like style?
+This library allows you to create exactly thas for your <b>Android</b> app and to configure it however you'd like it.
 
-Thematically it is made to give you a feeling of a research survey. Visually it aims to be clean, lean and easily configurable.
+Thematically it is built to provide a feeling of a professional research survey. It aims to be visually clean, lean and easily configurable.
 We aim to keep the functionality close to [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
 This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
@@ -14,7 +14,7 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 
 ## 📚 Overview
 -   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
--   [What Survey-Kit does not (yet) for you](#what-survey-kit-does-not-yet-for-you)
+-   [What Survey-Kit does not (yet) do for you](#what-survey-kit-does-not-yet-for-you)
 -   [Setup](#-setup)
     -   [Add the repository](#1-add-the-repository)
     -   [Add the dependency](#2-add-the-dependency)
@@ -33,20 +33,19 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 -   [More Examples](#more-examples)
 
 ## What Survey-Kit does for you
-Survey-kit aims to allow the developer to:
--   Simplifies the creation of survey
--   Rich animations and transitions out of the box (custom animations planned)
--   Consistent, lean, simple style, to fit research purposes
--   Navigation can be linear or in the structure of a directed graph (everything is possible)
--   Result gathering and handing back to the developer for further use
--   Complete freedom to creating your own questions
--   Customizable style
--   Structure kept close to the one of iOS ResearchKit
--   Used in production by Quickbird Studios
+-   Simplifies the creation of surveys
+-   Provides rich animations and transitions out of the box (custom animations planned)
+-   Build with a consistent, lean, simple style, to fit research purposes
+-   Survey navigation can be linear or based on a decision tree (directed graph)
+-   Gathers results and provides them in a convinient manner to the developer for further use
+-   Gives you complete freedom on creating your own questions
+-   Allows you to customize the style
+-   Provides an API and structure that is very similar to [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)
+-   Is used in production by Quickbird Studios
 
-## What Survey-Kit does not (yet) for you
-As said before, this is an early version and work in progress. We aim to for the level iOS ResearchKit is on and then are going to add new features and improvements.
-We are also going to add these question types ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)).
+## What Survey-Kit does not (yet) do for you
+As stated before, this is an early version and a work in progress. We aim to extend this library until it matches the functionality of the [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html). 
+Currently, these questions types are planned next: ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)).
 
 # 🏃 ‍Setup
 ## 1. Add the repository
@@ -69,9 +68,9 @@ dependencies {
 Find the latest version [HERE](https://bintray.com/quickbirdstudios/android/SurveyKit)
 
 
-# 🧩 Usage
+# 👩‍💻 Usage
 ## Example
-A working example can be found [HERE](example/)
+A complete working example can be found [HERE](example/)
 ### Add and Find the Survey in the XML
 Add the SurveyView into your `xml` (it looks best if it fills the screen).
 ````xml
