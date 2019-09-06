@@ -44,8 +44,7 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 -   Is used in production by Quickbird Studios
 
 ## What SurveyKit does not (yet) do for you
-As stated before, this is an early version and a work in progress. We aim to extend this library until it matches the functionality of the [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html). 
-Currently, these questions types are planned next: ([Goal](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html)).
+As stated before, this is an early version and a work in progress. We aim to extend this library until it matches the functionality of the [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
 # 🏃 Library Setup
 ## 1. Add the repository
