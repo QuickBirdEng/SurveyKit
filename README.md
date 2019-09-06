@@ -68,11 +68,11 @@ dependencies {
 Find the latest version [HERE](https://bintray.com/quickbirdstudios/android/SurveyKit)
 
 
-# 👩‍💻 Usage
+# 💻 Usage
 ## Example
-A complete working example can be found [HERE](example/)
+A working example project can be found [HERE](example/)
 ### Add and Find the Survey in the XML
-Add the SurveyView into your `xml` (it looks best if it fills the screen).
+Add the SurveyView to your `xml` (it looks best if it fills the screen).
 ````xml
 <com.quickbirdstudios.survey_kit.public_api.survey.SurveyView
     android:id="@+id/survey_view"
@@ -138,7 +138,7 @@ val steps = listOf(step1, step2, step3, ...)
 ```
 
 ### Create a Task
-Next you need a task. Each survey has exactly one task. A `Task` is used to set the `steps` and how the navigation through them works.<br><br>
+Next you need a task. Each survey has **exactly one** task. A `Task` is used to define how the user should navigate through your `steps`. <br><br>
 
 #### OrderedTask
 ```kotlin
@@ -163,7 +163,7 @@ task.setNavigationRule(
 )
 ```
 <br><br/>
-With the `MultipleDirectionStepNavigationRule` you can specify the next step, depending on the answer of the step. With this you can navigate to any step.
+With the `MultipleDirectionStepNavigationRule` you can specify the next step, depending on the answer of the step.
 ```kotlin
 task.setNavigationRule(
     steps[6].id,
@@ -180,7 +180,7 @@ task.setNavigationRule(
 ```
 
 ### Evaluate the results
-Set this callback, for when the survey is done. No matter which `FinishReason` you always get the results gathered up until now. <br/>
+When the survey is finished, you get a callback. No matter of the `FinishReason`, you always get all results gathered until now. <br/>
 The `TaskResult` contains a list of `StepResult`s. The `StepResult` contains a list of `QuestionResult`s.
 ```kotlin
 surveyView.onSurveyFinish = { taskResult: TaskResult, reason: FinishReason ->
@@ -192,8 +192,8 @@ surveyView.onSurveyFinish = { taskResult: TaskResult, reason: FinishReason ->
 }
 ```
 
-### Configure
-These is how you configure the survey. We plan to expand the configuration.
+### Style
+These is how you add custom styling to your survey. We'll add even more options in the future.
 ```kotlin
 val configuration = SurveyTheme(
     themeColorDark = ContextCompat.getColor(requireContext(), R.color.cyan_dark),
@@ -273,7 +273,8 @@ class CustomStep : Step {
 ```
 
 # 🍏vs🤖 iOS ResearchKit comparison
-First we aim to implement the functionality of iOS ResearchKit. Then we want to add our own features.
+This is an overview of which features [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html) provides and which ones are already supported by SurveyKit.
+The goal is to make both match in terms of their functionality.
 
 | Steps	                    | iOS ResearchKit        | SurveyKit      |
 | :------------------------ | :---:                  | :---:	      |
