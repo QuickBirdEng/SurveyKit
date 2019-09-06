@@ -8,7 +8,7 @@ stages:
 appTests:
   stage: test
   script:
-    - ./gradlew app:test app:cAT
+    - ./gradlew app:test app:connectedCheck
 
 deploy:
   stage: deploy

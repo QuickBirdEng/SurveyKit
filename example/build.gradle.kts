@@ -35,4 +35,8 @@ dependencies {
 
     /* Test */
     implementation(Deps.Test.junit)
+    androidTestImplementation(Deps.Test.espressoCore)
+    androidTestImplementation(Deps.Test.rules)
+    androidTestImplementation(Deps.Test.testRunner)
+    androidTestImplementation(Deps.Test.testOrchestrator)
 }
