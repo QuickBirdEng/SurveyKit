@@ -8,7 +8,7 @@ We aim to keep the functionality close to [iOS ResearchKit Surveys](http://resea
 
 This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
 
-<img src="assets/top/instruction_start_cyan.png?raw=true" width="350">
+<img src="assets/top/instruction_qbs.png?raw=true" width="350">
 <img src="assets/top/how_old_are_you_with_hint.png?raw=true" width="350">
 <img src="assets/top/known_allergies_with_2_selected.png?raw=true" width="350">
 
@@ -42,7 +42,7 @@ Survey-kit aims to allow the developer to:
 -   Complete freedom to creating your own questions
 -   Customizable style
 -   Structure kept close to the one of iOS ResearchKit
--   Used in production by QBS
+-   Used in production by Quickbird Studios
 
 ## What Survey-Kit does not (yet) for you
 As said before, this is an early version and work in progress. We aim to for the level iOS ResearchKit is on and then are going to add new features and improvements.
