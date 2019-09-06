@@ -132,7 +132,7 @@ val steps = listOf(step1, step2, step3, ...)
 ```
 
 ### Create a Task
-Next you need a task. Each survey has exactly one task. Task is used to set the `steps` and how the navigation through them works.<br><br>
+Next you need a task. Each survey has exactly one task. A `Task` is used to set the `steps` and how the navigation through them works.<br><br>
 
 #### OrderedTask
 ```kotlin
@@ -146,6 +146,8 @@ val task = NavigableOrderedTask(steps = steps)
 ````
 The `NavigableOrderedTask` allows you to specify navigation rules.<br>
 There are two types of navigation rules:
+<br/>
+With the `DirectStepNavigationRule` you say that after this step, another specified step should follow.
 ```kotlin
 task.setNavigationRule(
     steps[4].id,
@@ -154,8 +156,8 @@ task.setNavigationRule(
     )
 )
 ```
-With the `DirectStepNavigationRule` you say that after this step, another specified step should follow.<br><br
-
+<br><br/>
+With the `MultipleDirectionStepNavigationRule` you can specify the next step, depending on the answer of the step. With this you can navigate to any step.
 ```kotlin
 task.setNavigationRule(
     steps[6].id,
@@ -170,7 +172,6 @@ task.setNavigationRule(
     )
 )
 ```
-With the `MultipleDirectionStepNavigationRule` you can specify the next step, depending on the answer of the step. With this you can navigate to any step.
 
 ### Evaluate the results
 Set this callback, for when the survey is done. No matter which `FinishReason` you always get the results gathered up until now. <br/>
@@ -186,7 +187,7 @@ surveyView.onSurveyFinish = { taskResult: TaskResult, reason: FinishReason ->
 ```
 
 ### Configure
-These is how you configure the survey. We plan to expand the configuration
+These is how you configure the survey. We plan to expand the configuration.
 ```kotlin
 val configuration = SurveyTheme(
     themeColorDark = ContextCompat.getColor(requireContext(), R.color.cyan_dark),
