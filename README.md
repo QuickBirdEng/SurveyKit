@@ -1,7 +1,9 @@
 # SurveyKit
 
-With this library you can create a series of questions, in the style of a questionnaire.
-Thematically it is made to give you a feeling of a research survey. Visually we aim to be clean, lean and easily configurable.
+Do you want to display a questionnaire to get the opinion of your users? A survey for a medical trial? A series of instructions in a manual like style?
+This library allows you to create exactly this for your <b>Android</b> app and configure it however you'd like it.
+
+Thematically it is made to give you a feeling of a research survey. Visually it aims to be clean, lean and easily configurable.
 We aim to keep the functionality close to [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
 This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
