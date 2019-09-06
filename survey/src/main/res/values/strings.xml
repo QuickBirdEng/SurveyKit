@@ -27,12 +27,12 @@
     <string name="how_fat_min">1</string>
     <string name="how_fat_max">5</string>
 
-    <string name="physical_disabilities_question_title">Physical disabilities</string>
-    <string name="physical_disabilities_question_text">Do you have any physical disabilities that we should know?</string>
-    <string name="physical_disabilities_back_pain">Back pain</string>
-    <string name="physical_disabilities_heart_problems">Heart problems</string>
-    <string name="physical_disabilities_joint_pain">Joint pain</string>
-    <string name="physical_disabilities_joint_asthma">Asthma</string>
+    <string name="allergies_question_title">Known allergies</string>
+    <string name="allergies_question_text">Do you have any allergies that we should be aware of?</string>
+    <string name="allergies_back_penicillin">Penicillin</string>
+    <string name="allergies_latex">Latex</string>
+    <string name="allergies_pet">Pet</string>
+    <string name="allergies_pollen">Pollen</string>
 
     <string name="quit_or_continue_question_title">Done?</string>
     <string name="quit_or_continue_question_text">We are done, do you mind to tell us more about yourself?</string>
