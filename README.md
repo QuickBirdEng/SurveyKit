@@ -13,17 +13,21 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 ## ∑ Overview
 -   [What Survey-Kit does for you](#what-survey-kit-does-for-you)
 -   [What Survey-Kit does not (yet) for you](#what-survey-kit-does-not-yet-for-you)
--   [Setup](#setup)
+-   [Setup](#🏃-‍Setup)
     -   [Add the repository](#add-the-repository)
     -   [Add the dependency](#add-the-dependency)
--   [Usage](#usage)
+-   [Usage](#🧩-Usage)
     -   [Add and find the survey in the xml](#add-and-find-the-survey-in-the-xml)
     -   [Create steps](#create-steps)
     -   [Create a Task](#create-a-task)
     -   [Evaluate the results](#evaluate-the-results)
     -   [Configure](#configure)
     -   [Start the survey](#start-the-survey)
--   [Custom steps](#custom-steps)
+-   [Custom steps](#📇-Custom-steps)
+-   [🍏vs🤖 iOS ResearchKit comparison](#🍏vs🤖-iOS ResearchKit-comparison)
+-   [👤 Author](#👤-Author)
+-   [❤️ Contributing](#❤️-Contributing)
+-   [📃 License](#📃-License)
 
 ## What Survey-Kit does for you
 Survey-kit aims to allow the developer to:
