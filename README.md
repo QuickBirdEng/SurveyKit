@@ -47,7 +47,7 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 As stated before, this is an early version and a work in progress. We aim to extend this library until it matches the functionality of the [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
 ###### Gif
-<img src="assets/survey-kit-demo.gif?raw=true" width="350">
+<img src="assets/gifs/survey-kit-demo.gif?raw=true" width="350">
 <br><br>
 
 # 🏃 Library Setup

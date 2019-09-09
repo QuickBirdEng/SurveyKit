@@ -29,7 +29,6 @@ class FinishQuestionView(
     override fun setupViews() {
         super.setupViews()
 
-        content.clear()
         content.add(
             AnimatedCheckmark(
                 context
