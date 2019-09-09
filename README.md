@@ -46,6 +46,10 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 ## What SurveyKit does not (yet) do for you
 As stated before, this is an early version and a work in progress. We aim to extend this library until it matches the functionality of the [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
+###### Gif
+<img src="assets/survey-kit-demo.gif?raw=true" width="350">
+<br><br>
+
 # 🏃 Library Setup
 ## 1. Add the repository
 `build.gradle`
@@ -61,7 +65,7 @@ allprojects {
 `build.gradle.kts`
 ````kotlin
 dependencies {
-    implementation(project("com.quickbirdstudios:surveykit:VERSION"))
+    implementation(project("com.quickbirdstudios:surveykit:0.1.0"))
 }
 ````
 Find the latest version [HERE](https://bintray.com/quickbirdstudios/android/SurveyKit)
@@ -285,20 +289,18 @@ The goal is to make both libraries match in terms of their functionality.
 | Instruction               | ✅                     | ✅             |
 | Single selection          | ✅                     | ✅             |
 | Multi selection           | ✅                     | ✅             |
-| Boolean answer            | ✅                     | 𐄂              |
-| Value picker              | ✅                     | 𐄂              |
-| Image choice              | ✅                     | 𐄂              |
+| Boolean answer            | ✅                     | x              |
+| Value picker              | ✅                     | x              |
+| Image choice              | ✅                     | x              |
 | Numeric answer            | ✅                     | ✅             |
-| Time of day               | ✅                     | 𐄂              |
-| Date selection            | ✅                     | 𐄂              |
+| Time of day               | ✅                     | x              |
+| Date selection            | ✅                     | x              |
 | Text answer (unlimited)   | ✅                     | ✅             |
 | Text answer (limited)     | ✅                     | ✅             |
-| Text answer (validated)   | ✅                     | 𐄂              |
+| Text answer (validated)   | ✅                     | x              |
 | Scale answer              | ✅                     | ✅             |
-| Email answer              | ✅                     | 𐄂              |
-| Location answer           | ✅                     | 𐄂              |
-
-❌ TODO  
+| Email answer              | ✅                     | x              |
+| Location answer           | ✅                     | x              |
 
 # 👤 Author
 This Android library is created with ❤️ by [QuickBird Studios](https://quickbirdstudios.com/).
