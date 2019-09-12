@@ -215,12 +215,9 @@ surveyView.start(task, configuration)
 # 📇 Custom steps
 At some point, you might wanna define your own custom question steps. 
 That could, for example, be a question which promts the user to pick color values or even sound samples. 
-These are not implemented yet but you can easily create them yourself.
-For this, you need a `CustomResult` and a `CustomStep`. The `CustomStep` can then just be added as another step to the list of steps. 
-`NavigationRule`s work the same way as they do with other steps.
-Here you see a really simple example of how you can do it:
-<br/>
-The result class is necessary, so that the library knows what and how to save your data. It has to implement the `QuestionResult` and `Parcelable` interfaces.
+These are not implemented yet but you can easily create them yourself: 
+
+You'll need a `CustomResult` and a `CustomStep`. The Result class tells SurveyKit which data you want to save. 
 ```kotlin
 @Parcelize
 data class CustomResult(
@@ -231,12 +228,7 @@ data class CustomResult(
     override var endDate: Date
 ) : QuestionResult, Parcelable
 ```
-The `CustomResult` you created above will be used in the `CustomStep` we are about to create now. Your step has to implement the `Step` interface.
-Ihe `createResults` function has to return a `CustomResult`.<br/>
-All the content and styling of this view is up to you.<br/>
-The `setupViews` should be used to add Views.<br/>
-The `isValidInput` specifies, on which condition the user can continue this question.<br/>
-Four actions are possible: `Continue`, `Back`, `Cancel` and `Skip`. For these 4 actions the four listeners should be called when necessary.
+Next you'll need a CustomStep class:
 ```kotlin
 class CustomStep : Step {
     override val isOptional: Boolean = true
