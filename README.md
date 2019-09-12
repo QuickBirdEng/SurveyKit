@@ -216,7 +216,7 @@ surveyView.start(task, configuration)
 
 # 📇 Custom steps
 At some point, you might wanna define your own custom question steps. 
-That could, for example, be a question which promts the user to pick color values or even sound samples. 
+That could, for example, be a question which prompts the user to pick color values or even sound samples. 
 These are not implemented yet but you can easily create them yourself: 
 
 You'll need a `CustomResult` and a `CustomStep`. The Result class tells SurveyKit which data you want to save. 
