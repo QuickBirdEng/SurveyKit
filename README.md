@@ -9,7 +9,7 @@ We aim to keep the functionality close to [iOS ResearchKit Surveys](http://resea
 This is an early version and work in progress. Do not hesitate to give feedback, ideas or improvements via an issue.
 
 # Examples
-###### Gif
+###### Flow
 <img src="assets/gifs/survey-kit-demo.gif?raw=true" width="350">
 
 ###### Screenshots
