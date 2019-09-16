@@ -13,10 +13,10 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 <img src="assets/gifs/survey-kit-demo.gif?raw=true" width="350">
 
 ###### Screenshots
-<img src="assets/top/instruction_qbs.png?raw=true" width="250">
-<img src="assets/top/how_old_are_you_with_hint.png?raw=true" width="250">
-<img src="assets/top/known_allergies_with_2_selected.png?raw=true" width="250">
-<img src="assets/top/single_choice_selection_1_selection.png?raw=true" width="250">
+
+| | | | |
+| :---: | :---: | :---: | :---: |
+| <img src="assets/top/instruction_qbs.png?raw=true" width="250"> | <img src="assets/top/how_old_are_you_with_hint.png?raw=true" width="250"> | <img src="assets/top/known_allergies_with_2_selected.png?raw=true" width="250"> | <img src="assets/top/single_choice_selection_1_selection.png?raw=true" width="250"> |
 
 ## 📚 Overview: Creating Research Surveys
 -   [What SurveyKit does for you](#what-survey-kit-does-for-you)
