@@ -7,8 +7,8 @@ stages:
 
 appTests:
   stage: test
-  script:
-    - ./gradlew cDAT testDebug
+#  script:
+#    - ./gradlew cDAT testDebug
 
 deployRelease:
   stage: deploy
