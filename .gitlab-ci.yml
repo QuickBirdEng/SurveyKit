@@ -2,13 +2,13 @@ variables:
   GIT_CLEAN_FLAGS: none
 
 stages:
-  #  - test
+  - test
   - deploy
 
-#appTests:
-#  stage: test
-#  script:
-#    - ./gradlew cDAT testDebug
+appTests:
+  stage: test
+  script:
+    - ./gradlew cDAT testDebug
 
 deployRelease:
   stage: deploy
