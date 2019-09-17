@@ -8,6 +8,7 @@ stages:
 appTests:
   stage: test
   script:
+    - ./gradlew clean
     - ./gradlew cDAT testDebug
 
 deployRelease:
