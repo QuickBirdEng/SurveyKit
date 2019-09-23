@@ -25,10 +25,10 @@ android {
 dependencies {
     implementation(Deps.Kotlin.stdlib)
     api(Deps.Kotlin.coroutines)
-    api(Deps.Kotlin.androidCoroutines)
-    api(Deps.AndroidSupport.appCompat)
-    api(Deps.AndroidSupport.constraint)
-    api(Deps.lottie)
+    implementation(Deps.Kotlin.androidCoroutines)
+    implementation(Deps.AndroidSupport.appCompat)
+    implementation(Deps.AndroidSupport.constraint)
+    implementation(Deps.lottie)
 }
 
 project.configureLibraryPublication()

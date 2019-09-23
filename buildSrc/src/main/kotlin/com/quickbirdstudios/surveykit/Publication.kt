@@ -4,7 +4,9 @@ package com.quickbirdstudios.surveykit
 
 import Library
 import com.jfrog.bintray.gradle.BintrayExtension
+import groovy.util.Node
 import org.gradle.api.Project
+import org.gradle.api.artifacts.Dependency
 import org.gradle.api.publish.PublishingExtension
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.kotlin.dsl.get
@@ -35,17 +37,27 @@ internal fun Project.configureLibraryAarPublication() {
 
             pom.withXml {
                 asNode().appendNode("dependencies").apply {
+                    configurations["implementation"].dependencies.forEach { dependency ->
+                        val dependencyNode = appendNode("dependency")
+                        dependencyNode.appendDependency(dependency, scope = "runtime")
+                    }
                     configurations["api"].dependencies.forEach { dependency ->
                         val dependencyNode = appendNode("dependency")
-                        dependencyNode.appendNode("scope", "runtime")
-                        dependencyNode.appendNode("groupId", dependency.group)
-                        dependencyNode.appendNode("artifactId", dependency.name)
-                        dependencyNode.appendNode("version", dependency.version)
+                        dependencyNode.appendDependency(dependency)
                     }
                 }
             }
         }
     }
+}
+
+internal fun Node.appendDependency(dependency: Dependency, scope: String? = null) {
+    if (scope != null) {
+        appendNode("scope", scope)
+    }
+    appendNode("groupId", dependency.group)
+    appendNode("artifactId", dependency.name)
+    appendNode("version", dependency.version)
 }
 
 internal fun Project.configureBintrayForLibraryPublication() =
