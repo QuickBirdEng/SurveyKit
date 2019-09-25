@@ -10,7 +10,9 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 
 # Examples
 ###### Flow
+<p align="center">
 <img src="assets/gifs/survey-kit-demo.gif?raw=true" width="350">
+</p>
 
 ###### Screenshots
 
