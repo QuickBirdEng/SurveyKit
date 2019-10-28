@@ -25,14 +25,13 @@ class QuestionStep(
     override fun createView(context: Context, stepResult: StepResult?): QuestionView =
         when (answerFormat) {
             is AnswerFormat.TextAnswerFormat -> createTextQuestion(context, stepResult)
-            is AnswerFormat.SingleChoiceAnswerFormat -> createSingleChoiceQuestion(
-                context, stepResult
-            )
-            is AnswerFormat.MultipleChoiceAnswerFormat -> createMultipleChoiceQuestion(
-                context, stepResult
-            )
+            is AnswerFormat.SingleChoiceAnswerFormat ->
+                createSingleChoiceQuestion(context, stepResult)
+            is AnswerFormat.MultipleChoiceAnswerFormat ->
+                createMultipleChoiceQuestion(context, stepResult)
             is AnswerFormat.ScaleAnswerFormat -> createScaleQuestion(context, stepResult)
             is AnswerFormat.IntegerAnswerFormat -> createIntegerQuestion(context, stepResult)
+            is AnswerFormat.BooleanAnswerFormat -> createBooleanQuestion(context, stepResult)
         }
 
     //endregion
@@ -97,6 +96,18 @@ class QuestionStep(
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as AnswerFormat.IntegerAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? IntegerQuestionResult)?.answer
+        )
+
+    private fun createBooleanQuestion(context: Context, stepResult: StepResult?) =
+        BooleanQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            answerFormat = this.answerFormat as AnswerFormat.BooleanAnswerFormat,
+            preselected = (stepResult?.results?.firstOrNull() as? BooleanQuestionResult)?.answer
         )
 
     //endregion

@@ -49,11 +49,6 @@ internal class MultipleChoiceQuestionView(
 
     override fun isValidInput(): Boolean = isOptional || choicesContainer.isOneSelected()
 
-    //endregion
-
-
-    //region Private API
-
     override fun setupViews() {
         super.setupViews()
 
@@ -68,5 +63,6 @@ internal class MultipleChoiceQuestionView(
     }
 
     //endregion
+
 
 }

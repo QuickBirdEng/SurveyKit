@@ -37,6 +37,25 @@ sealed class AnswerFormat {
         val maximumLength: Int,
         val multipleLines: Boolean
     ) : AnswerFormat()
+
+    data class BooleanAnswerFormat(
+        @StringRes val positiveAnswerText: Int,
+        @StringRes val negativeAnswerText: Int,
+        val defaultValue: Result = Result.None
+    ) : AnswerFormat() {
+
+        enum class Result {
+            None, PositiveAnswer, NegativeAnswer;
+        }
+
+        val textChoices = listOf(TextChoice(positiveAnswerText), TextChoice(negativeAnswerText))
+
+        fun toResult(id: Int?) = when (id) {
+            positiveAnswerText -> Result.PositiveAnswer
+            negativeAnswerText -> Result.NegativeAnswer
+            else -> null
+        }
+    }
 }
 
 

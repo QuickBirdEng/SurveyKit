@@ -49,11 +49,6 @@ internal class IntegerQuestionView(
 
     override fun isValidInput(): Boolean = isOptional || questionAnswerView.field.text.isNotBlank()
 
-    //endregion
-
-
-    //region Private API
-
     override fun setupViews() {
         super.setupViews()
 
