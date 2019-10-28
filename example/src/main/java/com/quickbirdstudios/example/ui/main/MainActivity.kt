@@ -102,6 +102,15 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 )
             ),
             CustomStep(),
+            QuestionStep(
+                title = R.string.about_you_question_title,
+                text = R.string.about_you_question_text,
+                answerFormat = AnswerFormat.BooleanAnswerFormat(
+                    positiveAnswerText = R.string.how_fat_min,
+                    negativeAnswerText = R.string.how_fat_max,
+                    defaultValue = AnswerFormat.BooleanAnswerFormat.Result.NegativeAnswer
+                )
+            ),
             CompletionStep(
                 title = R.string.finish_question_title,
                 text = R.string.finish_question_text,

@@ -58,11 +58,7 @@ internal class SingleChoiceQuestion(
     override fun setupViews() {
         super.setupViews()
 
-        choicesContainer = content.add(
-            SingleChoicePart(
-                context
-            )
-        )
+        choicesContainer = content.add(SingleChoicePart(context))
         choicesContainer.options = answerFormat.textChoices
         choicesContainer.onCheckedChangeListener = { _, _ -> footer.canContinue = isValidInput() }
         choicesContainer.selected = preselected
