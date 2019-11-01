@@ -56,6 +56,21 @@ sealed class AnswerFormat {
             else -> null
         }
     }
+
+    data class ValuePickerAnswerFormat(
+        val choices: List<String>,
+        val defaultValue: String? = null
+    ) : AnswerFormat() {
+        init {
+            check(defaultValue == null || choices.contains(defaultValue)) {
+                throw IllegalStateException(
+                    "${ValuePickerAnswerFormat::class.simpleName}:" +
+                        "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
+                        "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
+                )
+            }
+        }
+    }
 }
 
 

@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Survey-Kit Test App</string>
     <string name="how_old_hint">Please enter your age</string>
+    <string name="value_picker_example_title">ValuePickerAnswerFormat example title text</string>
+    <string name="value_picker_example_text">ValuePickerAnswerFormat example text</string>
+    <string name="boolean_example_title">BooleanAnswerFormat example title</string>
+    <string name="boolean_example_text">BooleanAnswerFormat example text</string>
 </resources>
