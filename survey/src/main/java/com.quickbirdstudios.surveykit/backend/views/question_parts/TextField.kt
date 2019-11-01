@@ -15,12 +15,11 @@ import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
 internal open class TextField @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
-) : LinearLayout(context, attrs, defStyleRes),
-    StyleablePart {
+) : LinearLayout(context, attrs, defStyleRes), StyleablePart {
 
     override fun style(surveyTheme: SurveyTheme) {}
 
-    var field: EditText
+    val field: EditText
 
     init {
         val verticalPaddingEditText = context.px(

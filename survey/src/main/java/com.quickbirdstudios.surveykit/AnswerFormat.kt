@@ -59,35 +59,9 @@ sealed class AnswerFormat {
 }
 
 
-@Parcelize
+@Parcelize // TODO check if this is necessary
 data class TextChoice(
     @StringRes val text: Int,
     @StringRes val value: Int = text
 ) : Parcelable
 
-/*
-
-data class TimeAnswerFormat(val defaultHour: Int, val defaultMinute: Int) :
-    AnswerFormat()
-
-
-data class DateAnswerFormat(
-    val defaultYear: Int,
-    val defaultMonth: Int,
-    val defaultDay: Int
-) : AnswerFormat()
-
-
-class DateTimeAnswerFormat(
-    val defaultHour: Int,
-    val defaultMinute: Int,
-    val defaultYear: Int,
-    val defaultMonth: Int,
-    val defaultDay: Int
-) : AnswerFormat()
-
-data class BooleanAnswerFormat(val yesString: String, val noString: String) : AnswerFormat()
-
-
-
-*/
