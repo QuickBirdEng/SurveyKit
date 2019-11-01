@@ -103,12 +103,21 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
             ),
             CustomStep(),
             QuestionStep(
-                title = R.string.about_you_question_title,
-                text = R.string.about_you_question_text,
+                title = R.string.boolean_example_title,
+                text = R.string.boolean_example_text,
                 answerFormat = AnswerFormat.BooleanAnswerFormat(
                     positiveAnswerText = R.string.how_fat_min,
                     negativeAnswerText = R.string.how_fat_max,
                     defaultValue = AnswerFormat.BooleanAnswerFormat.Result.NegativeAnswer
+                )
+            ),
+            QuestionStep(
+                title = R.string.value_picker_example_title,
+                text = R.string.value_picker_example_text,
+                answerFormat = AnswerFormat.ValuePickerAnswerFormat(
+                    choices = (0..10).toList().map { it.toString() }
+                    ,
+                    defaultValue = 5.toString()
                 )
             ),
             CompletionStep(

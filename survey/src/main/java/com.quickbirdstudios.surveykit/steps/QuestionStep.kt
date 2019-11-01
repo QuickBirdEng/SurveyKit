@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.*
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.questions.*
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
@@ -24,14 +25,13 @@ class QuestionStep(
 
     override fun createView(context: Context, stepResult: StepResult?): QuestionView =
         when (answerFormat) {
-            is AnswerFormat.TextAnswerFormat -> createTextQuestion(context, stepResult)
-            is AnswerFormat.SingleChoiceAnswerFormat ->
-                createSingleChoiceQuestion(context, stepResult)
-            is AnswerFormat.MultipleChoiceAnswerFormat ->
-                createMultipleChoiceQuestion(context, stepResult)
-            is AnswerFormat.ScaleAnswerFormat -> createScaleQuestion(context, stepResult)
-            is AnswerFormat.IntegerAnswerFormat -> createIntegerQuestion(context, stepResult)
-            is AnswerFormat.BooleanAnswerFormat -> createBooleanQuestion(context, stepResult)
+            is TextAnswerFormat -> createTextQuestion(context, stepResult)
+            is SingleChoiceAnswerFormat -> createSingleChoiceQuestion(context, stepResult)
+            is MultipleChoiceAnswerFormat -> createMultipleChoiceQuestion(context, stepResult)
+            is ScaleAnswerFormat -> createScaleQuestion(context, stepResult)
+            is IntegerAnswerFormat -> createIntegerQuestion(context, stepResult)
+            is BooleanAnswerFormat -> createBooleanQuestion(context, stepResult)
+            is ValuePickerAnswerFormat -> createValuePickerQuestion(context, stepResult)
         }
 
     //endregion
@@ -58,7 +58,7 @@ class QuestionStep(
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            answerFormat = this.answerFormat as AnswerFormat.SingleChoiceAnswerFormat,
+            answerFormat = this.answerFormat as SingleChoiceAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? SingleChoiceQuestionResult)?.answer
         )
 
@@ -70,7 +70,7 @@ class QuestionStep(
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            answerFormat = this.answerFormat as AnswerFormat.MultipleChoiceAnswerFormat,
+            answerFormat = this.answerFormat as MultipleChoiceAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? MultipleChoiceQuestionResult)?.answer
         )
 
@@ -82,7 +82,7 @@ class QuestionStep(
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            answerFormat = this.answerFormat as AnswerFormat.ScaleAnswerFormat,
+            answerFormat = this.answerFormat as ScaleAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? ScaleQuestionResult)?.answer
         )
 
@@ -94,7 +94,7 @@ class QuestionStep(
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            answerFormat = this.answerFormat as AnswerFormat.IntegerAnswerFormat,
+            answerFormat = this.answerFormat as IntegerAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? IntegerQuestionResult)?.answer
         )
 
@@ -106,8 +106,20 @@ class QuestionStep(
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            answerFormat = this.answerFormat as AnswerFormat.BooleanAnswerFormat,
+            answerFormat = this.answerFormat as BooleanAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? BooleanQuestionResult)?.answer
+        )
+
+    private fun createValuePickerQuestion(context: Context, stepResult: StepResult?) =
+        ValuePickerQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            answerFormat = this.answerFormat as ValuePickerAnswerFormat,
+            preselected = (stepResult?.results?.firstOrNull() as? ValuePickerQuestionResult)?.answer
         )
 
     //endregion
