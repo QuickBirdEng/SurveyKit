@@ -49,6 +49,7 @@ class QuestionStep(
             text = text,
             nextButtonText = nextButton,
             isOptional = isOptional,
+            answerFormat = this.answerFormat as TextAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? TextQuestionResult)?.answer
         )
 

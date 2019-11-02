@@ -55,8 +55,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 title = R.string.about_you_question_title,
                 text = R.string.about_you_question_text,
                 answerFormat = AnswerFormat.TextAnswerFormat(
-                    multipleLines = true,
-                    maximumLength = 100
+                    maxLines = 5
                 )
             ),
             QuestionStep(
