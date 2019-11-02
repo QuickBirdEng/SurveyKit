@@ -9,4 +9,6 @@
     <string name="date_picker_text">Date Picker text</string>
     <string name="time_picker_title">Time Picker title</string>
     <string name="time_picker_text">Time Picker text</string>
+    <string name="email_question_text">Email question text</string>
+    <string name="email_question_title">Email question title</string>
 </resources>
