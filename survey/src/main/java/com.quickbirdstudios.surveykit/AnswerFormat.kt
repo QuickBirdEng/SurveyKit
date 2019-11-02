@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 sealed class AnswerFormat {
     data class IntegerAnswerFormat(
@@ -69,6 +70,43 @@ sealed class AnswerFormat {
                         "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
                 )
             }
+        }
+    }
+
+    data class DateAnswerFormat(val defaultValue: Date?) : AnswerFormat() {
+        @Parcelize
+        data class Date(val day: Int, val month: Int, val year: Int) : Parcelable {
+            override fun toString(): String {
+                return "${this.day}:${this.month}:${this.year}"
+            }
+        }
+
+        companion object {
+            operator fun invoke(): DateAnswerFormat = DateAnswerFormat(
+                defaultValue = Date(
+                    day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
+                    month = Calendar.getInstance().get(Calendar.MONTH),
+                    year = Calendar.getInstance().get(Calendar.YEAR)
+                )
+            )
+        }
+    }
+
+    data class TimeAnswerFormat(val defaultValue: Time?) : AnswerFormat() {
+        @Parcelize
+        data class Time(val hour: Int, val minute: Int) : Parcelable {
+            override fun toString(): String {
+                return "${this.hour}:${this.minute}"
+            }
+        }
+
+        companion object {
+            operator fun invoke(): TimeAnswerFormat = TimeAnswerFormat(
+                defaultValue = Time(
+                    hour = Calendar.getInstance().get(Calendar.HOUR),
+                    minute = Calendar.getInstance().get(Calendar.MINUTE)
+                )
+            )
         }
     }
 }

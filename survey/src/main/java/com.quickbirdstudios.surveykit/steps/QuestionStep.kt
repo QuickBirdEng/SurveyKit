@@ -32,6 +32,8 @@ class QuestionStep(
             is IntegerAnswerFormat -> createIntegerQuestion(context, stepResult)
             is BooleanAnswerFormat -> createBooleanQuestion(context, stepResult)
             is ValuePickerAnswerFormat -> createValuePickerQuestion(context, stepResult)
+            is DateAnswerFormat -> createDatePickerQuestion(context, stepResult)
+            is TimeAnswerFormat -> createTimePickerQuestion(context, stepResult)
         }
 
     //endregion
@@ -120,6 +122,30 @@ class QuestionStep(
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as ValuePickerAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? ValuePickerQuestionResult)?.answer
+        )
+
+    private fun createDatePickerQuestion(context: Context, stepResult: StepResult?) =
+        DatePickerQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            answerFormat = this.answerFormat as DateAnswerFormat,
+            preselected = (stepResult?.results?.firstOrNull() as? DateQuestionResult)?.answer
+        )
+
+    private fun createTimePickerQuestion(context: Context, stepResult: StepResult?) =
+        TimePickerQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            answerFormat = this.answerFormat as TimeAnswerFormat,
+            preselected = (stepResult?.results?.firstOrNull() as? TimeQuestionResult)?.answer
         )
 
     //endregion

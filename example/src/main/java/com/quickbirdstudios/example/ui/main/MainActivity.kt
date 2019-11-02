@@ -120,6 +120,16 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                     defaultValue = 5.toString()
                 )
             ),
+            QuestionStep(
+                title = R.string.date_picker_title,
+                text = R.string.date_picker_text,
+                answerFormat = AnswerFormat.DateAnswerFormat()
+            ),
+            QuestionStep(
+                title = R.string.time_picker_title,
+                text = R.string.time_picker_text,
+                answerFormat = AnswerFormat.TimeAnswerFormat()
+            ),
             CompletionStep(
                 title = R.string.finish_question_title,
                 text = R.string.finish_question_text,
