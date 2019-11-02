@@ -30,7 +30,8 @@ sealed class AnswerFormat {
         @StringRes val maximumValueDescription: Int,
         @StringRes val minimumValueDescription: Int
     ) : AnswerFormat() {
-        enum class Orientation { Horizontal, Vertical; }
+        // TODO when creating the scale part anew, also create Vertical orientation
+        enum class Orientation { Horizontal }
     }
 
 
