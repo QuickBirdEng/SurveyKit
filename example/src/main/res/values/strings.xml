@@ -5,4 +5,8 @@
     <string name="value_picker_example_text">ValuePickerAnswerFormat example text</string>
     <string name="boolean_example_title">BooleanAnswerFormat example title</string>
     <string name="boolean_example_text">BooleanAnswerFormat example text</string>
+    <string name="date_picker_title">Date Picker title</string>
+    <string name="date_picker_text">Date Picker text</string>
+    <string name="time_picker_title">Time Picker title</string>
+    <string name="time_picker_text">Time Picker text</string>
 </resources>
