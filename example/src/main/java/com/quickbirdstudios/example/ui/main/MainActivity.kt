@@ -129,6 +129,11 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 text = R.string.time_picker_text,
                 answerFormat = AnswerFormat.TimeAnswerFormat()
             ),
+            QuestionStep(
+                title = R.string.email_question_title,
+                text = R.string.email_question_text,
+                answerFormat = AnswerFormat.EmailAnswerFormat()
+            ),
             CompletionStep(
                 title = R.string.finish_question_title,
                 text = R.string.finish_question_text,

@@ -5,6 +5,7 @@ import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import kotlinx.android.parcel.Parcelize
 import java.util.*
+import java.util.regex.Pattern
 
 sealed class AnswerFormat {
 
@@ -118,6 +119,15 @@ sealed class AnswerFormat {
             )
         }
     }
+
+
+    data class EmailAnswerFormat(@StringRes val hintText: Int? = null) : AnswerFormat() {
+        val isValid: (String) -> Boolean = { email ->
+            val pattern = Pattern.compile("""^(.+)@(.+)\..+$""")
+            pattern.matcher(email).matches()
+        }
+    }
+
 }
 
 

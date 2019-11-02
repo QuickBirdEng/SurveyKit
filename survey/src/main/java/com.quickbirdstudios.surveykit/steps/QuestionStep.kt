@@ -34,6 +34,7 @@ class QuestionStep(
             is ValuePickerAnswerFormat -> createValuePickerQuestion(context, stepResult)
             is DateAnswerFormat -> createDatePickerQuestion(context, stepResult)
             is TimeAnswerFormat -> createTimePickerQuestion(context, stepResult)
+            is EmailAnswerFormat -> createEmailQuestion(context, stepResult)
         }
 
     //endregion
@@ -148,6 +149,19 @@ class QuestionStep(
             answerFormat = this.answerFormat as TimeAnswerFormat,
             preselected = (stepResult?.results?.firstOrNull() as? TimeQuestionResult)?.answer
         )
+
+    private fun createEmailQuestion(context: Context, stepResult: StepResult?) =
+        EmailQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            answerFormat = this.answerFormat as EmailAnswerFormat,
+            preselected = (stepResult?.results?.firstOrNull() as? EmailQuestionResult)?.answer
+        )
+
 
     //endregion
 
