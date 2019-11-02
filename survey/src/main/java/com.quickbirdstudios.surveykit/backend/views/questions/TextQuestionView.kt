@@ -52,11 +52,6 @@ internal class TextQuestionView(
         return questionAnswerView.field.text.isNotBlank()
     }
 
-    //endregion
-
-
-    //region Private API
-
     override fun setupViews() {
         super.setupViews()
 

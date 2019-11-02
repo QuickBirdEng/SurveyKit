@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 sealed class AnswerFormat {
+
     data class IntegerAnswerFormat(
         val defaultValue: Int? = null,
         @StringRes val hint: Int = R.string.empty
@@ -17,9 +18,11 @@ sealed class AnswerFormat {
         val textChoices: List<TextChoice>
     ) : AnswerFormat()
 
+
     data class MultipleChoiceAnswerFormat(
         val textChoices: List<TextChoice>
     ) : AnswerFormat()
+
 
     data class ScaleAnswerFormat(
         val maximumValue: Int,
@@ -41,6 +44,7 @@ sealed class AnswerFormat {
         val isValid: ((String) -> Boolean)? = null
     ) : AnswerFormat()
 
+
     data class BooleanAnswerFormat(
         @StringRes val positiveAnswerText: Int,
         @StringRes val negativeAnswerText: Int,
@@ -60,6 +64,7 @@ sealed class AnswerFormat {
         }
     }
 
+
     data class ValuePickerAnswerFormat(
         val choices: List<String>,
         val defaultValue: String? = null
@@ -74,6 +79,7 @@ sealed class AnswerFormat {
             }
         }
     }
+
 
     data class DateAnswerFormat(val defaultValue: Date?) : AnswerFormat() {
         @Parcelize
@@ -93,6 +99,7 @@ sealed class AnswerFormat {
             )
         }
     }
+
 
     data class TimeAnswerFormat(val defaultValue: Time?) : AnswerFormat() {
         @Parcelize
@@ -114,7 +121,7 @@ sealed class AnswerFormat {
 }
 
 
-@Parcelize // TODO check if this is necessary
+@Parcelize // necessary because it is used in QuestionResults (Single and Multiple)
 data class TextChoice(
     @StringRes val text: Int,
     @StringRes val value: Int = text
