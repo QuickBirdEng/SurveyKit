@@ -36,8 +36,9 @@ sealed class AnswerFormat {
 
 
     data class TextAnswerFormat(
-        val maximumLength: Int,
-        val multipleLines: Boolean
+        val maxLines: Int,
+        @StringRes val hintText: Int? = null,
+        val isValid: ((String) -> Boolean)? = null
     ) : AnswerFormat()
 
     data class BooleanAnswerFormat(
