@@ -291,17 +291,17 @@ The goal is to make both libraries match in terms of their functionality.
 | Instruction               | ✅                     | ✅             |
 | Single selection          | ✅                     | ✅             |
 | Multi selection           | ✅                     | ✅             |
-| Boolean answer            | ✅                     | x              |
-| Value picker              | ✅                     | x              |
+| Boolean answer            | ✅                     | ✅             |
+| Value picker              | ✅                     | ✅             |
 | Image choice              | ✅                     | x              |
 | Numeric answer            | ✅                     | ✅             |
-| Time of day               | ✅                     | x              |
-| Date selection            | ✅                     | x              |
+| Time of day               | ✅                     | ✅             |
+| Date selection            | ✅                     | ✅             |
 | Text answer (unlimited)   | ✅                     | ✅             |
 | Text answer (limited)     | ✅                     | ✅             |
-| Text answer (validated)   | ✅                     | x              |
+| Text answer (validated)   | ✅                     | ✅             |
 | Scale answer              | ✅                     | ✅             |
-| Email answer              | ✅                     | x              |
+| Email answer              | ✅                     | ✅             |
 | Location answer           | ✅                     | x              |
 
 # 👤 Author
