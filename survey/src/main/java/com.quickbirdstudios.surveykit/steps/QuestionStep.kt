@@ -51,7 +51,7 @@ class QuestionStep(
         )
 
     private fun createSingleChoiceQuestion(context: Context, stepResult: StepResult?) =
-        SingleChoiceQuestion(
+        SingleChoiceQuestionView(
             context = context,
             id = id,
             title = title,

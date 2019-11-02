@@ -11,7 +11,7 @@ import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.SingleChoiceQuestionResult
 
-internal class SingleChoiceQuestion(
+internal class SingleChoiceQuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
