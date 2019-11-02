@@ -41,7 +41,7 @@ internal class ValuePickerPart @JvmOverloads constructor(
     //region Overrides
 
     override fun style(surveyTheme: SurveyTheme) {
-        // TODO coloring
+        // TODO coloring if any
     }
 
     //endregion
