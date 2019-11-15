@@ -293,7 +293,7 @@ The goal is to make both libraries match in terms of their functionality.
 | Multi selection           | ✅                     | ✅             |
 | Boolean answer            | ✅                     | ✅             |
 | Value picker              | ✅                     | ✅             |
-| Image choice              | ✅                     | x              |
+| Image choice              | ✅                     | ✅             |
 | Numeric answer            | ✅                     | ✅             |
 | Time of day               | ✅                     | ✅             |
 | Date selection            | ✅                     | ✅             |

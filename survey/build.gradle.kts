@@ -28,6 +28,7 @@ dependencies {
     implementation(Deps.Kotlin.androidCoroutines)
     implementation(Deps.AndroidSupport.appCompat)
     implementation(Deps.AndroidSupport.constraint)
+    implementation(Deps.AndroidSupport.recyclerView)
     implementation(Deps.lottie)
 }
 

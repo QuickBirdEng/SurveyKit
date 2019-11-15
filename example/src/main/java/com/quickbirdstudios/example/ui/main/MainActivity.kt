@@ -134,6 +134,34 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 text = R.string.email_question_text,
                 answerFormat = AnswerFormat.EmailAnswerFormat()
             ),
+            QuestionStep(
+                title = R.string.image_selector_question_title,
+                text = R.string.image_selector_question_text,
+                answerFormat = AnswerFormat.ImageSelectorFormat(
+                    numberOfColumns = 5,
+                    defaultSelectedImagesIndices = listOf(1, 3),
+                    imageChoiceList = listOf(
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example3),
+                        ImageChoice(R.drawable.example3),
+                        ImageChoice(R.drawable.example3),
+                        ImageChoice(R.drawable.example3),
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example2),
+                        ImageChoice(R.drawable.example3),
+                        ImageChoice(R.drawable.example3),
+                        ImageChoice(R.drawable.example3),
+                        ImageChoice(R.drawable.example3)
+                    )
+                )
+            ),
             CompletionStep(
                 title = R.string.finish_question_title,
                 text = R.string.finish_question_text,

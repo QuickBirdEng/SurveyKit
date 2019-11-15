@@ -8,6 +8,7 @@ import com.quickbirdstudios.surveykit.AnswerFormat.*
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.questions.*
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
+import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.result.question_results.*
 
@@ -35,6 +36,7 @@ class QuestionStep(
             is DateAnswerFormat -> createDatePickerQuestion(context, stepResult)
             is TimeAnswerFormat -> createTimePickerQuestion(context, stepResult)
             is EmailAnswerFormat -> createEmailQuestion(context, stepResult)
+            is ImageSelectorFormat -> createImageSelectorQuestion(context, stepResult)
         }
 
     //endregion
@@ -51,7 +53,7 @@ class QuestionStep(
             nextButtonText = nextButton,
             isOptional = isOptional,
             answerFormat = this.answerFormat as TextAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? TextQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<TextQuestionResult>()?.answer
         )
 
     private fun createSingleChoiceQuestion(context: Context, stepResult: StepResult?) =
@@ -63,7 +65,7 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as SingleChoiceAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? SingleChoiceQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<SingleChoiceQuestionResult>()?.answer
         )
 
     private fun createMultipleChoiceQuestion(context: Context, stepResult: StepResult?) =
@@ -75,7 +77,7 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as MultipleChoiceAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? MultipleChoiceQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<MultipleChoiceQuestionResult>()?.answer
         )
 
     private fun createScaleQuestion(context: Context, stepResult: StepResult?) =
@@ -87,7 +89,7 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as ScaleAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? ScaleQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<ScaleQuestionResult>()?.answer
         )
 
     private fun createIntegerQuestion(context: Context, stepResult: StepResult?) =
@@ -99,7 +101,7 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as IntegerAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? IntegerQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<IntegerQuestionResult>()?.answer
         )
 
     private fun createBooleanQuestion(context: Context, stepResult: StepResult?) =
@@ -111,7 +113,7 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as BooleanAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? BooleanQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<BooleanQuestionResult>()?.answer
         )
 
     private fun createValuePickerQuestion(context: Context, stepResult: StepResult?) =
@@ -123,7 +125,7 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as ValuePickerAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? ValuePickerQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<ValuePickerQuestionResult>()?.answer
         )
 
     private fun createDatePickerQuestion(context: Context, stepResult: StepResult?) =
@@ -135,7 +137,7 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as DateAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? DateQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<DateQuestionResult>()?.answer
         )
 
     private fun createTimePickerQuestion(context: Context, stepResult: StepResult?) =
@@ -147,7 +149,7 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as TimeAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? TimeQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<TimeQuestionResult>()?.answer
         )
 
     private fun createEmailQuestion(context: Context, stepResult: StepResult?) =
@@ -159,11 +161,30 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as EmailAnswerFormat,
-            preselected = (stepResult?.results?.firstOrNull() as? EmailQuestionResult)?.answer
+            preselected = stepResult.toSpecificResult<EmailQuestionResult>()?.answer
+        )
+
+    private fun createImageSelectorQuestion(context: Context, stepResult: StepResult?) =
+        ImageSelectorQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            answerFormat = this.answerFormat as ImageSelectorFormat,
+            preselected = stepResult.toSpecificResult<ImageSelectorResult>()?.answer
         )
 
 
     //endregion
 
+    //region Private Helper
+
+    @Suppress("UNCHECKED_CAST")
+    private fun <R : QuestionResult> StepResult?.toSpecificResult(): R? =
+        (this?.results?.firstOrNull() as? R)
+
+    //endregion
 
 }

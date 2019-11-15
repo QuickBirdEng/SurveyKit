@@ -8,6 +8,7 @@ object Versions {
         const val appCompat = "1.0.0"
         const val constraintLayout = "1.1.3"
         const val annotation = "1.0.0"
+        const val recyclerView = "1.0.0"
     }
 }
 
@@ -27,7 +28,8 @@ object Deps {
     object AndroidSupport {
         const val appCompat = "androidx.appcompat:appcompat:${Versions.AndroidSupport.appCompat}"
         const val constraint = "androidx.constraintlayout:constraintlayout:${Versions.AndroidSupport.constraintLayout}"
-        const val annotations = "androidx.annotation:annotation:${Versions.AndroidSupport.annotation}"
+        const val recyclerView =
+            "androidx.recyclerview:recyclerview:${Versions.AndroidSupport.recyclerView}"
     }
 
     object Test {
