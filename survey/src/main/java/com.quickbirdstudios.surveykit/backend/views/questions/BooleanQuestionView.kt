@@ -52,14 +52,12 @@ internal class BooleanQuestionView(
     override fun setupViews() {
         super.setupViews()
 
-        if (preselected == null) {
-            preselected = answerFormat.defaultValue
-        }
+        val selected = preselected ?: answerFormat.defaultValue
 
         booleanAnswerPart = content.add(SingleChoicePart(context))
         booleanAnswerPart.options = answerFormat.textChoices
         booleanAnswerPart.onCheckedChangeListener = { _, _ -> footer.canContinue = isValidInput() }
-        booleanAnswerPart.selected = preselected.toSelectedTextChoice(answerFormat)
+        booleanAnswerPart.selected = selected.toSelectedTextChoice(answerFormat)
     }
 
     //endregion

@@ -1,6 +1,7 @@
 package com.quickbirdstudios.surveykit
 
 import android.os.Parcelable
+import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import kotlinx.android.parcel.Parcelize
@@ -128,6 +129,17 @@ sealed class AnswerFormat {
         }
     }
 
+
+    data class ImageSelectorFormat(
+        val numberOfColumns: Int = 4,
+        val imageChoiceList: List<ImageChoice>,
+        val defaultSelectedImagesIndices: List<Int> = emptyList()
+    ) : AnswerFormat() {
+        init {
+            require(numberOfColumns in 1..5) { "Number of columns supported: 1-5" }
+        }
+    }
+
 }
 
 
@@ -136,4 +148,7 @@ data class TextChoice(
     @StringRes val text: Int,
     @StringRes val value: Int = text
 ) : Parcelable
+
+@Parcelize
+data class ImageChoice(@DrawableRes val resourceId: Int) : Parcelable
 

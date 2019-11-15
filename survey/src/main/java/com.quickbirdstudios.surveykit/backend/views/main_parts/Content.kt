@@ -4,13 +4,14 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
+import android.widget.LinearLayout
+import androidx.core.widget.NestedScrollView
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 
 class Content @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
-) : ScrollView(context, attrs, defStyleRes), StyleablePart {
+) : NestedScrollView(context, attrs, defStyleRes), StyleablePart {
 
 
     //region Member
@@ -49,6 +50,12 @@ class Content @JvmOverloads constructor(
     //endregion
 
     init {
+        this.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            0
+        ).apply {
+            this.weight = 1f
+        }
         footerContainer.addView(footer)
     }
 }

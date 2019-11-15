@@ -24,4 +24,5 @@
     <dimen name="scale_part_description_text_size">20sp</dimen>
     <dimen name="scale_part_selected_text_size">32sp</dimen>
     <dimen name="scale_part_text_padding">4dp</dimen>
+    <dimen name="image_selection_colored_border">4dp</dimen>
 </resources>
