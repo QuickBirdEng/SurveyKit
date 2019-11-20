@@ -8,7 +8,6 @@ import com.quickbirdstudios.surveykit.backend.views.question_parts.AnimatedCheck
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.question_results.FinishQuestionResult
 
-//TODO pass title and text into constructor since it can not be changed afterwards.
 class FinishQuestionView(
     context: Context,
     id: StepIdentifier = StepIdentifier(),
@@ -21,8 +20,6 @@ class FinishQuestionView(
 
     override fun createResults() =
         FinishQuestionResult(id, startDate)
-
-    override fun setState() {}
 
     override fun isValidInput() = true
 

@@ -23,7 +23,7 @@ abstract class QuestionView(
     @StringRes private val title: Int?,
     @StringRes private val text: Int?,
     @StringRes private val nextButtonText: Int
-) : StepView(context, id, isOptional), ViewActions, Stateful {
+) : StepView(context, id, isOptional), ViewActions {
 
     //region Members
 
@@ -50,8 +50,6 @@ abstract class QuestionView(
     //region Abstracts
 
     abstract override fun createResults(): QuestionResult
-
-    override var state: QuestionResult? = null
 
     abstract override fun isValidInput(): Boolean
 
@@ -88,8 +86,6 @@ abstract class QuestionView(
         footer.onSkip = { onSkipListener() }
         footer.questionCanBeSkipped = isOptional
         footer.setContinueButtonText(nextButtonText)
-
-        setState()
     }
 
     //endregion

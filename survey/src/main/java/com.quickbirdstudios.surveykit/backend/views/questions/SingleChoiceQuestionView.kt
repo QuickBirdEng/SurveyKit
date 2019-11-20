@@ -46,8 +46,6 @@ internal class SingleChoiceQuestionView(
         )
     }
 
-    override fun setState() {}
-
     override fun isValidInput(): Boolean = choicesContainer.isOneSelected()
 
     //endregion

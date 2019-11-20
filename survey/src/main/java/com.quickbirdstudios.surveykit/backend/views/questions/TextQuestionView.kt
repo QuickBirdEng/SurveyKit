@@ -40,11 +40,6 @@ internal class TextQuestionView(
             stringIdentifier = questionAnswerView.field.text.toString()
         )
 
-    override fun setState() {
-        val textState = (state as? TextQuestionResult)?.answer ?: return
-        questionAnswerView.field.setText(textState)
-    }
-
     override fun isValidInput(): Boolean {
         answerFormat.isValid?.let { isValidCheck ->
             if (!isValidCheck(questionAnswerView.field.text.toString())) return false

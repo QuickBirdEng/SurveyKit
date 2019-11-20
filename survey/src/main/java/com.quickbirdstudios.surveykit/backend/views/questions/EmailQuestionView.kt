@@ -41,8 +41,6 @@ internal class EmailQuestionView(
         return answerFormat.isValid(emailField.field.text.toString())
     }
 
-    override fun setState() {}
-
     override fun setupViews() {
         super.setupViews()
 
