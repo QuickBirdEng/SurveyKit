@@ -9,6 +9,7 @@ import android.widget.TimePicker
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
+@Suppress("DEPRECATION")
 internal class TimePickerPart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : LinearLayout(context, attrs), StyleablePart {
