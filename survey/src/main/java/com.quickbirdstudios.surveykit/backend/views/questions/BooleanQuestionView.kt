@@ -47,8 +47,6 @@ internal class BooleanQuestionView(
 
     override fun isValidInput(): Boolean = booleanAnswerPart.isOneSelected()
 
-    override fun setState() { }
-
     override fun setupViews() {
         super.setupViews()
 

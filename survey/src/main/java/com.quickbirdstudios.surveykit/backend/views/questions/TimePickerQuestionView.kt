@@ -37,8 +37,6 @@ internal class TimePickerQuestionView(
 
     override fun isValidInput(): Boolean = true
 
-    override fun setState() { }
-
     override fun setupViews() {
         super.setupViews()
 

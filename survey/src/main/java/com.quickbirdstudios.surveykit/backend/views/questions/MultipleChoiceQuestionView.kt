@@ -41,12 +41,6 @@ internal class MultipleChoiceQuestionView(
                 .joinToString(",") { context.getString(it) }
         )
 
-    override fun setState() {
-        val multipleChoiceQuestionResult =
-            (state as? MultipleChoiceQuestionResult)?.answer ?: return
-        choicesContainer.selected = multipleChoiceQuestionResult
-    }
-
     override fun isValidInput(): Boolean = isOptional || choicesContainer.isOneSelected()
 
     override fun setupViews() {

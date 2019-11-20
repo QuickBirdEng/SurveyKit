@@ -38,11 +38,6 @@ internal class ScaleQuestionView(
             stringIdentifier = scalePart.selected.toString()
         )
 
-    override fun setState() {
-        val scaleState = (state as? ScaleQuestionResult)?.answer ?: return
-        scalePart.selected = scaleState
-    }
-
     override fun isValidInput(): Boolean = true
 
     //endregion

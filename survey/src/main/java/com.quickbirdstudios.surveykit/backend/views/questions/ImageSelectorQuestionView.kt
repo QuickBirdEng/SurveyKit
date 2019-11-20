@@ -37,8 +37,6 @@ internal class ImageSelectorQuestionView(
 
     override fun isValidInput(): Boolean = imageSelectorPart.isOneSelected()
 
-    override fun setState() {}
-
     override fun setupViews() {
         super.setupViews()
 

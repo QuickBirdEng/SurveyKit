@@ -29,8 +29,5 @@ class IntroQuestionView(
         footer.questionCanBeSkipped = false
     }
 
-
-    override fun setState() = Unit
-
     //endregion
 }

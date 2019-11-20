@@ -42,11 +42,6 @@ internal class IntegerQuestionView(
             stringIdentifier = questionAnswerView.field.text.toString()
         )
 
-    override fun setState() {
-        val intState = (state as? IntegerQuestionResult)?.answer ?: return
-        questionAnswerView.field.setText(intState)
-    }
-
     override fun isValidInput(): Boolean = isOptional || questionAnswerView.field.text.isNotBlank()
 
     override fun setupViews() {
