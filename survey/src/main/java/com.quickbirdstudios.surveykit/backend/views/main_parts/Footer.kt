@@ -18,8 +18,7 @@ import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
 
 class Footer @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
-) : Toolbar(context, attrs, defStyleRes),
-    StyleablePart {
+) : Toolbar(context, attrs, defStyleRes), StyleablePart {
 
 
     //region Public API
