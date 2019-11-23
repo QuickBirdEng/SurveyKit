@@ -7,7 +7,7 @@ import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
-import com.quickbirdstudios.surveykit.backend.views.question_parts.IntegerTextField
+import com.quickbirdstudios.surveykit.backend.views.question_parts.IntegerTextFieldPart
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.IntegerQuestionResult
@@ -27,7 +27,7 @@ internal class IntegerQuestionView(
 
     //region Members
 
-    private lateinit var questionAnswerView: IntegerTextField
+    private lateinit var questionAnswerView: IntegerTextFieldPart
 
     //endregion
 
@@ -47,7 +47,7 @@ internal class IntegerQuestionView(
     override fun setupViews() {
         super.setupViews()
 
-        questionAnswerView = content.add(IntegerTextField.withHint(context, hintText))
+        questionAnswerView = content.add(IntegerTextFieldPart.withHint(context, hintText))
         questionAnswerView.field.gravity = Gravity.CENTER
         questionAnswerView.field.setHint(answerFormat.hint)
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }

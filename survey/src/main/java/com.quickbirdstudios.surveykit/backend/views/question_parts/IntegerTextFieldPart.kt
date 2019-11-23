@@ -5,7 +5,7 @@ import android.text.InputType
 import android.view.View
 import androidx.annotation.StringRes
 
-internal class IntegerTextField(context: Context) : TextField(context) {
+internal class IntegerTextFieldPart(context: Context) : TextFieldPart(context) {
 
     init {
         this.field.inputType = InputType.TYPE_CLASS_NUMBER
@@ -13,7 +13,7 @@ internal class IntegerTextField(context: Context) : TextField(context) {
     }
 
     companion object {
-        fun withHint(context: Context, @StringRes hint: Int) = IntegerTextField(
+        fun withHint(context: Context, @StringRes hint: Int) = IntegerTextFieldPart(
             context
         ).apply {
             field.hint = context.getString(hint)

@@ -12,7 +12,7 @@ import com.quickbirdstudios.surveykit.backend.views.main_parts.Content
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Dialogs
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Footer
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Header
-import com.quickbirdstudios.surveykit.backend.views.question_parts.InfoText
+import com.quickbirdstudios.surveykit.backend.views.question_parts.InfoTextPart
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import java.util.*
 
@@ -60,8 +60,8 @@ abstract class QuestionView(
 
     @CallSuper
     override fun setupViews() {
-        title?.let { InfoText.title(context, it) }?.let(content::add)
-        text?.let { InfoText.info(context, it) }?.let(content::add)
+        title?.let { InfoTextPart.title(context, it) }?.let(content::add)
+        text?.let { InfoTextPart.info(context, it) }?.let(content::add)
 
         header.onBack = { onBackListener(createResults()) }
         //TODO add translations and move out of this class
