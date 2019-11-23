@@ -6,7 +6,7 @@ import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
-import com.quickbirdstudios.surveykit.backend.views.question_parts.TextField
+import com.quickbirdstudios.surveykit.backend.views.question_parts.TextFieldPart
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.TextQuestionResult
@@ -25,7 +25,7 @@ internal class TextQuestionView(
 
     //region Members
 
-    private lateinit var questionAnswerView: TextField
+    private lateinit var questionAnswerView: TextFieldPart
 
     //endregion
 
@@ -51,7 +51,7 @@ internal class TextQuestionView(
         super.setupViews()
 
         questionAnswerView = content.add(
-            TextField.withHint(context, answerFormat.hintText ?: R.string.empty)
+            TextFieldPart.withHint(context, answerFormat.hintText ?: R.string.empty)
         )
         questionAnswerView.field.maxLines = answerFormat.maxLines
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }

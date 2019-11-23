@@ -13,7 +13,7 @@ import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
-internal open class TextField @JvmOverloads constructor(
+internal open class TextFieldPart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
 ) : LinearLayout(context, attrs, defStyleRes), StyleablePart {
 
@@ -58,7 +58,7 @@ internal open class TextField @JvmOverloads constructor(
     }
 
     companion object {
-        fun withHint(context: Context, @StringRes hint: Int) = TextField(
+        fun withHint(context: Context, @StringRes hint: Int) = TextFieldPart(
             context
         ).apply {
             field.hint = context.getString(hint)

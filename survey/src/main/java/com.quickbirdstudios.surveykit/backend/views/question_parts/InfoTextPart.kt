@@ -4,18 +4,17 @@ import android.content.Context
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.annotation.DimenRes
 import androidx.annotation.StringRes
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
-internal class InfoText @JvmOverloads constructor(
+internal class InfoTextPart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
-) : TextView(context, attrs, defStyleRes),
-    StyleablePart {
+) : AppCompatTextView(context, attrs, defStyleRes), StyleablePart {
 
     init {
         this.apply {
@@ -36,7 +35,7 @@ internal class InfoText @JvmOverloads constructor(
     }
 
     companion object {
-        fun title(context: Context, @StringRes text: Int) = InfoText(
+        fun title(context: Context, @StringRes text: Int) = InfoTextPart(
             context
         ).apply {
             setText(text)
@@ -48,7 +47,7 @@ internal class InfoText @JvmOverloads constructor(
             setPadding(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding)
         }
 
-        fun info(context: Context, @StringRes text: Int) = InfoText(
+        fun info(context: Context, @StringRes text: Int) = InfoTextPart(
             context
         ).apply {
             setText(text)
@@ -60,7 +59,7 @@ internal class InfoText @JvmOverloads constructor(
             setPadding(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding)
         }
 
-        fun question(context: Context, @StringRes text: Int) = InfoText(
+        fun question(context: Context, @StringRes text: Int) = InfoTextPart(
             context
         ).apply {
             setText(text)

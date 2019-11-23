@@ -6,7 +6,7 @@ import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
-import com.quickbirdstudios.surveykit.backend.views.question_parts.TextField
+import com.quickbirdstudios.surveykit.backend.views.question_parts.TextFieldPart
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.EmailQuestionResult
@@ -24,7 +24,7 @@ internal class EmailQuestionView(
 
     //region Members
 
-    private lateinit var emailField: TextField
+    private lateinit var emailField: TextFieldPart
 
     //endregion
 
@@ -45,7 +45,7 @@ internal class EmailQuestionView(
         super.setupViews()
 
         emailField = content.add(
-            TextField.withHint(context, answerFormat.hintText ?: R.string.empty)
+            TextFieldPart.withHint(context, answerFormat.hintText ?: R.string.empty)
         )
         emailField.field.maxLines = 1
         emailField.field.textAlignment = TEXT_ALIGNMENT_CENTER
