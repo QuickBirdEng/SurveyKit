@@ -106,18 +106,19 @@ private class BackgroundCreationHelper {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 layerDrawable.setLayerGravity(1, Gravity.CENTER_VERTICAL or Gravity.END)
                 layerDrawable.setLayerInset(
-                    1, 0,
+                    1,
+                    0,
+                    context.px(8).toInt(),
                     context.px(20).toInt(),
-                    context.px(20).toInt(),
-                    context.px(20).toInt()
+                    context.px(8).toInt()
                 )
             } else {
                 layerDrawable.setLayerInset(
                     1,
                     context.px(320).toInt(),
+                    context.px(8).toInt(),
                     context.px(20).toInt(),
-                    context.px(20).toInt(),
-                    context.px(20).toInt()
+                    context.px(8).toInt()
                 )
             }
         }
@@ -147,15 +148,15 @@ internal enum class BackgroundDrawable {
 
     @DrawableRes
     operator fun invoke(border: Border): Int = when (border) {
-        Border.Top -> when (this) {
-            Default -> R.drawable.input_border_top_border
-            Pressed -> R.drawable.input_border_top_border_pressed
-        }
         Border.Both -> when (this) {
             Default -> R.drawable.input_border
             Pressed -> R.drawable.input_border_pressed
         }
+        Border.Bottom -> when (this) {
+            Default -> R.drawable.input_border_bottom_border
+            Pressed -> R.drawable.input_border_bottom_border_pressed
+        }
     }
 
-    enum class Border { Top, Both }
+    enum class Border { Both, Bottom }
 }
