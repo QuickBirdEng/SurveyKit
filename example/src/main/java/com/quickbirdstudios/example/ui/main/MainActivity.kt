@@ -22,18 +22,12 @@ import com.quickbirdstudios.surveykit.steps.QuestionStep
 import com.quickbirdstudios.surveykit.steps.Step
 import com.quickbirdstudios.surveykit.survey.SurveyView
 import kotlinx.android.parcel.Parcelize
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
 import java.util.*
-import kotlin.coroutines.CoroutineContext
 
 
-class MainActivity : AppCompatActivity(), CoroutineScope {
+open class MainActivity : AppCompatActivity() {
 
-    private lateinit var survey: SurveyView
-
-    override val coroutineContext: CoroutineContext = Job() + Dispatchers.Main
+    protected lateinit var survey: SurveyView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -34,5 +34,10 @@ dependencies {
     implementation(Deps.AndroidSupport.constraint)
 
     /* Test */
+    implementation(Deps.Test.core)
+    implementation(Deps.Test.rules)
+    implementation(Deps.Test.runner)
     implementation(Deps.Test.junit)
+    implementation(Deps.Test.junitExt)
+    implementation(Deps.Test.espresso)
 }
