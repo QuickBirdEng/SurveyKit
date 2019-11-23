@@ -1,6 +1,7 @@
 package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
+import android.text.InputType
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
@@ -47,6 +48,7 @@ internal class EmailQuestionView(
         emailField = content.add(
             TextFieldPart.withHint(context, answerFormat.hintText ?: R.string.empty)
         )
+        emailField.field.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
         emailField.field.maxLines = 1
         emailField.field.textAlignment = TEXT_ALIGNMENT_CENTER
         emailField.field.afterTextChanged { footer.canContinue = isValidInput() }
