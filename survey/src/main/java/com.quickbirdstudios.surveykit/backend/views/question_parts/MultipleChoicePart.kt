@@ -84,8 +84,8 @@ internal class MultipleChoicePart @JvmOverloads constructor(
         val selectedChoices = selected
         this.removeAllViews()
         list.forEachIndexed { index, textChoice ->
-            val item = if (index == list.size - 1) createLastCheckBox(textChoice.text, index)
-            else createCheckBox(textChoice.text, index)
+            val item = if (index != 0) createAllButFirstCheckbox(textChoice.text, index)
+            else createFirstCheckbox(textChoice.text, index)
             if (selectedChoices.contains(textChoice)) {
                 item.isChecked = true
                 item.setTextColor(checkBoxTextColor)
@@ -118,6 +118,26 @@ internal class MultipleChoicePart @JvmOverloads constructor(
 
     //region Checkbox Creation Helpers
 
+    private fun createFirstCheckbox(@StringRes label: Int, tag: Int): CheckBox {
+        val createCheckBox = createCheckBox(label, tag)
+        Handler().post {
+            createCheckBox.background = createCheckBox.createSelectableThemedBackground(
+                context, BackgroundDrawable.Border.Both, themeColor
+            )
+        }
+        return createCheckBox
+    }
+
+    private fun createAllButFirstCheckbox(@StringRes label: Int, tag: Int): CheckBox {
+        val createCheckBox = createCheckBox(label, tag)
+        Handler().post {
+            createCheckBox.background = createCheckBox.createSelectableThemedBackground(
+                context, BackgroundDrawable.Border.Bottom, themeColor
+            )
+        }
+        return createCheckBox
+    }
+
     private fun createCheckBox(@StringRes label: Int, tag: Int): CheckBox {
         val verticalPaddingEditText = context.px(
             context.resources.getDimension(R.dimen.text_field_vertical_padding)
@@ -137,6 +157,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
             isClickable = true
             buttonDrawable = null
             textSize = 20f
+
             setOnClickListener { internalCheckedChangeListener(this, this.isChecked) }
 
             setPadding(
@@ -155,21 +176,11 @@ internal class MultipleChoicePart @JvmOverloads constructor(
 
         Handler().post {
             checkBox.background = checkBox.createSelectableThemedBackground(
-                context, BackgroundDrawable.Border.Top, themeColor
+                context, BackgroundDrawable.Border.Both, themeColor
             )
         }
 
         return checkBox
-    }
-
-    private fun createLastCheckBox(@StringRes label: Int, tag: Int): CheckBox {
-        val createCheckBox = createCheckBox(label, tag)
-        Handler().post {
-            createCheckBox.background = createCheckBox.createSelectableThemedBackground(
-                context, BackgroundDrawable.Border.Both, themeColor
-            )
-        }
-        return createCheckBox
     }
 
     //endregion

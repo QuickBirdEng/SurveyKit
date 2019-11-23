@@ -5,8 +5,9 @@ import android.graphics.Color
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.LinearLayout
+import android.widget.LinearLayout.LayoutParams.MATCH_PARENT
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.ColorInt
@@ -84,8 +85,9 @@ internal class SingleChoicePart @JvmOverloads constructor(
         val selectedChoice = selected
         this.removeAllViews()
         list.forEachIndexed { index, textChoice ->
-            val item = if (index == list.size - 1) createLastRadioButton(textChoice.text, index)
-            else createRadioButton(textChoice.text, index)
+            val item =
+                if (index != 0) createAllButFirstRadioButton(textChoice.text, index)
+                else createFirstRadioButton(textChoice.text, index)
             if (textChoice == selectedChoice) {
                 item.isChecked = true
                 item.setTextColor(radioButtonTextColor)
@@ -120,6 +122,20 @@ internal class SingleChoicePart @JvmOverloads constructor(
 
     //region RadioButton Creation Helpers
 
+    private fun createFirstRadioButton(@StringRes label: Int, tag: Int) =
+        createRadioButton(label, tag).apply {
+            background = createSelectableThemedBackground(
+                context, BackgroundDrawable.Border.Both, themeColor
+            )
+        }
+
+    private fun createAllButFirstRadioButton(@StringRes label: Int, tag: Int) =
+        createRadioButton(label, tag).apply {
+            background = createSelectableThemedBackground(
+                context, BackgroundDrawable.Border.Bottom, themeColor
+            )
+        }
+
     private fun createRadioButton(@StringRes label: Int, tag: Int): RadioButton {
         val verticalPaddingEditText = context.px(
             context.resources.getDimension(R.dimen.text_field_vertical_padding)
@@ -139,9 +155,6 @@ internal class SingleChoicePart @JvmOverloads constructor(
             isClickable = true
             buttonDrawable = null
             textSize = 20f
-            background = createSelectableThemedBackground(
-                context, BackgroundDrawable.Border.Top, themeColor
-            )
 
             setPadding(
                 horizontalPaddingEditTextLeft,
@@ -150,20 +163,10 @@ internal class SingleChoicePart @JvmOverloads constructor(
                 verticalPaddingEditText
             )
 
-            val layoutParams = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
+            val layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
             this.layoutParams = layoutParams
         }
     }
-
-    private fun createLastRadioButton(@StringRes label: Int, tag: Int) =
-        createRadioButton(label, tag).apply {
-            background = createSelectableThemedBackground(
-                context, BackgroundDrawable.Border.Both, themeColor
-            )
-        }
 
     //endregion
 
