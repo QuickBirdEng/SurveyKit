@@ -49,10 +49,10 @@ internal class DatePickerQuestionView(
 
     //region Private API
 
-    private fun AnswerFormat.DateAnswerFormat.Date.toSelected(): DatePickerPart.Selected =
-        DatePickerPart.Selected(day = this.day, month = this.month, year = this.year)
+    private fun AnswerFormat.DateAnswerFormat.Date.toSelected(): DatePickerPart.Selection =
+        DatePickerPart.Selection(day = this.day, month = this.month, year = this.year)
 
-    private fun DatePickerPart.Selected.toDate(): AnswerFormat.DateAnswerFormat.Date =
+    private fun DatePickerPart.Selection.toDate(): AnswerFormat.DateAnswerFormat.Date =
         AnswerFormat.DateAnswerFormat.Date(day = this.day, month = this.month, year = this.year)
 
     //endregion

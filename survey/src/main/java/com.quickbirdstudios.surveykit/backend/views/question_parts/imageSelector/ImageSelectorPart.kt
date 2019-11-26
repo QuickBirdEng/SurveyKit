@@ -86,10 +86,8 @@ internal class ImageSelectorPart @JvmOverloads constructor(
         adapter = ImageSelectorAdapter()
         recyclerView.adapter = adapter
 
-        this.let {
-            layoutParams =
-                LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply { this.gravity = Gravity.CENTER }
-            addView(recyclerView)
-        }
+        layoutParams =
+            LayoutParams(WRAP_CONTENT, WRAP_CONTENT).apply { this.gravity = Gravity.CENTER }
+        addView(recyclerView)
     }
 }

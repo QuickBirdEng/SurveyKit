@@ -27,6 +27,7 @@ internal class TimePickerPart @JvmOverloads constructor(
         set(selected) {
             timePicker.selected = selected
         }
+
     //endregion
 
     //region Overrides
