@@ -2,6 +2,7 @@ package com.quickbirdstudios.surveykit
 
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
+import androidx.annotation.IntRange
 import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import kotlinx.android.parcel.Parcelize
@@ -43,7 +44,7 @@ sealed class AnswerFormat {
     data class TextAnswerFormat(
         val maxLines: Int,
         @StringRes val hintText: Int? = null,
-        val isValid: ((String) -> Boolean)? = null
+        val isValid: ((String) -> Boolean) = { text -> text.isNotEmpty() }
     ) : AnswerFormat()
 
 
@@ -122,16 +123,14 @@ sealed class AnswerFormat {
     }
 
 
-    data class EmailAnswerFormat(@StringRes val hintText: Int? = null) : AnswerFormat() {
-        val isValid: (String) -> Boolean = { email ->
-            val pattern = Pattern.compile("""^(.+)@(.+)\..+$""")
-            pattern.matcher(email).matches()
-        }
-    }
+    data class EmailAnswerFormat(
+        @StringRes val hintText: Int? = null,
+        val isValid: (String) -> Boolean = defaultEmailValidation
+    ) : AnswerFormat()
 
 
     data class ImageSelectorFormat(
-        val numberOfColumns: Int = 4,
+        @IntRange(from = 1, to = 5) val numberOfColumns: Int = 4,
         val imageChoiceList: List<ImageChoice>,
         val defaultSelectedImagesIndices: List<Int> = emptyList()
     ) : AnswerFormat() {
@@ -152,3 +151,7 @@ data class TextChoice(
 @Parcelize
 data class ImageChoice(@DrawableRes val resourceId: Int) : Parcelable
 
+private val defaultEmailValidation: (String) -> Boolean = { email ->
+    val pattern = Pattern.compile("""^(.+)@(.+)\..+$""")
+    pattern.matcher(email).matches()
+}
