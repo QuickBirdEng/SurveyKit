@@ -20,8 +20,8 @@ internal class DatePickerPart @JvmOverloads constructor(
 
     //region Public API
 
-    var selected: Selected
-        get() = Selected(
+    var selected: Selection
+        get() = Selection(
             day = datePicker.dayOfMonth,
             month = datePicker.month,
             year = datePicker.year
@@ -43,7 +43,7 @@ internal class DatePickerPart @JvmOverloads constructor(
 
     //region Subtypes
 
-    data class Selected(val day: Int, val month: Int, val year: Int)
+    data class Selection(val day: Int, val month: Int, val year: Int)
 
     //endregion
 

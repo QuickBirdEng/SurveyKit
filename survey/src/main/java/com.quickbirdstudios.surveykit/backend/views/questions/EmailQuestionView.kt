@@ -48,11 +48,13 @@ internal class EmailQuestionView(
         emailField = content.add(
             TextFieldPart.withHint(context, answerFormat.hintText ?: R.string.empty)
         )
-        emailField.field.inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
-        emailField.field.maxLines = 1
-        emailField.field.textAlignment = TEXT_ALIGNMENT_CENTER
-        emailField.field.afterTextChanged { footer.canContinue = isValidInput() }
-        emailField.field.setText(preselected)
+        emailField.field.apply {
+            inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS
+            maxLines = 1
+            textAlignment = TEXT_ALIGNMENT_CENTER
+            afterTextChanged { footer.canContinue = isValidInput() }
+            setText(preselected)
+        }
     }
 
     //endregion

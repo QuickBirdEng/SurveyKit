@@ -19,6 +19,8 @@ import com.quickbirdstudios.surveykit.TextChoice
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.BackgroundDrawable
+import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.BackgroundDrawable.Border.Both
+import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.BackgroundDrawable.Border.Bottom
 import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.createSelectableThemedBackground
 
 internal class SingleChoicePart @JvmOverloads constructor(
@@ -85,9 +87,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
         val selectedChoice = selected
         this.removeAllViews()
         list.forEachIndexed { index, textChoice ->
-            val item =
-                if (index != 0) createAllButFirstRadioButton(textChoice.text, index)
-                else createFirstRadioButton(textChoice.text, index)
+            val item = createRadioButton(textChoice.text, index, if (index == 0) Both else Bottom)
             if (textChoice == selectedChoice) {
                 item.isChecked = true
                 item.setTextColor(radioButtonTextColor)
@@ -122,21 +122,11 @@ internal class SingleChoicePart @JvmOverloads constructor(
 
     //region RadioButton Creation Helpers
 
-    private fun createFirstRadioButton(@StringRes label: Int, tag: Int) =
-        createRadioButton(label, tag).apply {
-            background = createSelectableThemedBackground(
-                context, BackgroundDrawable.Border.Both, themeColor
-            )
-        }
-
-    private fun createAllButFirstRadioButton(@StringRes label: Int, tag: Int) =
-        createRadioButton(label, tag).apply {
-            background = createSelectableThemedBackground(
-                context, BackgroundDrawable.Border.Bottom, themeColor
-            )
-        }
-
-    private fun createRadioButton(@StringRes label: Int, tag: Int): RadioButton {
+    private fun createRadioButton(
+        @StringRes label: Int,
+        tag: Int,
+        border: BackgroundDrawable.Border
+    ): RadioButton {
         val verticalPaddingEditText = context.px(
             context.resources.getDimension(R.dimen.text_field_vertical_padding)
         ).toInt()
@@ -155,6 +145,8 @@ internal class SingleChoicePart @JvmOverloads constructor(
             isClickable = true
             buttonDrawable = null
             textSize = 20f
+
+            background = createSelectableThemedBackground(context, border, themeColor)
 
             setPadding(
                 horizontalPaddingEditTextLeft,
