@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.widget.NestedScrollView
-import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 
 class Content @JvmOverloads constructor(

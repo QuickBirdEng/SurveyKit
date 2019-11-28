@@ -25,7 +25,7 @@ import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 
-open class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     protected lateinit var survey: SurveyView
 
@@ -36,7 +36,6 @@ open class MainActivity : AppCompatActivity() {
         survey = findViewById(R.id.survey_view)
         setupSurvey(survey)
     }
-
 
     private fun setupSurvey(surveyView: SurveyView) {
         val steps = listOf(

@@ -3,8 +3,8 @@ package com.quickbirdstudios.surveykit.backend.views.step
 import android.content.Context
 import android.view.View
 import androidx.annotation.CallSuper
-import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.FinishReason
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Content

@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
-import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
@@ -29,6 +29,7 @@ internal open class TextFieldPart @JvmOverloads constructor(
         ).toInt()
 
         field = EditText(context).apply {
+            id = R.id.textFieldPartField
             inputType = InputType.TYPE_CLASS_TEXT
             isFocusable = true
             isFocusableInTouchMode = true

@@ -8,7 +8,7 @@ import androidx.annotation.DimenRes
 import androidx.annotation.StringRes
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
-import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
@@ -38,6 +38,7 @@ internal class InfoTextPart @JvmOverloads constructor(
         fun title(context: Context, text: String) = InfoTextPart(
             context
         ).apply {
+            id = R.id.infoTextTitle
             setText(text)
             setTextSize(R.dimen.question_info_title_text_size)
             val horizontalPadding =
@@ -50,6 +51,7 @@ internal class InfoTextPart @JvmOverloads constructor(
         fun info(context: Context, text: String) = InfoTextPart(
             context
         ).apply {
+            id = R.id.infoTextInfo
             setText(text)
             setTextSize(R.dimen.question_info_text_text_size)
             val horizontalPadding =
@@ -62,6 +64,7 @@ internal class InfoTextPart @JvmOverloads constructor(
         fun question(context: Context, @StringRes text: Int) = InfoTextPart(
             context
         ).apply {
+            id = R.id.infoTextQuestion
             setText(text)
             setTextSize(R.dimen.question_text_size)
             val horizontalPadding =

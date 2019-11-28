@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.LinearLayout
 import android.widget.TimePicker
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
@@ -76,7 +77,7 @@ internal class TimePickerPart @JvmOverloads constructor(
     init {
         this.gravity = Gravity.CENTER
 
-        timePicker = TimePicker(context)
+        timePicker = TimePicker(context).apply { id = R.id.timePickerPart }
         this.addView(timePicker)
     }
 

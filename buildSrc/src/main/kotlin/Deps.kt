@@ -44,6 +44,7 @@ object Deps {
         const val junitExt = "androidx.test.ext:junit:${Versions.test}"
         const val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
         const val espressoIntents = "androidx.test.espresso:espresso-intents:${Versions.espresso}"
+        const val espressoContribs = "androidx.test.espresso:espresso-contrib:${Versions.espresso}"
     }
 
     const val lottie = "com.airbnb.android:lottie:${Versions.lottie}"

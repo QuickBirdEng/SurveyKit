@@ -14,4 +14,9 @@
     <color name="cyan_text">#33C5D4</color>
     <color name="cyan_normal">#3CD0DF</color>
     <color name="cyan_normal_disabled">#853CD0DF</color>
+
+    <!-- test colors -->
+    <color name="color_primary">#008577</color>
+    <color name="color_primary_dark">#00574B</color>
+    <color name="color_accent">#36BFCC</color>
 </resources>

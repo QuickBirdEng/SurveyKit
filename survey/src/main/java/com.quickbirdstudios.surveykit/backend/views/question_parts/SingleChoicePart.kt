@@ -12,7 +12,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
-import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.TextChoice
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
@@ -163,6 +163,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
 
 
     init {
+        this.id = R.id.singleChoicePart
         this.gravity = Gravity.CENTER
 
         this.setOnCheckedChangeListener { group, checkedId ->

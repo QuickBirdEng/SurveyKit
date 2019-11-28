@@ -20,6 +20,10 @@ android {
         targetSdkVersion(Project.Android.targetSdkVersion)
         testInstrumentationRunner = Project.Android.testInstrumentationRunner
     }
+
+    testOptions {
+        animationsDisabled = true
+    }
 }
 
 dependencies {
@@ -30,6 +34,15 @@ dependencies {
     implementation(Deps.AndroidSupport.constraint)
     implementation(Deps.AndroidSupport.recyclerView)
     implementation(Deps.lottie)
+
+    /* Test */
+    implementation(Deps.Test.core)
+    implementation(Deps.Test.rules)
+    implementation(Deps.Test.runner)
+    implementation(Deps.Test.junit)
+    implementation(Deps.Test.junitExt)
+    implementation(Deps.Test.espresso)
+    implementation(Deps.Test.espressoContribs)
 }
 
 project.configureLibraryPublication()
