@@ -48,12 +48,10 @@ internal class ImageSelectorAdapter(
     //region Private API
 
     private fun ViewHolder.selected(isSelected: Boolean) {
-        if (isSelected)
-            this.border.setBackgroundColor(ContextCompat.getColor(this.view.context, selectedColor))
-        else
-            this.border.setBackgroundColor(
-                ContextCompat.getColor(this.view.context, R.color.transparent)
-            )
+        this.border.setBackgroundColor(
+            if (isSelected) selectedColor
+            else ContextCompat.getColor(this.view.context, R.color.transparent)
+        )
     }
 
     //endregion
