@@ -2,7 +2,6 @@ package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
 import androidx.annotation.StringRes
-import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.TextChoice
@@ -15,9 +14,9 @@ internal class BooleanQuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
-    @StringRes title: Int?,
-    @StringRes text: Int?,
-    @StringRes nextButtonText: Int,
+    title: String?,
+    text: String?,
+    nextButtonText: String,
     private val answerFormat: AnswerFormat.BooleanAnswerFormat,
     private var preselected: AnswerFormat.BooleanAnswerFormat.Result?
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
@@ -32,16 +31,16 @@ internal class BooleanQuestionView(
     //region Overrides
 
     override fun createResults(): QuestionResult {
-        val stringIdentifierRes = (answerFormat.textChoices
+        val stringIdentifier: String = (answerFormat.textChoices
             .find { it.text == booleanAnswerPart.selected?.text }
             ?.value
-            ?: R.string.empty)
+            ?: "")
 
         return BooleanQuestionResult(
             id = id,
             startDate = startDate,
             answer = answerFormat.toResult(booleanAnswerPart.selected?.text),
-            stringIdentifier = context.getString(stringIdentifierRes)
+            stringIdentifier = stringIdentifier
         )
     }
 

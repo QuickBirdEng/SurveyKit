@@ -35,7 +35,7 @@ internal class InfoTextPart @JvmOverloads constructor(
     }
 
     companion object {
-        fun title(context: Context, @StringRes text: Int) = InfoTextPart(
+        fun title(context: Context, text: String) = InfoTextPart(
             context
         ).apply {
             setText(text)
@@ -47,7 +47,7 @@ internal class InfoTextPart @JvmOverloads constructor(
             setPadding(horizontalPadding, verticalPadding, horizontalPadding, verticalPadding)
         }
 
-        fun info(context: Context, @StringRes text: Int) = InfoTextPart(
+        fun info(context: Context, text: String) = InfoTextPart(
             context
         ).apply {
             setText(text)

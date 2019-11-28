@@ -9,7 +9,6 @@ import android.util.AttributeSet
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
-import androidx.annotation.StringRes
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.survey.R
@@ -47,7 +46,9 @@ class Footer @JvmOverloads constructor(
         }
 
 
-    fun setContinueButtonText(@StringRes text: Int) = buttonContinue.setText(text)
+    fun setContinueButtonText(text: String) {
+        buttonContinue.text = text
+    }
 
     var onContinue: () -> Unit = {}
     var onSkip: () -> Unit = {}

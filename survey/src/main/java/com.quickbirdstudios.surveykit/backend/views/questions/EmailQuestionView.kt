@@ -3,7 +3,6 @@ package com.quickbirdstudios.surveykit.backend.views.questions
 import android.content.Context
 import android.text.InputType
 import androidx.annotation.StringRes
-import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
@@ -16,9 +15,9 @@ internal class EmailQuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
-    @StringRes title: Int?,
-    @StringRes text: Int?,
-    @StringRes nextButtonText: Int,
+    title: String?,
+    text: String?,
+    nextButtonText: String,
     private val answerFormat: AnswerFormat.EmailAnswerFormat,
     private val preselected: String? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
@@ -46,7 +45,7 @@ internal class EmailQuestionView(
         super.setupViews()
 
         emailField = content.add(
-            TextFieldPart.withHint(context, answerFormat.hintText ?: R.string.empty)
+            TextFieldPart.withHint(context, answerFormat.hintText ?: "")
         )
         emailField.field.apply {
             inputType = InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS

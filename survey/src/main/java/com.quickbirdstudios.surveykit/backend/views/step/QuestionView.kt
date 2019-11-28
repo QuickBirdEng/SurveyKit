@@ -3,7 +3,6 @@ package com.quickbirdstudios.surveykit.backend.views.step
 import android.content.Context
 import android.view.View
 import androidx.annotation.CallSuper
-import androidx.annotation.StringRes
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.StepIdentifier
@@ -20,9 +19,9 @@ abstract class QuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
-    @StringRes private val title: Int?,
-    @StringRes private val text: Int?,
-    @StringRes private val nextButtonText: Int
+    private val title: String?,
+    private val text: String?,
+    private val nextButtonText: String
 ) : StepView(context, id, isOptional), ViewActions {
 
     //region Members

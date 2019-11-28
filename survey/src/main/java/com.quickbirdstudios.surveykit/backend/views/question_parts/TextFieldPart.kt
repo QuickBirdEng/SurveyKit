@@ -6,7 +6,6 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
-import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.SurveyTheme
@@ -58,10 +57,8 @@ internal open class TextFieldPart @JvmOverloads constructor(
     }
 
     companion object {
-        fun withHint(context: Context, @StringRes hint: Int) = TextFieldPart(
-            context
-        ).apply {
-            field.hint = context.getString(hint)
+        fun withHint(context: Context, hint: String) = TextFieldPart(context).apply {
+            field.hint = hint
         }
     }
 }

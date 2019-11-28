@@ -2,7 +2,6 @@ package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
 import androidx.annotation.StringRes
-import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.TextChoice
@@ -15,9 +14,9 @@ internal class SingleChoiceQuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
-    @StringRes title: Int?,
-    @StringRes text: Int?,
-    @StringRes nextButtonText: Int,
+    title: String?,
+    text: String?,
+    nextButtonText: String,
     private val answerFormat: AnswerFormat.SingleChoiceAnswerFormat,
     private val preselected: TextChoice? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
@@ -33,16 +32,16 @@ internal class SingleChoiceQuestionView(
     //region Overrides
 
     override fun createResults(): QuestionResult {
-        val stringIdentifierRes = (answerFormat.textChoices
+        val stringIdentifier = (answerFormat.textChoices
             .find { it.text == choicesContainer.selected?.text }
             ?.value
-            ?: R.string.empty)
+            ?: "")
 
         return SingleChoiceQuestionResult(
             id = id,
             startDate = startDate,
             answer = choicesContainer.selected,
-            stringIdentifier = context.getString(stringIdentifierRes)
+            stringIdentifier = stringIdentifier
         )
     }
 

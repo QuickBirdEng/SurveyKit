@@ -11,7 +11,6 @@ import android.widget.LinearLayout.LayoutParams.MATCH_PARENT
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.ColorInt
-import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.SurveyTheme
@@ -123,7 +122,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
     //region RadioButton Creation Helpers
 
     private fun createRadioButton(
-        @StringRes label: Int,
+        label: String,
         tag: Int,
         border: BackgroundDrawable.Border
     ): RadioButton {
