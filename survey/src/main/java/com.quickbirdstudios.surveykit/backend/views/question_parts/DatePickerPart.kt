@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.Gravity
 import android.widget.DatePicker
 import android.widget.LinearLayout
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
@@ -50,7 +51,7 @@ internal class DatePickerPart @JvmOverloads constructor(
     init {
         this.gravity = Gravity.CENTER
 
-        datePicker = DatePicker(context)
+        datePicker = DatePicker(context).apply { id = R.id.datePickerPart }
         this.addView(datePicker)
     }
 }

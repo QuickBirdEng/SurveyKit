@@ -9,7 +9,7 @@ import android.view.Gravity
 import android.widget.Checkable
 import androidx.annotation.DrawableRes
 import androidx.core.content.ContextCompat
-import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
 
 @Suppress("unused")

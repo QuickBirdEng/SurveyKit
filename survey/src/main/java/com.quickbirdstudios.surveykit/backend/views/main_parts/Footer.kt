@@ -11,7 +11,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
-import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.colorStroke
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
