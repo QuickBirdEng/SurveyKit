@@ -14,9 +14,9 @@ internal class MultipleChoiceQuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
-    @StringRes title: Int?,
-    @StringRes text: Int?,
-    @StringRes nextButtonText: Int,
+    title: String?,
+    text: String?,
+    nextButtonText: String,
     private val answerFormat: AnswerFormat.MultipleChoiceAnswerFormat,
     private val preselected: List<TextChoice>?
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
@@ -38,7 +38,7 @@ internal class MultipleChoiceQuestionView(
             answer = choicesContainer.selected,
             stringIdentifier = choicesContainer.selected
                 .map { it.value }
-                .joinToString(",") { context.getString(it) }
+                .joinToString(",")
         )
 
     override fun isValidInput(): Boolean = isOptional || choicesContainer.isOneSelected()

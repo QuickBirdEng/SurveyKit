@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
-import androidx.annotation.StringRes
 import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.question_parts.AnimatedCheckmark
@@ -11,9 +10,9 @@ import com.quickbirdstudios.surveykit.result.question_results.FinishQuestionResu
 class FinishQuestionView(
     context: Context,
     id: StepIdentifier = StepIdentifier(),
-    @StringRes private val title: Int?,
-    @StringRes private val text: Int?,
-    @StringRes private val finishButtonText: Int
+    title: String?,
+    text: String?,
+    finishButtonText: String
 ) : QuestionView(context, id, false, title, text, finishButtonText) {
 
     //region Overrides

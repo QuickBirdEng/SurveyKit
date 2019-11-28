@@ -2,7 +2,6 @@ package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
 import androidx.annotation.StringRes
-import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
@@ -15,9 +14,9 @@ internal class TextQuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
-    @StringRes title: Int?,
-    @StringRes text: Int?,
-    @StringRes nextButtonText: Int,
+    title: String?,
+    text: String?,
+    nextButtonText: String,
     private val answerFormat: AnswerFormat.TextAnswerFormat,
     private val preselected: String? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
@@ -51,7 +50,7 @@ internal class TextQuestionView(
         super.setupViews()
 
         questionAnswerView = content.add(
-            TextFieldPart.withHint(context, answerFormat.hintText ?: R.string.empty)
+            TextFieldPart.withHint(context, answerFormat.hintText ?: "")
         )
         questionAnswerView.field.maxLines = answerFormat.maxLines
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }

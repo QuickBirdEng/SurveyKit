@@ -10,7 +10,6 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
-import androidx.annotation.StringRes
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.SurveyTheme
@@ -120,7 +119,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
     //region Checkbox Creation Helpers
 
     private fun createCheckBox(
-        @StringRes label: Int,
+        label: String,
         tag: Int,
         border: BackgroundDrawable.Border
     ): CheckBox {
@@ -136,7 +135,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
 
         val checkBox = CheckBox(context).apply {
             id = View.generateViewId()
-            setText(label)
+            text = label
             this.tag = tag
             isFocusable = true
             isClickable = true

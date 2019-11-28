@@ -1,8 +1,6 @@
 package com.quickbirdstudios.surveykit.steps
 
 import android.content.Context
-import androidx.annotation.StringRes
-import com.quickbirdstudios.survey.R
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.AnswerFormat.*
 import com.quickbirdstudios.surveykit.StepIdentifier
@@ -13,9 +11,9 @@ import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.result.question_results.*
 
 class QuestionStep(
-    @StringRes val title: Int,
-    @StringRes val text: Int,
-    @StringRes val nextButton: Int = R.string.next,
+    val title: String,
+    val text: String,
+    val nextButton: String = "Next",
     val answerFormat: AnswerFormat,
     override var isOptional: Boolean = false,
     override val id: StepIdentifier = StepIdentifier()

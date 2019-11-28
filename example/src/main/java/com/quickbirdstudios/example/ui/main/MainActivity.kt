@@ -47,70 +47,70 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
     private fun setupSurvey(surveyView: SurveyView) {
         val steps = listOf(
             InstructionStep(
-                title = R.string.intro_title,
-                text = R.string.intro_text,
-                buttonText = R.string.intro_start
+                title = this.resources.getString(R.string.intro_title),
+                text = this.resources.getString(R.string.intro_text),
+                buttonText = this.resources.getString(R.string.intro_start)
             ),
             QuestionStep(
-                title = R.string.about_you_question_title,
-                text = R.string.about_you_question_text,
+                title = this.resources.getString(R.string.about_you_question_title),
+                text = this.resources.getString(R.string.about_you_question_text),
                 answerFormat = AnswerFormat.TextAnswerFormat(maxLines = 5)
             ),
             QuestionStep(
-                title = R.string.how_old_title,
-                text = R.string.how_old_text,
+                title = this.resources.getString(R.string.how_old_title),
+                text = this.resources.getString(R.string.how_old_text),
                 answerFormat = AnswerFormat.IntegerAnswerFormat(
                     defaultValue = 25,
-                    hint = R.string.how_old_hint
+                    hint = this.resources.getString(R.string.how_old_hint)
                 )
             ),
             QuestionStep(
-                title = R.string.how_fat_question_title,
-                text = R.string.how_fat_question_text,
+                title = this.resources.getString(R.string.how_fat_question_title),
+                text = this.resources.getString(R.string.how_fat_question_text),
                 answerFormat = AnswerFormat.ScaleAnswerFormat(
                     minimumValue = 1,
                     maximumValue = 5,
-                    minimumValueDescription = R.string.how_fat_min,
-                    maximumValueDescription = R.string.how_fat_max,
+                    minimumValueDescription = this.resources.getString(R.string.how_fat_min),
+                    maximumValueDescription = this.resources.getString(R.string.how_fat_max),
                     step = 1f,
                     defaultValue = 3
                 )
             ),
             QuestionStep(
-                title = R.string.allergies_question_title,
-                text = R.string.allergies_question_text,
+                title = this.resources.getString(R.string.allergies_question_title),
+                text = this.resources.getString(R.string.allergies_question_text),
                 answerFormat = AnswerFormat.MultipleChoiceAnswerFormat(
                     textChoices = listOf(
-                        TextChoice(R.string.allergies_back_penicillin),
-                        TextChoice(R.string.allergies_latex),
-                        TextChoice(R.string.allergies_pet),
-                        TextChoice(R.string.allergies_pollen)
+                        TextChoice(this.resources.getString(R.string.allergies_back_penicillin)),
+                        TextChoice(this.resources.getString(R.string.allergies_latex)),
+                        TextChoice(this.resources.getString(R.string.allergies_pet)),
+                        TextChoice(this.resources.getString(R.string.allergies_pollen))
                     )
                 )
             ),
             QuestionStep(
-                title = R.string.quit_or_continue_question_title,
-                text = R.string.quit_or_continue_question_text,
+                title = this.resources.getString(R.string.quit_or_continue_question_title),
+                text = this.resources.getString(R.string.quit_or_continue_question_text),
                 answerFormat = AnswerFormat.SingleChoiceAnswerFormat(
                     textChoices = listOf(
-                        TextChoice(R.string.yes),
-                        TextChoice(R.string.no)
+                        TextChoice(this.resources.getString(R.string.yes)),
+                        TextChoice(this.resources.getString(R.string.no))
                     )
                 )
             ),
             CustomStep(),
             QuestionStep(
-                title = R.string.boolean_example_title,
-                text = R.string.boolean_example_text,
+                title = this.resources.getString(R.string.boolean_example_title),
+                text = this.resources.getString(R.string.boolean_example_text),
                 answerFormat = AnswerFormat.BooleanAnswerFormat(
-                    positiveAnswerText = R.string.how_fat_min,
-                    negativeAnswerText = R.string.how_fat_max,
+                    positiveAnswerText = this.resources.getString(R.string.how_fat_min),
+                    negativeAnswerText = this.resources.getString(R.string.how_fat_max),
                     defaultValue = AnswerFormat.BooleanAnswerFormat.Result.NegativeAnswer
                 )
             ),
             QuestionStep(
-                title = R.string.value_picker_example_title,
-                text = R.string.value_picker_example_text,
+                title = this.resources.getString(R.string.value_picker_example_title),
+                text = this.resources.getString(R.string.value_picker_example_text),
                 answerFormat = AnswerFormat.ValuePickerAnswerFormat(
                     choices = (0..10).toList().map { it.toString() }
                     ,
@@ -118,23 +118,23 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 )
             ),
             QuestionStep(
-                title = R.string.date_picker_title,
-                text = R.string.date_picker_text,
+                title = this.resources.getString(R.string.date_picker_title),
+                text = this.resources.getString(R.string.date_picker_text),
                 answerFormat = AnswerFormat.DateAnswerFormat()
             ),
             QuestionStep(
-                title = R.string.time_picker_title,
-                text = R.string.time_picker_text,
+                title = this.resources.getString(R.string.time_picker_title),
+                text = this.resources.getString(R.string.time_picker_text),
                 answerFormat = AnswerFormat.TimeAnswerFormat()
             ),
             QuestionStep(
-                title = R.string.email_question_title,
-                text = R.string.email_question_text,
+                title = this.resources.getString(R.string.email_question_title),
+                text = this.resources.getString(R.string.email_question_text),
                 answerFormat = AnswerFormat.EmailAnswerFormat()
             ),
             QuestionStep(
-                title = R.string.image_selector_question_title,
-                text = R.string.image_selector_question_text,
+                title = this.resources.getString(R.string.image_selector_question_title),
+                text = this.resources.getString(R.string.image_selector_question_text),
                 answerFormat = AnswerFormat.ImageSelectorFormat(
                     numberOfColumns = 5,
                     defaultSelectedImagesIndices = listOf(1, 3),
@@ -161,9 +161,9 @@ class MainActivity : AppCompatActivity(), CoroutineScope {
                 )
             ),
             CompletionStep(
-                title = R.string.finish_question_title,
-                text = R.string.finish_question_text,
-                buttonText = R.string.finish_question_submit
+                title = this.resources.getString(R.string.finish_question_title),
+                text = this.resources.getString(R.string.finish_question_text),
+                buttonText = this.resources.getString(R.string.finish_question_submit)
             )
         )
 

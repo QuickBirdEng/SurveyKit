@@ -16,9 +16,9 @@ internal class IntegerQuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
-    @StringRes title: Int?,
-    @StringRes text: Int?,
-    @StringRes nextButtonText: Int,
+    title: String?,
+    text: String?,
+    nextButtonText: String,
     @StringRes private val hintText: Int = R.string.empty,
     private val answerFormat: AnswerFormat.IntegerAnswerFormat,
     private val preselected: Int? = answerFormat.defaultValue

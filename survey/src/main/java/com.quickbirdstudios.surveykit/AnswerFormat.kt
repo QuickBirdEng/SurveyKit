@@ -3,8 +3,6 @@ package com.quickbirdstudios.surveykit
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
-import androidx.annotation.StringRes
-import com.quickbirdstudios.survey.R
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 import java.util.regex.Pattern
@@ -13,7 +11,7 @@ sealed class AnswerFormat {
 
     data class IntegerAnswerFormat(
         val defaultValue: Int? = null,
-        @StringRes val hint: Int = R.string.empty
+        val hint: String = ""
     ) : AnswerFormat()
 
 
@@ -33,8 +31,8 @@ sealed class AnswerFormat {
         val defaultValue: Int = minimumValue,
         val step: Float,
         val orientation: Orientation = Orientation.Horizontal,
-        @StringRes val maximumValueDescription: Int,
-        @StringRes val minimumValueDescription: Int
+        val maximumValueDescription: String,
+        val minimumValueDescription: String
     ) : AnswerFormat() {
         // TODO when creating the scale part anew, also create Vertical orientation
         enum class Orientation { Horizontal }
@@ -43,14 +41,14 @@ sealed class AnswerFormat {
 
     data class TextAnswerFormat(
         val maxLines: Int,
-        @StringRes val hintText: Int? = null,
+        val hintText: String? = null,
         val isValid: ((String) -> Boolean) = { text -> text.isNotEmpty() }
     ) : AnswerFormat()
 
 
     data class BooleanAnswerFormat(
-        @StringRes val positiveAnswerText: Int,
-        @StringRes val negativeAnswerText: Int,
+        val positiveAnswerText: String,
+        val negativeAnswerText: String,
         val defaultValue: Result = Result.None
     ) : AnswerFormat() {
 
@@ -60,7 +58,7 @@ sealed class AnswerFormat {
 
         val textChoices = listOf(TextChoice(positiveAnswerText), TextChoice(negativeAnswerText))
 
-        fun toResult(id: Int?) = when (id) {
+        fun toResult(id: String?) = when (id) {
             positiveAnswerText -> Result.PositiveAnswer
             negativeAnswerText -> Result.NegativeAnswer
             else -> null
@@ -124,7 +122,7 @@ sealed class AnswerFormat {
 
 
     data class EmailAnswerFormat(
-        @StringRes val hintText: Int? = null,
+        val hintText: String? = null,
         val isValid: (String) -> Boolean = defaultEmailValidation
     ) : AnswerFormat()
 
@@ -144,8 +142,8 @@ sealed class AnswerFormat {
 
 @Parcelize // necessary because it is used in QuestionResults (Single and Multiple)
 data class TextChoice(
-    @StringRes val text: Int,
-    @StringRes val value: Int = text
+    val text: String,
+    val value: String = text
 ) : Parcelable
 
 @Parcelize

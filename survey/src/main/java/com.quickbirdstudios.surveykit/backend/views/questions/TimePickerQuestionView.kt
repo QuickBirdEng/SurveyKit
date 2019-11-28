@@ -13,9 +13,9 @@ internal class TimePickerQuestionView(
     context: Context,
     id: StepIdentifier,
     isOptional: Boolean,
-    @StringRes title: Int?,
-    @StringRes text: Int?,
-    @StringRes nextButtonText: Int,
+    title: String?,
+    text: String?,
+    nextButtonText: String,
     private val answerFormat: AnswerFormat.TimeAnswerFormat,
     private val preselected: AnswerFormat.TimeAnswerFormat.Time?
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
