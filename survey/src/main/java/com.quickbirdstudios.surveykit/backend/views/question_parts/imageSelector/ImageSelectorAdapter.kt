@@ -9,7 +9,7 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.backend.views.question_parts.imageSelector.ImageSelectorPart.ImageWrapper
 
 internal class ImageSelectorAdapter(
@@ -30,11 +30,15 @@ internal class ImageSelectorAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return ViewHolder(layoutInflater.inflate(ViewHolder.Layout, parent, false))
+        val inflatedView = layoutInflater.inflate(ViewHolder.Layout, parent, false).apply {
+            id = View.generateViewId()
+        }
+        return ViewHolder(inflatedView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = getItem(holder.adapterPosition)
+
         holder.image.background = holder.view.context.getDrawable(item.image.resourceId)
 
         holder.selected(item.selected)

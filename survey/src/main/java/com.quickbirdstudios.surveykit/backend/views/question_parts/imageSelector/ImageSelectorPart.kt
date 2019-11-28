@@ -9,6 +9,7 @@ import android.widget.LinearLayout.LayoutParams.WRAP_CONTENT
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.quickbirdstudios.surveykit.ImageChoice
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
@@ -58,7 +59,9 @@ internal class ImageSelectorPart @JvmOverloads constructor(
 
     //region Overrides
 
-    override fun style(surveyTheme: SurveyTheme) {}
+    override fun style(surveyTheme: SurveyTheme) {
+        adapter.selectedColor = surveyTheme.themeColor
+    }
 
     //endregion
 
@@ -81,7 +84,10 @@ internal class ImageSelectorPart @JvmOverloads constructor(
     //endregion
 
     init {
-        recyclerView = RecyclerView(context).apply { setLayoutManager(4) }
+        recyclerView = RecyclerView(context).apply {
+            id = R.id.imageSelectorPart
+            setLayoutManager(4)
+        }
 
         adapter = ImageSelectorAdapter()
         recyclerView.adapter = adapter

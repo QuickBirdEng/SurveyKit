@@ -12,7 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.constraintlayout.widget.ConstraintSet.*
 import androidx.core.content.ContextCompat
-import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
@@ -115,7 +115,6 @@ internal class ScalePart @JvmOverloads constructor(
             currentValueDescriptionField.text = value
         }
 
-
     private fun <T : View> T.setRandomViewId(): T = this.apply { id = View.generateViewId() }
 
     private fun horizontalLayoutConstraintSet(): ConstraintSet = ConstraintSet().apply {
@@ -182,7 +181,9 @@ internal class ScalePart @JvmOverloads constructor(
                 this.setTextColor(textColor)
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
-            seekBar = AppCompatSeekBar(context).setRandomViewId()
+            seekBar = AppCompatSeekBar(context).apply {
+                id = R.id.seekBarPartField
+            }
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                 seekBar.tickMark = ContextCompat.getDrawable(context, R.drawable.tickmark)
             }

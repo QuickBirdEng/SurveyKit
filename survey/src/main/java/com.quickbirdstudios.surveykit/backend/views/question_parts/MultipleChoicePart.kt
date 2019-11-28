@@ -11,7 +11,7 @@ import android.widget.CheckBox
 import android.widget.LinearLayout
 import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
-import com.quickbirdstudios.survey.R
+import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.TextChoice
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
@@ -174,6 +174,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
 
     init {
         this.let {
+            id = R.id.multipleChoicePart
             gravity = Gravity.CENTER
             layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
             orientation = VERTICAL

@@ -3,4 +3,26 @@
     <item name="questionHeader" type="id" />
     <item name="questionContent" type="id" />
     <item name="questionFooter" type="id" />
+
+    <item name="infoTextTitle" type="id" />
+    <item name="infoTextInfo" type="id" />
+    <item name="infoTextQuestion" type="id" />
+
+    <item name="textFieldPartField" type="id" />
+
+    <item name="integerFieldPartField" type="id" />
+
+    <item name="seekBarPartField" type="id" />
+
+    <item name="multipleChoicePart" type="id" />
+
+    <item name="singleChoicePart" type="id" />
+
+    <item name="valuePickerPart" type="id" />
+
+    <item name="datePickerPart" type="id" />
+
+    <item name="timePickerPart" type="id" />
+
+    <item name="imageSelectorPart" type="id" />
 </resources>
