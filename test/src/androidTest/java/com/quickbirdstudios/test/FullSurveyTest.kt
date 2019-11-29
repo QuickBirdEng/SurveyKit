@@ -1,0 +1,157 @@
+package com.quickbirdstudios.test
+
+import android.content.Context
+import android.view.inputmethod.InputMethodManager
+import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.filters.LargeTest
+import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.rule.ActivityTestRule
+import com.quickbirdstudios.surveykit.AnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.MultipleChoiceAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.SingleChoiceAnswerFormat
+import com.quickbirdstudios.surveykit.FinishReason
+import com.quickbirdstudios.surveykit.result.TaskResult
+import com.quickbirdstudios.surveykit.result.question_results.*
+import com.quickbirdstudios.test.pages.*
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
+import org.junit.runner.RunWith
+import java.util.*
+
+@RunWith(AndroidJUnit4::class)
+@LargeTest
+internal class FullSurveyTest : PageTest {
+
+    private val instrumentationRegistry = InstrumentationRegistry.getInstrumentation()
+    private val context = instrumentationRegistry.targetContext
+    private val inputMethodManager = context.getSystemService(
+        Context.INPUT_METHOD_SERVICE
+    ) as InputMethodManager
+
+    @get:Rule
+    var activityRule: ActivityTestRule<TestActivity> = ActivityTestRule(TestActivity::class.java)
+
+    @Before
+    fun setup() {
+
+    }
+
+    @Test
+    fun runThrough() {
+
+        activityRule.activity.survey.onSurveyFinish = resultCheck
+
+        testIntroStep()
+
+        testTextStep(text = TextStepInput) { isKeyboardShown() }
+
+        testNumberStep(
+            numberText = NumberStepInput,
+            defaultValue =
+            (activityRule.activity.intStep.answerFormat as AnswerFormat.IntegerAnswerFormat)
+                .defaultValue
+        ) { isKeyboardShown() }
+
+        testScaleStep(progressToSetOn = 0, activity = activityRule.activity)
+
+        testMultipleChoiceStep(context = context)
+
+        testSingleChoiceStep(context = context)
+
+        testBooleanChoiceStep()
+
+        testValuePickerStep()
+
+        testDatePickerStep()
+
+        testTimePickerStep()
+
+        testEmailStep(EmailStepInputWrong, EmailStepInputRight) { isKeyboardShown() }
+
+        testImageSelectorStep()
+
+        testCustomStep()
+
+        testCompletionStep()
+    }
+
+    //region Helper functions
+
+    private fun isKeyboardShown(): Boolean {
+        return inputMethodManager.isAcceptingText
+    }
+
+    //endregion
+
+    //region Private Result checker
+
+    private val resultCheck = { result: TaskResult, reason: FinishReason ->
+        result.results.forEach { stepResult ->
+            stepResult.results.forEach { questionResult ->
+                when (questionResult) {
+                    is IntroQuestionResult -> true
+                    is TextQuestionResult ->
+                        Assert.assertTrue(questionResult.answer == TextStepInput)
+                    is IntegerQuestionResult ->
+                        Assert.assertTrue(questionResult.answer.toString() == NumberStepInput)
+                    is MultipleChoiceQuestionResult -> {
+                        val expectedResult = listOf(
+                            (activityRule.activity.multipleChoiceStep.answerFormat as MultipleChoiceAnswerFormat)
+                                .textChoices[0],
+                            (activityRule.activity.multipleChoiceStep.answerFormat as MultipleChoiceAnswerFormat)
+                                .textChoices[3]
+                        )
+                        Assert.assertArrayEquals(
+                            expectedResult.toTypedArray(),
+                            questionResult.answer.toTypedArray()
+                        )
+                    }
+                    is SingleChoiceQuestionResult -> {
+                        Assert.assertEquals(
+                            (activityRule.activity.singleChoiceStep.answerFormat as SingleChoiceAnswerFormat)
+                                .textChoices[0],
+                            questionResult.answer
+                        )
+                    }
+                    is BooleanQuestionResult -> Assert.assertEquals(
+                        AnswerFormat.BooleanAnswerFormat.Result.PositiveAnswer,
+                        questionResult.answer
+                    )
+                    is ValuePickerQuestionResult -> Assert.assertEquals("0", questionResult.answer)
+                    is DateQuestionResult -> {
+                        val year = Calendar.getInstance()[Calendar.YEAR]
+                        Assert.assertEquals(
+                            AnswerFormat.DateAnswerFormat.Date(1, 0, year),
+                            questionResult.answer
+                        )
+                    }
+                    is TimeQuestionResult -> Assert.assertEquals(
+                        AnswerFormat.TimeAnswerFormat.Time(1, 1),
+                        questionResult.answer
+                    )
+                    is EmailQuestionResult -> Assert.assertEquals(
+                        EmailStepInputRight,
+                        questionResult.answer
+                    )
+                    is ImageSelectorResult -> Assert.assertEquals(
+                        listOf(0, 1, 3),
+                        questionResult.answer
+                    )
+                    is CustomResult -> println(questionResult)
+                    is FinishQuestionResult -> true
+                }
+            }
+        }
+    }
+
+    //endregion
+
+    companion object {
+        private const val TextStepInput = "TextStepInput"
+        private const val NumberStepInput = "35"
+        private const val EmailStepInputWrong = "asdf@test"
+        private const val EmailStepInputRight = "email@test.com"
+    }
+}

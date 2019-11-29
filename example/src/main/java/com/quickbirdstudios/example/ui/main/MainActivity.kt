@@ -105,8 +105,7 @@ class MainActivity : AppCompatActivity() {
                 title = this.resources.getString(R.string.value_picker_example_title),
                 text = this.resources.getString(R.string.value_picker_example_text),
                 answerFormat = AnswerFormat.ValuePickerAnswerFormat(
-                    choices = (0..10).toList().map { it.toString() }
-                    ,
+                    choices = (0..10).toList().map { it.toString() },
                     defaultValue = 5.toString()
                 )
             ),
@@ -218,7 +217,7 @@ class CustomStep : Step {
 
             override fun setupViews() = Unit
 
-            val root = View.inflate(context, R.layout.example, this)
+            val root = View.inflate(context, R.layout.custom_step, this)
 
             override fun createResults(): QuestionResult =
                 CustomResult(
@@ -243,9 +242,9 @@ class CustomStep : Step {
                     .setOnClickListener { onNextListener(createResults()) }
                 root.findViewById<Button>(R.id.back_button)
                     .setOnClickListener { onBackListener(createResults()) }
-                root.findViewById<Button>(R.id.close)
+                root.findViewById<Button>(R.id.close_button)
                     .setOnClickListener { onCloseListener(createResults(), FinishReason.Completed) }
-                root.findViewById<Button>(R.id.skip)
+                root.findViewById<Button>(R.id.skip_button)
                     .setOnClickListener { onSkipListener() }
                 root.findViewById<EditText>(R.id.input).setText(
                     (stepResult?.results?.firstOrNull() as? CustomResult)?.customData ?: ""

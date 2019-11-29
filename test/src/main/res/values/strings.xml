@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="intro_title">Welcome to the\nQuickBird Studios\nHealth Survey</string>
+    <string name="intro_text">Get ready for a bunch of super random questions!</string>
+    <string name="intro_start">Let\'s go!</string>
+
+    <string name="about_you_question_title">Tell us about you</string>
+    <string name="about_you_question_text">Tell us about yourself and why you want to improve your health.</string>
+
+    <string name="how_old_title">How old are you?</string>
+    <string name="how_old_text"></string>
+
+    <string name="how_fat_question_title">Select your body type</string>
+    <string name="how_fat_question_text"></string>
+    <string name="how_fat_min">1</string>
+    <string name="how_fat_max">5</string>
+
+    <string name="allergies_question_title">Known allergies</string>
+    <string name="allergies_question_text">Do you have any allergies that we should be aware of?</string>
+    <string name="allergies_back_penicillin">Penicillin</string>
+    <string name="allergies_latex">Latex</string>
+    <string name="allergies_pet">Pet</string>
+    <string name="allergies_pollen">Pollen</string>
+
+    <string name="quit_or_continue_question_title">Done?</string>
+    <string name="quit_or_continue_question_text">We are done, do you mind to tell us more about yourself?</string>
+
+    <string name="finish_question_title">Done!</string>
+    <string name="finish_question_text">Thanks for taking the survey, we will contact you soon!</string>
+    <string name="finish_question_submit">Submit survey</string>
+
+    <!-- test strings -->
+    <string name="app_name">Survey-Kit Test App</string>
+    <string name="how_old_hint">Please enter your age</string>
+    <string name="value_picker_example_title">ValuePickerAnswerFormat example title text</string>
+    <string name="value_picker_example_text">ValuePickerAnswerFormat example text</string>
+    <string name="boolean_example_title">BooleanAnswerFormat example title</string>
+    <string name="boolean_example_text">BooleanAnswerFormat example text</string>
+    <string name="date_picker_title">Date Picker title</string>
+    <string name="date_picker_text">Date Picker text</string>
+    <string name="time_picker_title">Time Picker title</string>
+    <string name="time_picker_text">Time Picker text</string>
+    <string name="email_question_text">Email question text</string>
+    <string name="email_question_title">Email question title</string>
+    <string name="image_selector_question_title">Image selector question title</string>
+    <string name="image_selector_question_text">Image selector question text</string>
+    <string name="maybe">Maybe</string>
+</resources>

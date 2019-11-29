@@ -39,8 +39,7 @@ class SurveyView @JvmOverloads constructor(
     //TODO theme should be not set here but when creating the survey
     override fun start(task: Task, surveyTheme: SurveyTheme) {
         taskNavigator = TaskNavigator(task = task)
-        resultGatherer =
-            ResultGathererImpl(task = task)
+        resultGatherer = ResultGathererImpl(task = task)
         presenter = PresenterImpl(
             context = context,
             surveyTheme = surveyTheme,

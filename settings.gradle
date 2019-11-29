@@ -1,4 +1,5 @@
 rootProject.name = 'SurveyKit'
 
 include ':survey'
+include ':test'
 include ':example'

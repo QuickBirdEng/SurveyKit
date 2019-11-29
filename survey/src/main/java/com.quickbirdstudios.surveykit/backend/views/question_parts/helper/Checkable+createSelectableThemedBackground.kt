@@ -36,9 +36,7 @@ private class BackgroundCreationHelper {
             listOf(android.R.attr.state_checked, android.R.attr.state_pressed).toIntArray(),
             createLayerDrawable(
                 context,
-                BackgroundDrawable.Pressed(
-                    border
-                ),
+                BackgroundDrawable.Pressed(border),
                 IconDrawable.Check(),
                 color
             )
@@ -47,9 +45,7 @@ private class BackgroundCreationHelper {
             listOf(android.R.attr.state_pressed).toIntArray(),
             createLayerDrawable(
                 context,
-                BackgroundDrawable.Pressed(
-                    border
-                ),
+                BackgroundDrawable.Pressed(border),
                 IconDrawable.Default(),
                 color
             )
@@ -58,9 +54,7 @@ private class BackgroundCreationHelper {
             listOf(android.R.attr.state_checked).toIntArray(),
             createLayerDrawable(
                 context,
-                BackgroundDrawable.Default(
-                    border
-                ),
+                BackgroundDrawable.Default(border),
                 IconDrawable.Check(),
                 color
             )
@@ -69,9 +63,7 @@ private class BackgroundCreationHelper {
             emptyArray<Int>().toIntArray(),
             createLayerDrawable(
                 context,
-                BackgroundDrawable.Default(
-                    border
-                ),
+                BackgroundDrawable.Default(border),
                 IconDrawable.Default(),
                 color
             )

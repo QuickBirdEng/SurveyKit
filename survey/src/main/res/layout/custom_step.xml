@@ -30,13 +30,13 @@
         android:text="back" />
 
     <Button
-        android:id="@+id/close"
+        android:id="@+id/close_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="close" />
 
     <Button
-        android:id="@+id/skip"
+        android:id="@+id/skip_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="skip" />

@@ -2,6 +2,8 @@ object Versions {
     const val kotlin = "1.3.50"
     const val coroutines = "1.3.0"
     const val test = "1.1.1"
+    const val jUnit = "5.5.2"
+    const val jUnitPlatform = "1.5.2"
     const val lottie = "3.0.7"
     const val espresso = "3.1.0"
 
@@ -37,7 +39,9 @@ object Deps {
     }
 
     object Test {
-        const val junit = "junit:junit:${Versions.test}"
+        const val jUnitJupiter = "org.junit.jupiter:junit-jupiter-engine:${Versions.jUnit}"
+        const val jUnitPlatform =
+            "org.junit.platform:junit-platform-runner:${Versions.jUnitPlatform}"
         const val core = "androidx.test:core:${Versions.test}"
         const val runner = "androidx.test:runner:${Versions.test}"
         const val rules = "androidx.test:rules:${Versions.test}"
