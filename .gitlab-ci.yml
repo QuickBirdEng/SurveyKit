@@ -5,6 +5,12 @@ stages:
   - test
   - deploy
 
+unitTests:
+  stage: test
+  script:
+    - ./gradlew clean
+    - ./gradlew testDebugUnitTest
+
 appTests:
   stage: test
   script:
