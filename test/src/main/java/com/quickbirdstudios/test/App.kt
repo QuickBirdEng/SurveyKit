@@ -1,4 +1,4 @@
-package com.quickbirdstudios.surveykit
+package com.quickbirdstudios.test
 
 import android.app.Application
 
