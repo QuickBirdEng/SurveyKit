@@ -44,12 +44,11 @@ private fun clickRecyclerViewItem(item: Int) = object : ViewAction {
 }
 
 
-// this is not working
+// this is not working, fix it before touching it
 private fun isSelected(item: Int): Matcher<View> =
     object : TypeSafeMatcher<View>() {
         override fun describeTo(description: Description) {
-            description
-                .appendText("Checks if item in recyclerview at position $item is selected")
+            description.appendText("Checks if item in recyclerview at position $item is selected")
         }
 
         override fun matchesSafely(view: View?): Boolean {
