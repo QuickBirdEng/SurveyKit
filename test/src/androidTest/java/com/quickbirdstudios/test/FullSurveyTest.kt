@@ -69,7 +69,7 @@ internal class FullSurveyTest : PageTest {
             day = DateStepInput.day
         )
 
-        testTimePickerStep()
+        testTimePickerStep(hour = TimeStepInput.hour, minute = TimeStepInput.minute)
 
         testEmailStep(EmailStepInputWrong, EmailStepInputRight) { isKeyboardShown() }
 
@@ -136,7 +136,7 @@ internal class FullSurveyTest : PageTest {
                         )
                     }
                     is TimeQuestionResult -> Assert.assertEquals(
-                        AnswerFormat.TimeAnswerFormat.Time(1, 1),
+                        TimeStepInput,
                         questionResult.answer
                     )
                     is EmailQuestionResult -> Assert.assertEquals(
