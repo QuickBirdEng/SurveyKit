@@ -87,7 +87,7 @@ internal class FullSurveyTest : PageTest {
 
     //region Private Result checker
 
-    private val resultCheck = { result: TaskResult, reason: FinishReason ->
+    private val resultCheck = { result: TaskResult, _: FinishReason ->
         result.results.forEach { stepResult ->
             stepResult.results.forEach { questionResult ->
                 when (questionResult) {
@@ -98,10 +98,16 @@ internal class FullSurveyTest : PageTest {
                         Assert.assertTrue(questionResult.answer.toString() == NumberStepInput)
                     is MultipleChoiceQuestionResult -> {
                         val expectedResult = listOf(
-                            (activityRule.activity.multipleChoiceStep.answerFormat as MultipleChoiceAnswerFormat)
-                                .textChoices[0],
-                            (activityRule.activity.multipleChoiceStep.answerFormat as MultipleChoiceAnswerFormat)
-                                .textChoices[3]
+                            (activityRule
+                                .activity
+                                .multipleChoiceStep
+                                .answerFormat as MultipleChoiceAnswerFormat
+                                ).textChoices[0],
+                            (activityRule
+                                .activity
+                                .multipleChoiceStep
+                                .answerFormat as MultipleChoiceAnswerFormat
+                                ).textChoices[3]
                         )
                         Assert.assertArrayEquals(
                             expectedResult.toTypedArray(),
