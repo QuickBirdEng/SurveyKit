@@ -6,8 +6,9 @@ import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.result.TaskResult
 import java.util.*
 
-internal class ResultGathererImpl(private val task: Task) :
-    ResultGatherer {
+internal class ResultGathererImpl(private val task: Task) : ResultGatherer {
+
+    private val startDate: Date = Date()
 
     override var results: MutableList<StepResult> = mutableListOf()
 
@@ -15,10 +16,8 @@ internal class ResultGathererImpl(private val task: Task) :
         get() = TaskResult(
             id = task.id,
             results = results,
-            startDate = Date()
-        ).apply {
-            endDate = Date()
-        }
+            startDate = startDate
+        ).apply { endDate = Date() }
 
     override fun store(stepResult: StepResult) {
         val previousResult = retrieve(stepResult.id)
