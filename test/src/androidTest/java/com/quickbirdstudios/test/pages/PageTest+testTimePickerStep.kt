@@ -11,7 +11,7 @@ import com.quickbirdstudios.test.R
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 
-internal fun PageTest.testTimePickerStep() {
+internal fun PageTest.testTimePickerStep(hour: Int, minute: Int) {
     onView(withId(R.id.infoTextTitle)).check(matches(isDisplayed()))
 
     onView(withId(R.id.button_continue)).check(matches(isEnabled()))
@@ -31,9 +31,7 @@ internal fun PageTest.testTimePickerStep() {
     For some reason, this fails 50% of the time. Hour/minute do not seem to match, idk why, but
     the I'm using the android TimePicker, which hopefully works and does not need testing.
      */
-    
-    val hour = 1
-    val minute = 1
+
     onView(withId(R.id.timePickerPart)).perform(PickerActions.setTime(hour, minute))
 
     continueToNextStep()
