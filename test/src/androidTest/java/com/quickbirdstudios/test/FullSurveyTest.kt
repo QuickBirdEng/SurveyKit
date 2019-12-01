@@ -40,7 +40,6 @@ internal class FullSurveyTest : PageTest {
 
     @Test
     fun runThrough() {
-
         activityRule.activity.survey.onSurveyFinish = resultCheck
 
         testIntroStep()
@@ -64,7 +63,11 @@ internal class FullSurveyTest : PageTest {
 
         testValuePickerStep()
 
-        testDatePickerStep()
+        testDatePickerStep(
+            year = DateStepInput.year,
+            month = DateStepInput.month,
+            day = DateStepInput.day
+        )
 
         testTimePickerStep()
 
@@ -127,9 +130,8 @@ internal class FullSurveyTest : PageTest {
                     )
                     is ValuePickerQuestionResult -> Assert.assertEquals("0", questionResult.answer)
                     is DateQuestionResult -> {
-                        val year = Calendar.getInstance()[Calendar.YEAR]
                         Assert.assertEquals(
-                            AnswerFormat.DateAnswerFormat.Date(1, 0, year),
+                            DateStepInput,
                             questionResult.answer
                         )
                     }
@@ -159,5 +161,11 @@ internal class FullSurveyTest : PageTest {
         private const val NumberStepInput = "35"
         private const val EmailStepInputWrong = "asdf@test"
         private const val EmailStepInputRight = "email@test.com"
+        private val DateStepInput = AnswerFormat.DateAnswerFormat.Date(
+            day = 1,
+            month = 0,
+            year = Calendar.getInstance()[Calendar.YEAR]
+        )
+        private val TimeStepInput = AnswerFormat.TimeAnswerFormat.Time(hour = 1, minute = 1)
     }
 }
