@@ -61,7 +61,7 @@ internal class FullSurveyTest : PageTest {
 
         testBooleanChoiceStep()
 
-        testValuePickerStep()
+        testValuePickerStep(ValuePickerStepInput)
 
         testDatePickerStep(
             year = DateStepInput.year,
@@ -73,7 +73,7 @@ internal class FullSurveyTest : PageTest {
 
         testEmailStep(EmailStepInputWrong, EmailStepInputRight) { isKeyboardShown() }
 
-        testImageSelectorStep()
+        testImageSelectorStep(ImageSelectorStepToClick)
 
         testCustomStep()
 
@@ -128,7 +128,10 @@ internal class FullSurveyTest : PageTest {
                         AnswerFormat.BooleanAnswerFormat.Result.PositiveAnswer,
                         questionResult.answer
                     )
-                    is ValuePickerQuestionResult -> Assert.assertEquals("0", questionResult.answer)
+                    is ValuePickerQuestionResult -> Assert.assertEquals(
+                        ValuePickerStepInput.toString(),
+                        questionResult.answer
+                    )
                     is DateQuestionResult -> {
                         Assert.assertEquals(
                             DateStepInput,
@@ -144,7 +147,7 @@ internal class FullSurveyTest : PageTest {
                         questionResult.answer
                     )
                     is ImageSelectorResult -> Assert.assertEquals(
-                        listOf(0, 1, 3),
+                        ImageSelectorStepToClick + ImageSelectorStepPreselected,
                         questionResult.answer
                     )
                     is CustomResult -> println(questionResult)
@@ -167,5 +170,8 @@ internal class FullSurveyTest : PageTest {
             year = Calendar.getInstance()[Calendar.YEAR]
         )
         private val TimeStepInput = AnswerFormat.TimeAnswerFormat.Time(hour = 1, minute = 1)
+        private const val ValuePickerStepInput = 0
+        private val ImageSelectorStepPreselected = listOf(1, 3)
+        private val ImageSelectorStepToClick = listOf(0)
     }
 }
