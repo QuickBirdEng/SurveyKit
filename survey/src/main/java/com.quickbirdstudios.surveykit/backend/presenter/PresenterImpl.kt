@@ -32,7 +32,7 @@ internal class PresenterImpl(
 
     //region Public API
 
-    override suspend fun present(
+    override suspend fun invoke(
         transition: Presenter.Transition, step: Step, stepResult: StepResult?
     ): NextAction {
         val viewToPresent = step.createView(context, stepResult)
