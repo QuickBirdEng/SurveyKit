@@ -51,41 +51,51 @@ internal class PresenterImpl(
     //region Private API
 
     private suspend fun showAndWaitForResult(
-        id: StepIdentifier, questionView: StepView, transition: Presenter.Transition
+        id: StepIdentifier,
+        questionView: StepView,
+        transition: Presenter.Transition
     ): NextAction {
-        val stepResult =
-            StepResult(id = id, startDate = Date())
+        val stepResult = StepResult(id = id, startDate = Date())
+
         showView(questionView, transition)
+
         return suspendCoroutine { routine ->
             questionView.onNext { result ->
+                questionView.invalidateCallBacks()
                 stepResult.results.add(result)
-                routine.resume(
-                    NextAction.Next(
-                        stepResult
-                    )
-                )
+                routine.resume(NextAction.Next(stepResult))
             }
             questionView.onBack { result ->
+                questionView.invalidateCallBacks()
                 stepResult.results.add(result)
-                routine.resume(
-                    NextAction.Back(
-                        stepResult
-                    )
-                )
+                routine.resume(NextAction.Back(stepResult))
             }
             questionView.onSkip {
+                questionView.invalidateCallBacks()
                 routine.resume(NextAction.Skip)
             }
             questionView.onClose { result, reason ->
+                questionView.invalidateCallBacks()
                 stepResult.results.add(result)
-                routine.resume(
-                    NextAction.Close(
-                        stepResult,
-                        reason
-                    )
-                )
+                routine.resume(NextAction.Close(stepResult, reason))
             }
         }
+    }
+
+    /*
+    call this after the first callback of a StepView is called (onNext, onBack, onSkip, onClose)
+    Reason: if any callback is called twice (or 2 different callbacks are called) the coroutine
+    would be resumed twice -> crash
+    For now this works perfect: the callback is executed and no further callback gets through (new
+    views have new callbacks instantiated, so no issue there)
+
+    TODO: evaluate on how to do this properly
+     */
+    private fun StepView.invalidateCallBacks() {
+        this.onNext { }
+        this.onBack { }
+        this.onSkip { }
+        this.onClose { _, _ -> }
     }
 
     private fun showView(questionView: StepView, transition: Presenter.Transition) {
