@@ -16,8 +16,7 @@ class IntroQuestionView(
 
     //region Overrides
 
-    override fun createResults() =
-        IntroQuestionResult(id, startDate)
+    override fun createResults() = IntroQuestionResult(id, startDate)
 
     override fun isValidInput() = true
 

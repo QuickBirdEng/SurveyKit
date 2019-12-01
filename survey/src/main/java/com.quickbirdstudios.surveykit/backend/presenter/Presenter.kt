@@ -12,7 +12,11 @@ interface Presenter {
     val viewContainer: FrameLayout
     val surveyTheme: SurveyTheme
 
-    suspend fun present(transition: Transition, step: Step, stepResult: StepResult?): NextAction
+    suspend operator fun invoke(
+        transition: Transition,
+        step: Step,
+        stepResult: StepResult?
+    ): NextAction
     fun triggerBackOnCurrentView()
 
     enum class Transition {
