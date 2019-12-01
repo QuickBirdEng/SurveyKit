@@ -150,6 +150,6 @@ data class TextChoice(
 data class ImageChoice(@DrawableRes val resourceId: Int) : Parcelable
 
 private val defaultEmailValidation: (String) -> Boolean = { email ->
-    val pattern = Pattern.compile("""^(.+)@(.+)\..+$""")
+    val pattern = Pattern.compile("""^(\w*)@(.+)\..+$""")
     pattern.matcher(email).matches()
 }
