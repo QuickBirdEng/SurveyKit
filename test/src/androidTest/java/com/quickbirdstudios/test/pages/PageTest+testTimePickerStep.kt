@@ -9,19 +9,18 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import com.quickbirdstudios.test.R
 import org.hamcrest.Description
 import org.hamcrest.Matcher
-import java.util.*
 
 internal fun PageTest.testTimePickerStep() {
     onView(withId(R.id.infoTextTitle)).check(matches(isDisplayed()))
 
     onView(withId(R.id.button_continue)).check(matches(isEnabled()))
 
+    /*
+    How can this test be flacky?!?
+
     var hour = Calendar.getInstance()[Calendar.HOUR]
     var minute = Calendar.getInstance()[Calendar.MINUTE]
     onView(withId(R.id.timePickerPart)).check(matches(matchesTime(hour, minute)))
-
-    /*
-    How can this test be flacky?!?
 
     hour = 1
     minute = 1
