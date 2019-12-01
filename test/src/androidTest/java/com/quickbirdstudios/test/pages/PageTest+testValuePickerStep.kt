@@ -10,13 +10,13 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import com.quickbirdstudios.test.R
 import org.hamcrest.Matcher
 
-internal fun PageTest.testValuePickerStep() {
+internal fun PageTest.testValuePickerStep(indexOfValueToPick: Int) {
     checkIfTitleInfoAndContinueAreDisplayed()
 
     onView(withId(R.id.button_continue)).check(matches(isEnabled()))
     onView(withId(R.id.valuePickerPart)).check(matches(isDisplayed()))
 
-    onView(withId(R.id.valuePickerPart)).perform(setValuePickerOption(0))
+    onView(withId(R.id.valuePickerPart)).perform(setValuePickerOption(indexOfValueToPick))
 
     continueToNextStep()
 }

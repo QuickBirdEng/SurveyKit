@@ -16,11 +16,14 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 
-internal fun PageTest.testImageSelectorStep() {
+internal fun PageTest.testImageSelectorStep(itemsToClick: List<Int>) {
     checkIfTitleInfoAndContinueAreDisplayed()
 
     onView(withId(R.id.button_continue)).check(ViewAssertions.matches(isEnabled()))
-    onView(withId(R.id.imageSelectorPart)).perform(clickRecyclerViewItem(0))
+
+    itemsToClick.forEach { index ->
+        onView(withId(R.id.imageSelectorPart)).perform(clickRecyclerViewItem(index))
+    }
 
     continueToNextStep()
 }
