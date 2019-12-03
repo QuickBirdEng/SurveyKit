@@ -6,6 +6,7 @@ import android.os.Parcelable
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -28,12 +29,14 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
     protected lateinit var survey: SurveyView
+    private lateinit var container: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
         survey = findViewById(R.id.survey_view)
+        container = findViewById(R.id.surveyContainer)
         setupSurvey(survey)
     }
 
@@ -185,6 +188,7 @@ class MainActivity : AppCompatActivity() {
             if (reason == FinishReason.Completed) {
                 taskResult.results.forEach { stepResult ->
                     Log.e("ASDF", "answer ${stepResult.results.firstOrNull()}")
+                    container.removeAllViews()
                 }
             }
         }
