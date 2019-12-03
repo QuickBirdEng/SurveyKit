@@ -94,7 +94,7 @@ internal class FullSurveyTest : PageTest {
         result.results.forEach { stepResult ->
             stepResult.results.forEach { questionResult ->
                 when (questionResult) {
-                    is IntroQuestionResult -> true
+                    is IntroQuestionResult -> Unit
                     is TextQuestionResult ->
                         Assert.assertTrue(questionResult.answer == TextStepInput)
                     is IntegerQuestionResult ->
@@ -151,7 +151,7 @@ internal class FullSurveyTest : PageTest {
                         questionResult.answer
                     )
                     is CustomResult -> println(questionResult)
-                    is FinishQuestionResult -> true
+                    is FinishQuestionResult -> Unit
                 }
             }
         }

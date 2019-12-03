@@ -1,6 +1,5 @@
 package com.quickbirdstudios.test.pages
 
-import android.graphics.drawable.ColorDrawable
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -12,9 +11,7 @@ import androidx.test.espresso.ViewAction
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.quickbirdstudios.test.R
-import org.hamcrest.Description
 import org.hamcrest.Matcher
-import org.hamcrest.TypeSafeMatcher
 
 internal fun PageTest.testImageSelectorStep(itemsToClick: List<Int>) {
     checkIfTitleInfoAndContinueAreDisplayed()
@@ -48,24 +45,24 @@ private fun clickRecyclerViewItem(item: Int) = object : ViewAction {
 
 
 // this is not working, fix it before touching it
-private fun isSelected(item: Int): Matcher<View> =
-    object : TypeSafeMatcher<View>() {
-        override fun describeTo(description: Description) {
-            description.appendText("Checks if item in recyclerview at position $item is selected")
-        }
-
-        override fun matchesSafely(view: View?): Boolean {
-            view ?: return false
-            return when (view) {
-                is RecyclerView.ViewHolder -> {
-                    (
-                        view.findViewById<LinearLayout>(R.id.border).background as ColorDrawable
-                        ).color == 0
-                    true
-                }
-                else -> false
-            }
-        }
-    }
+//private fun isSelected(item: Int): Matcher<View> =
+//    object : TypeSafeMatcher<View>() {
+//        override fun describeTo(description: Description) {
+//            description.appendText("Checks if item in recyclerview at position $item is selected")
+//        }
+//
+//        override fun matchesSafely(view: View?): Boolean {
+//            view ?: return false
+//            return when (view) {
+//                is RecyclerView.ViewHolder -> {
+//                    (
+//                        view.findViewById<LinearLayout>(R.id.border).background as ColorDrawable
+//                        ).color == 0
+//                    true
+//                }
+//                else -> false
+//            }
+//        }
+//    }
 
 //endregion
