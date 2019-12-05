@@ -1,9 +1,7 @@
 package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
-import androidx.annotation.StringRes
 import com.quickbirdstudios.surveykit.AnswerFormat
-import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.TextChoice
 import com.quickbirdstudios.surveykit.backend.views.question_parts.SingleChoicePart
@@ -59,7 +57,7 @@ internal class SingleChoiceQuestionView(
         choicesContainer = content.add(SingleChoicePart(context))
         choicesContainer.options = answerFormat.textChoices
         choicesContainer.onCheckedChangeListener = { _, _ -> footer.canContinue = isValidInput() }
-        choicesContainer.selected = preselected
+        choicesContainer.selected = preselected ?: answerFormat.defaultSelection
     }
 
     //endregion

@@ -16,12 +16,14 @@ sealed class AnswerFormat {
 
 
     data class SingleChoiceAnswerFormat(
-        val textChoices: List<TextChoice>
+        val textChoices: List<TextChoice>,
+        val defaultSelection: TextChoice? = null
     ) : AnswerFormat()
 
 
     data class MultipleChoiceAnswerFormat(
-        val textChoices: List<TextChoice>
+        val textChoices: List<TextChoice>,
+        val defaultSelections: List<TextChoice> = emptyList()
     ) : AnswerFormat()
 
 

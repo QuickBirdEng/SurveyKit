@@ -111,26 +111,14 @@ internal class TestActivity : AppCompatActivity() {
             text = this.resources.getString(R.string.allergies_question_text),
             answerFormat = AnswerFormat.MultipleChoiceAnswerFormat(
                 textChoices = listOf(
-                    TextChoice(
-                        this.resources.getString(
-                            R.string.allergies_back_penicillin
-                        )
-                    ),
-                    TextChoice(
-                        this.resources.getString(
-                            R.string.allergies_latex
-                        )
-                    ),
-                    TextChoice(
-                        this.resources.getString(
-                            R.string.allergies_pet
-                        )
-                    ),
-                    TextChoice(
-                        this.resources.getString(
-                            R.string.allergies_pollen
-                        )
-                    )
+                    TextChoice(this.resources.getString(R.string.allergies_back_penicillin)),
+                    TextChoice(this.resources.getString(R.string.allergies_latex)),
+                    TextChoice(this.resources.getString(R.string.allergies_pet)),
+                    TextChoice(this.resources.getString(R.string.allergies_pollen))
+                ),
+                defaultSelections = listOf(
+                    TextChoice(this.resources.getString(R.string.allergies_pet)),
+                    TextChoice(this.resources.getString(R.string.allergies_pollen))
                 )
             )
         )
@@ -139,20 +127,11 @@ internal class TestActivity : AppCompatActivity() {
             text = this.resources.getString(R.string.quit_or_continue_question_text),
             answerFormat = AnswerFormat.SingleChoiceAnswerFormat(
                 textChoices = listOf(
-                    TextChoice(
-                        this.resources.getString(
-                            R.string.yes
-                        )
-                    ),
-                    TextChoice(
-                        this.resources.getString(
-                            R.string.no
-                        )
-                    ),
-                    TextChoice(
-                        this.resources.getString(R.string.maybe)
-                    )
-                )
+                    TextChoice(this.resources.getString(R.string.yes)),
+                    TextChoice(this.resources.getString(R.string.no)),
+                    TextChoice(this.resources.getString(R.string.maybe))
+                ),
+                defaultSelection = TextChoice(this.resources.getString(R.string.maybe))
             )
         )
         booleanChoiceStep = QuestionStep(
