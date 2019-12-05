@@ -12,6 +12,9 @@ unitTests:
     - ./gradlew testDebugUnitTest
 
 appTests:
+  tags:
+    - android
+    - emulator
   stage: test
   script:
     - ./gradlew clean
