@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
-import androidx.annotation.StringRes
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.TextChoice
@@ -46,14 +45,14 @@ internal class MultipleChoiceQuestionView(
     override fun setupViews() {
         super.setupViews()
 
-        choicesContainer = content.add(
-            MultipleChoicePart(
-                context
-            )
-        )
+        choicesContainer = content.add(MultipleChoicePart(context))
         choicesContainer.options = answerFormat.textChoices
         choicesContainer.onCheckedChangeListener = { _, _ -> footer.canContinue = isValidInput() }
-        choicesContainer.selected = preselected ?: emptyList()
+        val preselectedOptions = preselected ?: emptyList()
+        val selectedOptions =
+            if (preselectedOptions.isNotEmpty()) preselectedOptions
+            else answerFormat.defaultSelections
+        choicesContainer.selected = selectedOptions
     }
 
     //endregion
