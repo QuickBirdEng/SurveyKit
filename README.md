@@ -21,24 +21,23 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 | <img src="assets/top/instruction_qbs.png?raw=true" width="200"> | <img src="assets/top/how_old_are_you_with_hint.png?raw=true" width="200"> | <img src="assets/top/known_allergies_with_2_selected.png?raw=true" width="200"> | <img src="assets/top/single_choice_selection_1_selection.png?raw=true" width="200"> | <img src="assets/top/color-picker.png?raw=true" width="200"> |
 
 ## 📚 Overview: Creating Research Surveys
--   [What SurveyKit does for you](#what-survey-kit-does-for-you)
--   [What SurveyKit does not (yet) do for you](#what-survey-kit-does-not-yet-for-you)
--   [Library Setup](#-setup)
+-   [What SurveyKit does for you](#what-surveykit-does-for-you)
+-   [What SurveyKit does not (yet) do for you](#what-surveykit-does-not-yet-do-for-you)
+-   [Library Setup](#-library-setup)
     -   [Add the repository](#1-add-the-repository)
     -   [Add the dependency](#2-add-the-dependency)
 -   [Usage](#-usage)
     -   [Add and find the survey in the xml](#add-and-find-the-survey-in-the-xml)
-    -   [Create survey steps](#create-steps)
+    -   [Create survey steps](#create-survey-steps)
     -   [Create a Task](#create-a-task)
     -   [Evaluate the results](#evaluate-the-results)
-    -   [Configure](#configure)
+    -   [Configure](#style)
     -   [Start the survey](#start-the-survey)
 -   [Custom steps](#-custom-steps)
--   [Comparison to ResearchKit on iOS](#vs-ios-researchkit-comparison)
--   [Author](#-Author)
--   [Contributing](#-Contributing)
+-   [Comparison to ResearchKit on iOS](#vs-comparison-of-surveykit-on-android-to-researchkit-on-ios)
+-   [Author](#-author)
+-   [Contributing](#%EF%B8%8F-contributing)
 -   [License](#-license)
--   [More Examples](#more-examples)
 
 ## What SurveyKit does for you
 -   Simplifies the creation of surveys
