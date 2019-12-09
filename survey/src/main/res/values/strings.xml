@@ -44,8 +44,8 @@
     <!-- test strings -->
     <string name="app_name">Survey-Kit Test App</string>
     <string name="how_old_hint">Please enter your age</string>
-    <string name="value_picker_example_title">ValuePickerAnswerFormat example title text</string>
-    <string name="value_picker_example_text">ValuePickerAnswerFormat example text</string>
+    <string name="value_picker_example_title">Pick a value</string>
+    <string name="value_picker_example_text">Here you can pick any value you\'d like!</string>
     <string name="boolean_example_title">BooleanAnswerFormat example title</string>
     <string name="boolean_example_text">BooleanAnswerFormat example text</string>
     <string name="date_picker_title">Date Picker title</string>
@@ -54,6 +54,6 @@
     <string name="time_picker_text">Time Picker text</string>
     <string name="email_question_text">Email question text</string>
     <string name="email_question_title">Email question title</string>
-    <string name="image_selector_question_title">Image selector question title</string>
-    <string name="image_selector_question_text">Image selector question text</string>
+    <string name="image_selector_question_title">Image choice</string>
+    <string name="image_selector_question_text">Pick a color</string>
 </resources>
