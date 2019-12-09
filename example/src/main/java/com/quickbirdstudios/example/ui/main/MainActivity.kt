@@ -134,24 +134,12 @@ class MainActivity : AppCompatActivity() {
                     numberOfColumns = 5,
                     defaultSelectedImagesIndices = listOf(1, 3),
                     imageChoiceList = listOf(
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example3),
-                        ImageChoice(R.drawable.example3),
-                        ImageChoice(R.drawable.example3),
-                        ImageChoice(R.drawable.example3),
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example2),
-                        ImageChoice(R.drawable.example3),
-                        ImageChoice(R.drawable.example3),
-                        ImageChoice(R.drawable.example3),
-                        ImageChoice(R.drawable.example3)
+                        ImageChoice(R.drawable.color1),
+                        ImageChoice(R.drawable.color2),
+                        ImageChoice(R.drawable.color3),
+                        ImageChoice(R.drawable.color4),
+                        ImageChoice(R.drawable.color5),
+                        ImageChoice(R.drawable.color6)
                     )
                 )
             ),
