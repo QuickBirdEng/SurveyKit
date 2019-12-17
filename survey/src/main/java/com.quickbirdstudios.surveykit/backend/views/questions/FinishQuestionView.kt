@@ -6,13 +6,15 @@ import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.question_parts.AnimatedCheckmark
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.question_results.FinishQuestionResult
+import com.quickbirdstudios.surveykit.steps.CompletionStep
 
 class FinishQuestionView(
     context: Context,
     id: StepIdentifier = StepIdentifier(),
     title: String?,
     text: String?,
-    finishButtonText: String
+    finishButtonText: String,
+    private val lottieAnimation: CompletionStep.LottieAnimation?
 ) : QuestionView(context, id, false, title, text, finishButtonText) {
 
     //region Overrides
@@ -24,12 +26,7 @@ class FinishQuestionView(
 
     override fun setupViews() {
         super.setupViews()
-
-        content.add(
-            AnimatedCheckmark(
-                context
-            )
-        )
+        content.add(AnimatedCheckmark(context, lottieAnimation))
 
         footer.questionCanBeSkipped = false
         footer.onContinue = { onCloseListener(createResults(), FinishReason.Completed) }
