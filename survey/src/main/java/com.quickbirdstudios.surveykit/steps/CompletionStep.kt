@@ -12,6 +12,7 @@ class CompletionStep(
     private val text: String? = null,
     private val buttonText: String = "Finish",
     private val lottieAnimation: LottieAnimation? = null,
+    private val repeatCount: Int = 1,
     override val isOptional: Boolean = false,
     override val id: StepIdentifier = StepIdentifier()
 ) : Step {
@@ -21,7 +22,8 @@ class CompletionStep(
             title = title,
             text = text,
             finishButtonText = buttonText,
-            lottieAnimation = lottieAnimation
+            lottieAnimation = lottieAnimation,
+            repeatCount = repeatCount
         )
 
     sealed class LottieAnimation {

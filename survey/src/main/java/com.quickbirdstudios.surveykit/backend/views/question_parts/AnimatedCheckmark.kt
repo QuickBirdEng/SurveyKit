@@ -17,11 +17,9 @@ internal class AnimatedCheckmark @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleRes: Int = 0,
-    animation: LottieAnimation? = null
+    animation: LottieAnimation?,
+    repeatCount: Int = 1
 ) : LinearLayout(context, attrs, defStyleRes), StyleablePart {
-
-    constructor(context: Context, lottieAnimation: LottieAnimation?) :
-        this(context = context, animation = lottieAnimation)
 
     override fun style(surveyTheme: SurveyTheme) {}
 
@@ -30,6 +28,7 @@ internal class AnimatedCheckmark @JvmOverloads constructor(
         val root = layoutInflater.inflate(R.layout.lottie_checkmark_wrapper, this, false)
 
         val lottieView = root.findViewById<LottieAnimationView>(R.id.animation_view)
+        lottieView.repeatCount = repeatCount
         when (animation) {
             is RawResource -> lottieView.setAnimation(animation.id)
             is Asset -> lottieView.setAnimation(animation.name)

@@ -14,7 +14,8 @@ class FinishQuestionView(
     title: String?,
     text: String?,
     finishButtonText: String,
-    private val lottieAnimation: CompletionStep.LottieAnimation?
+    private val lottieAnimation: CompletionStep.LottieAnimation?,
+    private val repeatCount: Int?
 ) : QuestionView(context, id, false, title, text, finishButtonText) {
 
     //region Overrides
@@ -26,7 +27,20 @@ class FinishQuestionView(
 
     override fun setupViews() {
         super.setupViews()
-        content.add(AnimatedCheckmark(context, lottieAnimation))
+        content.add(
+            if (repeatCount != null) {
+                AnimatedCheckmark(
+                    context = context,
+                    animation = lottieAnimation,
+                    repeatCount = repeatCount
+                )
+            } else {
+                AnimatedCheckmark(
+                    context = context,
+                    animation = lottieAnimation
+                )
+            }
+        )
 
         footer.questionCanBeSkipped = false
         footer.onContinue = { onCloseListener(createResults(), FinishReason.Completed) }
