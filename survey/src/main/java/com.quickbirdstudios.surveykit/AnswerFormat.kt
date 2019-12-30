@@ -6,6 +6,7 @@ import androidx.annotation.IntRange
 import kotlinx.android.parcel.Parcelize
 import java.util.*
 import java.util.regex.Pattern
+import java.util.Date as JavaDate
 
 sealed class AnswerFormat {
 
@@ -84,7 +85,11 @@ sealed class AnswerFormat {
     }
 
 
-    data class DateAnswerFormat(val defaultValue: Date?) : AnswerFormat() {
+    data class DateAnswerFormat(
+        val defaultValue: Date? = defaultDateValue(),
+        val minDate: JavaDate? = null,
+        val maxDate: JavaDate? = null
+    ) : AnswerFormat() {
         @Parcelize
         data class Date(val day: Int, val month: Int, val year: Int) : Parcelable {
             override fun toString(): String {
@@ -93,12 +98,10 @@ sealed class AnswerFormat {
         }
 
         companion object {
-            operator fun invoke(): DateAnswerFormat = DateAnswerFormat(
-                defaultValue = Date(
-                    day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
-                    month = Calendar.getInstance().get(Calendar.MONTH),
-                    year = Calendar.getInstance().get(Calendar.YEAR)
-                )
+            private fun defaultDateValue() = Date(
+                day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
+                month = Calendar.getInstance().get(Calendar.MONTH),
+                year = Calendar.getInstance().get(Calendar.YEAR)
             )
         }
     }
