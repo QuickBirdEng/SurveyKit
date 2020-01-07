@@ -47,9 +47,7 @@ internal class DatePickerPart @JvmOverloads constructor(
 
     //region Overrides
 
-    override fun style(surveyTheme: SurveyTheme) {
-        // TODO coloring if any
-    }
+    override fun style(surveyTheme: SurveyTheme) {}
 
     //endregion
 
