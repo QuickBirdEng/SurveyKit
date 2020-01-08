@@ -43,6 +43,7 @@ internal class DatePickerQuestionView(
         answerFormat.defaultValue?.let { datePicker.selected = it.toSelected() }
         answerFormat.minDate?.let { datePicker.minDate = it }
         answerFormat.maxDate?.let { datePicker.maxDate = it }
+        answerFormat.dateFormatter?.let { datePicker.dateFormatter = it }
         preselected?.let { datePicker.selected = it.toSelected() }
     }
 

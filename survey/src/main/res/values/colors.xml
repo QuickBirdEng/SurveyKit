@@ -15,6 +15,8 @@
     <color name="cyan_normal">#3CD0DF</color>
     <color name="cyan_normal_disabled">#853CD0DF</color>
 
+    <color name="background_grey">#CBC5C5C5</color>
+
     <!-- test colors -->
     <color name="color_primary">#008577</color>
     <color name="color_primary_dark">#00574B</color>

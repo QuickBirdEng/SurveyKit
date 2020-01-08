@@ -42,6 +42,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupSurvey(surveyView: SurveyView) {
         val steps = listOf(
+            QuestionStep(
+                title = this.resources.getString(R.string.date_picker_title),
+                text = this.resources.getString(R.string.date_picker_text),
+                answerFormat = AnswerFormat.DateAnswerFormat()
+            ),
             InstructionStep(
                 title = this.resources.getString(R.string.intro_title),
                 text = this.resources.getString(R.string.intro_text),
@@ -111,11 +116,6 @@ class MainActivity : AppCompatActivity() {
                     choices = (0..10).toList().map { it.toString() },
                     defaultValue = 5.toString()
                 )
-            ),
-            QuestionStep(
-                title = this.resources.getString(R.string.date_picker_title),
-                text = this.resources.getString(R.string.date_picker_text),
-                answerFormat = AnswerFormat.DateAnswerFormat()
             ),
             QuestionStep(
                 title = this.resources.getString(R.string.time_picker_title),
