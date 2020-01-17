@@ -5,6 +5,7 @@ import androidx.annotation.RawRes
 import com.airbnb.lottie.parser.moshi.JsonReader
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.questions.FinishQuestionView
+import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.StepResult
 
 class CompletionStep(
@@ -12,11 +13,11 @@ class CompletionStep(
     private val text: String? = null,
     private val buttonText: String = "Finish",
     private val lottieAnimation: LottieAnimation? = null,
-    private val repeatCount: Int = 1,
+    private val repeatCount: Int = 0,
     override val isOptional: Boolean = false,
     override val id: StepIdentifier = StepIdentifier()
 ) : Step {
-    override fun createView(context: Context, stepResult: StepResult?) =
+    override fun createView(context: Context, stepResult: StepResult?): StepView =
         FinishQuestionView(
             context = context,
             title = title,

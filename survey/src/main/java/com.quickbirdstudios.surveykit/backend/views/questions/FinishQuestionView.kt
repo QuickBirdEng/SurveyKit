@@ -3,12 +3,12 @@ package com.quickbirdstudios.surveykit.backend.views.questions
 import android.content.Context
 import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.StepIdentifier
-import com.quickbirdstudios.surveykit.backend.views.question_parts.AnimatedCheckmark
+import com.quickbirdstudios.surveykit.backend.views.question_parts.QuestionAnimation
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.question_results.FinishQuestionResult
 import com.quickbirdstudios.surveykit.steps.CompletionStep
 
-class FinishQuestionView(
+internal class FinishQuestionView(
     context: Context,
     id: StepIdentifier = StepIdentifier(),
     title: String?,
@@ -28,18 +28,11 @@ class FinishQuestionView(
     override fun setupViews() {
         super.setupViews()
         content.add(
-            if (repeatCount != null) {
-                AnimatedCheckmark(
-                    context = context,
-                    animation = lottieAnimation,
-                    repeatCount = repeatCount
-                )
-            } else {
-                AnimatedCheckmark(
-                    context = context,
-                    animation = lottieAnimation
-                )
-            }
+            QuestionAnimation(
+                context = context,
+                animation = lottieAnimation,
+                repeatCount = repeatCount
+            )
         )
 
         footer.questionCanBeSkipped = false

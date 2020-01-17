@@ -13,33 +13,38 @@ import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation
 import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation.*
 
-internal class AnimatedCheckmark @JvmOverloads constructor(
+internal class QuestionAnimation @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleRes: Int = 0,
     animation: LottieAnimation?,
-    repeatCount: Int = 1
+    repeatCount: Int?
 ) : LinearLayout(context, attrs, defStyleRes), StyleablePart {
 
     override fun style(surveyTheme: SurveyTheme) {}
+
+    private fun LottieAnimationView.setup(repeatCount: Int?, animation: LottieAnimation?) {
+        repeatCount?.let { this.repeatCount = it }
+        when (animation) {
+            is RawResource -> this.setAnimation(animation.id)
+            is Asset -> this.setAnimation(animation.name)
+            is WithJsonReader -> this.setAnimation(animation.jsonReader, animation.cacheKey)
+            is FromJson -> this.setAnimationFromJson(
+                animation.jsonString,
+                animation.jsonString
+            )
+            is Animation -> this.animation = animation.animation
+            is FromUrl -> this.setAnimationFromUrl(animation.url)
+            null -> Unit
+        }
+    }
 
     init {
         val layoutInflater = LayoutInflater.from(context)
         val root = layoutInflater.inflate(R.layout.lottie_checkmark_wrapper, this, false)
 
-        val lottieView = root.findViewById<LottieAnimationView>(R.id.animation_view)
-        lottieView.repeatCount = repeatCount
-        when (animation) {
-            is RawResource -> lottieView.setAnimation(animation.id)
-            is Asset -> lottieView.setAnimation(animation.name)
-            is WithJsonReader -> lottieView.setAnimation(animation.jsonReader, animation.cacheKey)
-            is FromJson -> lottieView.setAnimationFromJson(
-                animation.jsonString,
-                animation.jsonString
-            )
-            is Animation -> lottieView.animation = animation.animation
-            is FromUrl -> lottieView.setAnimationFromUrl(animation.url)
-            null -> Unit
+        val lottieView = root.findViewById<LottieAnimationView>(R.id.animation_view).apply {
+            setup(repeatCount, animation)
         }
 
         val size = context.px(160f).toInt()
