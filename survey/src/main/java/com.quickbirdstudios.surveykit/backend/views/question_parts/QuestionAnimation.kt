@@ -26,15 +26,15 @@ internal class QuestionAnimation @JvmOverloads constructor(
     private fun LottieAnimationView.setup(repeatCount: Int?, animation: LottieAnimation?) {
         repeatCount?.let { this.repeatCount = it }
         when (animation) {
-            is RawResource -> this.setAnimation(animation.id)
-            is Asset -> this.setAnimation(animation.name)
-            is WithJsonReader -> this.setAnimation(animation.jsonReader, animation.cacheKey)
+            is RawResource -> setAnimation(animation.id)
+            is Asset -> setAnimation(animation.name)
+            is WithJsonReader -> setAnimation(animation.jsonReader, animation.cacheKey)
             is FromJson -> this.setAnimationFromJson(
                 animation.jsonString,
                 animation.jsonString
             )
             is Animation -> this.animation = animation.animation
-            is FromUrl -> this.setAnimationFromUrl(animation.url)
+            is FromUrl -> setAnimationFromUrl(animation.url)
             null -> Unit
         }
     }
