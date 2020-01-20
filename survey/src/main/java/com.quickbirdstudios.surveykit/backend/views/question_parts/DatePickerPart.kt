@@ -8,6 +8,7 @@ import android.widget.LinearLayout
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
+import java.util.*
 
 internal class DatePickerPart @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
@@ -31,14 +32,22 @@ internal class DatePickerPart @JvmOverloads constructor(
             datePicker.updateDate(selected.year, selected.month, selected.day)
         }
 
+    var minDate: Date
+        get() = Date(datePicker.minDate)
+        set(date) {
+            datePicker.minDate = date.time
+        }
 
+    var maxDate: Date
+        get() = Date(datePicker.maxDate)
+        set(date) {
+            datePicker.maxDate = date.time
+        }
     //endregion
 
     //region Overrides
 
-    override fun style(surveyTheme: SurveyTheme) {
-        // TODO coloring if any
-    }
+    override fun style(surveyTheme: SurveyTheme) {}
 
     //endregion
 

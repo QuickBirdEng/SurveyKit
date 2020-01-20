@@ -1,7 +1,7 @@
 object Library {
     const val groupId = "com.quickbirdstudios"
     const val artifactId = "surveykit"
-    const val version = "1.0.0"
+    const val version = "1.1.0"
 
 
     object Meta {

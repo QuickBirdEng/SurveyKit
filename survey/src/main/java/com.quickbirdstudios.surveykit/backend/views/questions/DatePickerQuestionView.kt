@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
-import androidx.annotation.StringRes
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.question_parts.DatePickerPart
@@ -42,6 +41,8 @@ internal class DatePickerQuestionView(
 
         datePicker = content.add(DatePickerPart(context))
         answerFormat.defaultValue?.let { datePicker.selected = it.toSelected() }
+        answerFormat.minDate?.let { datePicker.minDate = it }
+        answerFormat.maxDate?.let { datePicker.maxDate = it }
         preselected?.let { datePicker.selected = it.toSelected() }
     }
 
