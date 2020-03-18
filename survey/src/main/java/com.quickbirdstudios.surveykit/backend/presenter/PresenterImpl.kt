@@ -9,7 +9,9 @@ import com.quickbirdstudios.surveykit.backend.presenter.animations.ViewAnimator
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
+import kotlinx.coroutines.isActive
 import java.util.*
+import kotlin.coroutines.coroutineContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
@@ -60,24 +62,26 @@ internal class PresenterImpl(
         showView(questionView, transition)
 
         return suspendCoroutine { routine ->
-            questionView.onNext { result ->
-                questionView.invalidateCallBacks()
-                stepResult.results.add(result)
-                routine.resume(NextAction.Next(stepResult))
-            }
-            questionView.onBack { result ->
-                questionView.invalidateCallBacks()
-                stepResult.results.add(result)
-                routine.resume(NextAction.Back(stepResult))
-            }
-            questionView.onSkip {
-                questionView.invalidateCallBacks()
-                routine.resume(NextAction.Skip)
-            }
-            questionView.onClose { result, reason ->
-                questionView.invalidateCallBacks()
-                stepResult.results.add(result)
-                routine.resume(NextAction.Close(stepResult, reason))
+            if (routine.context.isActive){
+                questionView.onNext { result ->
+                    questionView.invalidateCallBacks()
+                    stepResult.results.add(result)
+                    routine.resume(NextAction.Next(stepResult))
+                }
+                questionView.onBack { result ->
+                    questionView.invalidateCallBacks()
+                    stepResult.results.add(result)
+                    routine.resume(NextAction.Back(stepResult))
+                }
+                questionView.onSkip {
+                    questionView.invalidateCallBacks()
+                    routine.resume(NextAction.Skip)
+                }
+                questionView.onClose { result, reason ->
+                    questionView.invalidateCallBacks()
+                    stepResult.results.add(result)
+                    routine.resume(NextAction.Close(stepResult, reason))
+                }
             }
         }
     }
