@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.example.R
 import com.quickbirdstudios.surveykit.*
+import com.quickbirdstudios.surveykit.backend.views.main_parts.Header
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.StepResult
@@ -35,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
 
+        Header.setupCancelDialog(
+            title = "My awesome app", message = "Do you really want to leave",
+            neutralMessage = "Get back", negativeMessage = "Quit"
+        )
         survey = findViewById(R.id.survey_view)
         container = findViewById(R.id.surveyContainer)
         setupSurvey(survey)

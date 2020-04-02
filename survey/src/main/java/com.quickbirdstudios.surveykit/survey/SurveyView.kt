@@ -12,6 +12,7 @@ import com.quickbirdstudios.surveykit.backend.presenter.Presenter
 import com.quickbirdstudios.surveykit.backend.presenter.PresenterImpl
 import com.quickbirdstudios.surveykit.backend.result_gatherer.ResultGatherer
 import com.quickbirdstudios.surveykit.backend.result_gatherer.ResultGathererImpl
+import com.quickbirdstudios.surveykit.backend.views.main_parts.DialogConfiguration
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.result.TaskResult
 import com.quickbirdstudios.surveykit.steps.Step
@@ -31,6 +32,7 @@ class SurveyView @JvmOverloads constructor(
     private lateinit var taskNavigator: TaskNavigator
     private lateinit var resultGatherer: ResultGatherer
     private lateinit var presenter: Presenter
+    private lateinit var cancelDialogConfiguration: DialogConfiguration
 
     //endregion
 
@@ -45,7 +47,6 @@ class SurveyView @JvmOverloads constructor(
             surveyTheme = surveyTheme,
             viewContainer = this
         )
-
         startSurvey()
     }
 

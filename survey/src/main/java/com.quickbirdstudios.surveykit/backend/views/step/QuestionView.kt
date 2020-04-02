@@ -64,13 +64,17 @@ abstract class QuestionView(
 
         header.onBack = { onBackListener(createResults()) }
         //TODO add translations and move out of this class
+        val title = Header.dialogConfiguration?.title
+        val message = Header.dialogConfiguration?.message
+        val neutralMessage = Header.dialogConfiguration?.neutralMessage
+        val negativeMessage = Header.dialogConfiguration?.negativeMessage
         header.onCancel = {
             Dialogs.cancel(
                 context,
-                "Leave?",
-                "If you leave now, your current answers are lost.",
-                "Back to the survey",
-                "Cancel Survey"
+                title ?: "Leave?",
+                message ?: "If you leave now, your current answers are lost.",
+                neutralMessage ?: "Back to the survey",
+                negativeMessage ?: "Cancel Survey"
             ) {
                 onCloseListener(createResults(), FinishReason.Discarded)
             }
