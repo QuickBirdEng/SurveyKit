@@ -22,21 +22,6 @@ class Header @JvmOverloads constructor(
 
     //region Public API
 
-    companion object {
-        var dialogConfiguration: DialogConfiguration? = null
-            get() = field
-
-        fun setupCancelDialog(
-            title: String,
-            message: String,
-            neutralMessage: String,
-            negativeMessage: String
-        ) {
-            dialogConfiguration =
-                DialogConfiguration(title, message, neutralMessage, negativeMessage)
-        }
-    }
-
     var themeColor = Color.RED
         set(value) {
             cancelButton.setTextColor(value)

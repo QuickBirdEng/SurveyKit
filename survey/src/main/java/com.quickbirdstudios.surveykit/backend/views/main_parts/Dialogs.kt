@@ -10,23 +10,21 @@ internal class Dialogs {
     companion object {
         fun cancel(
             context: Context,
-            title: String,
-            message: String,
-            neutralMessage: String,
-            cancelMessage: String,
+            abortDialogConfiguration: AbortDialogConfiguration,
             cancelAction: () -> Unit
         ): AlertDialog? {
             val dialog = AlertDialog.Builder(context)
-                .setMessage(message)
+                .setMessage(abortDialogConfiguration.message)
                 .setCancelable(true)
-                .setNegativeButton(cancelMessage) { _, which ->
-                    if (which == DialogInterface.BUTTON_NEGATIVE) cancelAction()
+                .setNegativeButton(abortDialogConfiguration.negativeMessage) { _, which ->
+                    if (which == DialogInterface.BUTTON_NEGATIVE)
+                        cancelAction()
                 }
-                .setNeutralButton(neutralMessage) { _, _ -> }
+                .setNeutralButton(abortDialogConfiguration.neutralMessage) { _, _ -> }
                 .create()
 
 
-            dialog.setTitle(title)
+            dialog.setTitle(abortDialogConfiguration.title)
             dialog.show()
             dialog.setButtonColors()
             return dialog
