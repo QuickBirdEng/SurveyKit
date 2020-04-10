@@ -56,4 +56,6 @@
     <string name="email_question_title">Email question title</string>
     <string name="image_selector_question_title">Image choice</string>
     <string name="image_selector_question_text">Pick a color</string>
+    <string name="date_time_picker_show_time_button_text">Set time</string>
+    <string name="date_time_picker_show_date_button_text">Set date</string>
 </resources>

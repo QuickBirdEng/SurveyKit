@@ -33,6 +33,7 @@ class QuestionStep(
             is ValuePickerAnswerFormat -> createValuePickerQuestion(context, stepResult)
             is DateAnswerFormat -> createDatePickerQuestion(context, stepResult)
             is TimeAnswerFormat -> createTimePickerQuestion(context, stepResult)
+            is DateTimeAnswerFormat -> createDateTimePickerQuestion(context, stepResult)
             is EmailAnswerFormat -> createEmailQuestion(context, stepResult)
             is ImageSelectorFormat -> createImageSelectorQuestion(context, stepResult)
         }
@@ -148,6 +149,18 @@ class QuestionStep(
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as TimeAnswerFormat,
             preselected = stepResult.toSpecificResult<TimeQuestionResult>()?.answer
+        )
+
+    private fun createDateTimePickerQuestion(context: Context, stepResult: StepResult?): QuestionView =
+        DateTimePickerQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            answerFormat = this.answerFormat as DateTimeAnswerFormat,
+            preselected = stepResult.toSpecificResult<DateTimeQuestionResult>()?.answer
         )
 
     private fun createEmailQuestion(context: Context, stepResult: StepResult?) =

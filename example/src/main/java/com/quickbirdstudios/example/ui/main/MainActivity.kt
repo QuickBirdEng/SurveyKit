@@ -143,6 +143,11 @@ class MainActivity : AppCompatActivity() {
                     )
                 )
             ),
+            QuestionStep(
+                title = "DateTime Question",
+                text = "Choose a date and time",
+                answerFormat = AnswerFormat.DateTimeAnswerFormat()
+            ),
             CompletionStep(
                 title = this.resources.getString(R.string.finish_question_title),
                 text = this.resources.getString(R.string.finish_question_text),

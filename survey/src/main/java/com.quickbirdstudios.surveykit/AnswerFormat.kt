@@ -77,8 +77,8 @@ sealed class AnswerFormat {
             check(defaultValue == null || choices.contains(defaultValue)) {
                 throw IllegalStateException(
                     "${ValuePickerAnswerFormat::class.simpleName}:" +
-                        "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
-                        "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
+                            "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
+                            "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
                 )
             }
         }
@@ -118,6 +118,33 @@ sealed class AnswerFormat {
         companion object {
             operator fun invoke(): TimeAnswerFormat = TimeAnswerFormat(
                 defaultValue = Time(
+                    hour = Calendar.getInstance().get(Calendar.HOUR),
+                    minute = Calendar.getInstance().get(Calendar.MINUTE)
+                )
+            )
+        }
+    }
+
+    data class DateTimeAnswerFormat(val defaultValue: DateTime?) : AnswerFormat() {
+        @Parcelize
+        data class DateTime(
+            val day: Int,
+            val month: Int,
+            val year: Int,
+            val hour: Int,
+            val minute: Int
+        ) : Parcelable {
+            override fun toString(): String {
+                return "${this.day}:${this.month}:${this.year} ${this.hour}:${this.minute}"
+            }
+        }
+
+        companion object {
+            operator fun invoke(): DateTimeAnswerFormat = DateTimeAnswerFormat(
+                defaultValue = DateTime(
+                    day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
+                    month = Calendar.getInstance().get(Calendar.MONTH),
+                    year = Calendar.getInstance().get(Calendar.YEAR),
                     hour = Calendar.getInstance().get(Calendar.HOUR),
                     minute = Calendar.getInstance().get(Calendar.MINUTE)
                 )
