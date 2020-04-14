@@ -29,6 +29,7 @@ class QuestionStep(
             is MultipleChoiceAnswerFormat -> createMultipleChoiceQuestion(context, stepResult)
             is ScaleAnswerFormat -> createScaleQuestion(context, stepResult)
             is IntegerAnswerFormat -> createIntegerQuestion(context, stepResult)
+            is DoubleAnswerFormat -> createDoubleQuestion(context, stepResult)
             is BooleanAnswerFormat -> createBooleanQuestion(context, stepResult)
             is ValuePickerAnswerFormat -> createValuePickerQuestion(context, stepResult)
             is DateAnswerFormat -> createDatePickerQuestion(context, stepResult)
@@ -103,6 +104,18 @@ class QuestionStep(
             preselected = stepResult.toSpecificResult<IntegerQuestionResult>()?.answer
         )
 
+    private fun createDoubleQuestion(context: Context, stepResult: StepResult?) =
+        DoubleQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            answerFormat = this.answerFormat as DoubleAnswerFormat,
+            preselected = stepResult.toSpecificResult<DoubleQuestionResult>()?.answer
+        )
+
     private fun createBooleanQuestion(context: Context, stepResult: StepResult?) =
         BooleanQuestionView(
             context = context,
@@ -151,7 +164,10 @@ class QuestionStep(
             preselected = stepResult.toSpecificResult<TimeQuestionResult>()?.answer
         )
 
-    private fun createDateTimePickerQuestion(context: Context, stepResult: StepResult?): QuestionView =
+    private fun createDateTimePickerQuestion(
+        context: Context,
+        stepResult: StepResult?
+    ): QuestionView =
         DateTimePickerQuestionView(
             context = context,
             id = id,

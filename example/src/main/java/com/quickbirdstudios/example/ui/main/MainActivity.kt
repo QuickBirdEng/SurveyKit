@@ -61,6 +61,14 @@ class MainActivity : AppCompatActivity() {
                 )
             ),
             QuestionStep(
+                title = this.resources.getString(R.string.how_tall_title),
+                text = this.resources.getString(R.string.empty),
+                answerFormat = AnswerFormat.DoubleAnswerFormat(
+                    defaultValue = 1.5,
+                    hint = this.resources.getString(R.string.how_tall_hint)
+                )
+            ),
+            QuestionStep(
                 title = this.resources.getString(R.string.how_fat_question_title),
                 text = this.resources.getString(R.string.how_fat_question_text),
                 answerFormat = AnswerFormat.ScaleAnswerFormat(

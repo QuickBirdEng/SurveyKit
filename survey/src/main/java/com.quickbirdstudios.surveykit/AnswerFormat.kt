@@ -16,6 +16,12 @@ sealed class AnswerFormat {
     ) : AnswerFormat()
 
 
+    data class DoubleAnswerFormat(
+        val defaultValue: Double? = null,
+        val hint: String = ""
+    ) : AnswerFormat()
+
+
     data class SingleChoiceAnswerFormat(
         val textChoices: List<TextChoice>,
         val defaultSelection: TextChoice? = null

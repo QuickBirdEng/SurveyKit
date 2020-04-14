@@ -47,4 +47,6 @@
     <string name="image_selector_question_text">Pick a color</string>
     <string name="date_time_question_title">DateTime Question</string>
     <string name="date_time_question_text">Choose a date and time</string>
+    <string name="how_tall_title">How tall are you</string>
+    <string name="how_tall_hint">In cm</string>
 </resources>

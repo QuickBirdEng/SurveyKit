@@ -12,6 +12,8 @@
 
     <item name="integerFieldPartField" type="id" />
 
+    <item name="doubleFieldPartField" type="id" />
+
     <item name="seekBarPartField" type="id" />
 
     <item name="multipleChoicePart" type="id" />
