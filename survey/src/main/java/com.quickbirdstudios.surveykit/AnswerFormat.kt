@@ -135,7 +135,7 @@ sealed class AnswerFormat {
             val minute: Int
         ) : Parcelable {
             override fun toString(): String {
-                return "${this.day}:${this.month}:${this.year} ${this.hour}:${this.minute}"
+                return "${day}/${month + 1}/${year} ${hour}:${minute}"
             }
         }
 
@@ -145,7 +145,7 @@ sealed class AnswerFormat {
                     day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
                     month = Calendar.getInstance().get(Calendar.MONTH),
                     year = Calendar.getInstance().get(Calendar.YEAR),
-                    hour = Calendar.getInstance().get(Calendar.HOUR),
+                    hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
                     minute = Calendar.getInstance().get(Calendar.MINUTE)
                 )
             )

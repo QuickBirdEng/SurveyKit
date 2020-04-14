@@ -3,8 +3,8 @@ package com.quickbirdstudios.surveykit.backend.views.question_parts
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
+import android.os.Parcelable
 import android.util.AttributeSet
-import android.util.TypedValue
 import android.view.Gravity
 import android.widget.*
 import androidx.appcompat.widget.AppCompatTextView
@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
+import kotlinx.android.parcel.Parcelize
 import java.util.*
 
 internal class DateTimePickerPart @JvmOverloads constructor(
@@ -26,7 +27,7 @@ internal class DateTimePickerPart @JvmOverloads constructor(
     private val selectedDateTimeLabel: TextView
 
     var selectedTime = SelectedTime(
-        Calendar.getInstance().get(Calendar.HOUR),
+        Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
         Calendar.getInstance().get(Calendar.MINUTE)
     )
     var selectedDate = SelectedDate(
@@ -36,8 +37,8 @@ internal class DateTimePickerPart @JvmOverloads constructor(
     )
 
     init {
-        this.gravity = Gravity.CENTER
-        this.orientation = VERTICAL
+        gravity = Gravity.CENTER
+        orientation = VERTICAL
 
         timePicker = TimePickerDialog(context, this, selectedTime.hour, selectedTime.minute, true)
         datePicker =
@@ -79,7 +80,7 @@ internal class DateTimePickerPart @JvmOverloads constructor(
         }
         selectedDateTimeLabel = TextView(context).apply {
             text = "$selectedDate $selectedTime"
-            setTextSize(TypedValue.COMPLEX_UNIT_SP, 32f)
+            textSize = context.resources.getDimension(R.dimen.date_time_label_text_size)
             setTextColor(ContextCompat.getColor(context, R.color.black))
             textAlignment = AppCompatTextView.TEXT_ALIGNMENT_CENTER
             val layoutParams = LayoutParams(
@@ -94,15 +95,17 @@ internal class DateTimePickerPart @JvmOverloads constructor(
         addView(showTimePickerButton)
     }
 
-    data class SelectedTime(val hour: Int, val minute: Int) {
+    @Parcelize
+    data class SelectedTime(val hour: Int, val minute: Int) : Parcelable {
         override fun toString(): String {
             return "$hour:$minute"
         }
     }
 
-    data class SelectedDate(val year: Int, val month: Int, val dayOfMonth: Int) {
+    @Parcelize
+    data class SelectedDate(val year: Int, val month: Int, val dayOfMonth: Int) : Parcelable {
         override fun toString(): String {
-            return "$year/$month/$dayOfMonth"
+            return "$year/${month + 1}/$dayOfMonth"
         }
     }
 
@@ -114,12 +117,12 @@ internal class DateTimePickerPart @JvmOverloads constructor(
         showTimePickerButton.background.setTint(surveyTheme.themeColor)
     }
 
-    override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
+    override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
         selectedTime = SelectedTime(hourOfDay, minute)
         selectedDateTimeLabel.text = "$selectedDate $selectedTime"
     }
 
-    override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
+    override fun onDateSet(view: DatePicker, year: Int, month: Int, dayOfMonth: Int) {
         selectedDate = SelectedDate(year, month, dayOfMonth)
         selectedDateTimeLabel.text = "$selectedDate $selectedTime"
     }

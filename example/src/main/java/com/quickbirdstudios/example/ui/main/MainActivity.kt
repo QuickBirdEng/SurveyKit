@@ -144,8 +144,8 @@ class MainActivity : AppCompatActivity() {
                 )
             ),
             QuestionStep(
-                title = "DateTime Question",
-                text = "Choose a date and time",
+                title = getString(R.string.date_time_question_title),
+                text = getString(R.string.date_time_question_text),
                 answerFormat = AnswerFormat.DateTimeAnswerFormat()
             ),
             CompletionStep(
