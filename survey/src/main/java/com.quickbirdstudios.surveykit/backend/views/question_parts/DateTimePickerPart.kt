@@ -83,6 +83,7 @@ internal class DateTimePickerPart @JvmOverloads constructor(
             textSize = context.resources.getDimension(R.dimen.date_time_label_text_size)
             setTextColor(ContextCompat.getColor(context, R.color.black))
             textAlignment = AppCompatTextView.TEXT_ALIGNMENT_CENTER
+            gravity = Gravity.CENTER
             val layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT
