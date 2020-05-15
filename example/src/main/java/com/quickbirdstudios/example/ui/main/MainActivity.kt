@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.example.R
 import com.quickbirdstudios.surveykit.*
+import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.StepResult
@@ -184,7 +185,13 @@ class MainActivity : AppCompatActivity() {
         val configuration = SurveyTheme(
             themeColorDark = ContextCompat.getColor(this, R.color.cyan_dark),
             themeColor = ContextCompat.getColor(this, R.color.cyan_normal),
-            textColor = ContextCompat.getColor(this, R.color.cyan_text)
+            textColor = ContextCompat.getColor(this, R.color.cyan_text),
+            abortDialogConfiguration = AbortDialogConfiguration(
+                title = R.string.title,
+                message = R.string.message,
+                neutralMessage = R.string.no,
+                negativeMessage = R.string.yes
+            )
         )
 
         surveyView.start(task, configuration)

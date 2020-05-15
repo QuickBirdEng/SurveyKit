@@ -20,7 +20,6 @@ class Header @JvmOverloads constructor(
 ) : Toolbar(context, attrs, defStyleRes),
     StyleablePart {
 
-
     //region Public API
 
     var themeColor = Color.RED
@@ -101,6 +100,5 @@ class Header @JvmOverloads constructor(
         val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
         imm.hideSoftInputFromWindow(this.windowToken, 0)
     }
-
     //endregion
 }
