@@ -311,5 +311,7 @@ Open an issue if you need help, if you found a bug, or if you want to discuss a 
 
 Open a PR if you want to make changes to SurveyKit.
 
+For the moment, a mandatory requirement for a PR to be accepted is also applying [ktlint](https://ktlint.github.io/) when submitting this PR.
+
 # 📃 License
 SurveyKit is released under an MIT license. See [License](LICENSE) for more information.
