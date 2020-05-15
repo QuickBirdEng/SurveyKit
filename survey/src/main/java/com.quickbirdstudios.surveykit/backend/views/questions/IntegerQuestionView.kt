@@ -24,13 +24,11 @@ internal class IntegerQuestionView(
     private val preselected: Int? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
 
-
     //region Members
 
     private lateinit var questionAnswerView: IntegerTextFieldPart
 
     //endregion
-
 
     //region Overrides
 
@@ -57,7 +55,6 @@ internal class IntegerQuestionView(
 
     //endregion
 
-
     //region Private Helpers
 
     private fun String.parseToIntOrNull(): Int? {
@@ -69,5 +66,4 @@ internal class IntegerQuestionView(
     }
 
     //endregion
-
 }

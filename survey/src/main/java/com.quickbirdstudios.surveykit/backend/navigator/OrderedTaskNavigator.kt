@@ -3,12 +3,11 @@ package com.quickbirdstudios.surveykit.backend.navigator
 import com.quickbirdstudios.surveykit.OrderedTask
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
-import java.util.*
+import java.util.Stack
 
 internal class OrderedTaskNavigator(
     override val task: OrderedTask
 ) : TaskNavigator {
-
 
     //region Public API
 
@@ -27,7 +26,6 @@ internal class OrderedTaskNavigator(
     override fun previousStep(step: Step): Step? = step.previousInList()
 
     //endregion
-
 
     //region Private Helper
 

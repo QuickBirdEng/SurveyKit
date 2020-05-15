@@ -23,7 +23,6 @@ internal class Dialogs {
                 .setNeutralButton(abortDialogConfiguration.neutralMessage) { _, _ -> }
                 .create()
 
-
             dialog.setTitle(abortDialogConfiguration.title)
             dialog.show()
             dialog.setButtonColors()

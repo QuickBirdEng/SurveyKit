@@ -12,7 +12,15 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.example.R
-import com.quickbirdstudios.surveykit.*
+import com.quickbirdstudios.surveykit.AnswerFormat
+import com.quickbirdstudios.surveykit.FinishReason
+import com.quickbirdstudios.surveykit.Identifier
+import com.quickbirdstudios.surveykit.ImageChoice
+import com.quickbirdstudios.surveykit.NavigableOrderedTask
+import com.quickbirdstudios.surveykit.NavigationRule
+import com.quickbirdstudios.surveykit.StepIdentifier
+import com.quickbirdstudios.surveykit.SurveyTheme
+import com.quickbirdstudios.surveykit.TextChoice
 import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -23,9 +31,8 @@ import com.quickbirdstudios.surveykit.steps.InstructionStep
 import com.quickbirdstudios.surveykit.steps.QuestionStep
 import com.quickbirdstudios.surveykit.steps.Step
 import com.quickbirdstudios.surveykit.survey.SurveyView
+import java.util.Date
 import kotlinx.android.parcel.Parcelize
-import java.util.*
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -252,7 +259,6 @@ class CustomStep : Step {
         }
     }
 }
-
 
 @Parcelize
 data class CustomResult(

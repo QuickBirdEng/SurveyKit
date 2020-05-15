@@ -5,7 +5,7 @@ import com.quickbirdstudios.surveykit.OrderedTask
 import com.quickbirdstudios.surveykit.Task
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
-import java.util.*
+import java.util.Stack
 
 interface TaskNavigator {
 
@@ -47,4 +47,3 @@ interface TaskNavigator {
             }
     }
 }
-

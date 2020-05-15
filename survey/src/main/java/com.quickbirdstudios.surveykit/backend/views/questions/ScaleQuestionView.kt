@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
-import androidx.annotation.StringRes
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.question_parts.ScalePart
@@ -20,13 +19,11 @@ internal class ScaleQuestionView(
     private val preselected: Float? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
 
-
     //region Members
 
     private lateinit var scalePart: ScalePart
 
     //endregion
-
 
     //region Overrides
 
@@ -41,7 +38,6 @@ internal class ScaleQuestionView(
     override fun isValidInput(): Boolean = true
 
     //endregion
-
 
     //region Private API
 
@@ -76,6 +72,4 @@ internal class ScaleQuestionView(
     }
 
     //endregion
-
-
 }

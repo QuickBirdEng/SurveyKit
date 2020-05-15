@@ -77,4 +77,3 @@ task("installGitHooks") {
         print("Something went wrong while installing the git hooks: $e.message")
     }
 }
-

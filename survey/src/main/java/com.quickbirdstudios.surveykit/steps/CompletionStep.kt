@@ -38,4 +38,3 @@ class CompletionStep(
         data class FromUrl(val url: String) : LottieAnimation()
     }
 }
-

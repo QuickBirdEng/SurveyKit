@@ -11,7 +11,12 @@ import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation
-import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation.*
+import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation.Animation
+import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation.Asset
+import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation.FromJson
+import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation.FromUrl
+import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation.RawResource
+import com.quickbirdstudios.surveykit.steps.CompletionStep.LottieAnimation.WithJsonReader
 
 internal class QuestionAnimation @JvmOverloads constructor(
     context: Context,

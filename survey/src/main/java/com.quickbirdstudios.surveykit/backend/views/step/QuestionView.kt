@@ -7,10 +7,14 @@ import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
-import com.quickbirdstudios.surveykit.backend.views.main_parts.*
+import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
+import com.quickbirdstudios.surveykit.backend.views.main_parts.Content
+import com.quickbirdstudios.surveykit.backend.views.main_parts.Dialogs
+import com.quickbirdstudios.surveykit.backend.views.main_parts.Footer
+import com.quickbirdstudios.surveykit.backend.views.main_parts.Header
 import com.quickbirdstudios.surveykit.backend.views.question_parts.InfoTextPart
 import com.quickbirdstudios.surveykit.result.QuestionResult
-import java.util.*
+import java.util.Date
 
 abstract class QuestionView(
     context: Context,
@@ -33,7 +37,6 @@ abstract class QuestionView(
 
     //endregion
 
-
     //region Overrides
 
     override fun style(surveyTheme: SurveyTheme) {
@@ -44,7 +47,6 @@ abstract class QuestionView(
 
     //endregion
 
-
     //region Abstracts
 
     abstract override fun createResults(): QuestionResult
@@ -52,7 +54,6 @@ abstract class QuestionView(
     abstract override fun isValidInput(): Boolean
 
     //endregion
-
 
     //region Open Helpers
 
@@ -62,7 +63,7 @@ abstract class QuestionView(
         text?.let { InfoTextPart.info(context, it) }?.let(content::add)
 
         header.onBack = { onBackListener(createResults()) }
-        //TODO add translations and move out of this class
+        // TODO add translations and move out of this class
         header.onCancel = {
             Dialogs.cancel(
                 context,
@@ -90,5 +91,4 @@ abstract class QuestionView(
     }
 
 //endregion
-
 }

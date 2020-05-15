@@ -23,9 +23,9 @@ import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.Backgr
 import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.createSelectableThemedBackground
 
 internal class SingleChoicePart @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
+    context: Context,
+    attrs: AttributeSet? = null
 ) : RadioGroup(context, attrs), StyleablePart {
-
 
     //region Public API
 
@@ -65,7 +65,6 @@ internal class SingleChoicePart @JvmOverloads constructor(
 
     //endregion
 
-
     //region Overrides
 
     override fun style(surveyTheme: SurveyTheme) {
@@ -75,7 +74,6 @@ internal class SingleChoicePart @JvmOverloads constructor(
     }
 
     //endregion
-
 
     //region Private API
 
@@ -107,7 +105,6 @@ internal class SingleChoicePart @JvmOverloads constructor(
 
     //endregion
 
-
     //region Internal listeners
 
     private val internalCheckedChangeListener: (RadioGroup, Int) -> Unit = { group, checkedId ->
@@ -117,7 +114,6 @@ internal class SingleChoicePart @JvmOverloads constructor(
     }
 
     //endregion
-
 
     //region RadioButton Creation Helpers
 
@@ -160,7 +156,6 @@ internal class SingleChoicePart @JvmOverloads constructor(
     }
 
     //endregion
-
 
     init {
         this.id = R.id.singleChoicePart

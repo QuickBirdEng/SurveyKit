@@ -57,5 +57,4 @@ internal class DatePickerQuestionView(
         AnswerFormat.DateAnswerFormat.Date(day = this.day, month = this.month, year = this.year)
 
     //endregion
-
 }

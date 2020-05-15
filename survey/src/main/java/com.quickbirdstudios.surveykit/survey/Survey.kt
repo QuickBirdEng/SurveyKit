@@ -7,7 +7,6 @@ import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.result.TaskResult
 import com.quickbirdstudios.surveykit.steps.Step
 
-
 internal interface Survey {
     var onStepResult: (Step?, StepResult?) -> Unit
     var onSurveyFinish: (TaskResult, FinishReason) -> Unit
@@ -15,4 +14,3 @@ internal interface Survey {
     fun start(task: Task, surveyTheme: SurveyTheme)
     fun backPressed()
 }
-
