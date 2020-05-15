@@ -80,7 +80,7 @@ A working example project can be found [HERE](example/)
 ### Add and Find the Survey in the XML
 Add the SurveyView to your `xml` (it looks best if it fills the screen).
 ````xml
-<com.quickbirdstudios.survey_kit.public_api.survey.SurveyView
+<com.quickbirdstudios.survey_kit.survey.SurveyView
     android:id="@+id/survey_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
