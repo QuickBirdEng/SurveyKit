@@ -13,7 +13,9 @@ import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
 internal open class TextFieldPart @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleRes: Int = 0
 ) : LinearLayout(context, attrs, defStyleRes), StyleablePart {
 
     override fun style(surveyTheme: SurveyTheme) {}

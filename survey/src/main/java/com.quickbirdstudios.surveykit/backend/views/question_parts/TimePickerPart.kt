@@ -12,7 +12,8 @@ import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
 @Suppress("DEPRECATION")
 internal class TimePickerPart @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
+    context: Context,
+    attrs: AttributeSet? = null
 ) : LinearLayout(context, attrs), StyleablePart {
 
     //region Members
@@ -71,7 +72,6 @@ internal class TimePickerPart @JvmOverloads constructor(
             }
         }
 
-
     //endregion
 
     init {
@@ -80,5 +80,4 @@ internal class TimePickerPart @JvmOverloads constructor(
         timePicker = TimePicker(context).apply { id = R.id.timePickerPart }
         this.addView(timePicker)
     }
-
 }

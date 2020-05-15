@@ -17,9 +17,10 @@ import com.quickbirdstudios.surveykit.backend.helpers.extensions.colorStroke
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
 
 class Footer @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleRes: Int = 0
 ) : Toolbar(context, attrs, defStyleRes), StyleablePart {
-
 
     //region Public API
 
@@ -44,7 +45,6 @@ class Footer @JvmOverloads constructor(
             buttonContinue.colorMainButtonEnabledState(state, themeColor)
         }
 
-
     fun setContinueButtonText(text: String) {
         buttonContinue.text = text
     }
@@ -53,7 +53,6 @@ class Footer @JvmOverloads constructor(
     var onSkip: () -> Unit = {}
 
     //endregion
-
 
     //region Members
 
@@ -74,7 +73,6 @@ class Footer @JvmOverloads constructor(
     }
 
     //endregion
-
 
     //region Private API
 
@@ -102,7 +100,6 @@ class Footer @JvmOverloads constructor(
 
     //endregion
 
-
     //region Overrides
 
     override fun style(surveyTheme: SurveyTheme) {
@@ -110,6 +107,4 @@ class Footer @JvmOverloads constructor(
     }
 
     //endregion
-
-
 }

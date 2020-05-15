@@ -35,12 +35,8 @@ dependencies {
     implementation(Deps.AndroidSupport.recyclerView)
     implementation(Deps.lottie)
 
-
     testImplementation(Deps.Test.jUnitJupiter)
     testImplementation(Deps.Test.jUnitPlatform)
 }
 
 project.configureLibraryPublication()
-
-
-

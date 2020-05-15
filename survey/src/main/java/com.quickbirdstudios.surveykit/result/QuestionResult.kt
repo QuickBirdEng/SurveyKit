@@ -5,4 +5,3 @@ import android.os.Parcelable
 interface QuestionResult : Result, Parcelable {
     val stringIdentifier: String
 }
-

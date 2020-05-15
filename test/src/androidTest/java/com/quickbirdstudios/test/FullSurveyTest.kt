@@ -11,14 +11,39 @@ import com.quickbirdstudios.surveykit.AnswerFormat.MultipleChoiceAnswerFormat
 import com.quickbirdstudios.surveykit.AnswerFormat.SingleChoiceAnswerFormat
 import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.result.TaskResult
-import com.quickbirdstudios.surveykit.result.question_results.*
-import com.quickbirdstudios.test.pages.*
+import com.quickbirdstudios.surveykit.result.question_results.BooleanQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.DateQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.EmailQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.FinishQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.ImageSelectorResult
+import com.quickbirdstudios.surveykit.result.question_results.IntegerQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.IntroQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.MultipleChoiceQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.SingleChoiceQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.TextQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.TimeQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.ValuePickerQuestionResult
+import com.quickbirdstudios.test.pages.PageTest
+import com.quickbirdstudios.test.pages.testBooleanChoiceStep
+import com.quickbirdstudios.test.pages.testCompletionStep
+import com.quickbirdstudios.test.pages.testCustomStep
+import com.quickbirdstudios.test.pages.testDatePickerStep
+import com.quickbirdstudios.test.pages.testEmailStep
+import com.quickbirdstudios.test.pages.testImageSelectorStep
+import com.quickbirdstudios.test.pages.testIntroStep
+import com.quickbirdstudios.test.pages.testMultipleChoiceStep
+import com.quickbirdstudios.test.pages.testNumberStep
+import com.quickbirdstudios.test.pages.testScaleStep
+import com.quickbirdstudios.test.pages.testSingleChoiceStep
+import com.quickbirdstudios.test.pages.testTextStep
+import com.quickbirdstudios.test.pages.testTimePickerStep
+import com.quickbirdstudios.test.pages.testValuePickerStep
+import java.util.Calendar
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.util.*
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
@@ -35,7 +60,6 @@ internal class FullSurveyTest : PageTest {
 
     @Before
     fun setup() {
-
     }
 
     @Test

@@ -6,5 +6,3 @@ object Project {
         const val testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 }
-
-

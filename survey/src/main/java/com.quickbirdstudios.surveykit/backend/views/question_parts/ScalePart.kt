@@ -10,14 +10,21 @@ import android.widget.TextView
 import androidx.appcompat.widget.AppCompatSeekBar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.constraintlayout.widget.ConstraintSet.*
+import androidx.constraintlayout.widget.ConstraintSet.BOTTOM
+import androidx.constraintlayout.widget.ConstraintSet.CHAIN_SPREAD
+import androidx.constraintlayout.widget.ConstraintSet.LEFT
+import androidx.constraintlayout.widget.ConstraintSet.PARENT_ID
+import androidx.constraintlayout.widget.ConstraintSet.RIGHT
+import androidx.constraintlayout.widget.ConstraintSet.TOP
+import androidx.constraintlayout.widget.ConstraintSet.WRAP_CONTENT
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
 internal class ScalePart @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
+    context: Context,
+    attrs: AttributeSet? = null
 ) : ConstraintLayout(context, attrs),
     StyleablePart {
 
@@ -39,7 +46,6 @@ internal class ScalePart @JvmOverloads constructor(
         seekBar.max = calculateMaxValue()
     }
 
-
     //region Members
 
     private var minimumValue: Int = 0
@@ -55,7 +61,6 @@ internal class ScalePart @JvmOverloads constructor(
 
     //endregion
 
-
     //region Overrides
 
     override fun style(surveyTheme: SurveyTheme) {
@@ -67,7 +72,6 @@ internal class ScalePart @JvmOverloads constructor(
     }
 
     //endregion
-
 
     //region Public API
 
@@ -91,7 +95,6 @@ internal class ScalePart @JvmOverloads constructor(
 
     //endregion
 
-
     //region Private API: Calculations
 
     // TODO add checks to prevent faulty calculations
@@ -105,7 +108,6 @@ internal class ScalePart @JvmOverloads constructor(
         ((this - this@ScalePart.minimumValue) / this@ScalePart.step).toInt()
 
     //endregion
-
 
     //region Private API: Views
 
@@ -152,9 +154,7 @@ internal class ScalePart @JvmOverloads constructor(
         centerHorizontally(currentValueDescriptionField.id, PARENT_ID)
     }
 
-
     //endregion
-
 
     init {
         val descriptionTextSize =

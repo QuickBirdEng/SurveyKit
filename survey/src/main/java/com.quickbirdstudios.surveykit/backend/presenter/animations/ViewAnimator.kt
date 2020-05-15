@@ -6,11 +6,14 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.quickbirdstudios.surveykit.R
-import kotlinx.coroutines.*
 import kotlin.coroutines.CoroutineContext
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 internal class ViewAnimator(val context: Context) {
-
 
     //region Member
 
@@ -29,13 +32,11 @@ internal class ViewAnimator(val context: Context) {
 
     //endregion
 
-
     //region SubTypes
 
     internal data class PageSwipe(val swipeOutView: View?, val swipeInView: View)
 
     //endregion
-
 
     //region Public API
 
@@ -58,7 +59,6 @@ internal class ViewAnimator(val context: Context) {
     }
 
     //endregion
-
 
     //region Private API
 
@@ -108,7 +108,6 @@ internal class ViewAnimator(val context: Context) {
 
     //endregion
 
-
     //region Private Subclasses
 
     private class CustomAnimationListener(
@@ -136,6 +135,4 @@ internal class ViewAnimator(val context: Context) {
     }
 
     //endregion
-
-
 }
