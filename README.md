@@ -214,6 +214,24 @@ All that's left is to start the survey and enjoy.🎉🎊
 surveyView.start(task, configuration)
 ```
 
+# Cancel Survey dialog
+
+When you cancel the survey, there is an option to change dialog default Strings. Must be imported from resources.
+
+```
+val configuration = SurveyTheme(
+            themeColorDark = ContextCompat.getColor(this, R.color.cyan_dark),
+            themeColor = ContextCompat.getColor(this, R.color.cyan_normal),
+            textColor = ContextCompat.getColor(this, R.color.cyan_text),
+            abortDialogConfiguration = AbortDialogConfiguration(
+                title = R.string.title,
+                message = R.string.message,
+                neutralMessage = R.string.no,
+                negativeMessage = R.string.yes
+            )
+        )
+```
+
 
 # 📇 Custom steps
 At some point, you might wanna define your own custom question steps. 
