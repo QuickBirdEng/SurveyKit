@@ -1,9 +1,7 @@
 package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
-import androidx.annotation.StringRes
 import com.quickbirdstudios.surveykit.AnswerFormat
-import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
 import com.quickbirdstudios.surveykit.backend.views.question_parts.TextFieldPart
@@ -22,13 +20,11 @@ internal class TextQuestionView(
     private val preselected: String? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
 
-
     //region Members
 
     private lateinit var questionAnswerView: TextFieldPart
 
     //endregion
-
 
     //region Overrides
 
@@ -59,6 +55,4 @@ internal class TextQuestionView(
     }
 
     //endregion
-
-
 }

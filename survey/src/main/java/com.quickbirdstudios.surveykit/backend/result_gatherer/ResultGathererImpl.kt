@@ -4,7 +4,7 @@ import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.Task
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.result.TaskResult
-import java.util.*
+import java.util.Date
 
 internal class ResultGathererImpl(private val task: Task) : ResultGatherer {
 
@@ -29,5 +29,4 @@ internal class ResultGathererImpl(private val task: Task) : ResultGatherer {
     }
 
     override fun retrieve(identifier: StepIdentifier) = results.find { it.id == identifier }
-
 }

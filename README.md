@@ -80,7 +80,7 @@ A working example project can be found [HERE](example/)
 ### Add and Find the Survey in the XML
 Add the SurveyView to your `xml` (it looks best if it fills the screen).
 ````xml
-<com.quickbirdstudios.survey_kit.public_api.survey.SurveyView
+<com.quickbirdstudios.survey_kit.survey.SurveyView
     android:id="@+id/survey_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
@@ -214,6 +214,24 @@ All that's left is to start the survey and enjoy.🎉🎊
 surveyView.start(task, configuration)
 ```
 
+# Cancel Survey dialog
+
+When you cancel the survey, there is an option to change dialog default Strings. Must be imported from resources.
+
+```
+val configuration = SurveyTheme(
+            themeColorDark = ContextCompat.getColor(this, R.color.cyan_dark),
+            themeColor = ContextCompat.getColor(this, R.color.cyan_normal),
+            textColor = ContextCompat.getColor(this, R.color.cyan_text),
+            abortDialogConfiguration = AbortDialogConfiguration(
+                title = R.string.title,
+                message = R.string.message,
+                neutralMessage = R.string.no,
+                negativeMessage = R.string.yes
+            )
+        )
+```
+
 
 # 📇 Custom steps
 At some point, you might wanna define your own custom question steps. 
@@ -310,6 +328,8 @@ This Android library is created with ❤️ by [QuickBird Studios](https://quick
 Open an issue if you need help, if you found a bug, or if you want to discuss a feature request.
 
 Open a PR if you want to make changes to SurveyKit.
+
+For the moment, a mandatory requirement for a PR to be accepted is also applying [ktlint](https://ktlint.github.io/) when submitting this PR.
 
 # 📃 License
 SurveyKit is released under an MIT license. See [License](LICENSE) for more information.

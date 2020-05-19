@@ -40,5 +40,4 @@ internal class FinishQuestionView(
     }
 
     //endregion
-
 }

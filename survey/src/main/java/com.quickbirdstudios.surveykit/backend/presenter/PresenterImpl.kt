@@ -9,17 +9,15 @@ import com.quickbirdstudios.surveykit.backend.presenter.animations.ViewAnimator
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
-import java.util.*
+import java.util.Date
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
-
 
 internal class PresenterImpl(
     override val context: Context,
     override val viewContainer: FrameLayout,
     override val surveyTheme: SurveyTheme
 ) : Presenter {
-
 
     //region Members
 
@@ -29,23 +27,22 @@ internal class PresenterImpl(
 
     //endregion
 
-
     //region Public API
 
     override suspend fun invoke(
-        transition: Presenter.Transition, step: Step, stepResult: StepResult?
+        transition: Presenter.Transition,
+        step: Step,
+        stepResult: StepResult?
     ): NextAction {
         val viewToPresent = step.createView(context, stepResult)
         return showAndWaitForResult(step.id, viewToPresent, transition)
     }
-
 
     override fun triggerBackOnCurrentView() {
         currentQuestionView?.back()
     }
 
     //endregion
-
 
     //region Private API
 
@@ -122,6 +119,4 @@ internal class PresenterImpl(
     }
 
     //endregion
-
-
 }

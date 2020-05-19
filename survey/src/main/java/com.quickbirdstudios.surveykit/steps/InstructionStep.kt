@@ -21,5 +21,4 @@ open class InstructionStep(
             text = text,
             startButtonText = buttonText
         )
-
 }

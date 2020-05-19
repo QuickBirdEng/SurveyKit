@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.questions
 
 import android.content.Context
-import androidx.annotation.StringRes
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.question_parts.TimePickerPart
@@ -42,7 +41,7 @@ internal class TimePickerQuestionView(
 
         timePicker = content.add(TimePickerPart(context))
         answerFormat.defaultValue?.let { timePicker.selected = it.toSelected() }
-        preselected?.let { timePicker.selected = it.toSelected()}
+        preselected?.let { timePicker.selected = it.toSelected() }
     }
 
     //endregion
@@ -56,5 +55,4 @@ internal class TimePickerQuestionView(
         AnswerFormat.TimeAnswerFormat.Time(hour = this.hour, minute = this.minute)
 
     //endregion
-
 }

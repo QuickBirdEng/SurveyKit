@@ -3,10 +3,10 @@ package com.quickbirdstudios.surveykit
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
-import kotlinx.android.parcel.Parcelize
-import java.util.*
-import java.util.regex.Pattern
+import java.util.Calendar
 import java.util.Date as JavaDate
+import java.util.regex.Pattern
+import kotlinx.android.parcel.Parcelize
 
 sealed class AnswerFormat {
 
@@ -15,18 +15,15 @@ sealed class AnswerFormat {
         val hint: String = ""
     ) : AnswerFormat()
 
-
     data class SingleChoiceAnswerFormat(
         val textChoices: List<TextChoice>,
         val defaultSelection: TextChoice? = null
     ) : AnswerFormat()
 
-
     data class MultipleChoiceAnswerFormat(
         val textChoices: List<TextChoice>,
         val defaultSelections: List<TextChoice> = emptyList()
     ) : AnswerFormat()
-
 
     data class ScaleAnswerFormat(
         val maximumValue: Int,
@@ -41,13 +38,11 @@ sealed class AnswerFormat {
         enum class Orientation { Horizontal }
     }
 
-
     data class TextAnswerFormat(
         val maxLines: Int,
         val hintText: String? = null,
         val isValid: ((String) -> Boolean) = { text -> text.isNotEmpty() }
     ) : AnswerFormat()
-
 
     data class BooleanAnswerFormat(
         val positiveAnswerText: String,
@@ -68,7 +63,6 @@ sealed class AnswerFormat {
         }
     }
 
-
     data class ValuePickerAnswerFormat(
         val choices: List<String>,
         val defaultValue: String? = null
@@ -83,7 +77,6 @@ sealed class AnswerFormat {
             }
         }
     }
-
 
     data class DateAnswerFormat(
         val defaultValue: Date? = defaultDateValue(),
@@ -105,7 +98,6 @@ sealed class AnswerFormat {
             )
         }
     }
-
 
     data class TimeAnswerFormat(val defaultValue: Time?) : AnswerFormat() {
         @Parcelize
@@ -158,7 +150,6 @@ sealed class AnswerFormat {
         val isValid: (String) -> Boolean = defaultEmailValidation
     ) : AnswerFormat()
 
-
     data class ImageSelectorFormat(
         @IntRange(from = 1, to = 5) val numberOfColumns: Int = 4,
         val imageChoiceList: List<ImageChoice>,
@@ -168,9 +159,7 @@ sealed class AnswerFormat {
             require(numberOfColumns in 1..5) { "Number of columns supported: 1-5" }
         }
     }
-
 }
-
 
 @Parcelize // necessary because it is used in QuestionResults (Single and Multiple)
 data class TextChoice(

@@ -20,13 +20,11 @@ internal class MultipleChoiceQuestionView(
     private val preselected: List<TextChoice>?
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
 
-
     //region Members
 
     private lateinit var choicesContainer: MultipleChoicePart
 
     //endregion
-
 
     //region Overrides
 
@@ -56,6 +54,4 @@ internal class MultipleChoiceQuestionView(
     }
 
     //endregion
-
-
 }

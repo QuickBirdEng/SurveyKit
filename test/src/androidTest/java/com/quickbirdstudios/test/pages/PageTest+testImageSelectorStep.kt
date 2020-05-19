@@ -9,7 +9,9 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.UiController
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.assertion.ViewAssertions
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
+import androidx.test.espresso.matcher.ViewMatchers.isEnabled
+import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.quickbirdstudios.test.R
 import org.hamcrest.Matcher
 
@@ -43,9 +45,8 @@ private fun clickRecyclerViewItem(item: Int) = object : ViewAction {
     }
 }
 
-
 // this is not working, fix it before touching it
-//private fun isSelected(item: Int): Matcher<View> =
+// private fun isSelected(item: Int): Matcher<View> =
 //    object : TypeSafeMatcher<View>() {
 //        override fun describeTo(description: Description) {
 //            description.appendText("Checks if item in recyclerview at position $item is selected")

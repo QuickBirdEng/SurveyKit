@@ -2,13 +2,43 @@ package com.quickbirdstudios.surveykit.steps
 
 import android.content.Context
 import com.quickbirdstudios.surveykit.AnswerFormat
-import com.quickbirdstudios.surveykit.AnswerFormat.*
+import com.quickbirdstudios.surveykit.AnswerFormat.BooleanAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.DateAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.EmailAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.ImageSelectorFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.IntegerAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.MultipleChoiceAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.ScaleAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.SingleChoiceAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.TextAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.TimeAnswerFormat
+import com.quickbirdstudios.surveykit.AnswerFormat.ValuePickerAnswerFormat
 import com.quickbirdstudios.surveykit.StepIdentifier
-import com.quickbirdstudios.surveykit.backend.views.questions.*
+import com.quickbirdstudios.surveykit.backend.views.questions.BooleanQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.DatePickerQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.EmailQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.ImageSelectorQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.IntegerQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.MultipleChoiceQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.ScaleQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.SingleChoiceQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.TextQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.TimePickerQuestionView
+import com.quickbirdstudios.surveykit.backend.views.questions.ValuePickerQuestionView
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.StepResult
-import com.quickbirdstudios.surveykit.result.question_results.*
+import com.quickbirdstudios.surveykit.result.question_results.BooleanQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.DateQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.EmailQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.ImageSelectorResult
+import com.quickbirdstudios.surveykit.result.question_results.IntegerQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.MultipleChoiceQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.ScaleQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.SingleChoiceQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.TextQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.TimeQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.ValuePickerQuestionResult
 
 class QuestionStep(
     val title: String,
@@ -18,7 +48,6 @@ class QuestionStep(
     override var isOptional: Boolean = false,
     override val id: StepIdentifier = StepIdentifier()
 ) : Step {
-
 
     //region Public API
 
@@ -39,7 +68,6 @@ class QuestionStep(
         }
 
     //endregion
-
 
     //region Private API
 
@@ -187,7 +215,6 @@ class QuestionStep(
             preselected = stepResult.toSpecificResult<ImageSelectorResult>()?.answer
         )
 
-
     //endregion
 
     //region Private Helper
@@ -197,5 +224,4 @@ class QuestionStep(
         (this?.results?.firstOrNull() as? R)
 
     //endregion
-
 }
