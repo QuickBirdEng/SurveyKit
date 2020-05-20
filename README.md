@@ -68,10 +68,10 @@ allprojects {
 `build.gradle.kts`
 ````kotlin
 dependencies {
-    implementation(project("com.quickbirdstudios:surveykit:0.1.0"))
+    implementation(project("com.quickbirdstudios:surveykit:1.1.0"))
 }
 ````
-Find the latest version [HERE](https://bintray.com/quickbirdstudios/android/SurveyKit)
+Find the [latest version](https://bintray.com/quickbirdstudios/android/SurveyKit) or [all releases](https://github.com/quickbirdstudios/SurveyKit/releases)
 
 
 # 💻 Usage
