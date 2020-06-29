@@ -16,5 +16,5 @@
     <color name="orange_normal">#DF552B</color>
     <color name="orange_dark">#AA4020</color>
 
-    <color name="survey_text">#FFFFFF</color>
+    <color name="survey_text">#000000</color>
 </resources>
