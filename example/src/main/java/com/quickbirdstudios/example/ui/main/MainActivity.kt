@@ -152,6 +152,11 @@ class MainActivity : AppCompatActivity() {
                     )
                 )
             ),
+            QuestionStep(
+                title = getString(R.string.date_time_question_title),
+                text = getString(R.string.date_time_question_text),
+                answerFormat = AnswerFormat.DateTimeAnswerFormat()
+            ),
             CompletionStep(
                 title = this.resources.getString(R.string.finish_question_title),
                 text = this.resources.getString(R.string.finish_question_text),

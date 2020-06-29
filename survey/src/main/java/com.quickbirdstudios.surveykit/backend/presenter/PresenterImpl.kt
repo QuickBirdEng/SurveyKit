@@ -39,7 +39,6 @@ internal class PresenterImpl(
     }
 
     override fun triggerBackOnCurrentView() {
-//        val results = currentQuestionView?.createResults() ?: return
         currentQuestionView?.back()
     }
 
