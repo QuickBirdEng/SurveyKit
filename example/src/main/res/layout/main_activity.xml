@@ -8,6 +8,7 @@
     <com.quickbirdstudios.surveykit.survey.SurveyView
         android:id="@+id/survey_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
 
 </LinearLayout>

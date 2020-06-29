@@ -20,7 +20,7 @@ internal class InfoTextPart @JvmOverloads constructor(
 
     init {
         this.apply {
-            setTextColor(ContextCompat.getColor(context, R.color.black))
+            setTextColor(ContextCompat.getColor(context, R.color.survey_text))
             textAlignment = TEXT_ALIGNMENT_CENTER
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,

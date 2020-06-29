@@ -43,7 +43,11 @@ internal class MultipleChoicePart @JvmOverloads constructor(
         }
 
     @ColorInt
-    var defaultColor: Int = Color.BLACK
+    var defaultColor: Int = ContextCompat.getColor(context, R.color.survey_text)
+        set(color) {
+            update(options)
+            field = color
+        }
 
     var options: List<TextChoice> = emptyList()
         set(value) {

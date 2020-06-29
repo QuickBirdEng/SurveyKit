@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
         survey = findViewById(R.id.survey_view)
         container = findViewById(R.id.surveyContainer)
         setupSurvey(survey)
+
     }
 
     private fun setupSurvey(surveyView: SurveyView) {
@@ -188,6 +189,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+
 
         val configuration = SurveyTheme(
             themeColorDark = ContextCompat.getColor(this, R.color.cyan_dark),

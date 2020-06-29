@@ -47,6 +47,8 @@ internal open class TextFieldPart @JvmOverloads constructor(
                 verticalPaddingEditText
             )
 
+            setTextColor(ContextCompat.getColor(context, R.color.survey_text))
+
             val layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT

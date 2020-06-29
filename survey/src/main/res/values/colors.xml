@@ -19,4 +19,6 @@
     <color name="color_primary">#008577</color>
     <color name="color_primary_dark">#00574B</color>
     <color name="color_accent">#36BFCC</color>
+
+    <color name="survey_text">#000000</color>
 </resources>
