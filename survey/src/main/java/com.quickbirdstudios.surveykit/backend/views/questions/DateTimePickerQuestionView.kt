@@ -32,10 +32,16 @@ internal class DateTimePickerQuestionView(
         super.setupViews()
 
         dateTimePickerPart = content.add(DateTimePickerPart(context))
+    }
+
+    override fun setupDefaults() {
         answerFormat.defaultValue?.let {
             dateTimePickerPart.selectedTime = it.toTime()
             dateTimePickerPart.selectedDate = it.toDate()
         }
+    }
+
+    override fun setupPreviouslySelected() {
         preselected?.let {
             dateTimePickerPart.selectedTime = it.toTime()
             dateTimePickerPart.selectedDate = it.toDate()

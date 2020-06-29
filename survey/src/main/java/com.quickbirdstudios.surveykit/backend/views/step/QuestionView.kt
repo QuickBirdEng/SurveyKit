@@ -63,7 +63,6 @@ abstract class QuestionView(
         text?.let { InfoTextPart.info(context, it) }?.let(content::add)
 
         header.onBack = { onBackListener(createResults()) }
-        // TODO add translations and move out of this class
         header.onCancel = {
             Dialogs.cancel(
                 context,
@@ -81,8 +80,6 @@ abstract class QuestionView(
     }
 
     override fun onViewCreated() {
-        super.onViewCreated()
-
         footer.canContinue = isValidInput()
         footer.onContinue = { onNextListener(createResults()) }
         footer.onSkip = { onSkipListener() }
