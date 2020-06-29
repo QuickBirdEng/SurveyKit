@@ -2,6 +2,7 @@ package com.quickbirdstudios.surveykit.backend.views.step
 
 import android.content.Context
 import android.widget.FrameLayout
+import androidx.annotation.CallSuper
 import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
@@ -36,5 +37,7 @@ abstract class StepView(
     override fun back() = onBackListener(createResults())
 
     abstract fun setupViews()
+    open fun setupDefaults() = Unit
+    open fun setupPreviouslySelected() = Unit
     open fun onViewCreated() = Unit
 }
