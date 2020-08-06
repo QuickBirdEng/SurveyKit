@@ -22,9 +22,9 @@ import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.Backgr
 import com.quickbirdstudios.surveykit.backend.views.question_parts.helper.createSelectableThemedBackground
 
 internal class MultipleChoicePart @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
+    context: Context,
+    attrs: AttributeSet? = null
 ) : LinearLayout(context, attrs), StyleablePart {
-
 
     //region Public API
 
@@ -43,7 +43,11 @@ internal class MultipleChoicePart @JvmOverloads constructor(
         }
 
     @ColorInt
-    var defaultColor: Int = Color.BLACK
+    var defaultColor: Int = ContextCompat.getColor(context, R.color.survey_text)
+        set(color) {
+            update(options)
+            field = color
+        }
 
     var options: List<TextChoice> = emptyList()
         set(value) {
@@ -65,7 +69,6 @@ internal class MultipleChoicePart @JvmOverloads constructor(
 
     //endregion
 
-
     //region Overrides
 
     override fun style(surveyTheme: SurveyTheme) {
@@ -74,7 +77,6 @@ internal class MultipleChoicePart @JvmOverloads constructor(
     }
 
     //endregion
-
 
     //region Private API
 
@@ -104,7 +106,6 @@ internal class MultipleChoicePart @JvmOverloads constructor(
 
     //endregion
 
-
     //region Internal listeners
 
     private val internalCheckedChangeListener: (View, Boolean) -> Unit = { checkBox, checked ->
@@ -114,7 +115,6 @@ internal class MultipleChoicePart @JvmOverloads constructor(
     }
 
     //endregion
-
 
     //region Checkbox Creation Helpers
 
@@ -170,7 +170,6 @@ internal class MultipleChoicePart @JvmOverloads constructor(
     }
 
     //endregion
-
 
     init {
         this.let {

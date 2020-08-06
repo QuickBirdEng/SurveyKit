@@ -13,12 +13,14 @@ import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
 internal class InfoTextPart @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleRes: Int = 0
 ) : AppCompatTextView(context, attrs, defStyleRes), StyleablePart {
 
     init {
         this.apply {
-            setTextColor(ContextCompat.getColor(context, R.color.black))
+            setTextColor(ContextCompat.getColor(context, R.color.survey_text))
             textAlignment = TEXT_ALIGNMENT_CENTER
             val layoutParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,

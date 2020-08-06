@@ -30,11 +30,19 @@ internal class DateTimePickerPart @JvmOverloads constructor(
         Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
         Calendar.getInstance().get(Calendar.MINUTE)
     )
+        set(value) {
+            field = value
+            selectedDateTimeLabel.text = "$selectedDate $selectedTime"
+        }
     var selectedDate = SelectedDate(
         Calendar.getInstance().get(Calendar.YEAR),
         Calendar.getInstance().get(Calendar.MONTH),
         Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
     )
+        set(value) {
+            field = value
+            selectedDateTimeLabel.text = "$selectedDate $selectedTime"
+        }
 
     init {
         gravity = Gravity.CENTER
@@ -83,6 +91,7 @@ internal class DateTimePickerPart @JvmOverloads constructor(
             textSize = context.resources.getDimension(R.dimen.date_time_label_text_size)
             setTextColor(ContextCompat.getColor(context, R.color.black))
             textAlignment = AppCompatTextView.TEXT_ALIGNMENT_CENTER
+            gravity = Gravity.CENTER
             val layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 LayoutParams.WRAP_CONTENT

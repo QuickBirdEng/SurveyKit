@@ -7,9 +7,9 @@ import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.result_gatherer.ResultGathererImpl
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.StepResult
+import java.util.Date
 import org.junit.Assert
 import org.junit.Test
-import java.util.*
 
 internal class ResultGathererTest {
 

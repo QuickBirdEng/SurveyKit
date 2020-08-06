@@ -2,8 +2,8 @@ package com.quickbirdstudios.surveykit.result
 
 import android.os.Parcelable
 import com.quickbirdstudios.surveykit.TaskIdentifier
+import java.util.Date
 import kotlinx.android.parcel.Parcelize
-import java.util.*
 
 @Parcelize
 data class TaskResult(

@@ -8,10 +8,11 @@ import android.widget.LinearLayout
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
-import java.util.*
+import java.util.Date
 
 internal class DatePickerPart @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
+    context: Context,
+    attrs: AttributeSet? = null
 ) : LinearLayout(context, attrs), StyleablePart {
 
     //region Members

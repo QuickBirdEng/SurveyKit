@@ -19,7 +19,6 @@ class QuestionStep(
     override val id: StepIdentifier = StepIdentifier()
 ) : Step {
 
-
     //region Public API
 
     override fun createView(context: Context, stepResult: StepResult?): QuestionView =
@@ -40,7 +39,6 @@ class QuestionStep(
         }
 
     //endregion
-
 
     //region Private API
 
@@ -203,7 +201,6 @@ class QuestionStep(
             preselected = stepResult.toSpecificResult<ImageSelectorResult>()?.answer
         )
 
-
     //endregion
 
     //region Private Helper
@@ -213,5 +210,4 @@ class QuestionStep(
         (this?.results?.firstOrNull() as? R)
 
     //endregion
-
 }

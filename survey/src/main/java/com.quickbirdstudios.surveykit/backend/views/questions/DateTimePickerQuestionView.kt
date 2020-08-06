@@ -37,8 +37,8 @@ internal class DateTimePickerQuestionView(
             dateTimePickerPart.selectedDate = it.toDate()
         }
         preselected?.let {
-            dateTimePickerPart.selectedDate = it.toDate()
             dateTimePickerPart.selectedTime = it.toTime()
+            dateTimePickerPart.selectedDate = it.toDate()
         }
     }
 

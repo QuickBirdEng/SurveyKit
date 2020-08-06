@@ -23,7 +23,6 @@ internal fun Checkable.createSelectableThemedBackground(
 
 private class BackgroundCreationHelper {
 
-
     //region Public API
 
     fun createSelectableBackground(
@@ -74,7 +73,6 @@ private class BackgroundCreationHelper {
 
     //endregion
 
-
     //region Private API
 
     private fun createLayerDrawable(
@@ -118,7 +116,6 @@ private class BackgroundCreationHelper {
     }
 
     //endregion
-
 
     //region SubClasses#
 

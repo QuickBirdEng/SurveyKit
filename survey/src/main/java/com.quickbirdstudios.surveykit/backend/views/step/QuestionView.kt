@@ -7,13 +7,14 @@ import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
+import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Content
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Dialogs
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Footer
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Header
 import com.quickbirdstudios.surveykit.backend.views.question_parts.InfoTextPart
 import com.quickbirdstudios.surveykit.result.QuestionResult
-import java.util.*
+import java.util.Date
 
 abstract class QuestionView(
     context: Context,
@@ -30,21 +31,21 @@ abstract class QuestionView(
     var header: Header = root.findViewById(R.id.questionHeader)
     var content: Content = root.findViewById(R.id.questionContent)
     var footer: Footer = content.findViewById(R.id.questionFooter)
+    private var abortDialogConfiguration: AbortDialogConfiguration? = null
 
     val startDate: Date = Date()
 
     //endregion
-
 
     //region Overrides
 
     override fun style(surveyTheme: SurveyTheme) {
         header.style(surveyTheme)
         content.style(surveyTheme)
+        abortDialogConfiguration = surveyTheme.abortDialogConfiguration
     }
 
     //endregion
-
 
     //region Abstracts
 
@@ -54,7 +55,6 @@ abstract class QuestionView(
 
     //endregion
 
-
     //region Open Helpers
 
     @CallSuper
@@ -63,14 +63,17 @@ abstract class QuestionView(
         text?.let { InfoTextPart.info(context, it) }?.let(content::add)
 
         header.onBack = { onBackListener(createResults()) }
-        //TODO add translations and move out of this class
+        // TODO add translations and move out of this class
         header.onCancel = {
             Dialogs.cancel(
                 context,
-                "Leave?",
-                "If you leave now, your current answers are lost.",
-                "Back to the survey",
-                "Cancel Survey"
+                AbortDialogConfiguration(
+                    abortDialogConfiguration?.title ?: R.string.abort_dialog_title,
+                    abortDialogConfiguration?.message ?: R.string.abort_dialog_message,
+                    abortDialogConfiguration?.neutralMessage
+                        ?: R.string.abort_dialog_neutral_message,
+                    abortDialogConfiguration?.negativeMessage ?: R.string.abort_dialog_neutral_message
+                )
             ) {
                 onCloseListener(createResults(), FinishReason.Discarded)
             }
@@ -87,6 +90,5 @@ abstract class QuestionView(
         footer.setContinueButtonText(nextButtonText)
     }
 
-    //endregion
-
+//endregion
 }

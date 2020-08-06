@@ -49,4 +49,8 @@
     <string name="date_time_question_text">Choose a date and time</string>
     <string name="how_tall_title">How tall are you</string>
     <string name="how_tall_hint">In cm</string>
+    <string name="message">Are you sure you want to quit the survey?</string>
+    <string name="title">SurveyKit</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

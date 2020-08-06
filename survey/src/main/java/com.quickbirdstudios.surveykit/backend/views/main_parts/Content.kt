@@ -10,9 +10,10 @@ import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 
 class Content @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null, defStyleRes: Int = 0
+    context: Context,
+    attrs: AttributeSet? = null,
+    defStyleRes: Int = 0
 ) : NestedScrollView(context, attrs, defStyleRes), StyleablePart {
-
 
     //region Member
 
@@ -22,7 +23,6 @@ class Content @JvmOverloads constructor(
     private val footer: Footer = Footer(context).apply { id = R.id.questionFooter }
 
     //endregion
-
 
     //region Public API
 
@@ -36,7 +36,6 @@ class Content @JvmOverloads constructor(
     }
 
     //endregion
-
 
     //region Overrides
 

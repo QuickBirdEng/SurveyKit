@@ -10,7 +10,8 @@ import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
 internal class ValuePickerPart @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
+    context: Context,
+    attrs: AttributeSet? = null
 ) : LinearLayout(context, attrs), StyleablePart {
 
     //region Members
@@ -35,7 +36,6 @@ internal class ValuePickerPart @JvmOverloads constructor(
             val index = choices.indexOf(choice)
             numberPicker.value = index
         }
-
 
     //endregion
 

@@ -4,19 +4,17 @@ import com.quickbirdstudios.surveykit.NavigableOrderedTask
 import com.quickbirdstudios.surveykit.NavigationRule
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
-import java.util.*
+import java.util.Stack
 
 internal class NavigableOrderedTaskNavigator(
     override val task: NavigableOrderedTask
 ) : TaskNavigator {
-
 
     //region Members
 
     override var history: Stack<Step> = Stack()
 
     //endregion
-
 
     //region Public API
 
@@ -48,7 +46,6 @@ internal class NavigableOrderedTaskNavigator(
 
     //endregion
 
-
     //region Private Helper
 
     private fun Step?.record() {
@@ -63,7 +60,8 @@ internal class NavigableOrderedTaskNavigator(
         task[this.destinationStepStepIdentifier]
 
     private fun NavigationRule.ConditionalDirectionStepNavigationRule.evaluateNextStep(
-        step: Step, stepResult: StepResult?
+        step: Step,
+        stepResult: StepResult?
     ): Step? {
         stepResult ?: return step.nextInList()
         val firstResult = stepResult.results.firstOrNull() ?: return step.nextInList()
@@ -74,6 +72,4 @@ internal class NavigableOrderedTaskNavigator(
     }
 
     //endregion
-
-
 }

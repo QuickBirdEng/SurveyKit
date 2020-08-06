@@ -30,7 +30,6 @@ android {
     testOptions {
         animationsDisabled = true
     }
-
 }
 
 dependencies {
