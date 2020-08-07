@@ -51,8 +51,8 @@ internal class DoubleQuestionView(
         questionAnswerView.field.gravity = Gravity.CENTER
         questionAnswerView.field.hint = answerFormat.hint
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }
-        val alreadyEntered = preselected?.toString() ?: answerFormat.defaultValue?.toString()
-        questionAnswerView.field.setText(alreadyEntered ?: context.getString(R.string.empty))
+        val preselected = preselected?.toString() ?: answerFormat.defaultValue?.toString()
+        questionAnswerView.field.setText(preselected ?: context.getString(R.string.empty))
     }
 
     //endregion
