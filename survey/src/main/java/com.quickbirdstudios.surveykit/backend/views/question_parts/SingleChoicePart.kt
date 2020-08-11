@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.question_parts
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
@@ -45,10 +44,10 @@ internal class SingleChoicePart @JvmOverloads constructor(
 
     @ColorInt
     var defaultColor: Int = ContextCompat.getColor(context, R.color.survey_text)
-    set(color) {
-        update(options)
-        field = color
-    }
+        set(color) {
+            update(options)
+            field = color
+        }
     var options: List<TextChoice> = emptyList()
         set(value) {
             update(value)

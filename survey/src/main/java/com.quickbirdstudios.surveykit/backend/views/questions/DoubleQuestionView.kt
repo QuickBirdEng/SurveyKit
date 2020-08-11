@@ -24,16 +24,11 @@ internal class DoubleQuestionView(
     private val preselected: Double? = null
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
 
-
     //region Members
-
     private lateinit var questionAnswerView: DoubleTextFieldPart
-
     //endregion
 
-
     //region Overrides
-
     override fun createResults(): QuestionResult =
         DoubleQuestionResult(
             id = id,
@@ -54,12 +49,9 @@ internal class DoubleQuestionView(
         val preselected = preselected?.toString() ?: answerFormat.defaultValue?.toString()
         questionAnswerView.field.setText(preselected ?: context.getString(R.string.empty))
     }
-
     //endregion
 
-
     //region Private Helpers
-
     private fun String.parseToDoubleOrNull(): Double? {
         return try {
             this.toDouble()
@@ -67,7 +59,5 @@ internal class DoubleQuestionView(
             null
         }
     }
-
     //endregion
-
 }

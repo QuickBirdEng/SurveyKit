@@ -10,9 +10,9 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.isEnabled
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import com.quickbirdstudios.test.R
-import java.util.Calendar
 import org.hamcrest.Description
 import org.hamcrest.Matcher
+import java.util.Calendar
 
 internal fun PageTest.testDatePickerStep(year: Int, month: Int, day: Int) {
     onView(withId(R.id.infoTextTitle)).check(matches(isDisplayed()))

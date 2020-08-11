@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.question_parts
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.Gravity

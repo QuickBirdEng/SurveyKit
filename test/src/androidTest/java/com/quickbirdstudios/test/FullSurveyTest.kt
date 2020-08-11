@@ -38,12 +38,12 @@ import com.quickbirdstudios.test.pages.testSingleChoiceStep
 import com.quickbirdstudios.test.pages.testTextStep
 import com.quickbirdstudios.test.pages.testTimePickerStep
 import com.quickbirdstudios.test.pages.testValuePickerStep
-import java.util.Calendar
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.Calendar
 
 @RunWith(AndroidJUnit4::class)
 @LargeTest
@@ -73,8 +73,8 @@ internal class FullSurveyTest : PageTest {
         testNumberStep(
             numberText = NumberStepInput,
             defaultValue =
-            (activityRule.activity.intStep.answerFormat as AnswerFormat.IntegerAnswerFormat)
-                .defaultValue
+                (activityRule.activity.intStep.answerFormat as AnswerFormat.IntegerAnswerFormat)
+                    .defaultValue
         ) { isKeyboardShown() }
 
         testScaleStep(progressToSetOn = 0, activity = activityRule.activity)
@@ -125,15 +125,17 @@ internal class FullSurveyTest : PageTest {
                         Assert.assertTrue(questionResult.answer.toString() == NumberStepInput)
                     is MultipleChoiceQuestionResult -> {
                         val expectedResult = listOf(
-                            (activityRule
-                                .activity
-                                .multipleChoiceStep
-                                .answerFormat as MultipleChoiceAnswerFormat
+                            (
+                                activityRule
+                                    .activity
+                                    .multipleChoiceStep
+                                    .answerFormat as MultipleChoiceAnswerFormat
                                 ).textChoices[0],
-                            (activityRule
-                                .activity
-                                .multipleChoiceStep
-                                .answerFormat as MultipleChoiceAnswerFormat
+                            (
+                                activityRule
+                                    .activity
+                                    .multipleChoiceStep
+                                    .answerFormat as MultipleChoiceAnswerFormat
                                 ).textChoices[3]
                         )
                         Assert.assertArrayEquals(

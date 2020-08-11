@@ -15,10 +15,10 @@ import com.quickbirdstudios.surveykit.backend.result_gatherer.ResultGathererImpl
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.result.TaskResult
 import com.quickbirdstudios.surveykit.steps.Step
-import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
 class SurveyView @JvmOverloads constructor(
     context: Context,

@@ -27,8 +27,8 @@ import com.quickbirdstudios.surveykit.steps.InstructionStep
 import com.quickbirdstudios.surveykit.steps.QuestionStep
 import com.quickbirdstudios.surveykit.steps.Step
 import com.quickbirdstudios.surveykit.survey.SurveyView
-import java.util.Date
 import kotlinx.android.parcel.Parcelize
+import java.util.Date
 
 internal class TestActivity : AppCompatActivity() {
 

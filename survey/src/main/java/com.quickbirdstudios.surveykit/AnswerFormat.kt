@@ -3,10 +3,10 @@ package com.quickbirdstudios.surveykit
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
-import java.util.Calendar
-import java.util.Date as JavaDate
-import java.util.regex.Pattern
 import kotlinx.android.parcel.Parcelize
+import java.util.Calendar
+import java.util.regex.Pattern
+import java.util.Date as JavaDate
 
 sealed class AnswerFormat {
 
@@ -15,12 +15,10 @@ sealed class AnswerFormat {
         val hint: String = ""
     ) : AnswerFormat()
 
-
     data class DoubleAnswerFormat(
         val defaultValue: Double? = null,
         val hint: String = ""
     ) : AnswerFormat()
-
 
     data class SingleChoiceAnswerFormat(
         val textChoices: List<TextChoice>,
@@ -78,8 +76,8 @@ sealed class AnswerFormat {
             check(defaultValue == null || choices.contains(defaultValue)) {
                 throw IllegalStateException(
                     "${ValuePickerAnswerFormat::class.simpleName}:" +
-                            "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
-                            "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
+                        "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
+                        "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
                 )
             }
         }
@@ -134,7 +132,7 @@ sealed class AnswerFormat {
             val minute: Int
         ) : Parcelable {
             override fun toString(): String {
-                return "${day}/${month + 1}/${year} ${hour}:${minute}"
+                return "$day/${month + 1}/$year $hour:$minute"
             }
         }
 
@@ -150,7 +148,6 @@ sealed class AnswerFormat {
             )
         }
     }
-
 
     data class EmailAnswerFormat(
         val hintText: String? = null,

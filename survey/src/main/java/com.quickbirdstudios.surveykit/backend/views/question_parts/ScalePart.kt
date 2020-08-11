@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.question_parts
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
@@ -57,7 +56,6 @@ internal class ScalePart @JvmOverloads constructor(
     private var maximumValueDescriptionField: TextView
     private var currentValueDescriptionField: TextView
     private var seekBar: AppCompatSeekBar
-
 
     //endregion
 
@@ -166,19 +164,19 @@ internal class ScalePart @JvmOverloads constructor(
             minimumValueDescriptionField = TextView(context).setRandomViewId().apply {
                 this.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 this.setTextSize(TypedValue.COMPLEX_UNIT_PX, descriptionTextSize)
-                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text));
+                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text))
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
             maximumValueDescriptionField = TextView(context).setRandomViewId().apply {
                 this.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 this.setTextSize(TypedValue.COMPLEX_UNIT_PX, descriptionTextSize)
-                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text));
+                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text))
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
             currentValueDescriptionField = TextView(context).setRandomViewId().apply {
                 this.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 this.setTextSize(TypedValue.COMPLEX_UNIT_PX, selectedTextSize)
-                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text));
+                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text))
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
             seekBar = AppCompatSeekBar(context).apply {
