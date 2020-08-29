@@ -15,9 +15,10 @@ internal class DatePickerQuestionView(
     title: String?,
     text: String?,
     nextButtonText: String,
+    skipButtonText: String,
     private val answerFormat: AnswerFormat.DateAnswerFormat,
     private val preselected: AnswerFormat.DateAnswerFormat.Date?
-) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
+) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
 
     //region Members
 

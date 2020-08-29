@@ -49,6 +49,10 @@ class Footer @JvmOverloads constructor(
         buttonContinue.text = text
     }
 
+    fun setSkipButtonText(text: String) {
+        buttonSkip.text = text
+    }
+
     var onContinue: () -> Unit = {}
     var onSkip: () -> Unit = {}
 

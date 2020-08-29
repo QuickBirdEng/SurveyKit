@@ -16,7 +16,7 @@ internal class FinishQuestionView(
     finishButtonText: String,
     private val lottieAnimation: CompletionStep.LottieAnimation?,
     private val repeatCount: Int?
-) : QuestionView(context, id, false, title, text, finishButtonText) {
+) : QuestionView(context, id, false, title, text, finishButtonText, "") {
 
     //region Overrides
 

@@ -12,7 +12,7 @@ class IntroQuestionView(
     title: String?,
     text: String?,
     startButtonText: String
-) : QuestionView(context, id, isOptional, title, text, startButtonText) {
+) : QuestionView(context, id, isOptional, title, text, startButtonText, "") {
 
     //region Overrides
 
