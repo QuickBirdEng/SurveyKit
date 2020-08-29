@@ -15,9 +15,10 @@ internal class DateTimePickerQuestionView(
     title: String?,
     text: String?,
     nextButtonText: String,
+    skipButtonText: String,
     private val answerFormat: AnswerFormat.DateTimeAnswerFormat,
     private val preselected: AnswerFormat.DateTimeAnswerFormat.DateTime?
-) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
+) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
 
     private lateinit var dateTimePickerPart: DateTimePickerPart
 

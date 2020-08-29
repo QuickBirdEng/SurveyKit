@@ -15,9 +15,10 @@ internal class TimePickerQuestionView(
     title: String?,
     text: String?,
     nextButtonText: String,
+    skipButtonText: String,
     private val answerFormat: AnswerFormat.TimeAnswerFormat,
     private val preselected: AnswerFormat.TimeAnswerFormat.Time?
-) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
+) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
 
     //region Members
 
