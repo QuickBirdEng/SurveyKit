@@ -33,7 +33,7 @@ internal class DoubleQuestionView(
         DoubleQuestionResult(
             id = id,
             startDate = startDate,
-            answer = questionAnswerView.field.text.toString().parseToDoubleOrNull(),
+            answer = questionAnswerView.field.text.toString().toDoubleOrNull(),
             stringIdentifier = questionAnswerView.field.text.toString()
         )
 
@@ -48,16 +48,6 @@ internal class DoubleQuestionView(
         questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }
         val preselected = preselected?.toString() ?: answerFormat.defaultValue?.toString()
         questionAnswerView.field.setText(preselected ?: context.getString(R.string.empty))
-    }
-    //endregion
-
-    //region Private Helpers
-    private fun String.parseToDoubleOrNull(): Double? {
-        return try {
-            this.toDouble()
-        } catch (e: NumberFormatException) {
-            null
-        }
     }
     //endregion
 }
