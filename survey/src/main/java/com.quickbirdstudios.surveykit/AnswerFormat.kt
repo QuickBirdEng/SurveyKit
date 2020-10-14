@@ -71,8 +71,8 @@ sealed class AnswerFormat {
             check(defaultValue == null || choices.contains(defaultValue)) {
                 throw IllegalStateException(
                     "${ValuePickerAnswerFormat::class.simpleName}:" +
-                            "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
-                            "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
+                        "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
+                        "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
                 )
             }
         }
@@ -117,6 +117,34 @@ sealed class AnswerFormat {
         }
     }
 
+    object LocationAnswerFormat : AnswerFormat() {
+
+        @Parcelize
+        data class Location(val latitude: Double, val longitude: Double) : Parcelable {
+            override fun toString(): String {
+                return "${this.latitude}:${this.longitude}"
+            }
+
+            override fun equals(other: Any?): Boolean {
+                if (this === other) return true
+                if (javaClass != other?.javaClass) return false
+
+                other as Location
+
+                if (latitude != other.latitude) return false
+                if (longitude != other.longitude) return false
+
+                return true
+            }
+
+            override fun hashCode(): Int {
+                var result = latitude.hashCode()
+                result = 31 * result + longitude.hashCode()
+                return result
+            }
+        }
+    }
+
     data class DateTimeAnswerFormat(val defaultValue: DateTime?) : AnswerFormat() {
         @Parcelize
         data class DateTime(
@@ -127,7 +155,7 @@ sealed class AnswerFormat {
             val minute: Int
         ) : Parcelable {
             override fun toString(): String {
-                return "${day}/${month + 1}/${year} ${hour}:${minute}"
+                return "$day/${month + 1}/$year $hour:$minute"
             }
         }
 
@@ -143,7 +171,6 @@ sealed class AnswerFormat {
             )
         }
     }
-
 
     data class EmailAnswerFormat(
         val hintText: String? = null,

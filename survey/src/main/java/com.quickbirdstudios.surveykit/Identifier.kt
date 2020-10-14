@@ -8,7 +8,8 @@ import kotlinx.android.parcel.Parcelize
 open class Identifier(open val id: String) : Parcelable
 
 @Parcelize
-data class TaskIdentifier(override val id: String = UUID.randomUUID().toString()) : Identifier(id),
+data class TaskIdentifier(override val id: String = UUID.randomUUID().toString()) :
+    Identifier(id),
     Parcelable
 
 @Parcelize

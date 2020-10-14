@@ -1,9 +1,11 @@
 package com.quickbirdstudios.surveykit.steps
 
 import android.content.Context
+import androidx.lifecycle.Lifecycle
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.AnswerFormat.*
 import com.quickbirdstudios.surveykit.StepIdentifier
+import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
 import com.quickbirdstudios.surveykit.backend.views.questions.*
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -15,6 +17,8 @@ class QuestionStep(
     val text: String,
     val nextButton: String = "Next",
     val answerFormat: AnswerFormat,
+    var lifecycle: Lifecycle? = null,
+    var addressProvider: AddressSuggestionProvider? = null,
     override var isOptional: Boolean = false,
     override val id: StepIdentifier = StepIdentifier()
 ) : Step {
@@ -35,6 +39,7 @@ class QuestionStep(
             is DateTimeAnswerFormat -> createDateTimePickerQuestion(context, stepResult)
             is EmailAnswerFormat -> createEmailQuestion(context, stepResult)
             is ImageSelectorFormat -> createImageSelectorQuestion(context, stepResult)
+            is LocationAnswerFormat -> createLocationPickerQuestion(context, stepResult)
         }
 
     //endregion
@@ -137,6 +142,7 @@ class QuestionStep(
             preselected = stepResult.toSpecificResult<DateQuestionResult>()?.answer
         )
 
+
     private fun createTimePickerQuestion(context: Context, stepResult: StepResult?) =
         TimePickerQuestionView(
             context = context,
@@ -186,6 +192,20 @@ class QuestionStep(
             nextButtonText = nextButton,
             answerFormat = this.answerFormat as ImageSelectorFormat,
             preselected = stepResult.toSpecificResult<ImageSelectorResult>()?.answer
+        )
+
+    private fun createLocationPickerQuestion(context: Context, stepResult: StepResult?) =
+        LocationPickerQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            lifecycle = lifecycle,
+            addressProvider = addressProvider,
+            answerFormat = this.answerFormat as LocationAnswerFormat,
+            preselected = stepResult.toSpecificResult<LocationQuestionResult>()?.answer
         )
 
     //endregion

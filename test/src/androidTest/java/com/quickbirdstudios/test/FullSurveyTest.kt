@@ -11,18 +11,8 @@ import com.quickbirdstudios.surveykit.AnswerFormat.MultipleChoiceAnswerFormat
 import com.quickbirdstudios.surveykit.AnswerFormat.SingleChoiceAnswerFormat
 import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.result.TaskResult
-import com.quickbirdstudios.surveykit.result.question_results.BooleanQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.DateQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.EmailQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.FinishQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.ImageSelectorResult
-import com.quickbirdstudios.surveykit.result.question_results.IntegerQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.IntroQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.MultipleChoiceQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.SingleChoiceQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.TextQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.TimeQuestionResult
-import com.quickbirdstudios.surveykit.result.question_results.ValuePickerQuestionResult
+import com.quickbirdstudios.surveykit.result.question_results.*
+import com.quickbirdstudios.test.pages.*
 import com.quickbirdstudios.test.pages.PageTest
 import com.quickbirdstudios.test.pages.testBooleanChoiceStep
 import com.quickbirdstudios.test.pages.testCompletionStep
@@ -73,8 +63,8 @@ internal class FullSurveyTest : PageTest {
         testNumberStep(
             numberText = NumberStepInput,
             defaultValue =
-            (activityRule.activity.intStep.answerFormat as AnswerFormat.IntegerAnswerFormat)
-                .defaultValue
+                (activityRule.activity.intStep.answerFormat as AnswerFormat.IntegerAnswerFormat)
+                    .defaultValue
         ) { isKeyboardShown() }
 
         testScaleStep(progressToSetOn = 0, activity = activityRule.activity)
@@ -98,6 +88,8 @@ internal class FullSurveyTest : PageTest {
         testEmailStep(EmailStepInputWrong, EmailStepInputRight) { isKeyboardShown() }
 
         testImageSelectorStep(ImageSelectorStepToClick)
+
+        testLocationPickerTestStep(activityRule)
 
         testCustomStep()
 
@@ -125,15 +117,17 @@ internal class FullSurveyTest : PageTest {
                         Assert.assertTrue(questionResult.answer.toString() == NumberStepInput)
                     is MultipleChoiceQuestionResult -> {
                         val expectedResult = listOf(
-                            (activityRule
-                                .activity
-                                .multipleChoiceStep
-                                .answerFormat as MultipleChoiceAnswerFormat
+                            (
+                                activityRule
+                                    .activity
+                                    .multipleChoiceStep
+                                    .answerFormat as MultipleChoiceAnswerFormat
                                 ).textChoices[0],
-                            (activityRule
-                                .activity
-                                .multipleChoiceStep
-                                .answerFormat as MultipleChoiceAnswerFormat
+                            (
+                                activityRule
+                                    .activity
+                                    .multipleChoiceStep
+                                    .answerFormat as MultipleChoiceAnswerFormat
                                 ).textChoices[3]
                         )
                         Assert.assertArrayEquals(
@@ -174,6 +168,13 @@ internal class FullSurveyTest : PageTest {
                         ImageSelectorStepToClick + ImageSelectorStepPreselected,
                         questionResult.answer
                     )
+                    is LocationQuestionResult -> {
+                        Assert.assertEquals(questionResult.answer?.latitude ?: 0.0, 1.0, 0.00001)
+                        Assert.assertEquals(
+                            questionResult.answer?.latitude ?: 0.0,
+                            questionResult.answer?.longitude ?: 0.0, 0.00001
+                        )
+                    }
                     is CustomResult -> println(questionResult)
                     is FinishQuestionResult -> Unit
                 }

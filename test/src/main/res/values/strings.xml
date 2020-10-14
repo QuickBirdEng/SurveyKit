@@ -44,5 +44,11 @@
     <string name="email_question_title">Email question title</string>
     <string name="image_selector_question_title">Image selector question title</string>
     <string name="image_selector_question_text">Image selector question text</string>
+    <string name="location_picker_question_title">Location picker question title</string>
+    <string name="location_picker_question_text">>Location picker question text</string>
     <string name="maybe">Maybe</string>
+
+
+    <string name="google_maps_api_key" translatable="false" >GOOGLE-API-KEY</string>
+
 </resources>
