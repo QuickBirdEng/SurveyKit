@@ -4,7 +4,7 @@ import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
-import androidx.test.espresso.assertion.ViewAssertions
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers
 import androidx.test.espresso.matcher.ViewMatchers.isEnabled
 import androidx.test.espresso.matcher.ViewMatchers.withHint
@@ -22,7 +22,7 @@ import org.hamcrest.Matchers.not
 internal fun PageTest.testLocationPickerTestStep(activityRule: ActivityTestRule<TestActivity>) {
     checkIfTitleInfoAndContinueAreDisplayed()
 
-    onView(withId(R.id.button_continue)).check(ViewAssertions.matches(isEnabled()))
+    onView(withId(R.id.button_continue)).check(matches(isEnabled()))
 
     onView(withHint(android.R.string.search_go)).perform(typeText("test1"))
 

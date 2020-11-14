@@ -21,7 +21,8 @@ import com.quickbirdstudios.surveykit.NavigationRule
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.TextChoice
-import com.quickbirdstudios.surveykit.backend.address.YandexAddressSuggestionProvider
+import com.quickbirdstudios.example.YandexAddressSuggestionProvider
+import com.quickbirdstudios.surveykit.backend.address.GeocoderAddressSuggestionProvider
 import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -51,6 +52,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupSurvey(surveyView: SurveyView) {
         val steps = listOf(
+            QuestionStep(
+                title = this.resources.getString(R.string.location_select_title),
+                text = this.resources.getString(R.string.location_question_text),
+                lifecycle = lifecycle,
+                addressProvider = GeocoderAddressSuggestionProvider(
+                    this
+                ),
+                answerFormat = AnswerFormat.LocationAnswerFormat
+            ),
             InstructionStep(
                 title = this.resources.getString(R.string.intro_title),
                 text = this.resources.getString(R.string.intro_text),

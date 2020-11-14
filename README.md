@@ -232,6 +232,15 @@ val configuration = SurveyTheme(
         )
 ```
 
+# Location Step
+If you want to use location step, you need to add your below part to application manifest.
+
+```
+  <meta-data
+      android:name="com.google.android.maps.v2.API_KEY"
+      android:value="[GOOGLE_MAPS_API_KEY]" />
+```
+
 
 # 📇 Custom steps
 At some point, you might wanna define your own custom question steps. 

@@ -36,14 +36,7 @@ internal class LocationPickerQuestionView(
     override fun createResults(): QuestionResult = LocationQuestionResult(
         id = id,
         startDate = startDate,
-        stringIdentifier = if (
-            locationPickerPart.selected.latitude == 0.0 &&
-            locationPickerPart.selected.longitude == 0.0
-        ) {
-            ""
-        } else {
-            "${locationPickerPart.selected.latitude},${locationPickerPart.selected.longitude}"
-        },
+        stringIdentifier = locationPickerPart.stringIdentifier(),
         answer = locationPickerPart.selected.toLocation()
     )
 
@@ -52,21 +45,19 @@ internal class LocationPickerQuestionView(
     override fun setupViews() {
         super.setupViews()
 
-        if (lifecycle == null) {
-            throw RuntimeException(
+        when {
+            lifecycle == null -> throw RuntimeException(
                 "Location typed question steps need to attach an Lifecycle." +
                     " Please pass an Lifecycle when instated on constructor."
             )
-        }
-
-        if (addressProvider == null) {
-            throw RuntimeException(
+            addressProvider == null -> throw RuntimeException(
                 "Location typed question steps need to an AddressSuggestionProvider." +
                     "Please pass an AddressSuggestionProvider when instated on constructor."
             )
         }
 
-        locationPickerPart = content.add(LocationPickerPart(context, lifecycle, addressProvider))
+        locationPickerPart =
+            content.add(LocationPickerPart(context, lifecycle!!, addressProvider!!))
 
         preselected?.let { locationPickerPart.selected = it.toSelected() }
     }
@@ -74,6 +65,13 @@ internal class LocationPickerQuestionView(
     //endregion
 
     //region Private API
+
+    private fun LocationPickerPart.stringIdentifier(): String {
+        return if (selected.latitude == 0.0 && selected.longitude == 0.0)
+            ""
+        else
+            "${selected.latitude},${selected.longitude}"
+    }
 
     private fun AnswerFormat.LocationAnswerFormat.Location.toSelected(): LocationPickerPart.Selection =
         LocationPickerPart.Selection(latitude = this.latitude, longitude = this.longitude)

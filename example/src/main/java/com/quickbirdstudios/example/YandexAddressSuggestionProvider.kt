@@ -1,24 +1,24 @@
-package com.quickbirdstudios.surveykit.backend.address
+package com.quickbirdstudios.example
 
 import com.quickbirdstudios.surveykit.AnswerFormat
-import java.io.FileNotFoundException
+import com.quickbirdstudios.surveykit.backend.address.AddressSuggestion
+import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
 import java.net.HttpURLConnection
 import java.net.URL
-import kotlinx.coroutines.Deferred
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.async
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import org.json.JSONArray
-import org.json.JSONException
 import org.json.JSONObject
 
 class YandexAddressSuggestionProvider(
     private val apiKey: String,
     private val resultsCount: Int = 5,
     private val lang: String = "tr_TR",
-    onSuggestionListReady: (suggestions: List<AddressSuggestion>) -> Unit? = {}
-) : AddressSuggestionProvider(onSuggestionListReady) {
+    override var onSuggestionListReady: (suggestions: List<AddressSuggestion>) -> Unit? = {}
+) : AddressSuggestionProvider {
+
+    private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
+        // ignore
+    }
 
     private fun getApiPath(apiKey: String, query: String, results: Int, lang: String) =
         "https://geocode-maps.yandex.ru/1.x/?apikey=$apiKey" +
@@ -30,18 +30,20 @@ class YandexAddressSuggestionProvider(
         val apiPath =
             getApiPath(apiKey = apiKey, query = query, results = resultsCount, lang = lang)
 
-        GlobalScope.launch(Dispatchers.Main) { // launches coroutine in main thread
+        GlobalScope.launch(Dispatchers.Default + exceptionHandler) {
             val result = fetchResults(apiPath)
-            onSuggestionListReady.invoke(result)
+            launch(Dispatchers.Main) {
+                onSuggestionListReady.invoke(result)
+            }
         }
     }
 
     private suspend fun fetchResults(apiPath: String): MutableList<AddressSuggestion> {
-        val suggestions: Deferred<MutableList<AddressSuggestion>> = GlobalScope.async {
+        val suggestions: Deferred<MutableList<AddressSuggestion>> =
+            GlobalScope.async(Dispatchers.IO + exceptionHandler) {
 
-            val suggestions: MutableList<AddressSuggestion> = mutableListOf()
+                val suggestions: MutableList<AddressSuggestion> = mutableListOf()
 
-            try {
                 val response = URL(apiPath).getText()
                 val json = JSONObject(response)["response"] as JSONObject
                 val featureMember =
@@ -61,17 +63,15 @@ class YandexAddressSuggestionProvider(
                     val location = AnswerFormat.LocationAnswerFormat.Location(latitude, longitude)
 
                     val suggestion =
-                        AddressSuggestion(text = name + "\n" + description, location = location)
+                        AddressSuggestion(
+                            text = name + "\n" + description,
+                            location = location
+                        )
                     suggestions.add(suggestion)
                 }
-            } catch (exception: JSONException) {
-                // ignore
-            } catch (exception: FileNotFoundException) {
-                // ignore
-            }
 
-            return@async suggestions
-        }
+                return@async suggestions
+            }
 
         return suggestions.await()
     }
