@@ -55,7 +55,7 @@
     <string name="location_select_title">Select your home address</string>
     <string name="location_question_text">Tell us about yourself and your home address.</string>
 
-    <string name="google_maps_api_key">***REMOVED***</string>
-    <string name="yandex_maps_api_key">***REMOVED***</string>
+    <string name="google_maps_api_key">api-key</string>
+    <string name="yandex_maps_api_key">api-key</string>
 
 </resources>
