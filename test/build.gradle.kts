@@ -1,3 +1,6 @@
+import com.quickbirdstudios.surveykit.ApiKeys.googleMapsKey
+import com.quickbirdstudios.surveykit.ApiKeys.yandexMapsKey
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -29,6 +32,17 @@ android {
 
     testOptions {
         animationsDisabled = true
+    }
+
+    buildTypes {
+        getByName("debug") {
+            buildConfigField("String", "GOOGLE_API_KEY", googleMapsKey())
+            buildConfigField("String", "YANDEX_API_KEY", yandexMapsKey())
+        }
+        getByName("release") {
+            buildConfigField("String", "GOOGLE_API_KEY", googleMapsKey())
+            buildConfigField("String", "YANDEX_API_KEY", yandexMapsKey())
+        }
     }
 }
 

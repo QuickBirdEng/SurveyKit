@@ -47,8 +47,4 @@
     <string name="location_picker_question_title">Location picker question title</string>
     <string name="location_picker_question_text">>Location picker question text</string>
     <string name="maybe">Maybe</string>
-
-
-    <string name="google_maps_api_key" translatable="false" >GOOGLE-API-KEY</string>
-
 </resources>

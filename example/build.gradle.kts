@@ -1,3 +1,6 @@
+import com.quickbirdstudios.surveykit.ApiKeys.googleMapsKey
+import com.quickbirdstudios.surveykit.ApiKeys.yandexMapsKey
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -18,6 +21,16 @@ android {
     }
     packagingOptions {
         exclude("META-INF/*kotlin*")
+    }
+    buildTypes {
+        getByName("debug") {
+            resValue("string", "google_api_key", googleMapsKey())
+            resValue("string", "yandex_api_key", yandexMapsKey())
+        }
+        getByName("release") {
+            resValue("string", "google_api_key", googleMapsKey())
+            resValue("string", "yandex_api_key", yandexMapsKey())
+        }
     }
 }
 

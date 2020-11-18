@@ -172,7 +172,7 @@ class MainActivity : AppCompatActivity() {
                 text = this.resources.getString(R.string.location_question_text),
                 lifecycle = lifecycle,
                 addressProvider = YandexAddressSuggestionProvider(
-                    getString(R.string.yandex_maps_api_key)
+                    getString(R.string.yandex_api_key)
                 ),
                 answerFormat = AnswerFormat.LocationAnswerFormat
             ),
