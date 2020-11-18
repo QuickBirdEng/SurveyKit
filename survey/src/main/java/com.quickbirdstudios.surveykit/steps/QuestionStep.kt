@@ -6,6 +6,7 @@ import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.AnswerFormat.*
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
+import com.quickbirdstudios.surveykit.backend.address.GeocoderAddressSuggestionProvider
 import com.quickbirdstudios.surveykit.backend.views.questions.*
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -142,7 +143,6 @@ class QuestionStep(
             preselected = stepResult.toSpecificResult<DateQuestionResult>()?.answer
         )
 
-
     private fun createTimePickerQuestion(context: Context, stepResult: StepResult?) =
         TimePickerQuestionView(
             context = context,
@@ -203,7 +203,7 @@ class QuestionStep(
             isOptional = isOptional,
             nextButtonText = nextButton,
             lifecycle = lifecycle,
-            addressProvider = addressProvider,
+            addressProvider = addressProvider ?: GeocoderAddressSuggestionProvider(context),
             answerFormat = this.answerFormat as LocationAnswerFormat,
             preselected = stepResult.toSpecificResult<LocationQuestionResult>()?.answer
         )

@@ -18,19 +18,11 @@ android {
         minSdkVersion(Project.Android.minSdkVersion)
         targetSdkVersion(Project.Android.targetSdkVersion)
         testInstrumentationRunner = Project.Android.testInstrumentationRunner
+        resValue("string", "google_api_key", googleMapsKey())
+        resValue("string", "yandex_api_key", yandexMapsKey())
     }
     packagingOptions {
         exclude("META-INF/*kotlin*")
-    }
-    buildTypes {
-        getByName("debug") {
-            resValue("string", "google_api_key", googleMapsKey())
-            resValue("string", "yandex_api_key", yandexMapsKey())
-        }
-        getByName("release") {
-            resValue("string", "google_api_key", googleMapsKey())
-            resValue("string", "yandex_api_key", yandexMapsKey())
-        }
     }
 }
 

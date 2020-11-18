@@ -6,18 +6,14 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.action.ViewActions.typeText
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.RootMatchers
-import androidx.test.espresso.matcher.ViewMatchers.isEnabled
-import androidx.test.espresso.matcher.ViewMatchers.withHint
-import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import com.quickbirdstudios.surveykit.AnswerFormat
-import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
+import com.quickbirdstudios.surveykit.backend.address.AddressSuggestion
 import com.quickbirdstudios.test.R
 import com.quickbirdstudios.test.TestActivity
 import org.hamcrest.CoreMatchers.allOf
-import org.hamcrest.Matchers.`is`
-import org.hamcrest.Matchers.instanceOf
-import org.hamcrest.Matchers.not
+import org.hamcrest.Matchers.*
 
 internal fun PageTest.testLocationPickerTestStep(activityRule: ActivityTestRule<TestActivity>) {
     checkIfTitleInfoAndContinueAreDisplayed()
@@ -28,9 +24,9 @@ internal fun PageTest.testLocationPickerTestStep(activityRule: ActivityTestRule<
 
     onData(
         allOf(
-            `is`(instanceOf(AddressSuggestionProvider.AddressSuggestion::class.java)),
+            `is`(instanceOf(AddressSuggestion::class.java)),
             `is`(
-                AddressSuggestionProvider.AddressSuggestion(
+                AddressSuggestion(
                     "test1",
                     AnswerFormat.LocationAnswerFormat.Location(1.0, 1.0)
                 )

@@ -1,12 +1,13 @@
 package com.quickbirdstudios.test
 
 import com.quickbirdstudios.surveykit.AnswerFormat
+import com.quickbirdstudios.surveykit.backend.address.AddressSuggestion
 import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
 
 class TestAddressProvider(
-    onSuggestionListReady: (suggestions: List<AddressSuggestion>) -> Unit? = {}
+    override var onSuggestionListReady: (suggestions: List<AddressSuggestion>) -> Unit? = {}
 ) :
-    AddressSuggestionProvider(onSuggestionListReady) {
+    AddressSuggestionProvider {
 
     override fun input(query: String) {
         val suggestions = mutableListOf(

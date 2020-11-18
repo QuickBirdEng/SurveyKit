@@ -18,6 +18,7 @@ android {
         minSdkVersion(Project.Android.minSdkVersion)
         targetSdkVersion(Project.Android.targetSdkVersion)
         testInstrumentationRunner = Project.Android.testInstrumentationRunner
+        resValue("string", "google_api_key", googleMapsKey())
     }
     packagingOptions {
         exclude("META-INF/*kotlin*")
@@ -32,17 +33,6 @@ android {
 
     testOptions {
         animationsDisabled = true
-    }
-
-    buildTypes {
-        getByName("debug") {
-            buildConfigField("String", "GOOGLE_API_KEY", googleMapsKey())
-            buildConfigField("String", "YANDEX_API_KEY", yandexMapsKey())
-        }
-        getByName("release") {
-            buildConfigField("String", "GOOGLE_API_KEY", googleMapsKey())
-            buildConfigField("String", "YANDEX_API_KEY", yandexMapsKey())
-        }
     }
 }
 

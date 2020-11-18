@@ -1,5 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.question_parts
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
@@ -24,6 +25,7 @@ import com.quickbirdstudios.surveykit.backend.helpers.extensions.hideKeyboard
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.isLocationPermissionGranted
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
+@SuppressLint("MissingPermission")
 class LocationPickerPart @JvmOverloads constructor(
     context: Context,
     private val lifecycle: Lifecycle,

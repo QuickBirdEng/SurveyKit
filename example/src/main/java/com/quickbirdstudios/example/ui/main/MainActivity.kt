@@ -52,15 +52,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupSurvey(surveyView: SurveyView) {
         val steps = listOf(
-            QuestionStep(
-                title = this.resources.getString(R.string.location_select_title),
-                text = this.resources.getString(R.string.location_question_text),
-                lifecycle = lifecycle,
-                addressProvider = GeocoderAddressSuggestionProvider(
-                    this
-                ),
-                answerFormat = AnswerFormat.LocationAnswerFormat
-            ),
             InstructionStep(
                 title = this.resources.getString(R.string.intro_title),
                 text = this.resources.getString(R.string.intro_text),
@@ -171,9 +162,6 @@ class MainActivity : AppCompatActivity() {
                 title = this.resources.getString(R.string.location_select_title),
                 text = this.resources.getString(R.string.location_question_text),
                 lifecycle = lifecycle,
-                addressProvider = YandexAddressSuggestionProvider(
-                    getString(R.string.yandex_api_key)
-                ),
                 answerFormat = AnswerFormat.LocationAnswerFormat
             ),
             CompletionStep(

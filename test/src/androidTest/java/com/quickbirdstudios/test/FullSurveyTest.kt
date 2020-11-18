@@ -6,6 +6,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
+import androidx.test.rule.GrantPermissionRule
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.AnswerFormat.MultipleChoiceAnswerFormat
 import com.quickbirdstudios.surveykit.AnswerFormat.SingleChoiceAnswerFormat
@@ -48,6 +49,12 @@ internal class FullSurveyTest : PageTest {
     @get:Rule
     var activityRule: ActivityTestRule<TestActivity> = ActivityTestRule(TestActivity::class.java)
 
+    @get:Rule
+    var permissionRule = GrantPermissionRule.grant(
+        android.Manifest.permission.ACCESS_FINE_LOCATION,
+        android.Manifest.permission.ACCESS_COARSE_LOCATION
+    )
+
     @Before
     fun setup() {
     }
@@ -63,8 +70,8 @@ internal class FullSurveyTest : PageTest {
         testNumberStep(
             numberText = NumberStepInput,
             defaultValue =
-                (activityRule.activity.intStep.answerFormat as AnswerFormat.IntegerAnswerFormat)
-                    .defaultValue
+            (activityRule.activity.intStep.answerFormat as AnswerFormat.IntegerAnswerFormat)
+                .defaultValue
         ) { isKeyboardShown() }
 
         testScaleStep(progressToSetOn = 0, activity = activityRule.activity)
@@ -118,17 +125,17 @@ internal class FullSurveyTest : PageTest {
                     is MultipleChoiceQuestionResult -> {
                         val expectedResult = listOf(
                             (
-                                activityRule
-                                    .activity
-                                    .multipleChoiceStep
-                                    .answerFormat as MultipleChoiceAnswerFormat
-                                ).textChoices[0],
+                                    activityRule
+                                        .activity
+                                        .multipleChoiceStep
+                                        .answerFormat as MultipleChoiceAnswerFormat
+                                    ).textChoices[0],
                             (
-                                activityRule
-                                    .activity
-                                    .multipleChoiceStep
-                                    .answerFormat as MultipleChoiceAnswerFormat
-                                ).textChoices[3]
+                                    activityRule
+                                        .activity
+                                        .multipleChoiceStep
+                                        .answerFormat as MultipleChoiceAnswerFormat
+                                    ).textChoices[3]
                         )
                         Assert.assertArrayEquals(
                             expectedResult.toTypedArray(),
