@@ -245,8 +245,15 @@ You need add below to your own application `AndroidManifest.xml` file to use Goo
     android:value="GOOGLE API KEY" />
 ```
 
-You might wanna run location question steps test or example app on this project. Need to add api keys on `local.properties` file.
+Also need to append location permissions on `AndroidManifest.xml`. This is not required. But If you gave this permissions, map can select current location automatically.
+```xml
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 ```
+
+
+You might wanna run location question steps test or example app on this project. Need to add api keys on `local.properties` file.
+```kotlin
 google_sdk_key="[API_KEY]"
 //if you want to use yandex address suggession on example app
 yandex_sdk_key="[API_KEY]"
