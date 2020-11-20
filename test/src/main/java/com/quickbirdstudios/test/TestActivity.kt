@@ -46,6 +46,7 @@ internal class TestActivity : AppCompatActivity() {
     lateinit var timePickerStep: QuestionStep
     lateinit var emailStep: QuestionStep
     lateinit var imageSelectorStep: QuestionStep
+    lateinit var locationPickerStep: QuestionStep
     lateinit var completionStep: CompletionStep
     lateinit var customStep: CustomStep
     lateinit var allSteps: List<Step>
@@ -208,6 +209,14 @@ internal class TestActivity : AppCompatActivity() {
                 )
             )
         )
+        locationPickerStep = QuestionStep(
+            title = this.resources.getString(R.string.location_picker_question_title),
+            text = this.resources.getString(R.string.location_picker_question_text),
+            answerFormat = AnswerFormat.LocationAnswerFormat(
+                lifecycle = lifecycle,
+                addressProvider = TestAddressProvider()
+            )
+        )
         completionStep = CompletionStep(
             title = this.resources.getString(R.string.finish_question_title),
             text = this.resources.getString(R.string.finish_question_text),
@@ -228,6 +237,7 @@ internal class TestActivity : AppCompatActivity() {
             timePickerStep,
             emailStep,
             imageSelectorStep,
+            locationPickerStep,
             customStep,
             completionStep
         )

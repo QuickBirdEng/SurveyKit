@@ -51,4 +51,7 @@
     <string name="title">SurveyKit</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="location_select_title">Select your home address</string>
+    <string name="location_question_text">Tell us about yourself and your home address.</string>
+
 </resources>

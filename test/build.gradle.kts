@@ -1,3 +1,6 @@
+import com.quickbirdstudios.surveykit.ApiKeys.googleMapsKey
+import com.quickbirdstudios.surveykit.ApiKeys.yandexMapsKey
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -15,6 +18,7 @@ android {
         minSdkVersion(Project.Android.minSdkVersion)
         targetSdkVersion(Project.Android.targetSdkVersion)
         testInstrumentationRunner = Project.Android.testInstrumentationRunner
+        resValue("string", "google_api_key", googleMapsKey())
     }
     packagingOptions {
         exclude("META-INF/*kotlin*")

@@ -1,4 +1,5 @@
 object Versions {
+
     const val kotlin = "1.3.50"
     const val coroutines = "1.3.0"
     const val test = "1.1.1"
@@ -12,6 +13,10 @@ object Versions {
         const val constraintLayout = "1.1.3"
         const val annotation = "1.0.0"
         const val recyclerView = "1.0.0"
+    }
+
+    object PlayServices {
+        const val maps = "17.0.0"
     }
 }
 
@@ -28,6 +33,10 @@ object Deps {
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
         const val androidCoroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.coroutines}"
+    }
+
+    object PlayServices {
+        const val maps = "com.google.android.gms:play-services-maps:${Versions.PlayServices.maps}"
     }
 
     object AndroidSupport {

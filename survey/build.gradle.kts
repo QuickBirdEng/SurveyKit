@@ -34,6 +34,7 @@ dependencies {
     implementation(Deps.AndroidSupport.constraint)
     implementation(Deps.AndroidSupport.recyclerView)
     implementation(Deps.lottie)
+    implementation(Deps.PlayServices.maps)
 
     testImplementation(Deps.Test.jUnitJupiter)
     testImplementation(Deps.Test.jUnitPlatform)

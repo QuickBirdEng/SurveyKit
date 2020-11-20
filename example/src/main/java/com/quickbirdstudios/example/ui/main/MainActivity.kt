@@ -21,6 +21,8 @@ import com.quickbirdstudios.surveykit.NavigationRule
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.TextChoice
+import com.quickbirdstudios.example.YandexAddressSuggestionProvider
+import com.quickbirdstudios.surveykit.backend.address.GeocoderAddressSuggestionProvider
 import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -36,7 +38,7 @@ import kotlinx.android.parcel.Parcelize
 
 class MainActivity : AppCompatActivity() {
 
-    protected lateinit var survey: SurveyView
+    private lateinit var survey: SurveyView
     private lateinit var container: ViewGroup
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         survey = findViewById(R.id.survey_view)
         container = findViewById(R.id.surveyContainer)
         setupSurvey(survey)
-
     }
 
     private fun setupSurvey(surveyView: SurveyView) {
@@ -157,6 +158,11 @@ class MainActivity : AppCompatActivity() {
                 text = getString(R.string.date_time_question_text),
                 answerFormat = AnswerFormat.DateTimeAnswerFormat()
             ),
+            QuestionStep(
+                title = this.resources.getString(R.string.location_select_title),
+                text = this.resources.getString(R.string.location_question_text),
+                answerFormat = AnswerFormat.LocationAnswerFormat(lifecycle)
+            ),
             CompletionStep(
                 title = this.resources.getString(R.string.finish_question_title),
                 text = this.resources.getString(R.string.finish_question_text),
@@ -194,7 +200,6 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-
 
         val configuration = SurveyTheme(
             themeColorDark = ContextCompat.getColor(this, R.color.cyan_dark),

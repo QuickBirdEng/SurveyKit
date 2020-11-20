@@ -12,12 +12,15 @@ import androidx.core.content.ContextCompat
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
-import kotlinx.android.parcel.Parcelize
 import java.util.*
+import kotlinx.android.parcel.Parcelize
 
 internal class DateTimePickerPart @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
-) : LinearLayout(context, attrs), StyleablePart, TimePickerDialog.OnTimeSetListener,
+    context: Context,
+    attrs: AttributeSet? = null
+) : LinearLayout(context, attrs),
+    StyleablePart,
+    TimePickerDialog.OnTimeSetListener,
     DatePickerDialog.OnDateSetListener {
 
     private val timePicker: TimePickerDialog

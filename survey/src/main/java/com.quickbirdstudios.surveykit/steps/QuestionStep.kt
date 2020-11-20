@@ -1,9 +1,12 @@
 package com.quickbirdstudios.surveykit.steps
 
 import android.content.Context
+import androidx.lifecycle.Lifecycle
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.AnswerFormat.*
 import com.quickbirdstudios.surveykit.StepIdentifier
+import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
+import com.quickbirdstudios.surveykit.backend.address.GeocoderAddressSuggestionProvider
 import com.quickbirdstudios.surveykit.backend.views.questions.*
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -35,6 +38,7 @@ class QuestionStep(
             is DateTimeAnswerFormat -> createDateTimePickerQuestion(context, stepResult)
             is EmailAnswerFormat -> createEmailQuestion(context, stepResult)
             is ImageSelectorFormat -> createImageSelectorQuestion(context, stepResult)
+            is LocationAnswerFormat -> createLocationPickerQuestion(context, stepResult)
         }
 
     //endregion
@@ -188,13 +192,33 @@ class QuestionStep(
             preselected = stepResult.toSpecificResult<ImageSelectorResult>()?.answer
         )
 
-    //endregion
+    private fun createLocationPickerQuestion(
+        context: Context,
+        stepResult: StepResult?
+    ): LocationPickerQuestionView {
+        this.answerFormat as LocationAnswerFormat
+        return LocationPickerQuestionView(
+            context = context,
+            id = id,
+            title = title,
+            text = text,
+            isOptional = isOptional,
+            nextButtonText = nextButton,
+            lifecycle = answerFormat.lifecycle,
+            addressProvider = answerFormat.addressProvider
+                ?: GeocoderAddressSuggestionProvider(context),
+            answerFormat = answerFormat,
+            preselected = stepResult.toSpecificResult<LocationQuestionResult>()?.answer
+        )
+    }
 
-    //region Private Helper
+//endregion
+
+//region Private Helper
 
     @Suppress("UNCHECKED_CAST")
     private fun <R : QuestionResult> StepResult?.toSpecificResult(): R? =
         (this?.results?.firstOrNull() as? R)
 
-    //endregion
+//endregion
 }
