@@ -33,7 +33,7 @@ This is an early version and work in progress. Do not hesitate to give feedback,
     -   [Evaluate the results](#evaluate-the-results)
     -   [Configure](#style)
     -   [Start the survey](#start-the-survey)
--   [Location steps](#-location-steps)
+-   [Location step](#-location-step)
 -   [Custom steps](#-custom-steps)
 -   [Comparison to ResearchKit on iOS](#vs-comparison-of-surveykit-on-android-to-researchkit-on-ios)
 -   [Author](#-author)
@@ -234,8 +234,8 @@ val configuration = SurveyTheme(
         )
 ```
 
-# 📍 Location steps
-You need add below to your own application `AndroidManifest.xml` file to use Google Map.
+# 📍 Location step
+Add following lines to your `AndroidManifest.xml`:
 ```xml
   <meta-data
     android:name="com.google.android.gms.version"
@@ -246,7 +246,7 @@ You need add below to your own application `AndroidManifest.xml` file to use Goo
     android:value="GOOGLE API KEY" />
 ```
 
-Also need to append location permissions on `AndroidManifest.xml`. This is not required. But If you gave this permissions, map can select current location automatically.
+Also need to append location permissions to `AndroidManifest.xml`. This is not required. But If you gave this permissions, the map can select current location automatically.
 ```xml
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -260,17 +260,17 @@ google_sdk_key="[API_KEY]"
 yandex_sdk_key="[API_KEY]"
 ```
 
-And finally you can instante location question step like below.
+And finally you can instantiate location question steps like below.
 ```kotlin
 QuestionStep(
     title = "title",
     text = this.resources.getString(R.string.location_question_text),
     lifecycle = lifecycle,
     answerFormat = AnswerFormat.LocationAnswerFormat(
-                    lifecycle = lifecycle,
-                    //addressProvider = YandexAddressSuggestionProvider(api_key)
-                )
+        lifecycle = lifecycle,
+        //addressProvider = YandexAddressSuggestionProvider(api_key)
     )
+)
 ```
 Default address provider is `GeocoderAddressSuggestionProvider` based on `android.location.Geocoder`.
 If you want to use custom address provider. You can use `AddressSuggestionProvider` interface and make your own implements like `YandexAddressSuggestionProvider`.

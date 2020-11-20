@@ -24,6 +24,9 @@ import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChange
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.hideKeyboard
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.isLocationPermissionGranted
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlin.coroutines.CoroutineContext
 
 @SuppressLint("MissingPermission")
 class LocationPickerPart @JvmOverloads constructor(
@@ -31,7 +34,9 @@ class LocationPickerPart @JvmOverloads constructor(
     private val lifecycle: Lifecycle,
     addressProvider: AddressSuggestionProvider,
     attrs: AttributeSet? = null
-) : LinearLayout(context, attrs), StyleablePart, LifecycleObserver {
+) : LinearLayout(context, attrs), StyleablePart, LifecycleObserver, CoroutineScope {
+
+    override val coroutineContext: CoroutineContext = Dispatchers.Default
 
     //region Members
     private var search: AutoCompleteTextView
@@ -222,7 +227,7 @@ class LocationPickerPart @JvmOverloads constructor(
             afterTextChanged { s ->
                 s.let {
                     if (!isPerformingCompletion && s.isNotEmpty()) {
-                        addressProvider.input(s)
+                        addressProvider.input(this@LocationPickerPart, s)
                     }
                 }
             }

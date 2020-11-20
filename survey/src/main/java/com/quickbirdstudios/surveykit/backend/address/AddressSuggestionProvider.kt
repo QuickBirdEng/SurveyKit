@@ -1,13 +1,12 @@
 package com.quickbirdstudios.surveykit.backend.address
 
 import com.quickbirdstudios.surveykit.AnswerFormat
+import kotlinx.coroutines.CoroutineScope
 
 interface AddressSuggestionProvider {
-
     var onSuggestionListReady: (suggestions: List<AddressSuggestion>) -> Unit?
 
-    fun input(query: String)
-
+    fun input(coroutineScope: CoroutineScope, query: String)
 }
 
 data class AddressSuggestion(

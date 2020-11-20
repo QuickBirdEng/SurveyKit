@@ -3,6 +3,7 @@ package com.quickbirdstudios.surveykit.backend.address
 import android.content.Context
 import android.location.Address
 import android.location.Geocoder
+import android.util.Log
 import com.quickbirdstudios.surveykit.AnswerFormat
 import kotlinx.coroutines.*
 
@@ -12,22 +13,20 @@ class GeocoderAddressSuggestionProvider(
     override var onSuggestionListReady: (suggestions: List<AddressSuggestion>) -> Unit? = {}
 ) : AddressSuggestionProvider {
 
-    private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
-        // ignore
+    override fun input(coroutineScope: CoroutineScope, query: String) {
+        coroutineScope.launch(Dispatchers.Default + exceptionHandler) {
+            val addresses = retrieveAddresses(query)
+            withContext(Dispatchers.Main) { onSuggestionListReady.invoke(addresses) }
+        }
     }
 
-    override fun input(query: String) {
-        GlobalScope.launch(Dispatchers.Default + exceptionHandler) {
-            val addresses = Geocoder(context).getFromLocationName(query, maxResults).map {
-                AddressSuggestion(
-                    it.getAddress(),
-                    AnswerFormat.LocationAnswerFormat.Location(it.latitude, it.longitude)
-                )
-            }.toList()
-            launch(Dispatchers.Main) {
-                onSuggestionListReady.invoke(addresses)
-            }
-        }
+    private fun retrieveAddresses(query: String): List<AddressSuggestion> {
+        return  Geocoder(context).getFromLocationName(query, maxResults).map {
+            AddressSuggestion(
+                it.getAddress(),
+                AnswerFormat.LocationAnswerFormat.Location(it.latitude, it.longitude)
+            )
+        }.toList()
     }
 
     private fun Address.getAddress(): String {
@@ -36,5 +35,9 @@ class GeocoderAddressSuggestionProvider(
             address += getAddressLine(i)
         }
         return address
+    }
+
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Log.e("GeocoderAddressProvider", "exception thrown: ", throwable)
     }
 }

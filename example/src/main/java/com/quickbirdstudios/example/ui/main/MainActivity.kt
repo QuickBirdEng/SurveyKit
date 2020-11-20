@@ -12,17 +12,8 @@ import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.example.R
-import com.quickbirdstudios.surveykit.AnswerFormat
-import com.quickbirdstudios.surveykit.FinishReason
-import com.quickbirdstudios.surveykit.Identifier
-import com.quickbirdstudios.surveykit.ImageChoice
-import com.quickbirdstudios.surveykit.NavigableOrderedTask
-import com.quickbirdstudios.surveykit.NavigationRule
-import com.quickbirdstudios.surveykit.StepIdentifier
-import com.quickbirdstudios.surveykit.SurveyTheme
-import com.quickbirdstudios.surveykit.TextChoice
 import com.quickbirdstudios.example.YandexAddressSuggestionProvider
-import com.quickbirdstudios.surveykit.backend.address.GeocoderAddressSuggestionProvider
+import com.quickbirdstudios.surveykit.*
 import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.QuestionResult
@@ -33,8 +24,8 @@ import com.quickbirdstudios.surveykit.steps.InstructionStep
 import com.quickbirdstudios.surveykit.steps.QuestionStep
 import com.quickbirdstudios.surveykit.steps.Step
 import com.quickbirdstudios.surveykit.survey.SurveyView
-import java.util.Date
 import kotlinx.android.parcel.Parcelize
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -56,6 +47,14 @@ class MainActivity : AppCompatActivity() {
                 title = this.resources.getString(R.string.intro_title),
                 text = this.resources.getString(R.string.intro_text),
                 buttonText = this.resources.getString(R.string.intro_start)
+            ),
+            QuestionStep(
+                title = this.resources.getString(R.string.location_select_title),
+                text = this.resources.getString(R.string.location_question_text),
+                answerFormat = AnswerFormat.LocationAnswerFormat(
+                    lifecycle = lifecycle,
+                    addressProvider = YandexAddressSuggestionProvider(getString(R.string.yandex_api_key))
+                )
             ),
             QuestionStep(
                 title = this.resources.getString(R.string.about_you_question_title),
@@ -157,11 +156,6 @@ class MainActivity : AppCompatActivity() {
                 title = getString(R.string.date_time_question_title),
                 text = getString(R.string.date_time_question_text),
                 answerFormat = AnswerFormat.DateTimeAnswerFormat()
-            ),
-            QuestionStep(
-                title = this.resources.getString(R.string.location_select_title),
-                text = this.resources.getString(R.string.location_question_text),
-                answerFormat = AnswerFormat.LocationAnswerFormat(lifecycle)
             ),
             CompletionStep(
                 title = this.resources.getString(R.string.finish_question_title),

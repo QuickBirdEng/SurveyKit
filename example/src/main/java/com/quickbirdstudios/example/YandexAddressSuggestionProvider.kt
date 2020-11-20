@@ -1,13 +1,14 @@
 package com.quickbirdstudios.example
 
+import android.util.Log
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.backend.address.AddressSuggestion
 import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
-import java.net.HttpURLConnection
-import java.net.URL
 import kotlinx.coroutines.*
 import org.json.JSONArray
 import org.json.JSONObject
+import java.net.HttpURLConnection
+import java.net.URL
 
 class YandexAddressSuggestionProvider(
     private val apiKey: String,
@@ -16,8 +17,18 @@ class YandexAddressSuggestionProvider(
     override var onSuggestionListReady: (suggestions: List<AddressSuggestion>) -> Unit? = {}
 ) : AddressSuggestionProvider {
 
-    private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
-        // ignore
+    override fun input(coroutineScope: CoroutineScope, query: String) {
+        val apiPath = getApiPath(
+            apiKey = apiKey,
+            query = query,
+            results = resultsCount,
+            lang = lang
+        )
+
+        coroutineScope.launch(Dispatchers.Default + exceptionHandler) {
+            val result = withContext(Dispatchers.IO) { fetchResults(apiPath) }
+            withContext(Dispatchers.Main) { onSuggestionListReady.invoke(result) }
+        }
     }
 
     private fun getApiPath(apiKey: String, query: String, results: Int, lang: String) =
@@ -26,60 +37,45 @@ class YandexAddressSuggestionProvider(
             "&results=$results" +
             "&lang=$lang"
 
-    override fun input(query: String) {
-        val apiPath =
-            getApiPath(apiKey = apiKey, query = query, results = resultsCount, lang = lang)
+    private fun fetchResults(apiPath: String): MutableList<AddressSuggestion> {
+            val suggestions: MutableList<AddressSuggestion> = mutableListOf()
 
-        GlobalScope.launch(Dispatchers.Default + exceptionHandler) {
-            val result = fetchResults(apiPath)
-            launch(Dispatchers.Main) {
-                onSuggestionListReady.invoke(result)
+            val response = URL(apiPath).getText()
+            val json = JSONObject(response)["response"] as JSONObject
+            val featureMember =
+                (json["GeoObjectCollection"] as JSONObject)["featureMember"] as JSONArray
+
+            for (i in 0 until featureMember.length()) {
+                val item = featureMember.getJSONObject(i)
+                val geoObject = (item["GeoObject"] as JSONObject)
+                val pos = (geoObject["Point"] as JSONObject)["pos"] as String
+
+                val name = geoObject["name"] as String
+                val description = geoObject["description"] as String
+                val latitude = pos.split(" ")[0].toDouble()
+                val longitude = pos.split(" ")[1].toDouble()
+
+                val location = AnswerFormat.LocationAnswerFormat.Location(latitude, longitude)
+
+                val suggestion =
+                    AddressSuggestion(
+                        text = name + "\n" + description,
+                        location = location
+                    )
+                suggestions.add(suggestion)
             }
+
+            return suggestions
         }
-    }
-
-    private suspend fun fetchResults(apiPath: String): MutableList<AddressSuggestion> {
-        val suggestions: Deferred<MutableList<AddressSuggestion>> =
-            GlobalScope.async(Dispatchers.IO + exceptionHandler) {
-
-                val suggestions: MutableList<AddressSuggestion> = mutableListOf()
-
-                val response = URL(apiPath).getText()
-                val json = JSONObject(response)["response"] as JSONObject
-                val featureMember =
-                    (json["GeoObjectCollection"] as JSONObject)["featureMember"] as JSONArray
-
-                for (i in 0 until featureMember.length()) {
-
-                    val item = featureMember.getJSONObject(i)
-                    val geoObject = (item["GeoObject"] as JSONObject)
-                    val pos = (geoObject["Point"] as JSONObject)["pos"] as String
-
-                    val name = geoObject["name"] as String
-                    val description = geoObject["description"] as String
-                    val latitude = pos.split(" ")[0].toDouble()
-                    val longitude = pos.split(" ")[1].toDouble()
-
-                    val location = AnswerFormat.LocationAnswerFormat.Location(latitude, longitude)
-
-                    val suggestion =
-                        AddressSuggestion(
-                            text = name + "\n" + description,
-                            location = location
-                        )
-                    suggestions.add(suggestion)
-                }
-
-                return@async suggestions
-            }
-
-        return suggestions.await()
-    }
 
     private fun URL.getText(): String {
         return openConnection().run {
             this as HttpURLConnection
             inputStream.bufferedReader().readText()
         }
+    }
+
+    private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
+        Log.e("YandexAddressSuggestion", "exception thrown: ", throwable)
     }
 }
