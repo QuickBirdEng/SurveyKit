@@ -161,8 +161,7 @@ class MainActivity : AppCompatActivity() {
             QuestionStep(
                 title = this.resources.getString(R.string.location_select_title),
                 text = this.resources.getString(R.string.location_question_text),
-                lifecycle = lifecycle,
-                answerFormat = AnswerFormat.LocationAnswerFormat
+                answerFormat = AnswerFormat.LocationAnswerFormat(lifecycle)
             ),
             CompletionStep(
                 title = this.resources.getString(R.string.finish_question_title),

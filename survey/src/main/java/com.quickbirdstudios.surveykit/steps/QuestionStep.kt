@@ -18,8 +18,6 @@ class QuestionStep(
     val text: String,
     val nextButton: String = "Next",
     val answerFormat: AnswerFormat,
-    var lifecycle: Lifecycle? = null,
-    var addressProvider: AddressSuggestionProvider? = null,
     override var isOptional: Boolean = false,
     override val id: StepIdentifier = StepIdentifier()
 ) : Step {
@@ -194,27 +192,33 @@ class QuestionStep(
             preselected = stepResult.toSpecificResult<ImageSelectorResult>()?.answer
         )
 
-    private fun createLocationPickerQuestion(context: Context, stepResult: StepResult?) =
-        LocationPickerQuestionView(
+    private fun createLocationPickerQuestion(
+        context: Context,
+        stepResult: StepResult?
+    ): LocationPickerQuestionView {
+        this.answerFormat as LocationAnswerFormat
+        return LocationPickerQuestionView(
             context = context,
             id = id,
             title = title,
             text = text,
             isOptional = isOptional,
             nextButtonText = nextButton,
-            lifecycle = lifecycle,
-            addressProvider = addressProvider ?: GeocoderAddressSuggestionProvider(context),
-            answerFormat = this.answerFormat as LocationAnswerFormat,
+            lifecycle = answerFormat.lifecycle,
+            addressProvider = answerFormat.addressProvider
+                ?: GeocoderAddressSuggestionProvider(context),
+            answerFormat = answerFormat,
             preselected = stepResult.toSpecificResult<LocationQuestionResult>()?.answer
         )
+    }
 
-    //endregion
+//endregion
 
-    //region Private Helper
+//region Private Helper
 
     @Suppress("UNCHECKED_CAST")
     private fun <R : QuestionResult> StepResult?.toSpecificResult(): R? =
         (this?.results?.firstOrNull() as? R)
 
-    //endregion
+//endregion
 }

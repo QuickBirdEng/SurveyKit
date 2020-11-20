@@ -138,6 +138,7 @@ The `answerFormat` specifies the type of question (the type of answer to the que
 -   `ScaleAnswerFormat`
 -   `SingleChoiceAnswerFormat`
 -   `MultipleChoiceAnswerFormat`
+-   `LocationAnswerFormat`
 
 All that's left is to collect your steps in a list.
 ```kotlin
@@ -265,8 +266,10 @@ QuestionStep(
     title = "title",
     text = this.resources.getString(R.string.location_question_text),
     lifecycle = lifecycle,
-    //addressProvider = YandexAddressSuggestionProvider(api_key),
-    answerFormat = AnswerFormat.LocationAnswerFormat
+    answerFormat = AnswerFormat.LocationAnswerFormat(
+                    lifecycle = lifecycle,
+                    //addressProvider = YandexAddressSuggestionProvider(api_key)
+                )
     )
 ```
 Default address provider is `GeocoderAddressSuggestionProvider` based on `android.location.Geocoder`.

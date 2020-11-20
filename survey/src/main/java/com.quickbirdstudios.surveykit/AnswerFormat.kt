@@ -3,6 +3,8 @@ package com.quickbirdstudios.surveykit
 import android.os.Parcelable
 import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
+import androidx.lifecycle.Lifecycle
+import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
 import java.util.Calendar
 import java.util.Date as JavaDate
 import java.util.regex.Pattern
@@ -117,8 +119,10 @@ sealed class AnswerFormat {
         }
     }
 
-    object LocationAnswerFormat : AnswerFormat() {
-
+    data class LocationAnswerFormat(
+        val lifecycle: Lifecycle,
+        val addressProvider: AddressSuggestionProvider? = null
+    ) : AnswerFormat() {
         @Parcelize
         data class Location(val latitude: Double, val longitude: Double) : Parcelable {
             override fun toString(): String {

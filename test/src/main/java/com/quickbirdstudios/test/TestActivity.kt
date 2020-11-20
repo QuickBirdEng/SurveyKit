@@ -212,9 +212,10 @@ internal class TestActivity : AppCompatActivity() {
         locationPickerStep = QuestionStep(
             title = this.resources.getString(R.string.location_picker_question_title),
             text = this.resources.getString(R.string.location_picker_question_text),
-            answerFormat = AnswerFormat.LocationAnswerFormat,
-            lifecycle = lifecycle,
-            addressProvider = TestAddressProvider()
+            answerFormat = AnswerFormat.LocationAnswerFormat(
+                lifecycle = lifecycle,
+                addressProvider = TestAddressProvider()
+            )
         )
         completionStep = CompletionStep(
             title = this.resources.getString(R.string.finish_question_title),

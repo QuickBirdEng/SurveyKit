@@ -1,5 +1,6 @@
 package com.quickbirdstudios.surveykit
 
+import java.util.*
 import org.gradle.api.Project
 
 object ApiKeys {
@@ -13,7 +14,24 @@ object ApiKeys {
     }
 
     private fun Project.propertyOrEmpty(name: String): String {
-        val property = findProperty(name) as String?
-        return property ?: ""
+        return findPropertyCasted(name)
+            .fallback { findInLocalPropertiesFile(name) }
+            .fallback { findByProperties(name) } ?: ""
+    }
+
+    private fun Project.findPropertyCasted(name: String): String? = findProperty(name) as String?
+
+    private fun Project.findInLocalPropertiesFile(name: String): String? {
+        val properties = Properties()
+        properties.load(project.rootProject.file("local.properties").inputStream())
+        return properties[name] as? String?
+    }
+
+    private fun Project.findByProperties(name: String): String? {
+        return properties[name] as String?
+    }
+
+    private fun String?.fallback(block: () -> String?): String? {
+        return this ?: block()
     }
 }
