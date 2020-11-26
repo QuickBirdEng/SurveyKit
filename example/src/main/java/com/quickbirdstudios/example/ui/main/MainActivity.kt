@@ -201,6 +201,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        surveyView.onStepBegin = { step ->
+            when (step) {
+                is QuestionStep -> {
+                    Log.w ("ASDF", "step '${step?.id}': ${step.title} (${step.text})")
+                }
+                else ->
+                    Log.w ("ASDF", "step '${step?.id}'")
+            }
+        }
+
         val configuration = SurveyTheme(
             themeColorDark = ContextCompat.getColor(this, R.color.cyan_dark),
             themeColor = ContextCompat.getColor(this, R.color.cyan_normal),

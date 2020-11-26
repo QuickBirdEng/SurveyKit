@@ -8,6 +8,7 @@ import com.quickbirdstudios.surveykit.result.TaskResult
 import com.quickbirdstudios.surveykit.steps.Step
 
 internal interface Survey {
+    var onStepBegin: (Step?) -> Unit
     var onStepResult: (Step?, StepResult?) -> Unit
     var onSurveyFinish: (TaskResult, FinishReason) -> Unit
 

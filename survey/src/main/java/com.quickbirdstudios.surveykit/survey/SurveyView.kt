@@ -91,6 +91,8 @@ class SurveyView @JvmOverloads constructor(
 
     //region Overrides
 
+    override var onStepBegin: (Step?) -> Unit = { _ -> }
+
     override var onStepResult: (Step?, StepResult?) -> Unit = { _, _ -> }
 
     override var onSurveyFinish: (TaskResult, FinishReason) -> Unit = { _, _ -> }
@@ -121,6 +123,9 @@ class SurveyView @JvmOverloads constructor(
         val newStep = taskNavigator.nextStep(step, result) ?: return StepData(
             FinishReason.Completed
         )
+
+        onStepBegin(newStep)
+
         val newResult = presenter(
             Presenter.Transition.SlideFromRight, newStep, resultGatherer.retrieve(newStep.id)
         ).storeResult()
@@ -135,6 +140,9 @@ class SurveyView @JvmOverloads constructor(
             taskNavigator.previousStep(step) ?: return StepData(
                 FinishReason.Failed
             )
+
+        onStepBegin(previousStep)
+
         val newResult = presenter(
             Presenter.Transition.SlideFromLeft,
             previousStep,
@@ -150,6 +158,9 @@ class SurveyView @JvmOverloads constructor(
         val newStep = taskNavigator.nextStep(step) ?: return StepData(
             FinishReason.Completed
         )
+
+        onStepBegin(newStep)
+
         val newResult = presenter(
             Presenter.Transition.SlideFromRight, newStep, resultGatherer.retrieve(newStep.id)
         ).storeResult()
