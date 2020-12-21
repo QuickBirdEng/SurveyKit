@@ -74,6 +74,14 @@ internal class TimePickerPart @JvmOverloads constructor(
 
     //endregion
 
+    override fun onInterceptTouchEvent(ev: MotionEvent?): Boolean {
+        if (ev?.actionMasked == MotionEvent.ACTION_DOWN) {
+            val p = parent
+            p?.requestDisallowInterceptTouchEvent(true)
+        }
+        return false
+    }
+
     init {
         this.gravity = Gravity.CENTER
 
