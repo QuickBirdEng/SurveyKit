@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.MotionEvent
 import android.widget.LinearLayout
 import android.widget.TimePicker
 import com.quickbirdstudios.surveykit.R
@@ -73,6 +74,12 @@ internal class TimePickerPart @JvmOverloads constructor(
         }
 
     //endregion
+
+    override fun onInterceptTouchEvent(motionEvent: MotionEvent?): Boolean {
+        if (motionEvent?.actionMasked == MotionEvent.ACTION_DOWN)
+            parent?.requestDisallowInterceptTouchEvent(true)
+        return false
+    }
 
     init {
         this.gravity = Gravity.CENTER
