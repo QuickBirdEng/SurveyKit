@@ -1,8 +1,5 @@
 name: Android Build
 
-before_script:
-  - touch local.properties
-
 on: pull_request
 
 jobs:
@@ -11,12 +8,15 @@ jobs:
     runs-on: macos-latest
 
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+
+      - name: Build Project
+        run: ./gradlew test
 
       - name: Build Project
         run: ./gradlew assemble
