@@ -16,10 +16,10 @@ jobs:
           java-version: 1.8
 
       - name: Build Project
-        run: ./gradlew test
-
-      - name: Build Project
         run: ./gradlew assemble
+
+      - name: Run Tests
+        run: ./gradlew test
 
       - name: Ktlint
         run: ./gradlew ktlintFormat
