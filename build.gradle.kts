@@ -7,6 +7,7 @@ buildscript {
         google()
         maven { url = uri("https://repo.quickbirdstudios.com/artifactory/public") }
         maven { url = uri("https://plugins.gradle.org/m2/") }
+        maven { url = uri("https://dl.bintray.com/android/android-tools/") }
     }
 
     dependencies {
