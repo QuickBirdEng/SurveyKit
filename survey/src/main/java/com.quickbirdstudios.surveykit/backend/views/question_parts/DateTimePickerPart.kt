@@ -12,8 +12,8 @@ import androidx.core.content.ContextCompat
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
-import java.util.*
 import kotlinx.android.parcel.Parcelize
+import java.util.Calendar
 
 internal class DateTimePickerPart @JvmOverloads constructor(
     context: Context,

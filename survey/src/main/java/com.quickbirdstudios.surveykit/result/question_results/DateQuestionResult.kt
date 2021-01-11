@@ -3,8 +3,8 @@ package com.quickbirdstudios.surveykit.result.question_results
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.Identifier
 import com.quickbirdstudios.surveykit.result.QuestionResult
-import java.util.Date
 import kotlinx.android.parcel.Parcelize
+import java.util.Date
 
 @Parcelize
 data class DateQuestionResult(

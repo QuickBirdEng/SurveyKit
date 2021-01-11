@@ -7,6 +7,7 @@ object Versions {
     const val jUnitPlatform = "1.5.2"
     const val lottie = "3.0.7"
     const val espresso = "3.1.0"
+    const val ktlint = "9.4.1"
 
     object AndroidSupport {
         const val appCompat = "1.0.0"
@@ -24,6 +25,7 @@ object Deps {
 
     object Plugins {
         const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
+        const val ktlint = "org.jlleitschuh.gradle:ktlint-gradle:${Versions.ktlint}"
     }
 
     object Kotlin {

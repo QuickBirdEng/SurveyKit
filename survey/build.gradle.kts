@@ -7,6 +7,7 @@ plugins {
     kotlin("android")
     id("org.jetbrains.kotlin.android.extensions")
     id("com.jfrog.bintray")
+    id("org.jlleitschuh.gradle.ktlint")
     `maven-publish`
 }
 

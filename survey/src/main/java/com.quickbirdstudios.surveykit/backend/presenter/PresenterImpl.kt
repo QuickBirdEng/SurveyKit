@@ -120,10 +120,12 @@ internal class PresenterImpl(
 
         when (transition) {
             Presenter.Transition.SlideFromRight -> viewAnimator.rightToLeft(
-                viewContainer, ViewAnimator.PageSwipe(previousQuestionView, questionView)
+                viewContainer,
+                ViewAnimator.PageSwipe(previousQuestionView, questionView)
             )
             Presenter.Transition.SlideFromLeft -> viewAnimator.leftToRight(
-                viewContainer, ViewAnimator.PageSwipe(previousQuestionView, questionView)
+                viewContainer,
+                ViewAnimator.PageSwipe(previousQuestionView, questionView)
             )
             Presenter.Transition.None -> Unit
         }

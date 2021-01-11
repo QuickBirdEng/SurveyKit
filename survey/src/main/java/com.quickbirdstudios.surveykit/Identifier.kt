@@ -1,8 +1,8 @@
 package com.quickbirdstudios.surveykit
 
 import android.os.Parcelable
-import java.util.UUID
 import kotlinx.android.parcel.Parcelize
+import java.util.UUID
 
 @Parcelize
 open class Identifier(open val id: String) : Parcelable
