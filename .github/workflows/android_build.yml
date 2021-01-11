@@ -1,5 +1,8 @@
 name: Android Build
 
+before_script:
+  - touch local.properties
+
 on: pull_request
 
 jobs:
@@ -15,8 +18,8 @@ jobs:
         with:
           java-version: 1.8
 
-      - name: Ktlint
-        run: ./gradlew ktlintFormat
-
       - name: Build Project
         run: ./gradlew assemble
+
+      - name: Ktlint
+        run: ./gradlew ktlintFormat

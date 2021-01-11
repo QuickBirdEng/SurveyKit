@@ -6,7 +6,11 @@ import android.content.Context
 import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.Gravity
-import android.widget.*
+import android.widget.LinearLayout
+import android.widget.Button
+import android.widget.TextView
+import android.widget.TimePicker
+import android.widget.DatePicker
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.surveykit.R
