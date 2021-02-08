@@ -5,10 +5,14 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
+import com.quickbirdstudios.surveykit.backend.navigator.TaskNavigator
 import com.quickbirdstudios.surveykit.backend.presenter.animations.ViewAnimator
+import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
+import kotlinx.android.synthetic.main.layout_header.view.*
+import kotlinx.android.synthetic.main.view_question.view.*
 import java.util.Date
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -16,7 +20,8 @@ import kotlin.coroutines.suspendCoroutine
 internal class PresenterImpl(
     override val context: Context,
     override val viewContainer: FrameLayout,
-    override val surveyTheme: SurveyTheme
+    override val surveyTheme: SurveyTheme,
+    override val taskNavigator: TaskNavigator
 ) : Presenter {
 
     //region Members
@@ -95,7 +100,13 @@ internal class PresenterImpl(
     }
 
     private fun showView(questionView: StepView, transition: Presenter.Transition) {
+
         val previousQuestionView = currentQuestionView
+
+        if(!hasPreviousStep()) {
+            questionView.questionHeader.canBack = false
+        }
+
         currentQuestionView = questionView
 
         viewContainer.addView(questionView)
@@ -116,6 +127,10 @@ internal class PresenterImpl(
             )
             Presenter.Transition.None -> Unit
         }
+    }
+
+    private fun hasPreviousStep() : Boolean {
+        return taskNavigator.hasPreviousStep()
     }
 
     //endregion
