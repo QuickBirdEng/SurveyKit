@@ -48,12 +48,6 @@ internal class NavigableOrderedTaskNavigator(
 
     //region Private Helper
 
-    private fun Step?.record() {
-        if (this != null) {
-            history.push(this)
-        }
-    }
-
     private fun Step.extractRule(): NavigationRule? = task.getRule(this.id)
 
     private fun NavigationRule.DirectStepNavigationRule.evaluateNextStep() =

@@ -34,6 +34,17 @@ interface TaskNavigator {
         return history.peek()
     }
 
+    fun hasPreviousStep() : Boolean {
+        val previousStep = peekHistory()
+        return previousStep != null
+    }
+
+    fun Step?.record() {
+        if (this != null) {
+            history.push(this)
+        }
+    }
+
     companion object {
         operator fun invoke(task: Task): TaskNavigator =
             when (task) {
