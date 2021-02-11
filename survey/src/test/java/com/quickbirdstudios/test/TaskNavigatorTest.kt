@@ -16,9 +16,9 @@ class TaskNavigatorTest {
         val firstQuestion = randomQuestionStep()
         val secondQuestion = randomQuestionStep()
         val thirdQuestion = randomQuestionStep()
-        val taskNavigator = createTaskImplementations(listOf(firstQuestion,secondQuestion,thirdQuestion))
+        val taskNavigator = createTaskImplementations(listOf(firstQuestion, secondQuestion, thirdQuestion))
 
-        for(nav in taskNavigator) {
+        for (nav in taskNavigator) {
             nav.startStep(null)
             Assert.assertFalse(nav.hasPreviousStep())
         }
@@ -29,25 +29,31 @@ class TaskNavigatorTest {
         val firstQuestion = randomQuestionStep()
         val secondQuestion = randomQuestionStep()
         val thirdQuestion = randomQuestionStep()
-        val taskNavigator = createTaskImplementations(listOf(firstQuestion,secondQuestion,thirdQuestion))
+        val taskNavigator = createTaskImplementations(listOf(firstQuestion, secondQuestion, thirdQuestion))
 
-        for(nav in taskNavigator) {
+        for (nav in taskNavigator) {
             nav.startStep(null)
             nav.nextStep(thirdQuestion)
-            Assert.assertTrue(nav.hasPreviousStep())
+            Assert.assertTrue(
+                nav.hasPreviousStep()
+            )
         }
     }
 
-    private fun createTaskImplementations(steps: List<QuestionStep>) : List<TaskNavigator> {
+    private fun createTaskImplementations(steps: List<QuestionStep>): List<TaskNavigator> {
         return listOf(
-                OrderedTaskNavigator(OrderedTask(steps)),
-                NavigableOrderedTaskNavigator(NavigableOrderedTask(steps))
+            OrderedTaskNavigator(
+                OrderedTask(steps)
+            ),
+            NavigableOrderedTaskNavigator(
+                NavigableOrderedTask(steps)
+            )
         )
     }
 
     private fun randomQuestionStep() = QuestionStep(
-            title = "title",
-            text = "text",
-            answerFormat = AnswerFormat.TextAnswerFormat(maxLines = 1)
+        title = "title",
+        text = "text",
+        answerFormat = AnswerFormat.TextAnswerFormat(maxLines = 1)
     )
 }
