@@ -47,4 +47,5 @@
     <string name="location_picker_question_title">Location picker question title</string>
     <string name="location_picker_question_text">>Location picker question text</string>
     <string name="maybe">Maybe</string>
+    <string name="skip_here">Skip here</string>
 </resources>

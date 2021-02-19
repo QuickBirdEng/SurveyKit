@@ -19,10 +19,11 @@ internal class IntegerQuestionView(
     title: String?,
     text: String?,
     nextButtonText: String,
+    skipButtonText: String,
     @StringRes private val hintText: Int = R.string.empty,
     private val answerFormat: AnswerFormat.IntegerAnswerFormat,
     private val preselected: Int? = null
-) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
+) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
 
     //region Members
 

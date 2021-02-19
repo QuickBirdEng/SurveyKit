@@ -16,9 +16,10 @@ internal class BooleanQuestionView(
     title: String?,
     text: String?,
     nextButtonText: String,
+    skipButtonText: String,
     private val answerFormat: AnswerFormat.BooleanAnswerFormat,
     private var preselected: AnswerFormat.BooleanAnswerFormat.Result?
-) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
+) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
 
     //region Members
 

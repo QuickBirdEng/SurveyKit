@@ -16,9 +16,10 @@ internal class MultipleChoiceQuestionView(
     title: String?,
     text: String?,
     nextButtonText: String,
+    skipButtonText: String,
     private val answerFormat: AnswerFormat.MultipleChoiceAnswerFormat,
     private val preselected: List<TextChoice>?
-) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
+) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
 
     //region Members
 
