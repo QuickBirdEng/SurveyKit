@@ -146,6 +146,7 @@ class LocationPickerPart @JvmOverloads constructor(
         this.gravity = Gravity.CENTER
 
         search = AutoCompleteTextView(context).apply {
+            id = R.id.locationAnswerSearchField
             setHint(android.R.string.search_go)
             setSingleLine(true)
             setCompoundDrawables(

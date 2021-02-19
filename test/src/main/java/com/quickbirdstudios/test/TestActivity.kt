@@ -237,7 +237,7 @@ internal class TestActivity : AppCompatActivity() {
             timePickerStep,
             emailStep,
             imageSelectorStep,
-            locationPickerStep,
+//            locationPickerStep,
             customStep,
             completionStep
         )

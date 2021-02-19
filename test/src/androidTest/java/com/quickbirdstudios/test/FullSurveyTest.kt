@@ -96,7 +96,7 @@ internal class FullSurveyTest : PageTest {
 
         testImageSelectorStep(ImageSelectorStepToClick)
 
-        testLocationPickerTestStep(activityRule)
+//        testLocationPickerTestStep("test1", activityRule)
 
         testCustomStep()
 
