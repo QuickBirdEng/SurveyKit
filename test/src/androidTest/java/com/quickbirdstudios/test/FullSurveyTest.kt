@@ -96,6 +96,7 @@ internal class FullSurveyTest : PageTest {
 
         testImageSelectorStep(ImageSelectorStepToClick)
 
+        // TODO does not work on the CI
 //        testLocationPickerTestStep("test1", activityRule)
 
         testCustomStep()

@@ -6,8 +6,7 @@ import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
 
 class TestAddressProvider(
     override var onSuggestionListReady: (suggestions: List<AddressSuggestion>) -> Unit? = {}
-) :
-    AddressSuggestionProvider {
+) : AddressSuggestionProvider {
 
     override fun input(query: String) {
         val suggestions = mutableListOf(

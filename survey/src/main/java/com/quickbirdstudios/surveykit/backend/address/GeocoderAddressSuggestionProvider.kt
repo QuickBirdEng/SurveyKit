@@ -5,6 +5,7 @@ import android.location.Address
 import android.location.Geocoder
 import com.quickbirdstudios.surveykit.AnswerFormat
 import kotlinx.coroutines.*
+import android.util.Log
 
 class GeocoderAddressSuggestionProvider(
     val context: Context,
@@ -13,7 +14,7 @@ class GeocoderAddressSuggestionProvider(
 ) : AddressSuggestionProvider {
 
     private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
-        // ignore
+        Log.e(this::class.simpleName, "Error: $exception")
     }
 
     override fun input(query: String) {

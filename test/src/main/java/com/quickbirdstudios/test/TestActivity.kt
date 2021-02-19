@@ -237,7 +237,7 @@ internal class TestActivity : AppCompatActivity() {
             timePickerStep,
             emailStep,
             imageSelectorStep,
-//            locationPickerStep,
+//            locationPickerStep, // TODO test for it does not work on the CI
             customStep,
             completionStep
         )
