@@ -214,7 +214,8 @@ class QuestionStep(
             title = title,
             text = text,
             isOptional = isOptional,
-            nextButtonText = nextButton,
+            nextButtonText = nextButtonText,
+            skipButtonText = skipButtonText,
             lifecycle = answerFormat.lifecycle,
             addressProvider = answerFormat.addressProvider
                 ?: GeocoderAddressSuggestionProvider(context),

@@ -19,11 +19,12 @@ internal class LocationPickerQuestionView(
     title: String?,
     text: String?,
     nextButtonText: String,
+    skipButtonText: String,
     private val lifecycle: Lifecycle?,
     private val addressProvider: AddressSuggestionProvider?,
     private val answerFormat: AnswerFormat.LocationAnswerFormat,
     private val preselected: AnswerFormat.LocationAnswerFormat.Location?
-) : QuestionView(context, id, isOptional, title, text, nextButtonText) {
+) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
 
     //region Members
 
