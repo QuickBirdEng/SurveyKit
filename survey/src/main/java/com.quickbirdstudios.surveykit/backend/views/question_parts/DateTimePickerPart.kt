@@ -5,6 +5,7 @@ import android.app.TimePickerDialog
 import android.content.Context
 import android.os.Parcelable
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
 import android.widget.*
 import androidx.appcompat.widget.AppCompatTextView
@@ -91,7 +92,7 @@ internal class DateTimePickerPart @JvmOverloads constructor(
         }
         selectedDateTimeLabel = TextView(context).apply {
             text = "$selectedDate $selectedTime"
-            textSize = context.resources.getDimension(R.dimen.date_time_label_text_size)
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, context.resources.getDimension(R.dimen.date_time_label_text_size))
             setTextColor(ContextCompat.getColor(context, R.color.black))
             textAlignment = AppCompatTextView.TEXT_ALIGNMENT_CENTER
             gravity = Gravity.CENTER

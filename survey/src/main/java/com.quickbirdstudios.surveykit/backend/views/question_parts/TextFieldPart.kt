@@ -3,6 +3,7 @@ package com.quickbirdstudios.surveykit.backend.views.question_parts
 import android.content.Context
 import android.text.InputType
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.LinearLayout
@@ -29,6 +30,7 @@ internal open class TextFieldPart @JvmOverloads constructor(
         val horizontalPaddingEditText = context.px(
             context.resources.getDimension(R.dimen.text_field_horizontal_padding_left)
         ).toInt()
+        val textSizeEditText = context.resources.getDimension(R.dimen.text_field_text_size)
 
         field = EditText(context).apply {
             id = R.id.textFieldPartField
@@ -37,6 +39,9 @@ internal open class TextFieldPart @JvmOverloads constructor(
             isFocusableInTouchMode = true
             isClickable = true
             background = null
+
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, textSizeEditText)
+            setTextColor(ContextCompat.getColor(context, R.color.question_text))
 
             setHintTextColor(ContextCompat.getColor(context, R.color.hint_grey))
 
@@ -47,13 +52,10 @@ internal open class TextFieldPart @JvmOverloads constructor(
                 verticalPaddingEditText
             )
 
-            setTextColor(ContextCompat.getColor(context, R.color.survey_text))
-
-            val layoutParams = LayoutParams(
+            this.layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
-            this.layoutParams = layoutParams
         }
 
         this.background = context.resources.getDrawable(R.drawable.input_border, null)

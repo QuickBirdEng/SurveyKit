@@ -43,6 +43,7 @@ internal class InfoTextPart @JvmOverloads constructor(
             id = R.id.infoTextTitle
             setText(text)
             setTextSize(R.dimen.question_info_title_text_size)
+            setTextColor(ContextCompat.getColor(context, R.color.question_info_title_text))
             val horizontalPadding =
                 context.resources.getDimensionPixelSize(R.dimen.question_horizontal_padding)
             val verticalPadding =
@@ -56,6 +57,7 @@ internal class InfoTextPart @JvmOverloads constructor(
             id = R.id.infoTextInfo
             setText(text)
             setTextSize(R.dimen.question_info_text_text_size)
+            setTextColor(ContextCompat.getColor(context, R.color.question_info_text_text))
             val horizontalPadding =
                 context.resources.getDimensionPixelSize(R.dimen.question_horizontal_padding)
             val verticalPadding =
@@ -69,6 +71,7 @@ internal class InfoTextPart @JvmOverloads constructor(
             id = R.id.infoTextQuestion
             setText(text)
             setTextSize(R.dimen.question_text_size)
+            setTextColor(ContextCompat.getColor(context, R.color.question_text))
             val horizontalPadding =
                 context.resources.getDimensionPixelSize(R.dimen.question_horizontal_padding)
             val verticalPadding =
