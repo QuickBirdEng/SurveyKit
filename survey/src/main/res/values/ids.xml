@@ -25,4 +25,6 @@
     <item name="timePickerPart" type="id" />
 
     <item name="imageSelectorPart" type="id" />
+
+    <item name="locationAnswerSearchField" type="id" />
 </resources>

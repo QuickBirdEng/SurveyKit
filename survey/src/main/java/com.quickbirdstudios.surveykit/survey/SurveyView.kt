@@ -44,7 +44,8 @@ class SurveyView @JvmOverloads constructor(
         presenter = PresenterImpl(
             context = context,
             surveyTheme = surveyTheme,
-            viewContainer = this
+            viewContainer = this,
+            taskNavigator = taskNavigator
         )
         startSurvey()
     }
@@ -164,6 +165,7 @@ class SurveyView @JvmOverloads constructor(
         val newResult = presenter(
             Presenter.Transition.SlideFromRight, newStep, resultGatherer.retrieve(newStep.id)
         ).storeResult()
+
         return StepData(
             step = newStep,
             action = newResult

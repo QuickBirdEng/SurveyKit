@@ -12,11 +12,11 @@ import org.json.JSONObject
 class YandexAddressSuggestionProvider(
     private val apiKey: String,
     private val resultsCount: Int = 5,
-    private val lang: String = "tr_TR",
+    private val lang: String = "en_GB",
     override var onSuggestionListReady: (suggestions: List<AddressSuggestion>) -> Unit? = {}
 ) : AddressSuggestionProvider {
 
-    private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
+    private val exceptionHandler = CoroutineExceptionHandler { _, _ ->
         // ignore
     }
 

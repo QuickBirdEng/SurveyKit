@@ -22,7 +22,8 @@ abstract class QuestionView(
     isOptional: Boolean,
     private val title: String?,
     private val text: String?,
-    private val nextButtonText: String
+    private val nextButtonText: String,
+    private val skipButtonText: String
 ) : StepView(context, id, isOptional), ViewActions {
 
     //region Members
@@ -88,6 +89,7 @@ abstract class QuestionView(
         footer.onSkip = { onSkipListener() }
         footer.questionCanBeSkipped = isOptional
         footer.setContinueButtonText(nextButtonText)
+        footer.setSkipButtonText(skipButtonText)
     }
 
 //endregion

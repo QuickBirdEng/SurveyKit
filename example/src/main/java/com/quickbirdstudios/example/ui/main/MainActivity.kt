@@ -21,8 +21,6 @@ import com.quickbirdstudios.surveykit.NavigationRule
 import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.TextChoice
-import com.quickbirdstudios.example.YandexAddressSuggestionProvider
-import com.quickbirdstudios.surveykit.backend.address.GeocoderAddressSuggestionProvider
 import com.quickbirdstudios.surveykit.backend.views.main_parts.AbortDialogConfiguration
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.QuestionResult

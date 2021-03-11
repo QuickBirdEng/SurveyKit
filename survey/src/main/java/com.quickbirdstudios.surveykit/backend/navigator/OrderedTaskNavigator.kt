@@ -21,7 +21,10 @@ internal class OrderedTaskNavigator(
 
     override fun finalStep(): Step? = task.steps.lastOrNull()
 
-    override fun nextStep(step: Step, stepResult: StepResult?): Step? = step.nextInList()
+    override fun nextStep(step: Step, stepResult: StepResult?): Step? {
+        step.record()
+        return step.nextInList()
+    }
 
     override fun previousStep(step: Step): Step? = step.previousInList()
 
