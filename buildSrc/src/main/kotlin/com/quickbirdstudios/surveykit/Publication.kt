@@ -18,7 +18,7 @@ private const val bintrayApiKeyKey = "bintray_apikey"
 
 fun Project.configureLibraryPublication() {
     configureSourcesJarTaskIfNecessary()
-    configureCheckCiTagTaskIfNecessary()
+//    configureCheckCiTagTaskIfNecessary()
     configureLibraryAarPublication()
     configureBintrayForLibraryPublication()
     configurePublishTask()
