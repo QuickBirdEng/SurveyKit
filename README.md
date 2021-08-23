@@ -64,7 +64,7 @@ As stated before, this is an early version and a work in progress. We aim to ext
 ```groovy
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
     }
 }
 ```
