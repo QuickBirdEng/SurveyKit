@@ -7,7 +7,6 @@ import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.navigator.TaskNavigator
 import com.quickbirdstudios.surveykit.backend.presenter.animations.ViewAnimator
-import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
@@ -103,7 +102,7 @@ internal class PresenterImpl(
 
         val previousQuestionView = currentQuestionView
 
-        if(!hasPreviousStep()) {
+        if (!hasPreviousStep()) {
             questionView.questionHeader.canBack = false
         }
 
@@ -131,7 +130,7 @@ internal class PresenterImpl(
         }
     }
 
-    private fun hasPreviousStep() : Boolean {
+    private fun hasPreviousStep(): Boolean {
         return taskNavigator.hasPreviousStep()
     }
 

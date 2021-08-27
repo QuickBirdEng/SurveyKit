@@ -20,13 +20,16 @@ internal class NavigableOrderedTaskNavigatorTest {
             listOf(firstQuestion, secondQuestion, thirdQuestion, forthQuestion)
         )
         navigableOrderedTask.setNavigationRule(
-            firstQuestion.id, NavigationRule.DirectStepNavigationRule(secondQuestion.id)
+            firstQuestion.id,
+            NavigationRule.DirectStepNavigationRule(secondQuestion.id)
         )
         navigableOrderedTask.setNavigationRule(
-            secondQuestion.id, NavigationRule.DirectStepNavigationRule(thirdQuestion.id)
+            secondQuestion.id,
+            NavigationRule.DirectStepNavigationRule(thirdQuestion.id)
         )
         navigableOrderedTask.setNavigationRule(
-            thirdQuestion.id, NavigationRule.DirectStepNavigationRule(forthQuestion.id)
+            thirdQuestion.id,
+            NavigationRule.DirectStepNavigationRule(forthQuestion.id)
         )
         val navigator = TaskNavigator(navigableOrderedTask)
 
@@ -47,13 +50,16 @@ internal class NavigableOrderedTaskNavigatorTest {
             listOf(firstQuestion, secondQuestion, thirdQuestion, forthQuestion)
         )
         navigableOrderedTask.setNavigationRule(
-            firstQuestion.id, NavigationRule.DirectStepNavigationRule(forthQuestion.id)
+            firstQuestion.id,
+            NavigationRule.DirectStepNavigationRule(forthQuestion.id)
         )
         navigableOrderedTask.setNavigationRule(
-            forthQuestion.id, NavigationRule.DirectStepNavigationRule(thirdQuestion.id)
+            forthQuestion.id,
+            NavigationRule.DirectStepNavigationRule(thirdQuestion.id)
         )
         navigableOrderedTask.setNavigationRule(
-            thirdQuestion.id, NavigationRule.DirectStepNavigationRule(secondQuestion.id)
+            thirdQuestion.id,
+            NavigationRule.DirectStepNavigationRule(secondQuestion.id)
         )
         val navigator = TaskNavigator(navigableOrderedTask)
 

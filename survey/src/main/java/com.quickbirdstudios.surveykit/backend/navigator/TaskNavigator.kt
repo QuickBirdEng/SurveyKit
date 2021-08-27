@@ -34,7 +34,7 @@ interface TaskNavigator {
         return history.peek()
     }
 
-    fun hasPreviousStep() : Boolean {
+    fun hasPreviousStep(): Boolean {
         val previousStep = peekHistory()
         return previousStep != null
     }

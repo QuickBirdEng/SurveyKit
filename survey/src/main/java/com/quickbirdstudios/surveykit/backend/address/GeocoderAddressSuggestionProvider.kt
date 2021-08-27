@@ -3,8 +3,8 @@ package com.quickbirdstudios.surveykit.backend.address
 import android.content.Context
 import android.location.Address
 import android.location.Geocoder
-import com.quickbirdstudios.surveykit.AnswerFormat
 import android.util.Log
+import com.quickbirdstudios.surveykit.AnswerFormat
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
