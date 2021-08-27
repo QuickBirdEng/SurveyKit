@@ -3,10 +3,8 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 buildscript {
     repositories {
         mavenCentral()
-        jcenter()
         google()
-        maven { url = uri("https://repo.quickbirdstudios.com/artifactory/public") }
-        maven { url = uri("https://plugins.gradle.org/m2/") }
+        maven { url = uri("https://repository.quickbirdstudios.com/repository/public") }
     }
 
     dependencies {
@@ -18,7 +16,6 @@ buildscript {
 allprojects {
     repositories {
         mavenCentral()
-        jcenter()
         google()
     }
 

@@ -59,12 +59,13 @@ This is an early version and work in progress. Do not hesitate to give feedback,
 As stated before, this is an early version and a work in progress. We aim to extend this library until it matches the functionality of the [iOS ResearchKit Surveys](http://researchkit.org/docs/docs/Survey/CreatingSurveys.html).
 
 # 🏃 Library Setup
+> All of the available versions of SurveyKit has been moved to MavenCentral. 
 ## 1. Add the repository
-`build.gradle`
+SurveyKit is now available via MavenCentral which is normally added as part of every new Android project. However, if it is not present, you can add it as show here.
 ```groovy
 allprojects {
     repositories {
-        jcenter()
+        mavenCentral()
     }
 }
 ```
@@ -76,7 +77,7 @@ dependencies {
     implementation(project("com.quickbirdstudios:surveykit:1.1.0"))
 }
 ````
-Find the [latest version](https://bintray.com/quickbirdstudios/android/SurveyKit) or [all releases](https://github.com/quickbirdstudios/SurveyKit/releases)
+Find the [latest version](https://search.maven.org/artifact/com.quickbirdstudios/com.quickbirdstudios.surveykit) or [all releases](https://github.com/quickbirdstudios/SurveyKit/releases)
 
 
 # 💻 Usage

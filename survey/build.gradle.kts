@@ -1,14 +1,10 @@
 @file:Suppress("SuspiciousCollectionReassignment")
 
-import com.quickbirdstudios.surveykit.configureLibraryPublication
-
 plugins {
     id("com.android.library")
     kotlin("android")
     id("org.jetbrains.kotlin.android.extensions")
-    id("com.jfrog.bintray")
-    id("org.jlleitschuh.gradle.ktlint")
-    `maven-publish`
+    id("gradle-publishing")
 }
 
 androidExtensions { isExperimental = true }
@@ -17,6 +13,7 @@ android {
     compileSdkVersion(Project.Android.compileSdkVersion)
 
     defaultConfig {
+        version = Library.version
         minSdkVersion(Project.Android.minSdkVersion)
         targetSdkVersion(Project.Android.targetSdkVersion)
         testInstrumentationRunner = Project.Android.testInstrumentationRunner
@@ -40,5 +37,3 @@ dependencies {
     testImplementation(Deps.Test.jUnitJupiter)
     testImplementation(Deps.Test.jUnitPlatform)
 }
-
-project.configureLibraryPublication()
