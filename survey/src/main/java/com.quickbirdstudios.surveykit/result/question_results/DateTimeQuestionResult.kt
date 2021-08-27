@@ -4,7 +4,7 @@ import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.Identifier
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import kotlinx.android.parcel.Parcelize
-import java.util.*
+import java.util.Date
 
 @Parcelize
 data class DateTimeQuestionResult(

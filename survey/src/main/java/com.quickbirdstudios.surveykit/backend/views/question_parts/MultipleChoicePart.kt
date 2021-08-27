@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.question_parts
 
 import android.content.Context
-import android.graphics.Color
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.Gravity
@@ -162,7 +161,9 @@ internal class MultipleChoicePart @JvmOverloads constructor(
 
         Handler().post {
             checkBox.background = checkBox.createSelectableThemedBackground(
-                context, Both, themeColor
+                context,
+                Both,
+                themeColor
             )
         }
 

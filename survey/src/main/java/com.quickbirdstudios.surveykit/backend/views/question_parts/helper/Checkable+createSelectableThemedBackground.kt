@@ -18,7 +18,9 @@ internal fun Checkable.createSelectableThemedBackground(
     border: BackgroundDrawable.Border,
     themeColor: Int
 ): Drawable = BackgroundCreationHelper().createSelectableBackground(
-    context, border, themeColor
+    context,
+    border,
+    themeColor
 )
 
 private class BackgroundCreationHelper {

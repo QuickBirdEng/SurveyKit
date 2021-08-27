@@ -6,28 +6,32 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.AnimationUtils
 import com.quickbirdstudios.surveykit.R
-import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import kotlin.coroutines.CoroutineContext
 
 internal class ViewAnimator(val context: Context) {
 
     //region Member
 
     private val enterFromRightAnimation = AnimationUtils.loadAnimation(
-        context, R.anim.enter_from_right
+        context,
+        R.anim.enter_from_right
     )!!
     private val enterFromLeftAnimation = AnimationUtils.loadAnimation(
-        context, R.anim.enter_from_left
+        context,
+        R.anim.enter_from_left
     )!!
     private val exitToRightAnimation = AnimationUtils.loadAnimation(
-        context, R.anim.exit_to_right
+        context,
+        R.anim.exit_to_right
     )!!
     private val exitToLeftAnimation = AnimationUtils.loadAnimation(
-        context, R.anim.exit_to_left
+        context,
+        R.anim.exit_to_left
     )!!
 
     //endregion

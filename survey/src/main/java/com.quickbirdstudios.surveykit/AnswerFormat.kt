@@ -5,10 +5,10 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.IntRange
 import androidx.lifecycle.Lifecycle
 import com.quickbirdstudios.surveykit.backend.address.AddressSuggestionProvider
-import java.util.Calendar
-import java.util.Date as JavaDate
-import java.util.regex.Pattern
 import kotlinx.android.parcel.Parcelize
+import java.util.Calendar
+import java.util.regex.Pattern
+import java.util.Date as JavaDate
 
 sealed class AnswerFormat {
 

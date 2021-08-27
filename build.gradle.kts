@@ -5,10 +5,12 @@ buildscript {
         mavenCentral()
         google()
         maven { url = uri("https://repository.quickbirdstudios.com/repository/public") }
+        maven { url = uri("https://plugins.gradle.org/m2/") }
     }
 
     dependencies {
         classpath(Deps.Plugins.kotlin)
+        classpath(Deps.Plugins.ktlint)
     }
 }
 

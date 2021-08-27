@@ -5,6 +5,7 @@ plugins {
     kotlin("android")
     id("org.jetbrains.kotlin.android.extensions")
     id("gradle-publishing")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 androidExtensions { isExperimental = true }
