@@ -1,6 +1,6 @@
 object Versions {
 
-    const val kotlin = "1.5.0"
+    const val kotlin = "1.3.70"
     const val coroutines = "1.3.0"
     const val test = "1.1.1"
     const val jUnit = "5.5.2"
