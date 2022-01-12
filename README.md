@@ -74,7 +74,7 @@ allprojects {
 `build.gradle.kts`
 ````kotlin
 dependencies {
-    implementation(project("com.quickbirdstudios:surveykit:1.1.0"))
+    implementation("com.quickbirdstudios:surveykit:1.1.0")
 }
 ````
 Find the [latest version](https://search.maven.org/artifact/com.quickbirdstudios/com.quickbirdstudios.surveykit) or [all releases](https://github.com/quickbirdstudios/SurveyKit/releases)
@@ -86,7 +86,7 @@ A working example project can be found [HERE](example/)
 ### Add and Find the Survey in the XML
 Add the SurveyView to your `xml` (it looks best if it fills the screen).
 ````xml
-<com.quickbirdstudios.survey_kit.survey.SurveyView
+<com.quickbirdstudios.surveykit.survey.SurveyView
     android:id="@+id/survey_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent" />
@@ -109,26 +109,26 @@ InstructionStep(
 The `title` is the general title of the Survey you want to conduct. <br/>
 The `text` is, in this case, the introduction text which should give an introduction, about what the survey is about.<br/>
 The `buttonText` specifies the text of the button, which will start the survey.
-All of these properties have to be resource Ids.
+All of these properties have to be `String`s.
 
 #### `CompletionStep`
 ```kotlin
 CompletionStep(
-    title = R.string.finish_question_title,
-    text = R.string.finish_question_text,
-    buttonText = R.string.finish_question_submit
+    title = getString(R.string.finish_question_title),
+    text = getString(R.string.finish_question_text),
+    buttonText = getString(R.string.finish_question_submit)
 )
 ```
 The `title` is the general title of the Survey you want to conduct, same as for the `InstructionStep`. <br/>
 The `text` is here should be something motivational: that the survey has been completed successfully. <br/>
 The `buttonText` specifies the text of the button, which will end the survey.
-All of these properties have to be resource Ids.
+All of these properties have to be `String`s.
 
 #### `QuestionStep`
 ```kotlin
 QuestionStep(
-    title = R.string.about_you_question_title,
-    text = R.string.about_you_question_text,
+    title = getString(R.string.about_you_question_title),
+    text = getString(R.string.about_you_question_text),
     answerFormat = AnswerFormat.TextAnswerFormat(
         multipleLines = true,
         maximumLength = 100
