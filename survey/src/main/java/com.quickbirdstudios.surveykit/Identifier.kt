@@ -5,14 +5,14 @@ import java.util.UUID
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-open class Identifier(open val id: String) : Parcelable
+open class Identifier() : Parcelable
 
 @Parcelize
-data class TaskIdentifier(override val id: String = UUID.randomUUID().toString()) :
-    Identifier(id),
+data class TaskIdentifier( val id: String = UUID.randomUUID().toString()) :
+    Identifier(),
     Parcelable
 
 @Parcelize
 data class StepIdentifier(
-    override val id: String = UUID.randomUUID().toString()
-) : Identifier(id), Parcelable
+     val id: String = UUID.randomUUID().toString()
+) : Identifier(), Parcelable
