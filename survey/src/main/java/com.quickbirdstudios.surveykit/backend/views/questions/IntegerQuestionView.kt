@@ -9,6 +9,7 @@ import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
 import com.quickbirdstudios.surveykit.backend.views.question_parts.IntegerTextFieldPart
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
+import com.quickbirdstudios.surveykit.extensions.getNonNullText
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.IntegerQuestionResult
 
@@ -41,7 +42,8 @@ internal class IntegerQuestionView(
             stringIdentifier = questionAnswerView.field.text.toString()
         )
 
-    override fun isValidInput(): Boolean = isOptional || questionAnswerView.field.text.isNotBlank()
+    override fun isValidInput(): Boolean =
+        isOptional || questionAnswerView.field.getNonNullText().isNotBlank()
 
     override fun setupViews() {
         super.setupViews()
@@ -58,13 +60,9 @@ internal class IntegerQuestionView(
 
     //region Private Helpers
 
-    private fun String.parseToIntOrNull(): Int? {
-        return try {
-            this.toInt()
-        } catch (e: NumberFormatException) {
-            null
-        }
-    }
+    private fun String.parseToIntOrNull(): Int? = runCatching {
+        this.toInt()
+    }.getOrNull()
 
     //endregion
 }
