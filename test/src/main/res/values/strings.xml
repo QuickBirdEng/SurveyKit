@@ -48,4 +48,5 @@
     <string name="location_picker_question_text">>Location picker question text</string>
     <string name="maybe">Maybe</string>
     <string name="skip_here">Skip here</string>
+    <string name="invalid_age_error_text">Applicants must be between 18 and 60 years old</string>
 </resources>

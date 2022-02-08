@@ -101,7 +101,9 @@ internal class TestActivity : AppCompatActivity() {
             text = this.resources.getString(R.string.how_old_text),
             answerFormat = AnswerFormat.IntegerAnswerFormat(
                 defaultValue = 25,
-                hint = this.resources.getString(R.string.how_old_hint)
+                hint = this.resources.getString(R.string.how_old_hint),
+                boundary = 18..60,
+                errorText = this.resources.getString(R.string.invalid_age_error_text)
             )
         )
         scaleStep = QuestionStep(
