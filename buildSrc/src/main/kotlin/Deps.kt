@@ -18,6 +18,10 @@ object Versions {
     object PlayServices {
         const val maps = "17.0.0"
     }
+
+    object Google {
+        const val material = "1.2.1"
+    }
 }
 
 object Deps {
@@ -37,6 +41,10 @@ object Deps {
 
     object PlayServices {
         const val maps = "com.google.android.gms:play-services-maps:${Versions.PlayServices.maps}"
+    }
+
+    object Google {
+        const val material = "com.google.android.material:material:${Versions.Google.material}"
     }
 
     object AndroidSupport {

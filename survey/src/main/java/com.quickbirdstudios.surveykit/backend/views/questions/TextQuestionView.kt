@@ -6,6 +6,7 @@ import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
 import com.quickbirdstudios.surveykit.backend.views.question_parts.TextFieldPart
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
+import com.quickbirdstudios.surveykit.extensions.getNonNullText
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.TextQuestionResult
 
@@ -41,7 +42,7 @@ internal class TextQuestionView(
         answerFormat.isValid?.let { isValidCheck ->
             if (!isValidCheck(questionAnswerView.field.text.toString())) return false
         }
-        return questionAnswerView.field.text.isNotBlank()
+        return questionAnswerView.field.getNonNullText().isNotBlank()
     }
 
     override fun setupViews() {

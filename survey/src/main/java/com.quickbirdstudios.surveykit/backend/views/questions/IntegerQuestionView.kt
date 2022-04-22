@@ -9,6 +9,7 @@ import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.afterTextChanged
 import com.quickbirdstudios.surveykit.backend.views.question_parts.IntegerTextFieldPart
 import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
+import com.quickbirdstudios.surveykit.extensions.getNonNullText
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.IntegerQuestionResult
 
@@ -29,6 +30,8 @@ internal class IntegerQuestionView(
 
     private lateinit var questionAnswerView: IntegerTextFieldPart
 
+    private var isValueChanged = false
+
     //endregion
 
     //region Overrides
@@ -41,15 +44,27 @@ internal class IntegerQuestionView(
             stringIdentifier = questionAnswerView.field.text.toString()
         )
 
-    override fun isValidInput(): Boolean = isOptional || questionAnswerView.field.text.isNotBlank()
+    override fun isValidInput(): Boolean = isOptional ||
+            ((questionAnswerView.field.getNonNullText().isNotBlank()) &&
+                    answerFormat.isValid(questionAnswerView.field.getNonNullText().toInt()))
 
     override fun setupViews() {
         super.setupViews()
 
         questionAnswerView = content.add(IntegerTextFieldPart.withHint(context, hintText))
         questionAnswerView.field.gravity = Gravity.CENTER
-        questionAnswerView.field.setHint(answerFormat.hint)
-        questionAnswerView.field.afterTextChanged { footer.canContinue = isValidInput() }
+        questionAnswerView.field.hint = answerFormat.hint
+        questionAnswerView.field.afterTextChanged {
+            val isValidInput = isValidInput()
+            footer.canContinue = isValidInput
+            if (isValidInput || !isValueChanged) {
+                questionAnswerView.fieldInfo.error = null
+            } else {
+                questionAnswerView.fieldInfo.error = answerFormat.errorText
+            }
+            isValueChanged = true
+        }
+
         val alreadyEntered = preselected?.toString() ?: answerFormat.defaultValue?.toString()
         questionAnswerView.field.setText(alreadyEntered ?: "")
     }
@@ -58,13 +73,9 @@ internal class IntegerQuestionView(
 
     //region Private Helpers
 
-    private fun String.parseToIntOrNull(): Int? {
-        return try {
-            this.toInt()
-        } catch (e: NumberFormatException) {
-            null
-        }
-    }
+    private fun String.parseToIntOrNull(): Int? = runCatching {
+        this.toInt()
+    }.getOrNull()
 
     //endregion
 }

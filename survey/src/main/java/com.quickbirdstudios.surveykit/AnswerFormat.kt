@@ -14,7 +14,12 @@ sealed class AnswerFormat {
 
     data class IntegerAnswerFormat(
         val defaultValue: Int? = null,
-        val hint: String = ""
+        val hint: String = "",
+        val errorText: String? = null,
+        val boundary: kotlin.ranges.IntRange? = null,
+        val isValid: ((Int?) -> (Boolean)) = { value ->
+            boundary?.contains(value) ?: (value != null && boundary == null)
+        }
     ) : AnswerFormat()
 
     data class SingleChoiceAnswerFormat(

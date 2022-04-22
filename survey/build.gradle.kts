@@ -33,6 +33,7 @@ dependencies {
     implementation(Deps.AndroidSupport.recyclerView)
     implementation(Deps.lottie)
     implementation(Deps.PlayServices.maps)
+    implementation(Deps.Google.material)
 
     testImplementation(Deps.Test.jUnitJupiter)
     testImplementation(Deps.Test.jUnitPlatform)
