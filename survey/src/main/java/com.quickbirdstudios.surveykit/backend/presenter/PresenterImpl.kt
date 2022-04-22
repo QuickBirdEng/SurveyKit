@@ -103,8 +103,8 @@ internal class PresenterImpl(
 
         val previousQuestionView = currentQuestionView
 
-        if(!hasPreviousStep()) {
-            questionView.questionHeader.canBack = false
+        if (!hasPreviousStep()) {
+            questionView.questionHeader?.canBack = false
         }
 
         currentQuestionView = questionView
@@ -129,7 +129,7 @@ internal class PresenterImpl(
         }
     }
 
-    private fun hasPreviousStep() : Boolean {
+    private fun hasPreviousStep(): Boolean {
         return taskNavigator.hasPreviousStep()
     }
 
