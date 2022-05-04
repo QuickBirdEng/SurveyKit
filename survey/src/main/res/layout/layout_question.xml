@@ -10,10 +10,10 @@
         android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/question_vertical_margin"
         android:textAlignment="center"
-        android:textColor="@color/survey_text"
-        android:textSize="28sp"
+        android:textColor="@color/question_text"
+        android:textSize="@dimen/question_text_size"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

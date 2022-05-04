@@ -4,6 +4,7 @@ import android.content.Context
 import android.text.InputFilter
 import android.text.InputType
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
@@ -33,6 +34,7 @@ internal open class TextFieldPart @JvmOverloads constructor(
         val horizontalPaddingEditText = context.px(
             context.resources.getDimension(R.dimen.text_field_horizontal_padding_left)
         ).toInt()
+        val textSizeEditText = context.resources.getDimension(R.dimen.text_field_text_size)
 
         fieldInfo = TextInputLayout(context).apply {
             val layoutParams = LayoutParams(
@@ -51,6 +53,9 @@ internal open class TextFieldPart @JvmOverloads constructor(
             background = null
             filters = arrayOf<InputFilter>(InputFilter.LengthFilter(9))
 
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, textSizeEditText)
+            setTextColor(ContextCompat.getColor(context, R.color.question_text))
+
             setHintTextColor(ContextCompat.getColor(context, R.color.hint_grey))
 
             setPadding(
@@ -60,13 +65,10 @@ internal open class TextFieldPart @JvmOverloads constructor(
                 verticalPaddingEditText
             )
 
-            setTextColor(ContextCompat.getColor(context, R.color.survey_text))
-
-            val layoutParams = LayoutParams(
+            this.layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
-            this.layoutParams = layoutParams
         }
 
         this.background = context.resources.getDrawable(R.drawable.input_border, null)

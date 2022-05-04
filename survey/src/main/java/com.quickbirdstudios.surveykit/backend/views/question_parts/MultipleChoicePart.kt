@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Handler
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -43,7 +44,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
         }
 
     @ColorInt
-    var defaultColor: Int = ContextCompat.getColor(context, R.color.survey_text)
+    var defaultColor: Int = ContextCompat.getColor(context, R.color.question_text)
         set(color) {
             update(options)
             field = color
@@ -132,6 +133,7 @@ internal class MultipleChoicePart @JvmOverloads constructor(
         val horizontalPaddingEditTextRight = context.px(
             context.resources.getDimension(R.dimen.text_field_horizontal_padding_right)
         ).toInt()
+        val textSizeEditText = context.resources.getDimension(R.dimen.text_field_text_size)
 
         val checkBox = CheckBox(context).apply {
             id = View.generateViewId()
@@ -140,7 +142,9 @@ internal class MultipleChoicePart @JvmOverloads constructor(
             isFocusable = true
             isClickable = true
             buttonDrawable = null
-            textSize = 20f
+
+            setTextSize(TypedValue.COMPLEX_UNIT_PX, textSizeEditText)
+            setTextColor(ContextCompat.getColor(context, R.color.question_text))
 
             background = createSelectableThemedBackground(context, border, themeColor)
 
@@ -153,11 +157,10 @@ internal class MultipleChoicePart @JvmOverloads constructor(
                 verticalPaddingEditText
             )
 
-            val layoutParams = LayoutParams(
+            this.layoutParams = LayoutParams(
                 LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.MATCH_PARENT
             )
-            this.layoutParams = layoutParams
         }
 
         Handler().post {

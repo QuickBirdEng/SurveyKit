@@ -166,19 +166,19 @@ internal class ScalePart @JvmOverloads constructor(
             minimumValueDescriptionField = TextView(context).setRandomViewId().apply {
                 this.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 this.setTextSize(TypedValue.COMPLEX_UNIT_PX, descriptionTextSize)
-                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text));
+                this.setTextColor(ContextCompat.getColor(context, R.color.scale_part_description_text));
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
             maximumValueDescriptionField = TextView(context).setRandomViewId().apply {
                 this.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 this.setTextSize(TypedValue.COMPLEX_UNIT_PX, descriptionTextSize)
-                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text));
+                this.setTextColor(ContextCompat.getColor(context, R.color.scale_part_description_text));
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
             currentValueDescriptionField = TextView(context).setRandomViewId().apply {
                 this.textAlignment = View.TEXT_ALIGNMENT_CENTER
                 this.setTextSize(TypedValue.COMPLEX_UNIT_PX, selectedTextSize)
-                this.setTextColor(ContextCompat.getColor(context, R.color.survey_text));
+                this.setTextColor(ContextCompat.getColor(context, R.color.scale_part_selected_text));
                 this.setPadding(textPadding, textPadding, textPadding, 0)
             }
             seekBar = AppCompatSeekBar(context).apply {

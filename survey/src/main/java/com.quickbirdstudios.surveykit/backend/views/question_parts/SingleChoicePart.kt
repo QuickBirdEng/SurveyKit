@@ -44,7 +44,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
         }
 
     @ColorInt
-    var defaultColor: Int = ContextCompat.getColor(context, R.color.survey_text)
+    var defaultColor: Int = ContextCompat.getColor(context, R.color.question_text)
     set(color) {
         update(options)
         field = color

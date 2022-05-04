@@ -21,4 +21,11 @@
     <color name="color_accent">#36BFCC</color>
 
     <color name="survey_text">#000000</color>
+
+    <color name="question_info_title_text">@color/survey_text</color>
+    <color name="question_info_text_text">@color/survey_text</color>
+    <color name="question_text">@color/survey_text</color>
+    <color name="question_text_selected">@color/color_accent</color>
+    <color name="scale_part_description_text">@color/survey_text</color>
+    <color name="scale_part_selected_text">@color/survey_text</color>
 </resources>
