@@ -30,10 +30,11 @@ internal class BooleanQuestionView(
     //region Overrides
 
     override fun createResults(): QuestionResult {
-        val stringIdentifier: String = (answerFormat.textChoices
+        val stringIdentifier: String = answerFormat
+            .textChoices
             .find { it.text == booleanAnswerPart.selected?.text }
             ?.value
-            ?: "")
+            ?: ""
 
         return BooleanQuestionResult(
             id = id,

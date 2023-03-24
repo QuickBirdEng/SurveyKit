@@ -51,7 +51,6 @@ internal class ScalePart @JvmOverloads constructor(
     private var minimumValue: Int = 0
     private var maximumValue: Int = 10
     private var step = 1f
-    private var defaultValue = 0f
 
     private var minimumValueDescriptionField: TextView
     private var maximumValueDescriptionField: TextView

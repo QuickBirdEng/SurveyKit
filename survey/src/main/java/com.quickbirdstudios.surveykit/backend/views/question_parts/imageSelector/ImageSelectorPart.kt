@@ -80,7 +80,7 @@ internal class ImageSelectorPart @JvmOverloads constructor(
 
     //region Subtypes
 
-    internal class ImageWrapper(val image: ImageChoice, var selected: Boolean)
+    internal data class ImageWrapper(val image: ImageChoice, var selected: Boolean)
 
     //endregion
 

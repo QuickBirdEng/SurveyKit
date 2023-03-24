@@ -34,7 +34,7 @@ interface TaskNavigator {
         return history.peek()
     }
 
-    fun hasPreviousStep() : Boolean {
+    fun hasPreviousStep(): Boolean {
         val previousStep = peekHistory()
         return previousStep != null
     }
@@ -48,12 +48,8 @@ interface TaskNavigator {
     companion object {
         operator fun invoke(task: Task): TaskNavigator =
             when (task) {
-                is OrderedTask -> OrderedTaskNavigator(
-                    task
-                )
-                is NavigableOrderedTask -> NavigableOrderedTaskNavigator(
-                    task
-                )
+                is OrderedTask -> OrderedTaskNavigator(task)
+                is NavigableOrderedTask -> NavigableOrderedTaskNavigator(task)
                 else -> throw NotImplementedError()
             }
     }

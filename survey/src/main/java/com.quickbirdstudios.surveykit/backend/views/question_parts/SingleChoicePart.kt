@@ -1,7 +1,6 @@
 package com.quickbirdstudios.surveykit.backend.views.question_parts
 
 import android.content.Context
-import android.graphics.Color
 import android.util.AttributeSet
 import android.view.Gravity
 import android.view.View
@@ -137,7 +136,7 @@ internal class SingleChoicePart @JvmOverloads constructor(
 
         return RadioButton(context).apply {
             id = View.generateViewId()
-            setText(label)
+            text = label
             this.tag = tag
             isFocusable = true
             isClickable = true

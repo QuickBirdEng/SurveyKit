@@ -20,8 +20,7 @@ internal class FinishQuestionView(
 
     //region Overrides
 
-    override fun createResults() =
-        FinishQuestionResult(id, startDate)
+    override fun createResults() = FinishQuestionResult(id, startDate)
 
     override fun isValidInput() = true
 

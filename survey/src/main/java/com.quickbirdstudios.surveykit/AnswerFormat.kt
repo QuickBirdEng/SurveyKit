@@ -78,8 +78,8 @@ sealed class AnswerFormat {
             check(defaultValue == null || choices.contains(defaultValue)) {
                 throw IllegalStateException(
                     "${ValuePickerAnswerFormat::class.simpleName}:" +
-                        "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
-                        "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
+                            "${ValuePickerAnswerFormat::defaultValue.name}($defaultValue) " +
+                            "has to be part of " + ValuePickerAnswerFormat::choices.name + "($choices)"
                 )
             }
         }
@@ -151,15 +151,17 @@ sealed class AnswerFormat {
         }
 
         companion object {
-            operator fun invoke(): DateTimeAnswerFormat = DateTimeAnswerFormat(
-                defaultValue = DateTime(
-                    day = Calendar.getInstance().get(Calendar.DAY_OF_MONTH),
-                    month = Calendar.getInstance().get(Calendar.MONTH),
-                    year = Calendar.getInstance().get(Calendar.YEAR),
-                    hour = Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
-                    minute = Calendar.getInstance().get(Calendar.MINUTE)
+            operator fun invoke(): DateTimeAnswerFormat = with(Calendar.getInstance()) {
+                DateTimeAnswerFormat(
+                    defaultValue = DateTime(
+                        day = get(Calendar.DAY_OF_MONTH),
+                        month = get(Calendar.MONTH),
+                        year = get(Calendar.YEAR),
+                        hour = get(Calendar.HOUR_OF_DAY),
+                        minute = get(Calendar.MINUTE)
+                    )
                 )
-            )
+            }
         }
     }
 

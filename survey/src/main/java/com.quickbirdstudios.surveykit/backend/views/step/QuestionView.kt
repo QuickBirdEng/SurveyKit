@@ -73,7 +73,8 @@ abstract class QuestionView(
                     abortDialogConfiguration?.message ?: R.string.abort_dialog_message,
                     abortDialogConfiguration?.neutralMessage
                         ?: R.string.abort_dialog_neutral_message,
-                    abortDialogConfiguration?.negativeMessage ?: R.string.abort_dialog_neutral_message
+                    abortDialogConfiguration?.negativeMessage
+                        ?: R.string.abort_dialog_neutral_message
                 )
             ) {
                 onCloseListener(createResults(), FinishReason.Discarded)
@@ -92,5 +93,5 @@ abstract class QuestionView(
         footer.setSkipButtonText(skipButtonText)
     }
 
-//endregion
+    //endregion
 }

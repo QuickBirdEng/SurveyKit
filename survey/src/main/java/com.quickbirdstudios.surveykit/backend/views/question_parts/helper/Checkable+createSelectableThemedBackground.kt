@@ -117,7 +117,7 @@ private class BackgroundCreationHelper {
 
     //endregion
 
-    //region SubClasses#
+    //region SubClasses
 
     private enum class IconDrawable {
         Default, Check;

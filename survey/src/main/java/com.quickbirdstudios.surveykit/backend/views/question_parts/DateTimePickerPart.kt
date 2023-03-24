@@ -51,6 +51,7 @@ internal class DateTimePickerPart @JvmOverloads constructor(
         gravity = Gravity.CENTER
         orientation = VERTICAL
 
+        // TODO: Make is24HourView configurable?
         timePicker = TimePickerDialog(context, this, selectedTime.hour, selectedTime.minute, true)
         datePicker =
             DatePickerDialog(

@@ -47,7 +47,7 @@ internal class TimePickerQuestionView(
 
     //endregion
 
-    //region Priavte API
+    //region Private API
 
     private fun AnswerFormat.TimeAnswerFormat.Time.toSelected(): TimePickerPart.Selected =
         TimePickerPart.Selected(hour = this.hour, minute = this.minute)

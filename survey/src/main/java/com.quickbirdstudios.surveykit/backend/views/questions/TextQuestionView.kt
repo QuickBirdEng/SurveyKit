@@ -38,12 +38,10 @@ internal class TextQuestionView(
             stringIdentifier = questionAnswerView.field.text.toString()
         )
 
-    override fun isValidInput(): Boolean {
-        answerFormat.isValid?.let { isValidCheck ->
-            if (!isValidCheck(questionAnswerView.field.text.toString())) return false
-        }
-        return questionAnswerView.field.getNonNullText().isNotBlank()
-    }
+    override fun isValidInput(): Boolean =
+        if (answerFormat.isValid(questionAnswerView.field.text.toString()))
+            questionAnswerView.field.getNonNullText().isNotBlank()
+        else false
 
     override fun setupViews() {
         super.setupViews()

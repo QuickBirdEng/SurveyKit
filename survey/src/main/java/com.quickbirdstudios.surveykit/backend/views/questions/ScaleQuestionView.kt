@@ -48,16 +48,10 @@ internal class ScaleQuestionView(
         val minimumValueDescription = answerFormat.minimumValueDescription
         val maximumValueDescription = answerFormat.maximumValueDescription
 
-        val minValueDescription =
-            if (minimumValueDescription.isNotBlank())
-                minimumValueDescription
-            else
-                answerFormat.minimumValue.toString()
-        val maxValueDescription =
-            if (maximumValueDescription.isNotBlank())
-                maximumValueDescription
-            else
-                answerFormat.maximumValue.toString()
+        val minValueDescription = minimumValueDescription
+            .ifBlank { answerFormat.minimumValue.toString() }
+        val maxValueDescription = maximumValueDescription
+            .ifBlank { answerFormat.maximumValue.toString() }
 
         scalePart = content.add(
             ScalePart(

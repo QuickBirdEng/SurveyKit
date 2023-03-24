@@ -30,10 +30,10 @@ internal class SingleChoiceQuestionView(
     //region Overrides
 
     override fun createResults(): QuestionResult {
-        val stringIdentifier = (answerFormat.textChoices
+        val stringIdentifier = answerFormat.textChoices
             .find { it.text == choicesContainer.selected?.text }
             ?.value
-            ?: "")
+            ?: ""
 
         return SingleChoiceQuestionResult(
             id = id,

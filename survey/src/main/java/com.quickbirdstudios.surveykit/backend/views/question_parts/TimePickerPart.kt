@@ -11,6 +11,8 @@ import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.views.main_parts.StyleablePart
 
+// TODO: Make 24/12 representation configurable + use system settings as default
+//  Check deprecation
 @Suppress("DEPRECATION")
 internal class TimePickerPart @JvmOverloads constructor(
     context: Context,

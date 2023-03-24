@@ -34,9 +34,7 @@ internal class MultipleChoiceQuestionView(
             id = id,
             startDate = startDate,
             answer = choicesContainer.selected,
-            stringIdentifier = choicesContainer.selected
-                .map { it.value }
-                .joinToString(",")
+            stringIdentifier = choicesContainer.selected.joinToString(",") { it.value }
         )
 
     override fun isValidInput(): Boolean = isOptional || choicesContainer.isOneSelected()
@@ -48,9 +46,7 @@ internal class MultipleChoiceQuestionView(
         choicesContainer.options = answerFormat.textChoices
         choicesContainer.onCheckedChangeListener = { _, _ -> footer.canContinue = isValidInput() }
         val preselectedOptions = preselected ?: emptyList()
-        val selectedOptions =
-            if (preselectedOptions.isNotEmpty()) preselectedOptions
-            else answerFormat.defaultSelections
+        val selectedOptions = preselectedOptions.ifEmpty { answerFormat.defaultSelections }
         choicesContainer.selected = selectedOptions
     }
 

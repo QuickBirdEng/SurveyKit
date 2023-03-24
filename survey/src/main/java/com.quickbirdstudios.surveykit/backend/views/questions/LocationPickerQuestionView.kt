@@ -11,7 +11,7 @@ import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import com.quickbirdstudios.surveykit.result.question_results.LocationQuestionResult
 
-@SuppressLint("ViewConstructor")
+@SuppressLint("ViewConstructor") // TODO: Add also for other views
 internal class LocationPickerQuestionView(
     context: Context,
     id: StepIdentifier,
@@ -22,6 +22,7 @@ internal class LocationPickerQuestionView(
     skipButtonText: String,
     private val lifecycle: Lifecycle?,
     private val addressProvider: AddressSuggestionProvider?,
+    // TODO: Why unused?
     private val answerFormat: AnswerFormat.LocationAnswerFormat,
     private val preselected: AnswerFormat.LocationAnswerFormat.Location?
 ) : QuestionView(context, id, isOptional, title, text, nextButtonText, skipButtonText) {
