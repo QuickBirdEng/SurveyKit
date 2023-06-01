@@ -10,18 +10,19 @@ plugins {
 androidExtensions { isExperimental = true }
 
 android {
-    compileSdkVersion(Project.Android.compileSdkVersion)
+    compileSdkVersion = Project.Android.compileSdkVersion
 
     defaultConfig {
         version = Library.version
-        minSdkVersion(Project.Android.minSdkVersion)
-        targetSdkVersion(Project.Android.targetSdkVersion)
+        minSdkPreview = Project.Android.minSdkVersion
+        targetSdkPreview = Project.Android.targetSdkVersion
         testInstrumentationRunner = Project.Android.testInstrumentationRunner
     }
 
     testOptions {
         animationsDisabled = true
     }
+    namespace = "com.quickbirdstudios.surveykit"
 }
 
 dependencies {

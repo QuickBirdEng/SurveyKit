@@ -1,12 +1,14 @@
 buildscript {
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
         maven { url 'https://repository.quickbirdstudios.com/repository/public' }
     }
 
     dependencies {
         classpath("com.quickbirdstudios:gradle-publishing:0.1.0")
+        classpath("com.android.tools.build:gradle:7.4.2")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.20")
     }
 }
 
