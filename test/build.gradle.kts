@@ -2,11 +2,9 @@ import com.quickbirdstudios.surveykit.ApiKeys.googleMapsKey
 
 plugins {
     id("com.android.application")
+    id("kotlin-parcelize")
     kotlin("android")
-    id("org.jetbrains.kotlin.android.extensions")
 }
-
-androidExtensions { isExperimental = true }
 
 android {
     compileSdkVersion(Project.Android.compileSdkVersion)
@@ -30,6 +28,10 @@ android {
                 "META-INF/LICENSE-notice.md"
             )
         }
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {

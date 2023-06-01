@@ -1,8 +1,7 @@
 object Versions {
 
-    const val kotlin = "1.6.2"
-    const val kotlinPlugin = "1.6.20"
-    const val coroutines = "1.6.2"
+    const val kotlin = "1.8.20"
+    const val coroutines = "1.7.0"
     const val test = "1.1.1"
     const val jUnit = "5.5.2"
     const val jUnitPlatform = "1.5.2"
@@ -28,12 +27,12 @@ object Versions {
 object Deps {
 
     object Plugins {
-        const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlinPlugin}"
+        const val kotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
     }
 
     object Kotlin {
         const val stdlib = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Versions.kotlin}"
-        const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlinPlugin}"
+        const val reflect = "org.jetbrains.kotlin:kotlin-reflect:${Versions.kotlin}"
         const val coroutines =
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutines}"
         const val androidCoroutines =
