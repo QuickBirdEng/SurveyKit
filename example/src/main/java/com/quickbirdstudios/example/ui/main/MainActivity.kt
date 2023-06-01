@@ -6,12 +6,12 @@ import android.os.Parcelable
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.quickbirdstudios.example.R
+import com.quickbirdstudios.example.databinding.MainActivityBinding
 import com.quickbirdstudios.surveykit.AnswerFormat
 import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.Identifier
@@ -36,16 +36,13 @@ import kotlinx.android.parcel.Parcelize
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var survey: SurveyView
-    private lateinit var container: ViewGroup
+    private lateinit var binding: MainActivityBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
-
-        survey = findViewById(R.id.survey_view)
-        container = findViewById(R.id.surveyContainer)
-        setupSurvey(survey)
+        binding = MainActivityBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        setupSurvey(binding.surveyView)
     }
 
     private fun setupSurvey(surveyView: SurveyView) {
@@ -194,7 +191,7 @@ class MainActivity : AppCompatActivity() {
             if (reason == FinishReason.Completed) {
                 taskResult.results.forEach { stepResult ->
                     Log.e("ASDF", "answer ${stepResult.results.firstOrNull()}")
-                    container.removeAllViews()
+                    binding.surveyContainer.removeAllViews()
                 }
             }
         }
@@ -216,7 +213,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         return if (keyCode == KeyEvent.KEYCODE_BACK) {
-            survey.backPressed()
+            binding.surveyView.backPressed()
             true
         } else false
     }

@@ -1,7 +1,7 @@
 package com.quickbirdstudios.surveykit.backend.views.step
 
 import android.content.Context
-import android.view.View
+import android.view.LayoutInflater
 import androidx.annotation.CallSuper
 import com.quickbirdstudios.surveykit.FinishReason
 import com.quickbirdstudios.surveykit.R
@@ -13,6 +13,7 @@ import com.quickbirdstudios.surveykit.backend.views.main_parts.Dialogs
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Footer
 import com.quickbirdstudios.surveykit.backend.views.main_parts.Header
 import com.quickbirdstudios.surveykit.backend.views.question_parts.InfoTextPart
+import com.quickbirdstudios.surveykit.databinding.ViewQuestionBinding
 import com.quickbirdstudios.surveykit.result.QuestionResult
 import java.util.Date
 
@@ -26,11 +27,17 @@ abstract class QuestionView(
     private val skipButtonText: String
 ) : StepView(context, id, isOptional), ViewActions {
 
+    private var binding: ViewQuestionBinding
+
+    init {
+        binding = ViewQuestionBinding.inflate(LayoutInflater.from(context))
+        this.addView(binding.root)
+    }
+
     //region Members
 
-    private val root: View = View.inflate(context, R.layout.view_question, this)
-    var header: Header = root.findViewById(R.id.questionHeader)
-    var content: Content = root.findViewById(R.id.questionContent)
+    var header: Header = binding.questionHeader
+    var content: Content = binding.questionContent
     var footer: Footer = content.findViewById(R.id.questionFooter)
     private var abortDialogConfiguration: AbortDialogConfiguration? = null
 
