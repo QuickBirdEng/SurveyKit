@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.graphics.drawable.GradientDrawable
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
@@ -15,6 +16,7 @@ import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.colorStroke
 import com.quickbirdstudios.surveykit.backend.helpers.extensions.px
+import com.quickbirdstudios.surveykit.databinding.LayoutFooterBinding
 
 class Footer @JvmOverloads constructor(
     context: Context,
@@ -60,15 +62,21 @@ class Footer @JvmOverloads constructor(
 
     //region Members
 
-    private val root: View = View.inflate(context, R.layout.layout_footer, this)
-    private val buttonContinue = root.findViewById<Button>(R.id.button_continue).apply {
+    private val root = LayoutFooterBinding.inflate(
+        LayoutInflater.from(context),
+        this,
+        true
+    )
+
+    private val buttonContinue = root.buttonContinue.apply {
         setOnClickListener {
             hideKeyboard()
             onContinue()
         }
         colorMainButtonEnabledState(true, themeColor)
     }
-    private val buttonSkip = root.findViewById<Button>(R.id.button_skip_question).apply {
+
+    private val buttonSkip = root.buttonSkipQuestion.apply {
         setOnClickListener {
             hideKeyboard()
             onSkip()

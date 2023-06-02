@@ -69,7 +69,6 @@ class Header @JvmOverloads constructor(
 
     //region Members
 
-//    private val root: View = View.inflate(context, R.layout.layout_header, this)
     private val headerLabel: TextView = root.headerLabel
     private val buttonBack = root.headerBackButton.apply {
         setOnClickListener {
