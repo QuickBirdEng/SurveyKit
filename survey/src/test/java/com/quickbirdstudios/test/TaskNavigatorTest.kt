@@ -13,9 +13,9 @@ import org.junit.Test
 class TaskNavigatorTest {
     @Test
     fun testHasNoPreviousStep() {
-        val firstQuestion = randomQuestionStep()
-        val secondQuestion = randomQuestionStep()
-        val thirdQuestion = randomQuestionStep()
+        val firstQuestion = mockQuestionStep()
+        val secondQuestion = mockQuestionStep()
+        val thirdQuestion = mockQuestionStep()
         val taskNavigator = createTaskImplementations(listOf(firstQuestion, secondQuestion, thirdQuestion))
 
         for (nav in taskNavigator) {
@@ -26,9 +26,9 @@ class TaskNavigatorTest {
 
     @Test
     fun testHasPreviousStep() {
-        val firstQuestion = randomQuestionStep()
-        val secondQuestion = randomQuestionStep()
-        val thirdQuestion = randomQuestionStep()
+        val firstQuestion = mockQuestionStep()
+        val secondQuestion = mockQuestionStep()
+        val thirdQuestion = mockQuestionStep()
         val taskNavigator = createTaskImplementations(listOf(firstQuestion, secondQuestion, thirdQuestion))
 
         for (nav in taskNavigator) {
@@ -51,7 +51,7 @@ class TaskNavigatorTest {
         )
     }
 
-    private fun randomQuestionStep() = QuestionStep(
+    private fun mockQuestionStep() = QuestionStep(
         title = "title",
         text = "text",
         answerFormat = AnswerFormat.TextAnswerFormat(maxLines = 1)

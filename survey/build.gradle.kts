@@ -3,25 +3,28 @@
 plugins {
     id("com.android.library")
     kotlin("android")
-    id("org.jetbrains.kotlin.android.extensions")
     id("gradle-publishing")
+    id("kotlin-parcelize")
 }
 
-androidExtensions { isExperimental = true }
-
 android {
-    compileSdkVersion(Project.Android.compileSdkVersion)
+    compileSdkVersion = Project.Android.compileSdkVersion
 
     defaultConfig {
         version = Library.version
-        minSdkVersion(Project.Android.minSdkVersion)
-        targetSdkVersion(Project.Android.targetSdkVersion)
+        minSdkPreview = Project.Android.minSdkVersion
+        targetSdkPreview = Project.Android.targetSdkVersion
         testInstrumentationRunner = Project.Android.testInstrumentationRunner
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     testOptions {
         animationsDisabled = true
     }
+    namespace = "com.quickbirdstudios.surveykit"
 }
 
 dependencies {

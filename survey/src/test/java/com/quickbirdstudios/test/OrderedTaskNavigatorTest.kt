@@ -11,9 +11,9 @@ internal class OrderedTaskNavigatorTest {
 
     @Test
     fun testStraightWalkThrough() {
-        val firstQuestion = randomQuestionStep()
-        val secondQuestion = randomQuestionStep()
-        val thirdQuestion = randomQuestionStep()
+        val firstQuestion = mockQuestionStep()
+        val secondQuestion = mockQuestionStep()
+        val thirdQuestion = mockQuestionStep()
         val orderedTask = OrderedTask(listOf(firstQuestion, secondQuestion, thirdQuestion))
         val navigator = TaskNavigator(orderedTask)
 
@@ -25,9 +25,9 @@ internal class OrderedTaskNavigatorTest {
 
     @Test
     fun testBackwards() {
-        val firstQuestion = randomQuestionStep()
-        val secondQuestion = randomQuestionStep()
-        val thirdQuestion = randomQuestionStep()
+        val firstQuestion = mockQuestionStep()
+        val secondQuestion = mockQuestionStep()
+        val thirdQuestion = mockQuestionStep()
         val orderedTask = OrderedTask(listOf(firstQuestion, secondQuestion, thirdQuestion))
         val navigator = TaskNavigator(orderedTask)
 
@@ -38,14 +38,14 @@ internal class OrderedTaskNavigatorTest {
 
     @Test
     fun testFinalStep() {
-        val finalStep = randomQuestionStep()
-        val orderedTask = OrderedTask((0..100).map { randomQuestionStep() } + finalStep)
+        val finalStep = mockQuestionStep()
+        val orderedTask = OrderedTask((0..100).map { mockQuestionStep() } + finalStep)
         val navigator = TaskNavigator(orderedTask)
 
         Assert.assertEquals(finalStep, navigator.finalStep())
     }
 
-    private fun randomQuestionStep() = QuestionStep(
+    private fun mockQuestionStep() = QuestionStep(
         title = "title",
         text = "text",
         answerFormat = AnswerFormat.TextAnswerFormat(maxLines = 1)

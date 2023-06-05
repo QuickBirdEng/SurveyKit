@@ -1,13 +1,10 @@
 import com.quickbirdstudios.surveykit.ApiKeys.googleMapsKey
-import com.quickbirdstudios.surveykit.ApiKeys.yandexMapsKey
 
 plugins {
     id("com.android.application")
+    id("kotlin-parcelize")
     kotlin("android")
-    id("org.jetbrains.kotlin.android.extensions")
 }
-
-androidExtensions { isExperimental = true }
 
 android {
     compileSdkVersion(Project.Android.compileSdkVersion)
@@ -21,9 +18,20 @@ android {
         resValue("string", "google_api_key", googleMapsKey())
     }
     packagingOptions {
-        exclude("META-INF/*kotlin*")
-        exclude("META-INF/LICENSE.md")
-        exclude("META-INF/LICENSE-notice.md")
+        jniLibs {
+            excludes += setOf("META-INF/*kotlin*")
+        }
+        resources {
+            excludes += setOf(
+                "META-INF/*kotlin*",
+                "META-INF/LICENSE.md",
+                "META-INF/LICENSE-notice.md"
+            )
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
     }
 
     compileOptions {
@@ -34,6 +42,7 @@ android {
     testOptions {
         animationsDisabled = true
     }
+    namespace = "com.quickbirdstudios.test"
 }
 
 dependencies {
