@@ -2,9 +2,9 @@ import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompile
 
 buildscript {
     repositories {
-        mavenCentral()
-        google()
         maven { url = uri("https://repository.quickbirdstudios.com/repository/public") }
+        google()
+        mavenCentral()
     }
 
     dependencies {
@@ -14,8 +14,8 @@ buildscript {
 
 allprojects {
     repositories {
-        mavenCentral()
         google()
+        mavenCentral()
     }
 
     tasks.withType(KotlinJvmCompile::class.java).all {

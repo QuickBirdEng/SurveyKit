@@ -7,10 +7,10 @@ import com.quickbirdstudios.surveykit.StepIdentifier
 import com.quickbirdstudios.surveykit.SurveyTheme
 import com.quickbirdstudios.surveykit.backend.navigator.TaskNavigator
 import com.quickbirdstudios.surveykit.backend.presenter.animations.ViewAnimator
+import com.quickbirdstudios.surveykit.backend.views.step.QuestionView
 import com.quickbirdstudios.surveykit.backend.views.step.StepView
 import com.quickbirdstudios.surveykit.result.StepResult
 import com.quickbirdstudios.surveykit.steps.Step
-import kotlinx.android.synthetic.main.view_question.view.*
 import java.util.Date
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -101,8 +101,8 @@ internal class PresenterImpl(
 
         val previousQuestionView = currentQuestionView
 
-        if (!hasPreviousStep()) {
-            questionView.questionHeader?.canBack = false
+        if (!hasPreviousStep() && questionView is QuestionView) {
+            questionView.header.canBack = false
         }
 
         currentQuestionView = questionView

@@ -4,15 +4,15 @@ import android.app.Activity
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.appcompat.widget.Toolbar
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
+import com.quickbirdstudios.surveykit.databinding.LayoutHeaderBinding
 
 // TODO should take [Configuration] in constructor and remove public color setters and getters
 class Header @JvmOverloads constructor(
@@ -21,6 +21,13 @@ class Header @JvmOverloads constructor(
     defStyleRes: Int = 0
 ) : Toolbar(context, attrs, defStyleRes),
     StyleablePart {
+    private val root by lazy {
+        LayoutHeaderBinding.inflate(
+            LayoutInflater.from(context),
+            this,
+            false
+        )
+    }
 
     //region Public API
 
@@ -62,9 +69,8 @@ class Header @JvmOverloads constructor(
 
     //region Members
 
-    private val root: View = View.inflate(context, R.layout.layout_header, this)
-    private val headerLabel: TextView = root.findViewById(R.id.headerLabel)
-    private val buttonBack = root.findViewById<RelativeLayout>(R.id.headerBackButton).apply {
+    private val headerLabel: TextView = root.headerLabel
+    private val buttonBack = root.headerBackButton.apply {
         setOnClickListener {
             hideKeyboard()
             onBack()
@@ -74,7 +80,7 @@ class Header @JvmOverloads constructor(
         buttonBack.findViewById<ImageView>(R.id.headerBackButtonImage).apply {
             background.setTint(themeColor)
         }
-    private val cancelButton = root.findViewById<Button>(R.id.headerCancelButton).apply {
+    private val cancelButton = root.headerCancelButton.apply {
         setTextColor(themeColor)
         setOnClickListener {
             hideKeyboard()

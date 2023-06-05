@@ -2,12 +2,14 @@ package com.quickbirdstudios.surveykit.backend.views.main_parts
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.core.widget.NestedScrollView
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.SurveyTheme
+import com.quickbirdstudios.surveykit.databinding.LayoutContentBinding
 
 class Content @JvmOverloads constructor(
     context: Context,
@@ -16,10 +18,14 @@ class Content @JvmOverloads constructor(
 ) : NestedScrollView(context, attrs, defStyleRes), StyleablePart {
 
     //region Member
+    private val root = LayoutContentBinding.inflate(
+        LayoutInflater.from(context),
+        this,
+        true
+    )
 
-    private val root: View = View.inflate(context, R.layout.layout_content, this)
-    private val container: ViewGroup = root.findViewById(R.id.content_container)
-    private val footerContainer: ViewGroup = root.findViewById(R.id.footer_container)
+    private val container: ViewGroup = root.contentContainer
+    private val footerContainer: ViewGroup = root.footerContainer
     private val footer: Footer = Footer(context).apply { id = R.id.questionFooter }
 
     //endregion

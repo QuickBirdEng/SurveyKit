@@ -5,41 +5,46 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.annotation.ColorRes
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.quickbirdstudios.surveykit.R
 import com.quickbirdstudios.surveykit.backend.views.question_parts.imageSelector.ImageSelectorPart.ImageWrapper
+import com.quickbirdstudios.surveykit.databinding.LayoutImageSelectorImageBinding
 
 internal class ImageSelectorAdapter(
     diffCallback: DiffUtil.ItemCallback<ImageWrapper> = ImageDiff
 ) : ListAdapter<ImageWrapper, ImageSelectorAdapter.ViewHolder>(diffCallback) {
 
-    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val border: ViewGroup = view.findViewById(R.id.border)
-        val image: ImageView = view.findViewById(R.id.image)
-
-        companion object {
-            val Layout = R.layout.layout_image_selector_image
-        }
+    inner class ViewHolder(binding: LayoutImageSelectorImageBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        val border: ViewGroup = binding.border
+        val image: ImageView = binding.image
     }
 
     @ColorRes
     var selectedColor: Int = R.color.cyan_normal
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val inflatedView = layoutInflater.inflate(ViewHolder.Layout, parent, false).apply {
-            id = View.generateViewId()
+        val inflatedView = LayoutImageSelectorImageBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        ).apply {
+            this.root.id = View.generateViewId()
         }
+
         return ViewHolder(inflatedView)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(holder.adapterPosition)
+        val item = getItem(holder.bindingAdapterPosition)
 
-        holder.image.background = holder.view.context.getDrawable(item.image.resourceId)
+        holder.image.background = AppCompatResources.getDrawable(
+            holder.itemView.context, item.image.resourceId
+        )
 
         holder.selected(item.selected)
 
@@ -54,7 +59,7 @@ internal class ImageSelectorAdapter(
     private fun ViewHolder.selected(isSelected: Boolean) {
         this.border.setBackgroundColor(
             if (isSelected) selectedColor
-            else ContextCompat.getColor(this.view.context, R.color.transparent)
+            else ContextCompat.getColor(this.itemView.context, R.color.transparent)
         )
     }
 

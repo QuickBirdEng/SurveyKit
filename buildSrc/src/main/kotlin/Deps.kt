@@ -1,7 +1,7 @@
 object Versions {
 
-    const val kotlin = "1.3.50"
-    const val coroutines = "1.3.0"
+    const val kotlin = "1.8.20"
+    const val coroutines = "1.7.0"
     const val test = "1.1.1"
     const val jUnit = "5.5.2"
     const val jUnitPlatform = "1.5.2"
@@ -9,10 +9,10 @@ object Versions {
     const val espresso = "3.1.0"
 
     object AndroidSupport {
-        const val appCompat = "1.0.0"
-        const val constraintLayout = "1.1.3"
+        const val appCompat = "1.3.0"
+        const val constraintLayout = "2.0.4"
         const val annotation = "1.0.0"
-        const val recyclerView = "1.0.0"
+        const val recyclerView = "1.2.1"
     }
 
     object PlayServices {
@@ -20,7 +20,7 @@ object Versions {
     }
 
     object Google {
-        const val material = "1.2.1"
+        const val material = "1.4.0"
     }
 }
 

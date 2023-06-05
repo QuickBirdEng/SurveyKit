@@ -1,16 +1,14 @@
-
-
 plugins {
     `kotlin-dsl`
 }
 
 repositories {
-    mavenCentral()
     google()
+    mavenCentral()
 }
 
 dependencies {
     implementation(gradleApi())
     implementation(localGroovy())
-    implementation("com.android.tools.build:gradle:4.0.2")
+    implementation("com.android.tools.build:gradle:8.0.2")
 }
